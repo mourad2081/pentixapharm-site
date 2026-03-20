@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import {
   ShieldCheck, ChevronDown, Menu, X,
-  Calculator, FileText, User, Home, Calendar
+  Calculator, FileText, User, Home, Calendar, MessageCircle
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -48,6 +48,7 @@ export function Navbar() {
     { name: t('home'), href: `/${locale}`, icon: Home, action: null },
     { name: t('about'), href: `/${locale}/ueber-mich`, icon: User, action: null },
     { name: t('products'), href: `/${locale}#products`, icon: ShieldCheck, action: handleProductsClick },
+    { name: t('faq'), href: `/${locale}/faq`, icon: MessageCircle, action: null },
     { name: t('blog'), href: `/${locale}/blog`, icon: FileText, action: null },
   ];
 

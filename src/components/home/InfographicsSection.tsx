@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import Magnetic from "@/components/ui/magnetic";
 
 const infographics = [
   {
@@ -75,44 +76,44 @@ export function InfographicsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {infographics.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group relative bg-gradient-to-br ${item.color} rounded-3xl border ${item.border} overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500`}
-              onClick={() => setLightbox(index)}
-            >
-              {/* Tag */}
-              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm text-navy text-xs font-black px-3 py-1.5 rounded-full shadow">
-                {item.tag}
-              </div>
-              {/* Zoom icon */}
-              <div className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-4 h-4 text-navy" />
-              </div>
+            <Magnetic key={item.id}>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`group relative bg-gradient-to-br ${item.color} rounded-3xl border ${item.border} overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500`}
+                onClick={() => setLightbox(index)}
+              >
+                {/* Tag */}
+                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm text-navy text-xs font-black px-3 py-1.5 rounded-full shadow">
+                  {item.tag}
+                </div>
+                {/* Zoom icon */}
+                <div className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn className="w-4 h-4 text-navy" />
+                </div>
 
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                  onError={() => {}} // graceful fallback
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60" />
-              </div>
+                {/* Image */}
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    onError={() => {}} // graceful fallback
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60" />
+                </div>
 
-              {/* Text */}
-              <div className="p-6">
-                <h3 className="font-heading font-black text-navy text-xl mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-              </div>
-            </motion.div>
+                {/* Text */}
+                <div className="p-6">
+                  <h3 className="font-heading font-black text-navy text-xl mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            </Magnetic>
           ))}
-        </div>
       </div>
 
       {/* Lightbox */}

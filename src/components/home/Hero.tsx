@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import Magnetic from "@/components/ui/magnetic";
 const ParticleField = dynamic(() => import("./ParticleField").then(mod => mod.ParticleField), { ssr: false });
 const Visuals3D = dynamic(() => import("./Visuals3D").then(mod => mod.Visuals3D), { ssr: false });
 
@@ -172,27 +173,32 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
-          <Link href={`/${locale}/termin`}>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(14,165,160,0.4)" }}
-              whileTap={{ scale: 0.97 }}
-              className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl overflow-hidden"
-            >
-              <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative flex items-center gap-2">
-                {t('bookBtn')} <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </motion.button>
-          </Link>
-          <Link href="#products">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border transition-all"
-            >
-              {t('exploreBtn')}
-            </motion.button>
-          </Link>
+          <Magnetic>
+            <Link href={`/${locale}/termin`}>
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(14,165,160,0.4)" }}
+                whileTap={{ scale: 0.97 }}
+                className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="relative flex items-center gap-2">
+                  {t('bookBtn')} <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </motion.button>
+            </Link>
+          </Magnetic>
+
+          <Magnetic>
+            <Link href="#products">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border transition-all"
+              >
+                {t('exploreBtn')}
+              </motion.button>
+            </Link>
+          </Magnetic>
         </motion.div>
 
         {/* Stats bar */}

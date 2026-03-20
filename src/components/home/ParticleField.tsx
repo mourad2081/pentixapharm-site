@@ -28,9 +28,26 @@ export function ParticleField() {
       });
     }
 
+    const mouse = { x: 0, y: 0 };
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
       particles.forEach((p) => {
+        // Mouse avoidance logic
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const force = (150 - dist) / 150;
+          p.x += (dx / dist) * force * 4;
+          p.y += (dy / dist) * force * 4;
+        }
+
         p.x += p.vx;
         p.y += p.vy;
 
@@ -77,6 +94,7 @@ export function ParticleField() {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

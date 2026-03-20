@@ -7,18 +7,8 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { Timeline } from "@/components/home/Timeline";
 import { StatsSection } from "@/components/home/StatsSection";
 import { WhyMe } from "@/components/home/WhyMe";
-import { motion } from "framer-motion";
+import { SectionReveal } from "@/components/layout/SectionReveal";
 
-const SectionReveal = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-  >
-    {children}
-  </motion.div>
-);
 
 export default function HomePage() {
   return (

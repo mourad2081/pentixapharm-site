@@ -70,6 +70,12 @@ export function Navbar() {
       desc: "",
       icon: Calculator,
     },
+    {
+      name: t('investment'),
+      href: `/${locale}/rechner/investment`,
+      desc: "",
+      icon: Calculator,
+    },
   ];
 
   return (

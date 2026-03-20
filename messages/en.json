@@ -12,7 +12,7 @@
     "contact": "Contact",
     "resources": "Resources",
     "seminars": "Seminars",
-    "visualizer": "AI Visualizer"
+    "investment": "Investment Returns"
   },
   "Hero": {
     "badge": "Independent ERGO Advisor · Berlin",
@@ -108,18 +108,5 @@
     "notIncluded": "Not included",
     "features": "Features",
     "problemHeading": "The Problem"
-  },
-  "Visualizer": {
-    "title": "Vision AI Creator",
-    "subtitle": "Visualize Your Safe Future",
-    "desc": "Describe your ideal secure lifestyle, and our AI will generate a stunning visual representation of your dreams.",
-    "placeholder": "e.g. A serene retirement home in the Alps, secure financial growth, a protected family in a futuristic city...",
-    "generateBtn": "Generate Vision",
-    "generating": "Building your vision...",
-    "disclaimer": "AI-generated images are for inspiration only and do not constitute financial advice.",
-    "galleryTitle": "Recent Community Visions",
-    "btnBack": "Back to Home",
-    "promptLabel": "What is your vision for the future?",
-    "tryThese": "Try these prompts:"
   }
 }

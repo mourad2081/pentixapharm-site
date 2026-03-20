@@ -8,7 +8,10 @@
     "book": "Book Consultation",
     "pension": "Pension Calculator",
     "health": "Health Insurance (PKV)",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "contact": "Contact",
+    "resources": "Resources",
+    "seminars": "Seminars"
   },
   "Hero": {
     "badge": "Independent ERGO Advisor · Berlin",

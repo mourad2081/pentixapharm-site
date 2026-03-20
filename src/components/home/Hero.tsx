@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { ParticleField } from "./ParticleField";
 
 const WORDS = ["Your Future.", "Your Family.", "Your Freedom."];
 
@@ -81,21 +82,31 @@ export function Hero() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-      style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 40%, #0A1628 100%)" }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-navy"
     >
       {/* Parallax hero background image */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
+      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 overflow-hidden">
+        {/* Animated Gradient Mesh */}
+        <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none" style={{
+          background: "radial-gradient(circle at 10% 20%, rgba(14,165,160,0.4) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(14,165,160,0.3) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(10,22,40,0.8) 0%, transparent 60%)",
+          filter: "blur(60px)",
+        }}>
+          <motion.div animate={{ rotate: 360 }} transition={{ duration: 100, repeat: Infinity, ease: "linear" }} className="w-full h-full absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(212,168,83,0.15)_0%,transparent_50%)]" />
+        </div>
+        
         <Image
           src="/hero-bg.png"
           alt="Hero Background"
           fill
-          className="object-cover opacity-20 mix-blend-luminosity"
+          className="object-cover opacity-[0.15] mix-blend-luminosity"
           priority
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy" />
       </motion.div>
+
+      {/* Particle Field */}
+      <ParticleField />
 
       {/* Animated floating orbs */}
       <motion.div

@@ -8,7 +8,10 @@
     "book": "Prendre rendez-vous",
     "pension": "Calculatrice de retraite",
     "health": "Assurance santé (PKV)",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "contact": "Contact",
+    "resources": "Ressources",
+    "seminars": "Séminaires"
   },
   "Hero": {
     "badge": "Conseiller ERGO indépendant · Berlin",

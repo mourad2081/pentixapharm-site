@@ -8,7 +8,10 @@
     "book": "Termin buchen",
     "pension": "Rentenrechner",
     "health": "PKV-Rechner",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "resources": "Ressourcen",
+    "seminars": "Seminare"
   },
   "Hero": {
     "badge": "Unabhängiger ERGO Berater · Berlin",

@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import {
   ShieldCheck, ChevronDown, Menu, X,
-  Calculator, FileText, User, Home, Calendar, MessageCircle
+  Calculator, FileText, User, Home, Calendar, MessageCircle,
+  Briefcase, GraduationCap, MapPin, Mail
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,12 +45,15 @@ export function Navbar() {
 
   const t = useTranslations('Navbar');
 
-  const links = [
-    { name: t('home'), href: `/${locale}`, icon: Home, action: null },
-    { name: t('about'), href: `/${locale}/ueber-mich`, icon: User, action: null },
+  const links: Array<{ name: string; href: string; icon: any; action?: (e: React.MouseEvent) => void }> = [
+    { name: t('home'), href: `/${locale}`, icon: Home },
+    { name: t('about'), href: `/${locale}/ueber-mich`, icon: User },
     { name: t('products'), href: `/${locale}#products`, icon: ShieldCheck, action: handleProductsClick },
-    { name: t('faq'), href: `/${locale}/faq`, icon: MessageCircle, action: null },
-    { name: t('blog'), href: `/${locale}/blog`, icon: FileText, action: null },
+    { name: t('seminars'), href: `/${locale}/seminare`, icon: GraduationCap },
+    { name: t('resources'), href: `/${locale}/ressourcen`, icon: Briefcase },
+    { name: t('contact'), href: `/${locale}/kontakt`, icon: Mail },
+    { name: t('blog'), href: `/${locale}/blog`, icon: FileText },
+    { name: t('faq'), href: `/${locale}/faq`, icon: MessageCircle },
   ];
 
   const calcLinks = [
@@ -211,7 +215,8 @@ export function Navbar() {
                 >
                   {link.action ? (
                     <button
-                      onClick={(e) => { link.action!(e); setMobileMenuOpen(false); }}
+                      // @ts-ignore
+                      onClick={(e) => { link.action && link.action(e as any); setMobileMenuOpen(false); }}
                       className="w-full flex items-center gap-3 text-base font-bold text-navy py-3 px-4 hover:bg-teal/5 hover:text-teal rounded-xl transition-colors text-left"
                     >
                       <link.icon className="w-5 h-5 text-teal shrink-0" />

@@ -59,7 +59,25 @@ export function BookingContent({ isEn: _ }: { isEn: boolean }) {
         <div className="container px-4 md:px-8 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
 
           {/* Cal.com Embed */}
-          <div className="lg:col-span-2 order-2 lg:order-1">
+          <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col gap-6">
+            
+            {/* Progress / Step Indicator Visual */}
+            <div className="bg-white border border-border shadow-sm p-5 rounded-2xl flex items-center justify-between relative overflow-hidden">
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-100 -translate-y-1/2 z-0" />
+              {[
+                { label: "Date & Time", status: "active" },
+                { label: "Your Details", status: "upcoming" },
+                { label: "Confirmation", status: "upcoming" }
+              ].map((step, i) => (
+                <div key={i} className="flex flex-col items-center gap-2 relative z-10 bg-white px-2">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors cursor-default ${step.status === 'active' ? 'bg-teal text-white shadow-lg shadow-teal/20' : 'bg-slate-100 text-slate-400'}`}>
+                    {i + 1}
+                  </div>
+                  <span className={`text-xs font-bold uppercase tracking-wider ${step.status === 'active' ? 'text-teal' : 'text-slate-400'}`}>{step.label}</span>
+                </div>
+              ))}
+            </div>
+
             <Card className="border-border shadow-2xl rounded-3xl overflow-hidden bg-white">
               <div className="w-full h-[650px] bg-white">
                 <Cal

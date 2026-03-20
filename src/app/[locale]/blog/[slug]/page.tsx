@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ShieldCheck, CalendarClock, ChevronLeft, ArrowRight } from "lucide-react";
+import { ReadingProgressBar } from "@/components/blog/ReadingProgressBar";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -24,6 +25,7 @@ export default async function BlogPostPage({ params }: { params: { locale: strin
 
   return (
     <main className="min-h-screen bg-white">
+      <ReadingProgressBar />
       
       {/* Blog Detail Hero */}
       <section className="bg-[#FAF9F6] pt-32 pb-20 border-b border-border/80 relative overflow-hidden">

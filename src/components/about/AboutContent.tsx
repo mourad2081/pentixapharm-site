@@ -5,6 +5,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
 
+const SectionReveal = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+);
+
 export function AboutContent({ isEn: _ }: { isEn: boolean }) {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
@@ -75,101 +86,104 @@ export function AboutContent({ isEn: _ }: { isEn: boolean }) {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-24 bg-white relative">
-        <div className="container px-4 md:px-8 max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <span className="text-teal font-bold uppercase tracking-widest text-sm">Who I Am</span>
-            <h2 className="text-4xl md:text-5xl font-heading font-black text-navy mt-2 relative inline-block">
-              My Journey
-              <span className="absolute -bottom-3 left-0 w-1/2 h-1.5 bg-gold rounded-full" />
-            </h2>
-          </motion.div>
+      <SectionReveal>
+        <section className="py-24 bg-white relative">
+          <div className="container px-4 md:px-8 max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
+              <span className="text-teal font-bold uppercase tracking-widest text-sm">Who I Am</span>
+              <h2 className="text-4xl md:text-5xl font-heading font-black text-navy mt-2 relative inline-block">
+                My Journey
+                <span className="absolute -bottom-3 left-0 w-1/2 h-1.5 bg-gold rounded-full" />
+              </h2>
+            </motion.div>
 
-          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-transparent before:via-teal/40 before:to-transparent">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: index * 0.1 }}
-                className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
-              >
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-teal text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                  <HeartHandshake className="w-4 h-4" />
-                </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-[#FAF9F6] p-7 rounded-2xl border border-border shadow-sm group-hover:shadow-lg group-hover:border-teal/30 transition-all duration-300">
-                  <span className="font-bold text-teal text-xs uppercase tracking-widest block mb-2">{item.year}</span>
-                  <h3 className="font-heading font-bold text-navy text-xl mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Philosophy - Dark Section */}
-      <section className="py-24 bg-navy text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/8 rounded-full blur-[120px]" />
-        <div className="container px-4 md:px-8 max-w-4xl mx-auto text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <Quote className="w-16 h-16 text-gold mx-auto mb-8 opacity-80" />
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-white">My Approach</h2>
-            <p className="text-xl md:text-2xl leading-relaxed text-slate-300 font-medium font-heading italic max-w-3xl mx-auto">
-              &ldquo;True financial advisory starts with listening. I craft personalized strategies that genuinely protect your lifestyle — completely detached from the standard product-pushing sales culture.&rdquo;
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Credentials & Languages */}
-      <section className="py-24 bg-white relative">
-        <div className="container px-4 md:px-8 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <span className="text-teal font-bold uppercase tracking-widest text-sm block mb-3">Academic & Professional</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-black text-navy mb-10">Expertise & Credentials</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {credentials.map((cred, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                  <Card className="h-full border border-border shadow-sm bg-[#FAF9F6] hover:bg-white hover:border-teal/30 hover:shadow-md transition-all duration-300 group">
-                    <CardContent className="p-6">
-                      <div className="p-3 rounded-xl bg-gold/10 w-fit mb-4 group-hover:bg-gold/20 transition-colors">
-                        <cred.icon className="w-7 h-7 text-gold" />
-                      </div>
-                      <h3 className="font-bold text-navy mb-2 text-sm leading-snug">{cred.title}</h3>
-                      <p className="text-xs text-muted-foreground">{cred.desc}</p>
-                    </CardContent>
-                  </Card>
+            <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-transparent before:via-teal/40 before:to-transparent">
+              {timeline.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-teal text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <HeartHandshake className="w-4 h-4" />
+                  </div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-[#FAF9F6] p-7 rounded-2xl border border-border shadow-sm group-hover:shadow-lg group-hover:border-teal/30 transition-all duration-300">
+                    <span className="font-bold text-teal text-xs uppercase tracking-widest block mb-2">{item.year}</span>
+                    <h3 className="font-heading font-bold text-navy text-xl mb-3">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
+        </section>
+      </SectionReveal>
 
-          <div>
-            <span className="text-teal font-bold uppercase tracking-widest text-sm block mb-3">Multilingual Advisory</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-black text-navy mb-10">Languages</h2>
-            <Card className="border border-border shadow-md p-8 rounded-3xl">
-              <div className="space-y-8">
-                {languages.map((lang, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                    <div className="flex justify-between items-end mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{lang.flag}</span>
-                        <h4 className="font-bold text-navy text-base">{lang.name}</h4>
-                      </div>
-                      <span className="text-xs font-bold text-teal bg-teal/10 px-3 py-1 rounded-full">{lang.level}</span>
-                    </div>
-                    <Progress value={lang.progress} className="h-2 bg-slate-100" />
+      <SectionReveal>
+        <section className="py-24 bg-navy text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/8 rounded-full blur-[120px]" />
+          <div className="container px-4 md:px-8 max-w-4xl mx-auto text-center relative z-10">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <Quote className="w-16 h-16 text-gold mx-auto mb-8 opacity-80" />
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-white">My Approach</h2>
+              <p className="text-xl md:text-2xl leading-relaxed text-slate-300 font-medium font-heading italic max-w-3xl mx-auto">
+                &ldquo;True financial advisory starts with listening. I craft personalized strategies that genuinely protect your lifestyle — completely detached from the standard product-pushing sales culture.&rdquo;
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      </SectionReveal>
+
+      <SectionReveal>
+        <section className="py-24 bg-white relative">
+          <div className="container px-4 md:px-8 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <span className="text-teal font-bold uppercase tracking-widest text-sm block mb-3">Academic & Professional</span>
+              <h2 className="text-3xl md:text-4xl font-heading font-black text-navy mb-10">Expertise & Credentials</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {credentials.map((cred, i) => (
+                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                    <Card className="h-full border border-border shadow-sm bg-[#FAF9F6] hover:bg-white hover:border-teal/30 hover:shadow-md transition-all duration-300 group">
+                      <CardContent className="p-6">
+                        <div className="p-3 rounded-xl bg-gold/10 w-fit mb-4 group-hover:bg-gold/20 transition-colors">
+                          <cred.icon className="w-7 h-7 text-gold" />
+                        </div>
+                        <h3 className="font-bold text-navy mb-2 text-sm leading-snug">{cred.title}</h3>
+                        <p className="text-xs text-muted-foreground">{cred.desc}</p>
+                      </CardContent>
+                    </Card>
                   </motion.div>
                 ))}
               </div>
-            </Card>
+            </div>
+
+            <div>
+              <span className="text-teal font-bold uppercase tracking-widest text-sm block mb-3">Multilingual Advisory</span>
+              <h2 className="text-3xl md:text-4xl font-heading font-black text-navy mb-10">Languages</h2>
+              <Card className="border border-border shadow-md p-8 rounded-3xl">
+                <div className="space-y-8">
+                  {languages.map((lang, i) => (
+                    <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                      <div className="flex justify-between items-end mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{lang.flag}</span>
+                          <h4 className="font-bold text-navy text-base">{lang.name}</h4>
+                        </div>
+                        <span className="text-xs font-bold text-teal bg-teal/10 px-3 py-1 rounded-full">{lang.level}</span>
+                      </div>
+                      <Progress value={lang.progress} className="h-2 bg-slate-100" />
+                    </motion.div>
+                  ))}
+                </div>
+              </Card>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
     </div>
   );
 }

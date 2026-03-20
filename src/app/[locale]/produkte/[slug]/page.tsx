@@ -23,6 +23,17 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+const SectionReveal = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+);
+
 export default function ProductPage({ params }: { params: { locale: string; slug: string } }) {
   const product = products[params.slug];
   const t = useTranslations("ProductPage");
@@ -242,7 +253,9 @@ export default function ProductPage({ params }: { params: { locale: string; slug
              <span className="text-teal font-black text-sm uppercase tracking-widest mb-4 inline-block">Support</span>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-navy">{t('faqTitle')}</h2>
           </div>
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <SectionReveal>
+            <Accordion className="w-full space-y-4">
+
             {product.faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-0 rounded-3xl bg-white px-8 shadow-sm hover:shadow-md transition-all overflow-hidden">
                 <AccordionTrigger className="text-left text-xl font-bold text-navy py-8 hover:no-underline hover:text-teal font-heading border-0">
@@ -253,7 +266,8 @@ export default function ProductPage({ params }: { params: { locale: string; slug
                 </AccordionContent>
               </AccordionItem>
             ))}
-          </Accordion>
+            </Accordion>
+          </SectionReveal>
         </div>
       </section>
 

@@ -40,19 +40,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li><Link href={`/${locale}/ueber-mich`} className="hover:text-teal transition-colors">About Me</Link></li>
               <li><Link href={`/${locale}/blog`} className="hover:text-teal transition-colors">Blog</Link></li>
-              <li><Link href={`/${locale}/termin`} className="hover:text-teal transition-colors">Book Consultation</Link></li>
-              <li><Link href={`/${locale}/me`} className="text-teal font-extrabold flex items-center gap-2 hover:scale-105 transition-all origin-left">My Digital Card <span className="text-xs px-2 py-0.5 bg-teal/10 rounded-full">New</span></Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Resources</h4>
-            <ul className="space-y-4">
-              <li><Link href={`/${locale}/ressourcen`} className="hover:text-teal transition-colors">Guides & Downloads</Link></li>
-              <li><Link href={`/${locale}/seminare`} className="hover:text-teal transition-colors">Expert Seminars</Link></li>
-              <li><Link href={`/${locale}/bewertungen`} className="hover:text-teal transition-colors">Client Reviews</Link></li>
-              <li><Link href={`/${locale}/transparenz`} className="hover:text-teal transition-colors">Pricing & Transparency</Link></li>
-              <li><Link href={`/${locale}/kontakt`} className="hover:text-teal transition-colors">Contact Support</Link></li>
+              <li><Link href={`/${locale}/termin`} className="hover:text-teal transition-colors">{t('bookBtn')}</Link></li>
             </ul>
           </div>
 

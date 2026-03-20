@@ -3,11 +3,10 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { ThemeToggle } from "./ThemeToggle";
 import {
   ShieldCheck, ChevronDown, Menu, X,
   Calculator, FileText, User, Home, Calendar, MessageCircle,
-  Briefcase, GraduationCap, MapPin, Mail, Sparkles
+  Briefcase, GraduationCap, MapPin, Mail
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -55,7 +54,6 @@ export function Navbar() {
     { name: t('contact'), href: `/${locale}/kontakt`, icon: Mail },
     { name: t('blog'), href: `/${locale}/blog`, icon: FileText },
     { name: t('faq'), href: `/${locale}/faq`, icon: MessageCircle },
-    { name: t('visualizer'), href: `/${locale}/visualizer`, icon: Sparkles },
   ];
 
   const calcLinks = [
@@ -165,7 +163,6 @@ export function Navbar() {
 
         {/* Right actions */}
         <div className="flex items-center gap-3">
-          <ThemeToggle />
           <LanguageSwitcher />
 
           {/* Book consultation CTA */}

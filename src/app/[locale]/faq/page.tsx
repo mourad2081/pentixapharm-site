@@ -1,15 +1,15 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown, MessageCircle } from "lucide-react";
+import { ChevronDown, MessageCircle, HelpCircle, ArrowRight, UserCheck, ShieldQuest } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 
 const faqs = [
   {
     category: "Moving to Germany",
+    icon: HelpCircle,
     color: "text-teal",
-    bg: "bg-teal/10",
+    bg: "bg-teal/5",
     questions: [
       {
         q: "What insurance is mandatory in Germany?",
@@ -27,8 +27,9 @@ const faqs = [
   },
   {
     category: "Freelancers & Self-Employed",
+    icon: UserCheck,
     color: "text-blue-500",
-    bg: "bg-blue-500/10",
+    bg: "bg-blue-500/5",
     questions: [
       {
         q: "As a freelancer, can I get private health insurance (PKV)?",
@@ -46,8 +47,9 @@ const faqs = [
   },
   {
     category: "Costs & Process",
-    color: "text-gold",
-    bg: "bg-gold/10",
+    icon: MessageCircle,
+    color: "text-amber-500",
+    bg: "bg-amber-500/5",
     questions: [
       {
         q: "How much does a consultation cost?",
@@ -69,35 +71,34 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border border-border/60 rounded-2xl overflow-hidden">
+    <div className="bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group">
       <button
-        className="w-full flex items-center justify-between gap-4 p-6 text-left bg-white hover:bg-slate-50 transition-colors group"
+        className="w-full flex items-center justify-between gap-6 p-8 text-left transition-colors"
         onClick={() => setOpen(!open)}
       >
-        <span className="font-bold text-navy group-hover:text-teal transition-colors leading-snug">{q}</span>
-        <motion.div
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="shrink-0 w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-teal/10 group-hover:text-teal transition-colors"
+        <span className="font-black text-navy text-lg group-hover:text-teal transition-colors tracking-tight leading-snug">{q}</span>
+        <div
+          className={`shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+            open ? "bg-navy text-white rotate-180" : "bg-slate-50 text-slate-400 group-hover:bg-teal group-hover:text-white"
+          }`}
         >
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
+          <ChevronDown className="w-5 h-5" />
+        </div>
       </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 text-muted-foreground leading-relaxed font-medium border-t border-border/40 pt-4 bg-slate-50/50">
-              {a}
+      <div 
+        className={`grid transition-all duration-500 ease-in-out ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-8 pb-10 text-slate-500 font-bold leading-relaxed border-t border-slate-50 pt-6">
+            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
+               <div className="absolute top-4 left-[-8px] w-2 h-12 bg-teal rounded-full" />
+               <p>{a}</p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -106,77 +107,71 @@ export default function FAQPage() {
   const locale = useLocale();
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="pt-40 pb-24 bg-navy relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(14,165,160,0.12)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass border-teal/30 text-teal text-sm font-bold uppercase tracking-widest mb-8">
-              <MessageCircle className="w-4 h-4" />
-              Got Questions?
-            </span>
-            <h1 className="text-6xl md:text-7xl font-heading font-black text-white mb-6 leading-tight">
-              Frequently Asked<br />
-              <span className="gradient-text">Questions</span>
-            </h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto font-medium">
-              Everything you need to know about insurance in Germany — answered clearly, in plain English.
-            </p>
-          </motion.div>
+    <main className="min-h-screen bg-white relative pb-32">
+      {/* Hero Section */}
+      <section className="pt-40 pb-32 bg-navy relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(14,165,160,0.15)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal/10 blur-[120px]" />
+        
+        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+           <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/10 text-teal text-xs font-black uppercase tracking-[0.3em] mb-10">
+              <MessageCircle className="w-4 h-4" /> Comprehensive Knowledge Base
+           </span>
+           <h1 className="text-6xl md:text-8xl font-heading font-black text-white mb-8 tracking-tighter leading-none">
+             Expertly <span className="text-teal underline decoration-teal/30 underline-offset-8">Answered</span>
+           </h1>
+           <p className="text-xl text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
+             Everything you need to know about insurance in Germany — clearly explained without the legal jargon.
+           </p>
         </div>
       </section>
 
-      {/* FAQ sections */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="space-y-16">
+      {/* FAQ Categories & List */}
+      <section className="py-24 animate-in fade-in duration-1000">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="space-y-24">
             {faqs.map((category, ci) => (
-              <motion.div
-                key={ci}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <span className={`text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full ${category.bg} ${category.color}`}>
-                    {category.category}
-                  </span>
+              <div key={ci} className="animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${ci * 200}ms` }}>
+                <div className="flex items-center gap-4 mb-12 ml-4">
+                  <div className={`p-4 rounded-2xl ${category.bg} ${category.color} shadow-sm`}>
+                    <category.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 mb-1">Knowledge Section</h2>
+                    <p className="text-3xl font-heading font-black text-navy tracking-tight">{category.category}</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
+                
+                <div className="space-y-6">
                   {category.questions.map((item, qi) => (
                     <FAQItem key={qi} q={item.q} a={item.a} />
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* Still have questions CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mt-24 bg-gradient-to-br from-navy to-navy/80 rounded-3xl p-12 text-center relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(rgba(14,165,160,0.15)_1px,transparent_1px)] bg-[size:30px_30px]" />
-            <div className="relative z-10">
-              <h2 className="text-3xl font-heading font-black text-white mb-4">Still have questions?</h2>
-              <p className="text-slate-300 mb-8 text-lg">
-                Book a free 30-minute call. I'll answer everything — in your language, without pressure.
-              </p>
-              <Link href={`/${locale}/termin`}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="h-14 px-10 rounded-full bg-teal text-white font-bold text-lg shadow-xl shadow-teal/30"
-                >
-                  Book Free Consultation
-                </motion.button>
-              </Link>
-            </div>
-          </motion.div>
+          {/* Contact CTA Block */}
+          <div className="mt-32 p-16 rounded-[4rem] bg-slate-50 border-4 border-slate-100 relative overflow-hidden group shadow-2xl shadow-slate-200/50">
+             <div className="absolute top-0 right-0 w-64 h-64 bg-teal/5 rounded-bl-full translate-x-12 -translate-y-12 transition-transform duration-700 group-hover:scale-110" />
+             <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-4xl font-heading font-black text-navy mb-6 tracking-tight">Still have <span className="text-teal">unanswered</span> questions?</h3>
+                  <p className="text-lg text-slate-500 font-bold max-w-xl leading-relaxed">
+                    Book a free 30-minute discovery call. I'll take the time to answer everything — 
+                    in your language, without any sales pressure.
+                  </p>
+                </div>
+                <div className="shrink-0">
+                  <Link href={`/${locale}/termin`}>
+                     <button className="h-20 px-12 rounded-full bg-navy text-white text-lg font-black shadow-2xl shadow-navy/20 hover:bg-teal hover:-translate-y-2 transition-all uppercase tracking-widest flex items-center gap-4 group/btn">
+                        Book Consultation 
+                        <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform" />
+                     </button>
+                  </Link>
+                </div>
+             </div>
+          </div>
         </div>
       </section>
     </main>

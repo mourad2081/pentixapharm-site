@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { BookOpen, Download, FileText, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { useLocale } from "next-intl";
+import { BookOpen, Download, FileText, CheckCircle2, Sparkles, Send } from "lucide-react";
 import { InfographicsSection } from "@/components/home/InfographicsSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -24,9 +26,17 @@ const guides = [
     size: "1.8 MB PDF",
     icon: CheckCircle2,
   },
+  {
+    title: "Vision AI Creator",
+    desc: "Describe your ideal secure lifestyle, and our AI will generate a stunning visual representation of your dreams.",
+    size: "Interactive AI Tool",
+    icon: Sparkles,
+    href: "/visualizer"
+  },
 ];
 
 export default function ResourcesPage() {
+  const locale = useLocale();
   return (
     <main className="min-h-screen bg-white">
       {/* Hero */}
@@ -69,9 +79,17 @@ export default function ResourcesPage() {
                     
                     <div className="mt-auto flex items-center justify-between pt-6 border-t border-border">
                       <span className="text-sm font-bold text-slate-400">{g.size}</span>
-                      <Button variant="outline" className="rounded-full font-bold hover:bg-teal hover:text-white border-teal text-teal h-10 px-6">
-                        Download <Download className="w-4 h-4 ml-2" />
-                      </Button>
+                      {g.href ? (
+                        <Link href={`/${locale}${g.href}`}>
+                          <Button className="rounded-full font-bold bg-teal hover:bg-teal/90 text-white h-10 px-6">
+                            Try Now <Send className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button variant="outline" className="rounded-full font-bold hover:bg-teal hover:text-white border-teal text-teal h-10 px-6">
+                          Download <Download className="w-4 h-4 ml-2" />
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

@@ -7,7 +7,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import {
   ShieldCheck, ChevronDown, Menu, X,
   Calculator, FileText, User, Home, Calendar, MessageCircle,
-  Briefcase, GraduationCap, MapPin, Mail
+  Briefcase, GraduationCap, MapPin, Mail, Sparkles
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -55,6 +55,7 @@ export function Navbar() {
     { name: t('contact'), href: `/${locale}/kontakt`, icon: Mail },
     { name: t('blog'), href: `/${locale}/blog`, icon: FileText },
     { name: t('faq'), href: `/${locale}/faq`, icon: MessageCircle },
+    { name: t('visualizer'), href: `/${locale}/visualizer`, icon: Sparkles },
   ];
 
   const calcLinks = [

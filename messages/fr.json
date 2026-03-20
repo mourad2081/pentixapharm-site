@@ -10,8 +10,9 @@
     "health": "Assurance santé (PKV)",
     "faq": "FAQ",
     "contact": "Contact",
-    "resources": "Ressourcen",
-    "seminars": "Séminaires"
+    "resources": "Ressources",
+    "seminars": "Séminaires",
+    "visualizer": "Visualiseur IA"
   },
   "Hero": {
     "badge": "Conseiller ERGO indépendant · Berlin",
@@ -107,5 +108,18 @@
     "notIncluded": "Non inclus",
     "features": "Caractéristiques",
     "problemHeading": "Le Problème"
+  },
+  "Visualizer": {
+    "title": "Créateur de Vision IA",
+    "subtitle": "Visualisez votre avenir serein",
+    "desc": "Décrivez votre style de vie sécurisé idéal, et notre IA générera une représentation visuelle époustouflante de vos rêves.",
+    "placeholder": "par ex. Une maison de retraite sereine dans les Alpes, une croissance financière sûre, une famille protégée...",
+    "generateBtn": "Générer la Vision",
+    "generating": "Création de votre vision...",
+    "disclaimer": "Les images générées par l'IA sont uniquement à titre d'inspiration et ne constituent pas un conseil financier.",
+    "galleryTitle": "Visions Récentes de la Communauté",
+    "btnBack": "Retour à l'accueil",
+    "promptLabel": "Quelle est votre vision pour l'avenir ?",
+    "tryThese": "Essayez ces suggestions :"
   }
 }

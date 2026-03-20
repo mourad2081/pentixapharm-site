@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ParticleField } from "./ParticleField";
+import dynamic from "next/dynamic";
+const ParticleField = dynamic(() => import("./ParticleField").then(mod => mod.ParticleField), { ssr: false });
+const Visuals3D = dynamic(() => import("./Visuals3D").then(mod => mod.Visuals3D), { ssr: false });
 
 const WORDS = ["Your Future.", "Your Family.", "Your Freedom."];
 
@@ -108,16 +110,8 @@ export function Hero() {
       {/* Particle Field */}
       <ParticleField />
 
-      {/* Animated floating orbs */}
-      <motion.div
-        style={{ x: springX, y: springY }}
-        className="absolute top-[15%] left-[10%] w-96 h-96 rounded-full bg-teal/20 blur-[100px] animate-float pointer-events-none"
-      />
-      <motion.div
-        style={{ x: useTransform(springX, v => -v), y: useTransform(springY, v => -v) }}
-        className="absolute bottom-[20%] right-[8%] w-80 h-80 rounded-full bg-blue-500/20 blur-[100px] animate-float-delayed pointer-events-none"
-      />
-      <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[150px] animate-float pointer-events-none" />
+      {/* 3D Visuals */}
+      <Visuals3D />
 
       {/* Dot grid overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 z-0" />

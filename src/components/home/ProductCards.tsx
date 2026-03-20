@@ -4,6 +4,8 @@ import { PiggyBank, Shield, Smile, Umbrella, Scale, HeartPulse, ArrowRight } fro
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useRef } from "react";
+import dynamic from "next/dynamic";
+const Products3D = dynamic(() => import("./Products3D").then(mod => mod.Products3D), { ssr: false });
 
 type ProductDef = {
   title: string;
@@ -102,6 +104,9 @@ export function ProductCards() {
     <section id="products" className="py-32 bg-white relative overflow-hidden">
       {/* Subtle background texture */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
+      
+      {/* 3D Visuals */}
+      <Products3D />
 
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <div className="text-center mb-20">

@@ -7,6 +7,7 @@ import { BackToTop } from '@/components/layout/BackToTop';
 import { MobileStickyBar } from '@/components/layout/MobileStickyBar';
 import { CursorGlow } from '@/components/layout/CursorGlow';
 import { CookieConsent } from '@/components/layout/CookieConsent';
+import { ScrollProgress } from '@/components/layout/ScrollProgress';
 import { locales } from '@/i18n';
 import { notFound } from 'next/navigation';
 
@@ -27,6 +28,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <ScrollProgress />
       <CursorGlow />
       <Navbar />
       <div className="flex-1 w-full">

@@ -11,7 +11,8 @@
     "faq": "FAQ",
     "contact": "Kontakt",
     "resources": "Ressourcen",
-    "seminars": "Seminare"
+    "seminars": "Seminare",
+    "visualizer": "KI-Visualisierer"
   },
   "Hero": {
     "badge": "Unabhängiger ERGO Berater · Berlin",
@@ -107,5 +108,18 @@
     "notIncluded": "Nicht enthalten",
     "features": "Leistungen",
     "problemHeading": "Das Problem"
+  },
+  "Visualizer": {
+    "title": "KI Vision Creator",
+    "subtitle": "Visualisieren Sie Ihre sichere Zukunft",
+    "desc": "Beschreiben Sie Ihren idealen gesicherten Lebensstil, und unsere KI erstellt eine atemberaubende visuelle Darstellung Ihrer Träume.",
+    "placeholder": "z.B. Ein ruhiges Altersheim in den Alpen, sicheres finanzielles Wachstum, eine geschützte Familie in einer futuristischen Stadt...",
+    "generateBtn": "Vision generieren",
+    "generating": "Vision wird erstellt...",
+    "disclaimer": "KI-generierte Bilder dienen nur zur Inspiration und stellen keine Finanzberatung dar.",
+    "galleryTitle": "Aktuelle Community-Visionen",
+    "btnBack": "Zurück zur Startseite",
+    "promptLabel": "Was ist Ihre Vision für die Zukunft?",
+    "tryThese": "Probieren Sie diese Prompts:"
   }
 }

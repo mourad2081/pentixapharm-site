@@ -31,6 +31,9 @@ function CountUp({ target, suffix = "", prefix = "" }: { target: number; suffix?
   );
 }
 
+import dynamic from "next/dynamic";
+const Stats3D = dynamic(() => import("./Stats3D").then(mod => mod.Stats3D), { ssr: false });
+
 export function StatsSection() {
   const t = useTranslations('StatsSection');
   
@@ -46,6 +49,9 @@ export function StatsSection() {
       <div className="absolute inset-0 bg-[radial-gradient(rgba(14,165,160,0.12)_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-teal/8 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-600/8 blur-[120px] pointer-events-none" />
+      
+      {/* 3D Visuals */}
+      <Stats3D />
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <motion.div

@@ -12,6 +12,7 @@ const nextConfig = {
     // ESLint already configured via .eslintrc.json
     ignoreDuringBuilds: true,
   },
+  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
 };
 
 export default withNextIntl(nextConfig);

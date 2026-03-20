@@ -1,21 +1,23 @@
 "use client";
 import { ShieldCheck, Award, Globe2, Clock, Star, Building2, Users, BadgeCheck } from "lucide-react";
 
-const items = [
-  { icon: ShieldCheck, text: "Official ERGO Partner" },
-  { icon: Award, text: "IHK Berlin Certified" },
-  { icon: Globe2, text: "4 Languages Spoken" },
-  { icon: Clock, text: "Free Initial Consultation" },
-  { icon: Star, text: "5-Star Client Rated" },
-  { icon: Building2, text: "Based in Berlin" },
-  { icon: Users, text: "500+ Clients Advised" },
-  { icon: BadgeCheck, text: "§34d GewO Licensed" },
-];
-
-// Duplicate for seamless loop
-const MARQUEE_ITEMS = [...items, ...items];
+import { useTranslations } from "next-intl";
 
 export function TrustBar() {
+  const t = useTranslations('TrustBar');
+
+  const items = [
+    { icon: ShieldCheck, text: t('item1') },
+    { icon: Award, text: t('item2') },
+    { icon: Globe2, text: t('item3') },
+    { icon: Clock, text: t('item4') },
+    { icon: Star, text: t('item5') },
+    { icon: Building2, text: t('item6') },
+    { icon: Users, text: t('item7') },
+    { icon: BadgeCheck, text: t('item8') },
+  ];
+
+  const MARQUEE_ITEMS = [...items, ...items];
   return (
     <section className="py-10 bg-navy relative overflow-hidden border-b border-white/5">
       {/* Gradient fades on sides */}

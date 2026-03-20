@@ -3,12 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { TrendingDown, HeartPulse, Users, Globe2 } from "lucide-react";
 
-const stats = [
-  { icon: TrendingDown, value: 800, suffix: "€+", label: "Average monthly pension gap in Germany", prefix: "" },
-  { icon: HeartPulse, value: 69300, suffix: "€", label: "PKV eligibility income threshold (2024)", prefix: "" },
-  { icon: Users, value: 500, suffix: "+", label: "Clients personally advised", prefix: "" },
-  { icon: Globe2, value: 4, suffix: "", label: "Languages for your consultation", prefix: "" },
-];
+import { useTranslations } from "next-intl";
 
 function CountUp({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
   const [count, setCount] = useState(0);
@@ -37,6 +32,14 @@ function CountUp({ target, suffix = "", prefix = "" }: { target: number; suffix?
 }
 
 export function StatsSection() {
+  const t = useTranslations('StatsSection');
+  
+  const stats = [
+    { icon: TrendingDown, value: 800, suffix: "€+", label: t('stat1'), prefix: "" },
+    { icon: HeartPulse, value: 69300, suffix: "€", label: t('stat2'), prefix: "" },
+    { icon: Users, value: 500, suffix: "+", label: t('stat3'), prefix: "" },
+    { icon: Globe2, value: 4, suffix: "", label: t('stat4'), prefix: "" },
+  ];
   return (
     <section className="py-32 bg-navy relative overflow-hidden">
       {/* Animated mesh background */}
@@ -49,8 +52,8 @@ export function StatsSection() {
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4">The Numbers That Matter</h2>
-          <p className="text-slate-400 text-lg font-medium max-w-xl mx-auto">Real data driving real decisions for your financial security.</p>
+          <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4">{t('title')}</h2>
+          <p className="text-slate-400 text-lg font-medium max-w-xl mx-auto">{t('desc')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

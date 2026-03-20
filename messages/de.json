@@ -22,5 +22,72 @@
     "stat2Label": "Wir sprechen Ihre Sprache",
     "stat3Label": "Erstberatung",
     "scroll": "Scrollen"
+  },
+  "TrustBar": {
+    "item1": "Offizieller ERGO Partner",
+    "item2": "IHK Berlin zertifiziert",
+    "item3": "Beratung in 4 Sprachen",
+    "item4": "Kostenlose Erstberatung",
+    "item5": "5-Sterne Kundenbewertung",
+    "item6": "Standort Berlin",
+    "item7": "Über 500 Kunden",
+    "item8": "§34d GewO lizenziert"
+  },
+  "StatsSection": {
+    "title": "Zahlen, die zählen",
+    "desc": "Echte Daten für echte Entscheidungen für Ihre finanzielle Sicherheit.",
+    "stat1": "Durchschnittliche monatliche Rentenlücke in Deutschland",
+    "stat2": "PKV Einkommensgrenze (2024)",
+    "stat3": "Persönlich beratene Kunden",
+    "stat4": "Sprachen für Ihre Beratung"
+  },
+  "WhyMe": {
+    "subtitle": "Ihr Berater",
+    "titlePart1": "Internationale Perspektive.",
+    "titlePart2": "Lokale Sicherheit.",
+    "desc": "Nach über 5 Jahren im internationalen Corporate Finance bin ich gewechselt, um das zu schützen, was wirklich zählt — die finanzielle Zukunft von echten Menschen. Ich verstehe Deutschlands Komplexität, besonders für Expats, die GKV, PKV und Rentenlücken navigieren müssen.",
+    "benefit1": "Corporate Finance Hintergrund — echte Expertise, kein reiner Verkäufer",
+    "benefit2": "Beratung in 4 Sprachen: Englisch, Deutsch, Französisch & Arabisch",
+    "benefit3": "Zero-Pressure-Philosophie — 100% beratungsorientierter Ansatz",
+    "benefit4": "Maßgeschneiderte ERGO-Lösungen für Ihre einzigartige Lebenssituation",
+    "btn1": "Meine Geschichte lesen",
+    "btn2": "Termin buchen",
+    "advisorName": "Mourad Labadi",
+    "advisorSubtitle": "Unabhängiger ERGO Berater, Berlin",
+    "floating1Label": "Jahre Erfahrung",
+    "floating2Label": "Sprachen",
+    "floating3Label": "Zertifizierter Experte"
+  },
+  "Footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "links": "Nützliche Links",
+    "contact": "Kontakt",
+    "legal": "Rechtliches",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "bookBtn": "Termin buchen"
+  },
+  "CookieConsent": {
+    "msg": "Wir verwenden Cookies für eine bessere Nutzererfahrung und zur Webanalyse. Ohne Ihre Zustimmung werden keine persönlichen Daten gespeichert.",
+    "accept": "Alle akzeptieren",
+    "decline": "Nur essenzielle"
+  },
+  "ProductCards": {
+    "subtitle": "Unsere Lösungen",
+    "title": "Umfassender Schutz",
+    "desc": "Maßgeschneiderte ERGO Portfolios für Ihre individuelle Situation — von der Vermögensabsicherung bis zur erstklassigen medizinischen Versorgung.",
+    "viewDetails": "Details ansehen",
+    "p1Title": "Altersvorsorge",
+    "p1Desc": "Sichern Sie Ihren Lebensstandard im Alter mit garantierten ERGO Konzepten.",
+    "p2Title": "Lebensversicherung",
+    "p2Desc": "Unersetzlicher finanzieller Schutz und Seelenfrieden für Ihre Liebsten.",
+    "p3Title": "Zahnzusatzversicherung",
+    "p3Desc": "Strahlendes Lächeln ohne horrende Zahnarztrechnungen und lange Wartezeiten.",
+    "p4Title": "Unfallversicherung",
+    "p4Desc": "Weltweiter Premium-Schutz rund um die Uhr, wohin das Leben Sie auch führt.",
+    "p5Title": "Rechtsschutz",
+    "p5Desc": "Schützen Sie Ihre Rechte mühelos und souverän in allen Streitfällen.",
+    "p6Title": "Private Krankenversicherung (PKV)",
+    "p6Desc": "Premium Vollversicherung mit bevorzugtem Facharztzugang, speziell für Sie."
   }
 }

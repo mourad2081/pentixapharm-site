@@ -22,5 +22,72 @@
     "stat2Label": "We speak your language",
     "stat3Label": "Free Consultation",
     "scroll": "Scroll"
+  },
+  "TrustBar": {
+    "item1": "Official ERGO Partner",
+    "item2": "IHK Berlin Certified",
+    "item3": "4 Languages Spoken",
+    "item4": "Free Initial Consultation",
+    "item5": "5-Star Client Rated",
+    "item6": "Based in Berlin",
+    "item7": "500+ Clients Advised",
+    "item8": "§34d GewO Licensed"
+  },
+  "StatsSection": {
+    "title": "The Numbers That Matter",
+    "desc": "Real data driving real decisions for your financial security.",
+    "stat1": "Average monthly pension gap in Germany",
+    "stat2": "PKV eligibility income threshold (2024)",
+    "stat3": "Clients personally advised",
+    "stat4": "Languages for your consultation"
+  },
+  "WhyMe": {
+    "subtitle": "Meet Your Advisor",
+    "titlePart1": "International perspective.",
+    "titlePart2": "Local security.",
+    "desc": "After 5+ years in international corporate finance, I transitioned to protect what matters most — the financial future of real people. I understand Germany's complexity, especially for expats navigating GKV, PKV, and pension gaps.",
+    "benefit1": "Corporate Finance background — true expertise, not just a salesman",
+    "benefit2": "Consultations in 4 languages: English, German, French & Arabic",
+    "benefit3": "Zero pressure philosophy — 100% advisory-first approach",
+    "benefit4": "Tailored ERGO solutions built around your unique life situation",
+    "btn1": "Read My Story",
+    "btn2": "Book a Call",
+    "advisorName": "Mourad Labadi",
+    "advisorSubtitle": "Independent ERGO Advisor, Berlin",
+    "floating1Label": "Years Experience",
+    "floating2Label": "Languages",
+    "floating3Label": "Certified Expert"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "links": "Helpful Links",
+    "contact": "Contact",
+    "legal": "Legal",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "bookBtn": "Book Consultation"
+  },
+  "CookieConsent": {
+    "msg": "We use cookies to enhance your browsing experience and analyze our traffic. No personal data is stored without your consent.",
+    "accept": "Accept All",
+    "decline": "Decline Non-Essential"
+  },
+  "ProductCards": {
+    "subtitle": "What We Cover",
+    "title": "Comprehensive Protection",
+    "desc": "Custom ERGO portfolios tailored precisely to your situation — from wealth protection to premium healthcare access.",
+    "viewDetails": "View details",
+    "p1Title": "Pension & Retirement",
+    "p1Desc": "Secure your living standards in retirement with guaranteed ERGO plans.",
+    "p2Title": "Life Insurance",
+    "p2Desc": "Irreplaceable financial protection and peace of mind for your loved ones.",
+    "p3Title": "Supplemental Dental",
+    "p3Desc": "Radiant smiles without the exorbitant dental bills and waiting times.",
+    "p4Title": "Accident Insurance",
+    "p4Desc": "Worldwide top-tier 24/7 protection wherever life takes you.",
+    "p5Title": "Legal Protection",
+    "p5Desc": "Safeguard your rights effortlessly and confidently in all disputes.",
+    "p6Title": "Private Health (PKV)",
+    "p6Desc": "Premium complete private healthcare with specialist access tailored for you."
   }
 }

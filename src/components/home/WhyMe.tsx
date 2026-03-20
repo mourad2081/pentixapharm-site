@@ -6,25 +6,26 @@ import { useLocale } from "next-intl";
 import { useRef } from "react";
 import Image from "next/image";
 
-const benefits = [
-  { icon: Briefcase, text: "Corporate Finance background — true expertise, not just a salesman" },
-  { icon: Globe2, text: "Consultations in 4 languages: English, German, French & Arabic" },
-  { icon: Star, text: "Zero pressure philosophy — 100% advisory-first approach" },
-  { icon: MessageCircle, text: "Tailored ERGO solutions built around your unique life situation" },
-];
-
-const floatingCards = [
-  { value: "5+", label: "Years Experience", color: "bg-teal" },
-  { value: "4", label: "Languages", color: "bg-gold" },
-  { value: "IHK", label: "Certified Expert", color: "bg-navy" },
-];
-
 export function WhyMe() {
   const locale = useLocale();
+  const t = useTranslations('WhyMe');
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [-30, 30]);
   const rotate = useTransform(scrollYProgress, [0, 1], [-2, 2]);
+
+  const benefits = [
+    { icon: Briefcase, text: t('benefit1') },
+    { icon: Globe2, text: t('benefit2') },
+    { icon: Star, text: t('benefit3') },
+    { icon: MessageCircle, text: t('benefit4') },
+  ];
+
+  const floatingCards = [
+    { value: "5+", label: t('floating1Label'), color: "bg-teal" },
+    { value: "4", label: t('floating2Label'), color: "bg-gold" },
+    { value: "IHK", label: t('floating3Label'), color: "bg-navy" },
+  ];
 
   return (
     <section ref={ref} className="py-32 bg-[#FAF9F6] overflow-hidden relative">
@@ -60,8 +61,8 @@ export function WhyMe() {
                     {/* Gradient overlay at bottom */}
                     <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-navy/80 to-transparent" />
                     <div className="absolute bottom-6 left-6 right-6">
-                      <p className="text-white font-bold font-heading text-lg">Mourad Labadi</p>
-                      <p className="text-teal text-sm font-medium">Independent ERGO Advisor, Berlin</p>
+                      <p className="text-white font-bold font-heading text-lg">{t('advisorName')}</p>
+                      <p className="text-teal text-sm font-medium">{t('advisorSubtitle')}</p>
                     </div>
                   </div>
                 </div>
@@ -96,13 +97,13 @@ export function WhyMe() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="w-full lg:w-[55%]"
           >
-            <span className="text-teal font-bold tracking-widest uppercase text-sm mb-4 block">Meet Your Advisor</span>
+            <span className="text-teal font-bold tracking-widest uppercase text-sm mb-4 block">{t('subtitle')}</span>
             <h2 className="text-4xl md:text-5xl font-heading font-black text-navy mb-6 leading-[1.1] tracking-tight">
-              International perspective.<br />
-              <span className="gradient-text">Local security.</span>
+              {t('titlePart1')}<br />
+              <span className="gradient-text">{t('titlePart2')}</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed font-medium">
-              After 5+ years in international corporate finance, I transitioned to protect what matters most — the financial future of real people. I understand Germany&apos;s complexity, especially for expats navigating GKV, PKV, and pension gaps.
+              {t('desc')}
             </p>
 
             <ul className="space-y-5 mb-12">
@@ -130,8 +131,8 @@ export function WhyMe() {
                   whileTap={{ scale: 0.97 }}
                   className="h-14 px-8 rounded-full bg-navy text-white text-base font-bold shadow-lg flex items-center gap-2 group"
                 >
-                  Read My Story
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {t('btn1')}
+                  <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
               <Link href={`/${locale}/termin`}>
@@ -140,7 +141,7 @@ export function WhyMe() {
                   whileTap={{ scale: 0.97 }}
                   className="h-14 px-8 rounded-full border-2 border-teal/50 text-teal hover:border-teal text-base font-bold flex items-center gap-2 transition-colors"
                 >
-                  Book a Call
+                  {t('btn2')}
                 </motion.button>
               </Link>
             </div>

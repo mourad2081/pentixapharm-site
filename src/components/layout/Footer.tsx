@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ShieldCheck, Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   const locale = useLocale();
+  const t = useTranslations('Footer');
   const year = new Date().getFullYear();
 
   return (
@@ -38,8 +39,8 @@ export function Footer() {
             <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Company</h4>
             <ul className="space-y-4">
               <li><Link href={`/${locale}/ueber-mich`} className="hover:text-teal transition-colors">About Me</Link></li>
-              <li><Link href={`/${locale}/blog`} className="hover:text-teal transition-colors">Blog & Insights</Link></li>
-              <li><Link href={`/${locale}/termin`} className="hover:text-teal transition-colors">Book Consultation</Link></li>
+              <li><Link href={`/${locale}/blog`} className="hover:text-teal transition-colors">Blog</Link></li>
+              <li><Link href={`/${locale}/termin`} className="hover:text-teal transition-colors">{t('bookBtn')}</Link></li>
             </ul>
           </div>
 
@@ -63,10 +64,10 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>© {year} Mourad Labadi - ERGO Beratung. All rights reserved.</p>
+          <p>© {year} Mourad Labadi - ERGO. {t('rights')}</p>
           <div className="flex gap-6">
-            <Link href={`/${locale}/impressum`} className="hover:text-white transition-colors">Legal Notice</Link>
-            <Link href={`/${locale}/datenschutz`} className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href={`/${locale}/impressum`} className="hover:text-white transition-colors">{t('imprint')}</Link>
+            <Link href={`/${locale}/datenschutz`} className="hover:text-white transition-colors">{t('privacy')}</Link>
           </div>
         </div>
       </div>

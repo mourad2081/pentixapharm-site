@@ -1,15 +1,17 @@
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
-import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
-import { BackToTop } from '@/components/layout/BackToTop';
-import { MobileStickyBar } from '@/components/layout/MobileStickyBar';
-import { CursorGlow } from '@/components/layout/CursorGlow';
-import { CookieConsent } from '@/components/layout/CookieConsent';
-import { ScrollProgress } from '@/components/layout/ScrollProgress';
+import dynamic from 'next/dynamic';
 import { locales } from '@/i18n';
 import { notFound } from 'next/navigation';
+
+const Navbar = dynamic(() => import('@/components/layout/Navbar').then(mod => mod.Navbar), { ssr: false });
+const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => mod.Footer), { ssr: false });
+const WhatsAppButton = dynamic(() => import('@/components/layout/WhatsAppButton').then(mod => mod.WhatsAppButton), { ssr: false });
+const BackToTop = dynamic(() => import('@/components/layout/BackToTop').then(mod => mod.BackToTop), { ssr: false });
+const MobileStickyBar = dynamic(() => import('@/components/layout/MobileStickyBar').then(mod => mod.MobileStickyBar), { ssr: false });
+const CursorGlow = dynamic(() => import('@/components/layout/CursorGlow').then(mod => mod.CursorGlow), { ssr: false });
+const CookieConsent = dynamic(() => import('@/components/layout/CookieConsent').then(mod => mod.CookieConsent), { ssr: false });
+const ScrollProgress = dynamic(() => import('@/components/layout/ScrollProgress').then(mod => mod.ScrollProgress), { ssr: false });
 
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));

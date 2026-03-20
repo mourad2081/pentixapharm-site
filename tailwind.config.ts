@@ -63,6 +63,20 @@ const config: Config = {
         fontFamily: {
           sans: ["var(--font-dm-sans)", "sans-serif"],
           heading: ["Cabinet Grotesk", "sans-serif"],
+        },
+        keyframes: {
+          marquee: {
+            "0%": { transform: "translateX(0)" },
+            "100%": { transform: "translateX(-100%)" },
+          },
+          float: {
+            "0%, 100%": { transform: "translateY(0)" },
+            "50%": { transform: "translateY(-10px)" },
+          }
+        },
+        animation: {
+          marquee: "marquee 40s linear infinite",
+          float: "float 4s ease-in-out infinite",
         }
   	}
   },

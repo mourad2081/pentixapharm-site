@@ -42,7 +42,7 @@ export function ParticleField() {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
+        if (dist < 150 && dist > 0.1) {
           const force = (150 - dist) / 150;
           p.x += (dx / dist) * force * 4;
           p.y += (dy / dist) * force * 4;

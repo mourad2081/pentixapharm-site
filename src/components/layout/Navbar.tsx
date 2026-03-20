@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 import {
   ShieldCheck, ChevronDown, Menu, X,
   Calculator, FileText, User, Home, Calendar, MessageCircle,
@@ -163,6 +164,7 @@ export function Navbar() {
 
         {/* Right actions */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <LanguageSwitcher />
 
           {/* Book consultation CTA */}

@@ -1,45 +1,47 @@
 "use client";
-import { ShieldCheck, Award, Globe2, Clock, Star, Building2, Users, BadgeCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
-import { useTranslations } from "next-intl";
+const brands = [
+  { name: "Google", logo: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png", width: 90 },
+  { name: "Zalando", logo: "/logos/zalando.svg", fallback: "ZALANDO" },
+  { name: "SAP", logo: "/logos/sap.svg", fallback: "SAP" },
+  { name: "VW", logo: "/logos/vw.svg", fallback: "Volkswagen" },
+  { name: "Allianz", logo: "/logos/allianz.svg", fallback: "Allianz" },
+  { name: "Siemens", logo: "/logos/siemens.svg", fallback: "SIEMENS" },
+];
+
+// Instead of raw images which might fail, I'll use stylized text-logos with font-heavy weights for a "clean" look
+// OR use Lucide icons with text for a "Trust Section" look.
 
 export function TrustBar() {
-  const t = useTranslations('TrustBar');
-
-  const items = [
-    { icon: ShieldCheck, text: t('item1') },
-    { icon: Award, text: t('item2') },
-    { icon: Globe2, text: t('item3') },
-    { icon: Clock, text: t('item4') },
-    { icon: Star, text: t('item5') },
-    { icon: Building2, text: t('item6') },
-    { icon: Users, text: t('item7') },
-    { icon: BadgeCheck, text: t('item8') },
+  const logos = [
+    "GOOGLE", "ZALANDO", "SAP", "ADIDAS", "VW", "SIEMENS", "ALLIANZ", "DEUTSCHE BANK"
   ];
 
-  const MARQUEE_ITEMS = [...items, ...items];
   return (
-    <section className="py-10 bg-navy relative overflow-hidden border-b border-white/5">
-      {/* Gradient fades on sides */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-navy to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-navy to-transparent pointer-events-none" />
+    <section className="py-12 bg-white dark:bg-navy border-y border-slate-100 dark:border-white/5 relative overflow-hidden">
+      <div className="container mx-auto px-4 mb-8 text-center">
+        <p className="text-xs font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-4">Empowering employees from world-class companies</p>
+      </div>
 
-      <div className="flex w-max animate-marquee">
-        {MARQUEE_ITEMS.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-3 mx-10 shrink-0 group"
-          >
-            <div className="p-2.5 rounded-xl bg-white/5 group-hover:bg-teal/20 transition-colors border border-white/8">
-              <item.icon className="w-5 h-5 text-teal" />
-            </div>
-            <span className="text-white/80 font-bold text-sm whitespace-nowrap group-hover:text-white transition-colors tracking-wide">
-              {item.text}
-            </span>
-            <div className="w-1 h-1 rounded-full bg-white/20 ml-4" />
+      <div className="flex gap-20 animate-marquee whitespace-nowrap items-center">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="flex gap-20 items-center shrink-0">
+            {logos.map((logo) => (
+              <span 
+                key={logo} 
+                className="text-2xl font-black text-slate-200 dark:text-slate-700/50 hover:text-teal transition-colors tracking-tighter"
+              >
+                {logo}
+              </span>
+            ))}
           </div>
         ))}
       </div>
+
+      {/* Side gradients */}
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-navy to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-navy to-transparent z-10 pointer-events-none" />
     </section>
   );
 }

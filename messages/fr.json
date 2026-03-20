@@ -1,5 +1,26 @@
 {
-  "Index": {
-    "title": "Votre avenir. Bien assuré."
+  "Navbar": {
+    "home": "Accueil",
+    "products": "Produits",
+    "calculator": "Calculatrices",
+    "about": "À propos",
+    "blog": "Blog",
+    "book": "Prendre rendez-vous",
+    "pension": "Calculatrice de retraite",
+    "health": "Assurance santé (PKV)"
+  },
+  "Hero": {
+    "badge": "Conseiller ERGO indépendant · Berlin",
+    "word1": "Votre Avenir.",
+    "word2": "Votre Famille.",
+    "word3": "Votre Liberté.",
+    "titleEnd": "Bien Assuré.",
+    "description": "Conseil multilingue en assurance ERGO à Berlin — couvrant la santé, la retraite et la protection des actifs en 4 langues.",
+    "bookBtn": "Réserver une consultation gratuite",
+    "exploreBtn": "Explorer les produits",
+    "stat1Label": "Clients satisfaits",
+    "stat2Label": "Nous parlons votre langue",
+    "stat3Label": "Consultation gratuite",
+    "scroll": "Défiler"
   }
 }

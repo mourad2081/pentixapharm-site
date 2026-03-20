@@ -42,24 +42,26 @@ export function Navbar() {
     }
   }, [locale, router]);
 
+  const t = useTranslations('Navbar');
+
   const links = [
-    { name: "Home", href: `/${locale}`, icon: Home, action: null },
-    { name: "About Me", href: `/${locale}/ueber-mich`, icon: User, action: null },
-    { name: "Products", href: `/${locale}#products`, icon: ShieldCheck, action: handleProductsClick },
-    { name: "Blog", href: `/${locale}/blog`, icon: FileText, action: null },
+    { name: t('home'), href: `/${locale}`, icon: Home, action: null },
+    { name: t('about'), href: `/${locale}/ueber-mich`, icon: User, action: null },
+    { name: t('products'), href: `/${locale}#products`, icon: ShieldCheck, action: handleProductsClick },
+    { name: t('blog'), href: `/${locale}/blog`, icon: FileText, action: null },
   ];
 
   const calcLinks = [
     {
-      name: "Pension Calculator",
+      name: t('pension'),
       href: `/${locale}/rechner`,
-      desc: "Find your monthly pension shortfall",
+      desc: "",
       icon: Calculator,
     },
     {
-      name: "PKV vs GKV Calculator",
+      name: t('health'),
       href: `/${locale}/rechner/pkv`,
-      desc: "Compare private vs public health insurance",
+      desc: "",
       icon: Calculator,
     },
   ];
@@ -118,7 +120,7 @@ export function Navbar() {
             onMouseLeave={() => setCalcOpen(false)}
           >
             <button className="relative px-4 py-2 text-sm font-bold text-navy hover:text-teal transition-colors flex items-center gap-1.5 tracking-wide group">
-              Calculators
+              {t('calculator')}
               <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${calcOpen ? "rotate-180 text-teal" : ""}`} />
               <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-teal scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
             </button>
@@ -162,7 +164,7 @@ export function Navbar() {
           <Link href={`/${locale}/termin`} className="hidden md:block">
             <Button className="bg-gradient-to-r from-teal to-teal/80 hover:from-teal/90 hover:to-teal text-white rounded-full px-6 h-11 text-sm font-bold shadow-lg shadow-teal/20 hover:-translate-y-0.5 hover:shadow-teal/30 transition-all duration-300">
               <Calendar className="w-4 h-4 mr-2" />
-              Book Consultation
+              {t('book')}
             </Button>
           </Link>
 
@@ -229,7 +231,7 @@ export function Navbar() {
 
               {/* Calculator sub-links */}
               <div className="border-t border-border/50 pt-3 mt-1">
-                <p className="text-xs font-black text-muted-foreground uppercase tracking-widest px-4 mb-2">Calculators</p>
+                <p className="text-xs font-black text-muted-foreground uppercase tracking-widest px-4 mb-2">{t('calculator')}</p>
                 {calcLinks.map((c, i) => (
                   <motion.div
                     key={c.name}
@@ -258,7 +260,7 @@ export function Navbar() {
               >
                 <Link href={`/${locale}/termin`} onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full bg-teal text-white rounded-2xl py-6 font-bold text-base shadow-lg hover:bg-teal/90">
-                    <Calendar className="w-5 h-5 mr-2" /> Book Free Consultation
+                    <Calendar className="w-5 h-5 mr-2" /> {t('book')}
                   </Button>
                 </Link>
               </motion.div>

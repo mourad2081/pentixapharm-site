@@ -1,5 +1,26 @@
 {
-  "Index": {
-    "title": "Ihre Zukunft. Gut versichert."
+  "Navbar": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "calculator": "Rechner",
+    "about": "Über mich",
+    "blog": "Blog",
+    "book": "Termin buchen",
+    "pension": "Rentenrechner",
+    "health": "PKV-Rechner"
+  },
+  "Hero": {
+    "badge": "Unabhängiger ERGO Berater · Berlin",
+    "word1": "Ihre Zukunft.",
+    "word2": "Ihre Familie.",
+    "word3": "Ihre Freiheit.",
+    "titleEnd": "Gut Versichert.",
+    "description": "Mehrsprachige ERGO-Versicherungsberatung in Berlin – Krankenversicherung, Altersvorsorge und Vermögensschutz in 4 Sprachen.",
+    "bookBtn": "Kostenlosen Termin buchen",
+    "exploreBtn": "Produkte entdecken",
+    "stat1Label": "Zufriedene Kunden",
+    "stat2Label": "Wir sprechen Ihre Sprache",
+    "stat3Label": "Erstberatung",
+    "scroll": "Scrollen"
   }
 }

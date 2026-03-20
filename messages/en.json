@@ -1,5 +1,26 @@
 {
-  "Index": {
-    "title": "Your future. Well insured."
+  "Navbar": {
+    "home": "Home",
+    "products": "Products",
+    "calculator": "Calculators",
+    "about": "About Me",
+    "blog": "Blog",
+    "book": "Book Consultation",
+    "pension": "Pension Calculator",
+    "health": "Health Insurance (PKV)"
+  },
+  "Hero": {
+    "badge": "Independent ERGO Advisor · Berlin",
+    "word1": "Your Future.",
+    "word2": "Your Family.",
+    "word3": "Your Freedom.",
+    "titleEnd": "Well Insured.",
+    "description": "Multilingual ERGO insurance consulting in Berlin — covering Health, Pensions, and Asset Protection in 4 languages.",
+    "bookBtn": "Book Free Consultation",
+    "exploreBtn": "Explore Products",
+    "stat1Label": "Happy Clients",
+    "stat2Label": "We speak your language",
+    "stat3Label": "Free Consultation",
+    "scroll": "Scroll"
   }
 }

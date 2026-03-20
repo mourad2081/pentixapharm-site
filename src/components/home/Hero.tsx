@@ -55,12 +55,15 @@ export function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
+  const t = useTranslations('Hero');
+  const WORDS = [t('word1'), t('word2'), t('word3')];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setWordIndex((i) => (i + 1) % WORDS.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [WORDS.length]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -69,9 +72,9 @@ export function Hero() {
   };
 
   const stats = [
-    { icon: Star, value: 500, suffix: "+", label: "Happy Clients" },
-    { icon: Globe2, value: 4, suffix: " Languages", label: "We speak your language" },
-    { icon: TrendingUp, value: 100, suffix: "% Free", label: "Initial Consultation" },
+    { icon: Star, value: 500, suffix: "+", label: t('stat1Label') },
+    { icon: Globe2, value: 4, suffix: "", label: t('stat2Label') },
+    { icon: TrendingUp, value: 100, suffix: "%", label: t('stat3Label') },
   ];
 
   return (
@@ -120,7 +123,7 @@ export function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-teal animate-pulse-ring inline-block" />
           <ShieldCheck className="w-4 h-4" />
-          <span className="text-white/90">Independent ERGO Advisor · Berlin</span>
+          <span className="text-white/90">{t('badge')}</span>
         </motion.div>
 
         {/* Main headline */}
@@ -143,7 +146,7 @@ export function Hero() {
                 {WORDS[wordIndex]}
               </motion.span>
             </span>
-            <span className="gradient-text">Well Insured.</span>
+            <span className="gradient-text">{t('titleEnd')}</span>
           </motion.h1>
         </div>
 
@@ -154,7 +157,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
         >
-          Multilingual ERGO insurance consulting in Berlin — covering Health, Pensions, and Asset Protection in <span className="text-white font-bold">4 languages</span>.
+          {t('description')}
         </motion.p>
 
         {/* CTAs */}
@@ -172,7 +175,7 @@ export function Hero() {
             >
               <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative flex items-center gap-2">
-                Book Free Consultation <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {t('bookBtn')} <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
               </span>
             </motion.button>
           </Link>
@@ -182,7 +185,7 @@ export function Hero() {
               whileTap={{ scale: 0.97 }}
               className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border transition-all"
             >
-              Explore Products
+              {t('exploreBtn')}
             </motion.button>
           </Link>
         </motion.div>
@@ -199,7 +202,7 @@ export function Hero() {
               <div className="p-2 rounded-xl bg-teal/20 text-teal">
                 <stat.icon className="w-5 h-5" />
               </div>
-              <div className="text-left">
+              <div className="text-left rtl:text-right">
                 <p className="text-2xl font-black font-heading">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </p>
@@ -217,7 +220,7 @@ export function Hero() {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
-        <span className="text-slate-500 text-xs font-medium tracking-widest uppercase">Scroll</span>
+        <span className="text-slate-500 text-xs font-medium tracking-widest uppercase">{t('scroll')}</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}

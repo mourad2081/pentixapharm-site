@@ -9,8 +9,9 @@ import {
   Briefcase, GraduationCap, MapPin, Mail
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+
 
 export function Navbar() {
   const locale = useLocale();
@@ -72,14 +73,11 @@ export function Navbar() {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-2xl border-b border-border/60 shadow-lg shadow-navy/5"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-2xl border-b border-border/60 shadow-lg shadow-navy/5 translate-y-0 opacity-100"
+          : "bg-transparent -translate-y-0 opacity-100"
       }`}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between max-w-7xl">
@@ -130,13 +128,8 @@ export function Navbar() {
               <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-teal scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
             </button>
 
-            <AnimatePresence>
-              {calcOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
+            {calcOpen && (
+                <div
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-76 bg-white rounded-2xl shadow-[0_20px_60px_-10px_rgba(10,22,40,0.2)] border border-border/50 overflow-hidden"
                 >
                   {calcLinks.map((c, i) => (
@@ -155,9 +148,8 @@ export function Navbar() {
                       </div>
                     </Link>
                   ))}
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
           </div>
         </div>
 
@@ -179,40 +171,24 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <AnimatePresence mode="wait">
-              {mobileMenuOpen ? (
-                <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+            {mobileMenuOpen ? (
+                <div className="transition-all">
                   <X className="w-6 h-6" />
-                </motion.div>
+                </div>
               ) : (
-                <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <div className="transition-all">
                   <Menu className="w-6 h-6" />
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden bg-white border-b border-border shadow-xl overflow-hidden"
-          >
+      {mobileMenuOpen && (
+          <div className="lg:hidden bg-white border-b border-border shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-1 duration-300">
             <div className="container mx-auto px-4 py-6 flex flex-col gap-1">
-              {/* Regular nav links */}
-              {links.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
+              {links.map((link) => (
+                <div key={link.name}>
                   {link.action ? (
                     <button
                       // @ts-ignore
@@ -232,19 +208,12 @@ export function Navbar() {
                       {link.name}
                     </Link>
                   )}
-                </motion.div>
+                </div>
               ))}
-
-              {/* Calculator sub-links */}
               <div className="border-t border-border/50 pt-3 mt-1">
                 <p className="text-xs font-black text-muted-foreground uppercase tracking-widest px-4 mb-2">{t('calculator')}</p>
-                {calcLinks.map((c, i) => (
-                  <motion.div
-                    key={c.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (links.length + i) * 0.05 }}
-                  >
+                {calcLinks.map((c) => (
+                  <div key={c.name}>
                     <Link
                       href={c.href}
                       onClick={() => setMobileMenuOpen(false)}
@@ -253,27 +222,19 @@ export function Navbar() {
                       <Calculator className="w-5 h-5 text-teal shrink-0" />
                       {c.name}
                     </Link>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-
-              {/* CTA */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="pt-4 mt-2 border-t border-border"
-              >
+              <div className="pt-4 mt-2 border-t border-border">
                 <Link href={`/${locale}/termin`} onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full bg-teal text-white rounded-2xl py-6 font-bold text-base shadow-lg hover:bg-teal/90">
                     <Calendar className="w-5 h-5 mr-2" /> {t('book')}
                   </Button>
                 </Link>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }

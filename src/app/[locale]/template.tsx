@@ -1,16 +1,10 @@
 "use client";
-import { motion } from "framer-motion";
 
 export default function Template({ children }: { children: React.ReactNode }) {
+  // Animations disabled for site stability
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="flex-1 w-full"
-    >
+    <div className="flex-1 w-full opacity-100 translate-y-0">
       {children}
-    </motion.div>
+    </div>
   );
 }

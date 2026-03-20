@@ -126,30 +126,26 @@ export function WhyMe() {
             </ul>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Magnetic>
-                <Link href={`/${locale}/ueber-mich`}>
-                  <motion.button
-                    whileHover={{ scale: 1.04, boxShadow: "0 20px 40px rgba(10,22,40,0.2)" }}
-                    whileTap={{ scale: 0.97 }}
-                    className="h-14 px-8 rounded-full bg-navy text-white text-base font-bold shadow-lg flex items-center gap-2 group"
-                  >
-                    {t('btn1')}
-                    <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
-                  </motion.button>
-                </Link>
-              </Magnetic>
+              <Link href={`/${locale}/ueber-mich`}>
+                <motion.button
+                  whileHover={{ scale: 1.04, boxShadow: "0 20px 40px rgba(10,22,40,0.2)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="h-14 px-8 rounded-full bg-navy text-white text-base font-bold shadow-lg flex items-center gap-2 group transition-all"
+                >
+                  {t('btn1')}
+                  <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
               
-              <Magnetic>
-                <Link href={`/${locale}/termin`}>
-                  <motion.button
-                    whileHover={{ scale: 1.04, backgroundColor: "rgba(14,165,160,0.05)" }}
-                    whileTap={{ scale: 0.97 }}
-                    className="h-14 px-8 rounded-full border-2 border-teal/50 text-teal hover:border-teal text-base font-bold flex items-center gap-2 transition-all"
-                  >
-                    {t('btn2')}
-                  </motion.button>
-                </Link>
-              </Magnetic>
+              <Link href={`/${locale}/termin`}>
+                <motion.button
+                  whileHover={{ scale: 1.04, backgroundColor: "rgba(14,165,160,0.05)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="h-14 px-8 rounded-full border-2 border-teal/50 text-teal hover:border-teal text-base font-bold flex items-center gap-2 transition-all"
+                >
+                  {t('btn2')}
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
 

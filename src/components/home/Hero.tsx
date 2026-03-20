@@ -6,9 +6,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import Magnetic from "@/components/ui/magnetic";
-const ParticleField = dynamic(() => import("./ParticleField").then(mod => mod.ParticleField), { ssr: false });
-const Visuals3D = dynamic(() => import("./Visuals3D").then(mod => mod.Visuals3D), { ssr: false });
 
 const WORDS = ["Your Future.", "Your Family.", "Your Freedom."];
 
@@ -108,11 +105,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy" />
       </motion.div>
 
-      {/* Particle Field */}
-      <ParticleField />
-
-      {/* 3D Visuals */}
-      <Visuals3D />
 
       {/* Dot grid overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 z-0" />
@@ -167,39 +159,28 @@ export function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+        <div
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
-          <Magnetic>
-            <Link href={`/${locale}/termin`}>
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(14,165,160,0.4)" }}
-                whileTap={{ scale: 0.97 }}
-                className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl overflow-hidden"
-              >
-                <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="relative flex items-center gap-2">
-                  {t('bookBtn')} <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.button>
-            </Link>
-          </Magnetic>
+          <Link href={`/${locale}/termin`}>
+            <button
+              className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl overflow-hidden hover:scale-105 active:scale-95 transition-all duration-300"
+            >
+              <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative flex items-center gap-2">
+                {t('bookBtn')} <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
+          </Link>
 
-          <Magnetic>
-            <Link href="#products">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border transition-all"
-              >
-                {t('exploreBtn')}
-              </motion.button>
-            </Link>
-          </Magnetic>
-        </motion.div>
+          <Link href="#products">
+            <button
+              className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border hover:scale-105 active:scale-95 transition-all duration-300"
+            >
+              {t('exploreBtn')}
+            </button>
+          </Link>
+        </div>
 
         {/* Stats bar */}
         <motion.div

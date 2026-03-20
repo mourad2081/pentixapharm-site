@@ -99,13 +99,12 @@ export function Visuals3D() {
         dpr={[1, 2]}
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={0.8} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-          <pointLight position={[-10, -10, -10]} intensity={1} color="#0EA5A0" />
+          <ambientLight intensity={1.5} />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} />
+          <pointLight position={[-10, -10, -10]} intensity={2} color="#0EA5A0" />
           
           <FloatingShapes />
           
-          <Environment preset="city" />
           <ContactShadows 
             position={[0, -10, 0]} 
             opacity={0.4} 

@@ -1,8 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
 import { ShieldCheck, Briefcase, Heart, Globe2, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const personas = [
   {
@@ -85,64 +84,48 @@ export function ForWhom() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_50%,rgba(212,168,83,0.05)_0%,transparent_50%)]" />
 
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
-        <div className="text-center mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-teal font-bold uppercase tracking-widest text-sm mb-4"
-          >
+        <div className="text-center mb-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <p className="text-teal font-black uppercase tracking-[0.2em] text-xs mb-4">
             Find Yourself
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl font-heading font-black text-navy mb-6 tracking-tight"
-          >
+          </p>
+          <h2 className="text-5xl md:text-6xl font-heading font-black text-navy mb-6 tracking-tight">
             Who is this <span className="gradient-text">for?</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium"
-          >
+          </h2>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
             Whether you just arrived in Berlin or have lived here for years — there's an ERGO solution built exactly for your situation.
-          </motion.p>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {personas.map((p, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -4 }}
-              className={`group relative bg-gradient-to-br ${p.color} rounded-3xl border ${p.borderColor} p-8 transition-all duration-300 overflow-hidden`}
+              className={`group relative bg-gradient-to-br ${p.color} rounded-[2.5rem] border ${p.borderColor} p-10 transition-all duration-300 overflow-hidden animate-in fade-in zoom-in-95`}
+              style={{ animationDelay: `${i * 100}ms` }}
             >
-              {/* Glow on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/30 rounded-3xl" />
-
               <div className="relative z-10">
                 {/* Header */}
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-14 h-14 rounded-2xl ${p.iconBg} flex items-center justify-center shadow-lg shrink-0`}>
-                    <p.icon className="w-7 h-7 text-white" />
+                <div className="flex items-start gap-5 mb-8">
+                  <div className={`w-16 h-16 rounded-2xl ${p.iconBg} flex items-center justify-center shadow-lg shrink-0`}>
+                    <p.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <span className="text-xs font-black uppercase tracking-widest text-slate-500 block mb-1">{p.tag}</span>
                     <h3 className="text-2xl font-heading font-black text-navy leading-tight">{p.title}</h3>
-                    <p className="text-teal font-semibold text-sm">{p.subtitle}</p>
+                    <p className="text-teal font-bold text-sm mt-0.5">{p.subtitle}</p>
                   </div>
-                  <span className="ml-auto text-4xl">{p.emoji}</span>
+                  <span className="text-5xl opacity-80 group-hover:scale-110 transition-transform duration-500">{p.emoji}</span>
                 </div>
 
                 {/* Pain point */}
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 mb-5 border border-white/50">
-                  <p className="text-sm text-navy/70 font-medium italic">"{p.pain}"</p>
+                <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/40">
+                  <p className="text-base text-navy font-bold italic leading-relaxed">"{p.pain}"</p>
                 </div>
 
                 {/* Solutions */}
-                <ul className="space-y-2.5 mb-6">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                   {p.solutions.map((s, j) => (
-                    <li key={j} className="flex items-center gap-3 text-sm text-navy font-medium">
+                    <li key={j} className="flex items-center gap-3 text-sm text-navy font-bold leading-tight">
                       <CheckCircle2 className="w-4 h-4 text-teal shrink-0" />
                       {s}
                     </li>
@@ -151,17 +134,13 @@ export function ForWhom() {
 
                 {/* CTA */}
                 <Link href={`/${locale}/termin`}>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 text-sm font-bold text-teal group/btn"
-                  >
+                  <button className="flex items-center gap-2 text-sm font-black text-teal uppercase tracking-widest group/btn bg-white/20 px-6 py-3 rounded-xl border border-teal/20 hover:bg-teal hover:text-white transition-all">
                     Get my free consultation
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </motion.button>
+                  </button>
                 </Link>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

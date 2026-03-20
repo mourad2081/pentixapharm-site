@@ -1,16 +1,24 @@
 "use client";
-import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { TrendingDown, HeartPulse, Users, Globe2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 function CountUp({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLSpanElement>(null);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [started]);
+
+  useEffect(() => {
+    if (!started) return;
     const duration = 2200;
     const start = performance.now();
     const animate = (now: number) => {
@@ -21,7 +29,7 @@ function CountUp({ target, suffix = "", prefix = "" }: { target: number; suffix?
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
-  }, [inView, target]);
+  }, [started, target]);
 
   return (
     <span ref={ref}>
@@ -47,27 +55,19 @@ export function StatsSection() {
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-teal/5 blur-[120px] pointer-events-none" />
       
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4">{t('title')}</h2>
           <p className="text-slate-400 text-lg font-medium max-w-xl mx-auto">{t('desc')}</p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ scale: 1.03, y: -4 }}
-              className="relative group"
+              className="relative group animate-in fade-in zoom-in-95 duration-700"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="glass rounded-3xl p-8 border border-white/10 group-hover:border-teal/30 transition-all duration-300 h-full">
-                <div className="absolute inset-0 rounded-3xl bg-teal/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 group-hover:border-teal/30 transition-all duration-300 h-full">
                 <div className="relative z-10">
                   <div className="p-3 rounded-2xl bg-teal/15 w-fit mb-6 group-hover:bg-teal transition-colors duration-300">
                     <stat.icon className="w-7 h-7 text-teal group-hover:text-white transition-colors" />
@@ -75,10 +75,10 @@ export function StatsSection() {
                   <div className="text-4xl md:text-5xl font-heading font-black text-white mb-3 tabular-nums">
                     <CountUp target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
                   </div>
-                  <p className="text-slate-400 text-sm font-medium leading-snug group-hover:text-slate-300 transition-colors">{stat.label}</p>
+                  <p className="text-slate-400 text-sm font-medium leading-snug group-hover:text-slate-300 transition-colors uppercase tracking-widest">{stat.label}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

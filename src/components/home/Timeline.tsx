@@ -1,6 +1,4 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { Calendar, Phone, FileText, ShieldCheck, TrendingUp, Heart } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
@@ -49,107 +47,81 @@ const steps = [
 ];
 
 export function Timeline() {
-  const ref = useRef(null);
   const locale = useLocale();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start center", "end center"] });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={ref} className="py-32 bg-white relative overflow-hidden">
+    <section className="py-32 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
 
-      <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
-        <div className="text-center mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-teal font-bold uppercase tracking-widest text-sm mb-4"
-          >
-            Your Journey
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl font-heading font-black text-navy mb-6 tracking-tight"
-          >
-            From Call to <span className="gradient-text">Covered</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto"
-          >
+      <div className="container mx-auto px-4 md:px-8 max-w-5xl relative z-10">
+        <div className="text-center mb-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <p className="text-teal font-black uppercase tracking-[0.2em] text-xs mb-4">
+            Your Success Journey
+          </p>
+          <h2 className="text-5xl md:text-6xl font-heading font-black text-navy mb-8 tracking-tight">
+            From Call to <span className="text-teal">Covered</span>
+          </h2>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
             A seamless 5-step journey from first contact to full protection — typically done in under 7 days.
-          </motion.p>
+          </p>
         </div>
 
         {/* Timeline */}
         <div className="relative">
-          {/* Animated vertical line */}
-          <div className="absolute left-8 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-slate-100">
-            <motion.div
-              style={{ height: lineHeight }}
-              className="w-full bg-gradient-to-b from-teal via-blue-500 to-gold origin-top"
-            />
+          {/* Static vertical line */}
+          <div className="absolute left-8 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-1 bg-slate-100 rounded-full overflow-hidden">
+             <div className="h-full w-full bg-gradient-to-b from-teal via-blue-500 to-gold opacity-30" />
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {steps.map((step, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`flex items-start gap-6 md:gap-0 ${
+                className={`flex items-start gap-10 md:gap-0 animate-in fade-in slide-in-from-bottom-8 duration-700 ${
                   i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
+                style={{ animationDelay: `${i * 150}ms` }}
               >
                 {/* Content */}
-                <div className={`flex-1 pl-16 md:pl-0 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                  <motion.div
-                    whileHover={{ y: -4 }}
-                    className="bg-white rounded-3xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 p-7 group"
-                  >
-                    <div className={`flex items-center gap-3 mb-3 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                      <span className="text-5xl font-heading font-black text-slate-100 leading-none">{step.step}</span>
+                <div className={`flex-1 pl-12 md:pl-0 ${i % 2 === 0 ? "md:pr-20 md:text-right" : "md:pl-20"}`}>
+                  <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 p-8 group relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-teal/5 rounded-bl-full translate-x-8 -translate-y-8 group-hover:bg-teal/10 transition-all duration-500" />
+                    
+                    <div className={`flex items-center gap-4 mb-4 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                      <span className="text-6xl font-heading font-black text-slate-100 leading-none group-hover:text-teal/20 transition-colors duration-500">{step.step}</span>
                       <div>
-                        <span className="text-xs font-black uppercase tracking-widest text-teal block">{step.duration}</span>
-                        <h3 className="text-xl font-heading font-black text-navy">{step.title}</h3>
+                        <span className="text-xs font-black uppercase tracking-widest text-teal block mb-1">{step.duration}</span>
+                        <h3 className="text-2xl font-heading font-black text-navy">{step.title}</h3>
                       </div>
                     </div>
-                    <p className="text-muted-foreground font-medium leading-relaxed">{step.desc}</p>
-                  </motion.div>
+                    <p className="text-slate-500 font-bold leading-relaxed">{step.desc}</p>
+                  </div>
                 </div>
 
                 {/* Center dot */}
                 <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center">
-                  <div className={`w-16 h-16 rounded-2xl ${step.color} flex items-center justify-center shadow-xl z-10`}>
-                    <step.icon className="w-7 h-7 text-white" />
+                  <div className={`w-16 h-16 rounded-2xl ${step.color} flex items-center justify-center shadow-xl z-20 border-4 border-white`}>
+                    <step.icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
 
                 {/* Spacer */}
                 <div className="hidden md:block flex-1" />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="text-center mt-20"
-        >
-          <p className="text-2xl font-heading font-black text-navy mb-6">Ready to start your journey?</p>
+        <div className="text-center mt-24 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <p className="text-3xl font-heading font-black text-navy mb-8">Ready to start your journey?</p>
           <Link href={`/${locale}/termin`}>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(14,165,160,0.3)" }}
-              whileTap={{ scale: 0.97 }}
-              className="h-16 px-12 rounded-full bg-teal text-white text-lg font-bold shadow-xl inline-flex items-center gap-3"
-            >
-              <Calendar className="w-5 h-5" />
+            <button className="h-16 px-12 rounded-full bg-teal text-white text-lg font-black shadow-2xl shadow-teal/30 flex items-center gap-4 mx-auto hover:bg-navy transition-all active:scale-95 uppercase tracking-widest">
+              <Calendar className="w-6 h-6" />
               Book Your Free Call Now
-            </motion.button>
+            </button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

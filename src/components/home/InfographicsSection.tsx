@@ -1,9 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
-import Magnetic from "@/components/ui/magnetic";
 
 const infographics = [
   {
@@ -59,39 +57,33 @@ export function InfographicsSection() {
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:28px_28px] opacity-40" />
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="text-center mb-16">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-teal font-bold uppercase tracking-widest text-sm mb-4">
+        <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <p className="text-teal font-black uppercase tracking-[0.2em] text-xs mb-4">
             Visual Guides
-          </motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-heading font-black text-navy mb-5 tracking-tight">
-            Product Infographics
-          </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
+          </p>
+          <h2 className="text-4xl md:text-5xl font-heading font-black text-navy mb-5 tracking-tight">
+            Product <span className="text-teal">Infographics</span>
+          </h2>
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
             Clear, visual breakdowns of each ERGO product — click any to view full size.
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {infographics.map((item, index) => (
-            <motion.div
+            <div
               key={item.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group relative bg-gradient-to-br ${item.color} rounded-3xl border ${item.border} overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500`}
+              className={`group relative bg-gradient-to-br ${item.color} rounded-3xl border ${item.border} overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in zoom-in-95`}
+              style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => setLightbox(index)}
             >
               {/* Tag */}
-              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm text-navy text-xs font-black px-3 py-1.5 rounded-full shadow">
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm text-navy text-[10px] font-black px-3 py-1.5 rounded-full shadow-sm uppercase tracking-widest border border-white/50">
                 {item.tag}
               </div>
               {/* Zoom icon */}
-              <div className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-4 h-4 text-navy" />
+              <div className="absolute top-4 right-4 z-10 bg-navy/90 backdrop-blur-sm p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <ZoomIn className="w-4 h-4 text-white" />
               </div>
 
               {/* Image */}
@@ -100,53 +92,54 @@ export function InfographicsSection() {
                   src={item.src}
                   alt={item.title}
                   fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                  onError={() => {}} // graceful fallback
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60" />
               </div>
 
               {/* Text */}
-              <div className="p-6">
-                <h3 className="font-heading font-black text-navy text-xl mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              <div className="p-8">
+                <h3 className="font-heading font-black text-navy text-xl mb-2 group-hover:text-teal transition-colors">{item.title}</h3>
+                <p className="text-sm text-slate-500 font-medium leading-relaxed">{item.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Lightbox */}
       {lightbox !== null && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-navy/95 backdrop-blur-md z-[100] flex items-center justify-center p-4"
+        <div
+          className="fixed inset-0 bg-navy/98 backdrop-blur-xl z-[100] flex items-center justify-center p-4 md:p-10 animate-in fade-in duration-300"
           onClick={() => setLightbox(null)}
         >
-          <button className="absolute top-4 right-4 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors" onClick={() => setLightbox(null)}>
-            <X className="w-7 h-7" />
+          <button className="absolute top-6 right-6 text-white/50 hover:text-white p-4 rounded-full bg-white/5 hover:bg-white/10 transition-all z-[110]" onClick={() => setLightbox(null)}>
+            <X className="w-8 h-8" />
           </button>
-          <button className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors" onClick={(e) => { e.stopPropagation(); prev(); }}>
-            <ChevronLeft className="w-8 h-8" />
+          
+          <button className="absolute left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-4 rounded-full bg-white/5 hover:bg-white/10 transition-all z-[110]" onClick={(e) => { e.stopPropagation(); prev(); }}>
+            <ChevronLeft className="w-10 h-10" />
           </button>
-          <button className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors" onClick={(e) => { e.stopPropagation(); next(); }}>
-            <ChevronRight className="w-8 h-8" />
+          <button className="absolute right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-4 rounded-full bg-white/5 hover:bg-white/10 transition-all z-[110]" onClick={(e) => { e.stopPropagation(); next(); }}>
+            <ChevronRight className="w-10 h-10" />
           </button>
-          <div className="relative w-full max-w-5xl max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
+
+          <div className="relative w-full max-w-6xl h-full flex items-center justify-center animate-in zoom-in-95 duration-500" onClick={(e) => e.stopPropagation()}>
             <Image
               src={infographics[lightbox].src}
               alt={infographics[lightbox].title}
-              width={1200}
-              height={700}
-              className="w-full h-auto object-contain"
+              width={1600}
+              height={1000}
+              className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-2xl border border-white/5"
             />
           </div>
-          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium">
-            {lightbox + 1} / {infographics.length} — {infographics[lightbox].title}
-          </p>
-        </motion.div>
+          
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 px-6 py-2 bg-white/5 backdrop-blur-md rounded-full border border-white/10 flex items-center gap-4">
+            <span className="text-white font-black text-sm">{lightbox + 1} / {infographics.length}</span>
+            <div className="w-px h-4 bg-white/20" />
+            <span className="text-teal font-black text-sm uppercase tracking-widest">{infographics[lightbox].title}</span>
+          </div>
+        </div>
       )}
     </section>
   );

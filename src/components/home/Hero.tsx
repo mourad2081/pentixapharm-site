@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, ShieldCheck, Star, TrendingUp, Globe2 } from "lucide-react";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 

@@ -2,7 +2,7 @@
 import { ArrowRight, Star, Briefcase, Globe2, MessageCircle } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRef } from "react";
 import Image from "next/image";
 

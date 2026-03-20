@@ -93,5 +93,19 @@
     "p5Desc": "Schützen Sie Ihre Rechte mühelos und souverän in allen Streitfällen.",
     "p6Title": "Private Krankenversicherung (PKV)",
     "p6Desc": "Premium Vollversicherung mit bevorzugtem Facharztzugang, speziell für Sie."
+  },
+  "ProductPage": {
+    "problemTitle": "Die Herausforderung",
+    "solutionTitle": "Die Lösung",
+    "tiersTitle": "Tarif-Optionen",
+    "faqTitle": "Häufige Fragen",
+    "ctaTitle": "Bereit für eine sichere {name}?",
+    "ctaDesc": "Buchen Sie jetzt Ihr 100% kostenloses Erstgespräch. Online, vor Ort in Berlin oder per Telefon.",
+    "ctaBtn": "Jetzt beraten lassen",
+    "benefitsTitle": "Warum ERGO?",
+    "included": "Inklusive",
+    "notIncluded": "Nicht enthalten",
+    "features": "Leistungen",
+    "problemHeading": "Das Problem"
   }
 }

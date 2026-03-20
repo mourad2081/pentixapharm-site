@@ -93,5 +93,19 @@
     "p5Desc": "Safeguard your rights effortlessly and confidently in all disputes.",
     "p6Title": "Private Health (PKV)",
     "p6Desc": "Premium complete private healthcare with specialist access tailored for you."
+  },
+  "ProductPage": {
+    "problemTitle": "The Challenge",
+    "solutionTitle": "The Solution",
+    "tiersTitle": "Plan Options",
+    "faqTitle": "Common Questions",
+    "ctaTitle": "Ready for a secure {name}?",
+    "ctaDesc": "Book your 100% free initial consultation now. Online, in-person in Berlin, or via phone.",
+    "ctaBtn": "Book Free Consultation",
+    "benefitsTitle": "Why choose ERGO?",
+    "included": "Included",
+    "notIncluded": "Not included",
+    "features": "Features",
+    "problemHeading": "The Problem"
   }
 }

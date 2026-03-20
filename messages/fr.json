@@ -10,7 +10,7 @@
     "health": "Assurance santé (PKV)",
     "faq": "FAQ",
     "contact": "Contact",
-    "resources": "Ressources",
+    "resources": "Ressourcen",
     "seminars": "Séminaires"
   },
   "Hero": {
@@ -93,5 +93,19 @@
     "p5Desc": "Protégez vos droits sans effort et en toute confiance dans tous les litiges.",
     "p6Title": "Assurance Santé Privée (PKV)",
     "p6Desc": "Des soins de santé privés complets haut de gamme avec accès spécialisé."
+  },
+  "ProductPage": {
+    "problemTitle": "Le Défi",
+    "solutionTitle": "La Solution",
+    "tiersTitle": "Options de Plan",
+    "faqTitle": "Questions Courantes",
+    "ctaTitle": "Prêt pour une {name} sécuritée ?",
+    "ctaDesc": "Réservez dès maintenant votre consultation initiale 100% gratuite. En ligne, en personne à Berlin ou par téléphone.",
+    "ctaBtn": "Réserver une Consultation",
+    "benefitsTitle": "Pourquoi choisir ERGO ?",
+    "included": "Inclus",
+    "notIncluded": "Non inclus",
+    "features": "Caractéristiques",
+    "problemHeading": "Le Problème"
   }
 }

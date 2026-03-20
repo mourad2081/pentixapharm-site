@@ -114,6 +114,7 @@ export function InfographicsSection() {
               </motion.div>
             </Magnetic>
           ))}
+        </div>
       </div>
 
       {/* Lightbox */}

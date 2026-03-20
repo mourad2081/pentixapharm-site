@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import {
   ShieldCheck, ChevronDown, Menu, X,
-  Calculator, FileText, User, Home, Calendar, BarChart2
+  Calculator, FileText, User, Home, Calendar
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";

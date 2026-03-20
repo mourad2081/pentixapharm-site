@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 
 export function CompanyLogos() {
   const logos = [
@@ -19,16 +18,8 @@ export function CompanyLogos() {
       </div>
       
       <div className="relative flex overflow-hidden">
-        <motion.div
-          animate={{ x: [0, -1035] }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="flex gap-20 items-center justify-around whitespace-nowrap"
-        >
-          {[...logos, ...logos].map((logo, i) => (
+        <div className="flex gap-20 items-center justify-around whitespace-nowrap animate-marquee">
+          {[...logos, ...logos, ...logos].map((logo, i) => (
             <img
               key={i}
               src={logo.url}
@@ -36,8 +27,18 @@ export function CompanyLogos() {
               className="h-8 md:h-10 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-default px-4"
             />
           ))}
-        </motion.div>
+        </div>
       </div>
+      
+      <style jsx global>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.33%); }
+        }
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }

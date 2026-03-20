@@ -1,26 +1,31 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
 
 export function ScrollProgress() {
   const [mounted, setMounted] = React.useState(false);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
     setMounted(true);
+    const onScroll = () => {
+      const scrolled = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0) {
+        setProgress((scrolled / max) * 100);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Initial check
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   if (!mounted) return null;
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal via-blue-500 to-teal z-[100] origin-left"
-      style={{ scaleX }}
+    <div
+      className="fixed top-0 left-0 right-0 h-1 bg-teal z-[100] origin-left transition-transform duration-75"
+      style={{ transform: `scaleX(${progress / 100})` }}
     />
   );
 }

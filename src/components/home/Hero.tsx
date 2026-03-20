@@ -1,13 +1,9 @@
 "use client";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, ShieldCheck, Star, TrendingUp, Globe2 } from "lucide-react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-const WORDS = ["Your Future.", "Your Family.", "Your Freedom."];
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -46,15 +42,6 @@ export function Hero() {
   const locale = useLocale();
   const [wordIndex, setWordIndex] = useState(0);
   const containerRef = useRef(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   const t = useTranslations('Hero');
   const WORDS = [t('word1'), t('word2'), t('word3')];
@@ -66,12 +53,6 @@ export function Hero() {
     return () => clearInterval(interval);
   }, [WORDS.length]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left - rect.width / 2) / 20);
-    mouseY.set((e.clientY - rect.top - rect.height / 2) / 20);
-  };
-
   const stats = [
     { icon: Star, value: 500, suffix: "+", label: t('stat1Label') },
     { icon: Globe2, value: 4, suffix: "", label: t('stat2Label') },
@@ -81,19 +62,10 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-navy"
     >
-      {/* Parallax hero background image */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 overflow-hidden">
-        {/* Animated Gradient Mesh */}
-        <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none" style={{
-          background: "radial-gradient(circle at 10% 20%, rgba(14,165,160,0.4) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(14,165,160,0.3) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(10,22,40,0.8) 0%, transparent 60%)",
-          filter: "blur(60px)",
-        }}>
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 100, repeat: Infinity, ease: "linear" }} className="w-full h-full absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(212,168,83,0.15)_0%,transparent_50%)]" />
-        </div>
-        
+      {/* Static hero background image */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/hero-bg.png"
           alt="Hero Background"
@@ -103,65 +75,49 @@ export function Hero() {
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy" />
-      </motion.div>
-
+      </div>
 
       {/* Dot grid overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 z-0" />
 
       {/* Content */}
-      <motion.div style={{ y: textY, opacity }} className="container relative z-10 mx-auto px-4 md:px-8 text-center">
+      <div className="container relative z-10 mx-auto px-4 md:px-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-1000">
         
         {/* Pill badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        <div
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass border-teal/30 text-teal text-sm font-bold uppercase tracking-widest mb-10 shadow-lg"
         >
-          <span className="w-2 h-2 rounded-full bg-teal animate-pulse-ring inline-block" />
+          <span className="w-2 h-2 rounded-full bg-teal animate-pulse inline-block" />
           <ShieldCheck className="w-4 h-4" />
           <span className="text-white/90">{t('badge')}</span>
-        </motion.div>
+        </div>
 
         {/* Main headline */}
         <div className="mb-6 overflow-hidden">
-          <motion.h1
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          <h1
             className="text-6xl md:text-8xl lg:text-[6.5rem] font-heading font-black text-white leading-[1] tracking-tight"
           >
-            <span className="block mb-2">
-              <motion.span
+            <span className="block mb-2 min-h-[1.2em]">
+              <span
                 key={wordIndex}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
+                className="inline-block animate-in fade-in slide-in-from-bottom-2 duration-500"
               >
                 {WORDS[wordIndex]}
-              </motion.span>
+              </span>
             </span>
             <span className="gradient-text">{t('titleEnd')}</span>
-          </motion.h1>
+          </h1>
         </div>
 
         {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+        <p
           className="text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
         >
           {t('description')}
-        </motion.p>
+        </p>
 
         {/* CTAs */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
           <Link href={`/${locale}/termin`}>
             <button
               className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl overflow-hidden hover:scale-105 active:scale-95 transition-all duration-300"
@@ -183,12 +139,7 @@ export function Hero() {
         </div>
 
         {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12"
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-slate-400">
           {stats.map((stat, i) => (
             <div key={i} className="flex items-center gap-3 text-white">
               <div className="p-2 rounded-xl bg-teal/20 text-teal">
@@ -202,25 +153,8 @@ export function Hero() {
               </div>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Bottom scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
-      >
-        <span className="text-slate-500 text-xs font-medium tracking-widest uppercase">{t('scroll')}</span>
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border-2 border-slate-600 flex items-start justify-center p-1"
-        >
-          <div className="w-1.5 h-2 rounded-full bg-slate-400" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

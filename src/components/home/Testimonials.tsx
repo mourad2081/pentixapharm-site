@@ -4,6 +4,15 @@ import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
+    name: "James Anderson",
+    role: "American Freelancer, Berlin",
+    avatar: "JA",
+    stars: 5,
+    flag: "🇺🇸",
+    text: "Mourad is the real deal. He helped me switch from GKV and cut my costs by over €300/month while *increasing* my coverage for specialists. It's rare to find an advisor in Berlin who truly understands the expat tax situation. 10/10 service.",
+    product: "PKV Optimization",
+  },
+  {
     name: "Sarah Mitchell",
     role: "Software Engineer, UK Expat",
     avatar: "SM",

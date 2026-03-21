@@ -67,10 +67,10 @@ export function Hero() {
       {/* Static hero background image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/hero-bg.png"
-          alt="Hero Background"
+          src="/berlin_abstract.png"
+          alt="Berlin Security"
           fill
-          className="object-cover opacity-[0.15] mix-blend-luminosity"
+          className="object-cover opacity-20 mix-blend-screen"
           priority
         />
         {/* Gradient overlay */}

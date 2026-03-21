@@ -8,6 +8,11 @@ import { WhyMe } from "@/components/home/WhyMe";
 import { Timeline } from "@/components/home/Timeline";
 import { InfographicsSection } from "@/components/home/InfographicsSection";
 import { Testimonials } from "@/components/home/Testimonials";
+import { QuickGapCheck } from "@/components/home/QuickGapCheck";
+import { ExpatJourney } from "@/components/home/ExpatJourney";
+import { VideoIntro } from "@/components/home/VideoIntro";
+import { FaqSection } from "@/components/home/FaqSection";
+import { BlogHighlights } from "@/components/home/BlogHighlights";
 
 export default function Home() {
   return (
@@ -21,14 +26,21 @@ export default function Home() {
       </div>
 
       {/* Main Content Sections */}
+      <QuickGapCheck />
+      <ExpatJourney />
       <CompanyLogos />
       <ProductCards />
+      <BlogHighlights />
       <WhyMe />
       <StatsSection />
       <ForWhom />
       <Timeline />
       <InfographicsSection />
+      <FaqSection />
       <Testimonials />
+      
+      {/* Floating Video Interaction */}
+      <VideoIntro />
       
       {/* FINAL CTA Section */}
       <section className="py-32 bg-navy relative overflow-hidden">

@@ -34,7 +34,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Can I manage my insurance in English?",
-    a: "Yes! At ERGO, we offer multilingual support, and I personally advice in 4 languages. Most documentation is also available in English for expats.",
+    a: "Yes! At Next Gen Capital, we offer multilingual support, and I personally advice in 4 languages. Most documentation is also available in English for expats.",
     tags: ["Language", "Support"]
   }
 ];
@@ -137,3 +137,4 @@ export function FaqSection() {
     </section>
   );
 }
+

@@ -16,12 +16,18 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="lg:col-span-1">
-            <Link href={`/${locale}`} className="flex items-center gap-2 mb-6">
-              <ShieldCheck className="h-10 w-10 text-teal" />
-              <span className="font-heading font-black text-2xl text-white">Mourad Labadi</span>
+            <Link href={`/${locale}`} className="flex items-center gap-3 mb-6">
+              <div className="relative h-10 w-10 overflow-hidden rounded-lg bg-white shadow-sm border border-border/10">
+                <img 
+                  src="/logo.png" 
+                  alt="Next Gen Capital Logo" 
+                  className="object-contain p-1" 
+                />
+              </div>
+              <span className="font-heading font-black text-2xl text-white">Next Gen Capital</span>
             </Link>
             <p className="text-slate-400 mb-6 leading-relaxed">
-              Independent ERGO insurance consultant in Berlin. Your future, comprehensively secured.
+              Independent Next Gen Capital insurance consultant in Germany. Your future, comprehensively secured.
             </p>
           </div>
 
@@ -49,11 +55,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-teal shrink-0" />
-                <span>Berlin, Germany</span>
+                <span>Available across Germany</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-teal shrink-0" />
-                <a href="mailto:mourad.labadi@ergo.de" className="hover:text-teal transition-colors">mourad.labadi@ergo.de</a>
+                <a href="mailto:contact@nextgencapital.com" className="hover:text-teal transition-colors">contact@nextgencapital.com</a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-teal shrink-0" />
@@ -64,7 +70,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>© {year} Mourad Labadi - ERGO. {t('rights')}</p>
+          <p>© {year} Next Gen Capital. {t('rights')}</p>
           <div className="flex gap-6">
             <Link href={`/${locale}/impressum`} className="hover:text-white transition-colors">{t('imprint')}</Link>
             <Link href={`/${locale}/datenschutz`} className="hover:text-white transition-colors">{t('privacy')}</Link>
@@ -74,3 +80,4 @@ export function Footer() {
     </footer>
   );
 }
+

@@ -20,7 +20,7 @@ export function BookingContent({ isEn: _ }: { isEn: boolean }) {
   const cards = [
     { icon: Video, title: "Video Call", desc: "30 Min • Zoom / Google Meet", color: "border-blue-100 bg-blue-50", iconColor: "text-blue-600" },
     { icon: PhoneCall, title: "Phone Call", desc: "30 Min • We call you back", color: "border-teal/20 bg-teal/5", iconColor: "text-teal" },
-    { icon: MapPin, title: "In-Person Berlin", desc: "60 Min • Office or Café", color: "border-navy/10 bg-navy/5", iconColor: "text-navy" },
+    { icon: MapPin, title: "In-Person Germany", desc: "60 Min • Office or Café", color: "border-navy/10 bg-navy/5", iconColor: "text-navy" },
   ];
 
   const checklist = [
@@ -48,7 +48,7 @@ export function BookingContent({ isEn: _ }: { isEn: boolean }) {
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 font-medium flex items-center justify-center gap-3">
               <Clock className="w-5 h-5 text-teal" />
-              30 Minutes &nbsp;•&nbsp; Online or In Person in Berlin &nbsp;•&nbsp; Zero Obligation
+              30 Minutes &nbsp;•&nbsp; Online or In Person in Germany &nbsp;•&nbsp; Zero Obligation
             </p>
           </motion.div>
         </div>
@@ -139,3 +139,4 @@ export function BookingContent({ isEn: _ }: { isEn: boolean }) {
     </div>
   );
 }
+

@@ -15,11 +15,11 @@ import {
 const STAGES = [
   {
     id: 1,
-    title: "Arrival in Berlin",
+    title: "Arrival in Germany",
     desc: "First 3 months: You need Liability (Privathaftpflicht) and valid Health Insurance for your initial visa or job.",
     icon: PlaneLanding,
     color: "bg-teal",
-    protection: ["Privathaftpflicht", "GKV / PKV Entry"]
+    protection: ["Privathaftpflicht", "State Pension Entry"]
   },
   {
     id: 2,

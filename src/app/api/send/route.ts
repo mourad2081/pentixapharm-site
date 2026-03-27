@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     const sanitize = (s: string) => String(s).replace(/<[^>]*>/g, "").slice(0, 500);
 
     const data = await resend.emails.send({
-      from: 'ERGO Advisor <noreply@mourad-versicherung.de>',
+      from: 'Next Gen Capital Advisor <noreply@mourad-versicherung.de>',
       to: ['mourad@labadi-beratung.de'],
       replyTo: sanitize(leadEmail),
       subject: `New Lead: ${sanitize(intent)} — ${sanitize(leadName)}`,
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
             <tr><td style="padding:8px 0;font-weight:bold;color:#0A1628">Topic:</td><td>${sanitize(intent)}</td></tr>
           </table>
           <hr style="margin:24px 0;border:1px solid #e2e8f0"/>
-          <p style="color:#64748b;font-size:12px">Sent via ERGO Advisor website</p>
+          <p style="color:#64748b;font-size:12px">Sent via Next Gen Capital Advisor website</p>
         </div>
       `,
     });
@@ -48,3 +48,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
 }
+

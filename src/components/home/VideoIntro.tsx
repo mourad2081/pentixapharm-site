@@ -47,7 +47,7 @@ export function VideoIntro() {
                 <div className="absolute inset-0 flex items-center justify-center">
                    {/* Placeholder for real thumbnail */}
                    <div className="w-full h-full bg-gradient-to-br from-navy to-teal flex items-center justify-center relative">
-                      <img src="/mourad-avatar.png" alt="Mourad Labadi" className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700"  onError={(e) => { e.currentTarget.style.display='none'; }}/>
+                      <img src="/mourad-avatar.png" alt="Next Gen Capital" className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700"  onError={(e) => { e.currentTarget.style.display='none'; }}/>
                       <Play className="absolute h-6 w-6 text-white fill-white animate-pulse group-hover:scale-125 transition-transform" />
                    </div>
                 </div>
@@ -135,3 +135,4 @@ export function VideoIntro() {
     </div>
   );
 }
+

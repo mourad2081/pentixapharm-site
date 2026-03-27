@@ -47,13 +47,13 @@ export function AdminPanel() {
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [terminalInput, setTerminalInput] = useState("");
   const [terminalHistory, setTerminalHistory] = useState<{ cmd: string; output: string }[]>([
-    { cmd: "", output: "ERGO Admin Terminal v1.0.0\nType 'help' for available commands.\n" },
+    { cmd: "", output: "Next Gen Capital Admin Terminal v1.0.0\nType 'help' for available commands.\n" },
   ]);
 
   useEffect(() => {
-    const stored = localStorage.getItem("ergo_blog_posts");
+    const stored = localStorage.getItem("Next Gen Capital_blog_posts");
     if (stored) setSavedPosts(JSON.parse(stored));
-    const auth = sessionStorage.getItem("ergo_admin_auth");
+    const auth = sessionStorage.getItem("Next Gen Capital_admin_auth");
     if (auth === "true") setAuthed(true);
   }, []);
 
@@ -66,7 +66,7 @@ export function AdminPanel() {
       });
       if (res.ok) {
         setAuthed(true);
-        sessionStorage.setItem("ergo_admin_auth", "true");
+        sessionStorage.setItem("Next Gen Capital_admin_auth", "true");
       } else {
         setAuthError(true);
         setTimeout(() => setAuthError(false), 2000);
@@ -79,7 +79,7 @@ export function AdminPanel() {
 
   const handleLogout = () => {
     setAuthed(false);
-    sessionStorage.removeItem("ergo_admin_auth");
+    sessionStorage.removeItem("Next Gen Capital_admin_auth");
   };
 
   const generateSlug = (title: string) =>
@@ -92,7 +92,7 @@ export function AdminPanel() {
     const newPost = { ...post, slug: post.slug || generateSlug(post.title) };
     const updated = [...savedPosts.filter((p) => p.slug !== newPost.slug), newPost];
     setSavedPosts(updated);
-    localStorage.setItem("ergo_blog_posts", JSON.stringify(updated));
+    localStorage.setItem("Next Gen Capital_blog_posts", JSON.stringify(updated));
     setSaveStatus("saved");
     setTimeout(() => setSaveStatus("idle"), 3000);
   };
@@ -100,7 +100,7 @@ export function AdminPanel() {
   const handleDelete = (slug: string) => {
     const updated = savedPosts.filter((p) => p.slug !== slug);
     setSavedPosts(updated);
-    localStorage.setItem("ergo_blog_posts", JSON.stringify(updated));
+    localStorage.setItem("Next Gen Capital_blog_posts", JSON.stringify(updated));
   };
 
   const runTerminalCommand = (cmd: string) => {
@@ -124,7 +124,7 @@ export function AdminPanel() {
       output = "Logging out...";
       setTimeout(() => handleLogout(), 800);
     } else if (command === "date") {
-      output = new Date().toLocaleString("en-GB", { timeZone: "Europe/Berlin" }) + " (Berlin)";
+      output = new Date().toLocaleString("en-GB", { timeZone: "Europe/Germany" }) + " (Germany)";
     } else if (command === "posts") {
       if (parts[1] === "list") {
         output = savedPosts.length === 0
@@ -175,7 +175,7 @@ export function AdminPanel() {
               <Lock className="w-8 h-8 text-teal" />
             </div>
             <h1 className="text-3xl font-heading font-black text-navy mb-2">Admin Login</h1>
-            <p className="text-muted-foreground text-sm">ERGO Advisor — Blog Management</p>
+            <p className="text-muted-foreground text-sm">Next Gen Capital Advisor — Blog Management</p>
           </div>
 
           <div className="space-y-4">
@@ -431,7 +431,7 @@ export function AdminPanel() {
                   <span className="w-3 h-3 rounded-full bg-red-500" />
                   <span className="w-3 h-3 rounded-full bg-yellow-500" />
                   <span className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="ml-4 text-xs font-mono text-slate-400">ergo-admin@blog-terminal</span>
+                  <span className="ml-4 text-xs font-mono text-slate-400">Next Gen Capital-admin@blog-terminal</span>
                 </div>
                 {/* Output */}
                 <div className="p-6 h-[480px] overflow-y-auto font-mono text-sm space-y-3">
@@ -472,3 +472,4 @@ export function AdminPanel() {
     </div>
   );
 }
+

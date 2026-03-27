@@ -66,7 +66,7 @@ const personas = [
     subtitle: "Close the pension gap now",
     pain: "Germany's state pension will likely not be enough. Every year you wait costs you.",
     solutions: [
-      "ERGO guaranteed pension plans",
+      "Next Gen Capital guaranteed pension plans",
       "Riester & Rürup maximization",
       "Flexible from just 25€/month",
       "Tax advantages built in",
@@ -92,7 +92,7 @@ export function ForWhom() {
             Who is this <span className="gradient-text">for?</span>
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            Whether you just arrived in Berlin or have lived here for years — there's an ERGO solution built exactly for your situation.
+            Whether you just arrived in Germany or have lived here for years — there's an Next Gen Capital solution built exactly for your situation.
           </p>
         </div>
 
@@ -147,3 +147,4 @@ export function ForWhom() {
     </section>
   );
 }
+

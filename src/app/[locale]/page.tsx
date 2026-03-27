@@ -5,14 +5,10 @@ import { ForWhom } from "@/components/home/ForWhom";
 import { ProductCards } from "@/components/home/ProductCards";
 import { StatsSection } from "@/components/home/StatsSection";
 import { WhyMe } from "@/components/home/WhyMe";
-import { Timeline } from "@/components/home/Timeline";
-import { InfographicsSection } from "@/components/home/InfographicsSection";
 import { Testimonials } from "@/components/home/Testimonials";
-import { QuickGapCheck } from "@/components/home/QuickGapCheck";
 import { ExpatJourney } from "@/components/home/ExpatJourney";
 import { VideoIntro } from "@/components/home/VideoIntro";
 import { FaqSection } from "@/components/home/FaqSection";
-import { BlogHighlights } from "@/components/home/BlogHighlights";
 
 export default function Home() {
   return (
@@ -26,16 +22,12 @@ export default function Home() {
       </div>
 
       {/* Main Content Sections */}
-      <QuickGapCheck />
       <ExpatJourney />
       <CompanyLogos />
       <ProductCards />
-      <BlogHighlights />
       <WhyMe />
       <StatsSection />
       <ForWhom />
-      <Timeline />
-      <InfographicsSection />
       <FaqSection />
       <Testimonials />
       
@@ -51,7 +43,7 @@ export default function Home() {
             <span className="text-teal underline decoration-teal/30 underline-offset-8">German future?</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-            Take the first step towards total peace of mind. Join over 500 expats and business owners who trust my ERGO expertise.
+            Take the first step towards total peace of mind. Join over 500 expats and business owners who trust our expertise.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a 

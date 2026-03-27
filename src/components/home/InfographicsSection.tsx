@@ -8,7 +8,7 @@ const infographics = [
     id: "dental",
     title: "Dental Insurance",
     subtitle: "Your Best Smile, Fully Protected",
-    description: "See exactly how ERGO Dental coverage eliminates massive out-of-pocket costs — real €7,420 savings example.",
+    description: "See exactly how Next Gen Capital Dental coverage eliminates massive out-of-pocket costs — real €7,420 savings example.",
     src: "/infographic-dental.webp",
     tag: "Dental",
     color: "from-teal/20 to-cyan-300/20",
@@ -65,7 +65,7 @@ export function InfographicsSection() {
             Product <span className="text-teal">Infographics</span>
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            Clear, visual breakdowns of each ERGO product — click any to view full size.
+            Clear, visual breakdowns of each Next Gen Capital product — click any to view full size.
           </p>
         </div>
 
@@ -144,3 +144,4 @@ export function InfographicsSection() {
     </section>
   );
 }
+

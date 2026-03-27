@@ -24,8 +24,8 @@ export function AboutContent({ isEn: _ }: { isEn: boolean }) {
     },
     {
       year: "Today",
-      title: "Independent ERGO Advisor",
-      desc: "As an officially IHK-certified expert, I merge my international perspective with deep insurance knowledge to protect families and professionals in 4 languages across Berlin and beyond.",
+      title: "Independent Next Gen Capital Advisor",
+      desc: "As an officially IHK-certified expert, I merge my international perspective with deep insurance knowledge to protect families and professionals in 4 languages across Germany and beyond.",
     },
   ];
 
@@ -48,7 +48,7 @@ export function AboutContent({ isEn: _ }: { isEn: boolean }) {
       {/* Hero with parallax background */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
-          <Image src="/berlin-cityscape.png" alt="Berlin" fill className="object-cover opacity-15" />
+          <Image src="/berlin-cityscape.png" alt="Germany" fill className="object-cover opacity-15" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-white" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:40px_40px]" />
         </motion.div>
@@ -60,11 +60,11 @@ export function AboutContent({ isEn: _ }: { isEn: boolean }) {
             transition={{ duration: 0.7 }}
             className="relative w-40 h-40 md:w-52 md:h-52 rounded-full shadow-2xl mb-10 overflow-hidden border-4 border-white ring-4 ring-teal/30"
           >
-            <Image src="/mourad-headshot.png" alt="Mourad Labadi" fill className="object-cover" />
+            <Image src="/mourad-headshot.png" alt="Next Gen Capital" fill className="object-cover" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
             <h1 className="text-5xl md:text-7xl font-heading font-black text-white mb-4 tracking-tight drop-shadow-lg">
-              Mourad Labadi
+              Next Gen Capital
             </h1>
             <p className="text-xl md:text-2xl text-teal font-bold tracking-wide drop-shadow">
               Insurance Advisor with an International Perspective
@@ -178,3 +178,5 @@ export function AboutContent({ isEn: _ }: { isEn: boolean }) {
     </div>
   );
 }
+
+

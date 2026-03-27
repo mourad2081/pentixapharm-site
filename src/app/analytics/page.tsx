@@ -86,7 +86,7 @@ export default function AnalyticsPage() {
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("ergo_admin_auth") === "true") setAuthed(true);
+    if (sessionStorage.getItem("Next Gen Capital_admin_auth") === "true") setAuthed(true);
   }, []);
 
   const handleLogin = async () => {
@@ -98,7 +98,7 @@ export default function AnalyticsPage() {
       });
       if (res.ok) {
         setAuthed(true);
-        sessionStorage.setItem("ergo_admin_auth", "true");
+        sessionStorage.setItem("Next Gen Capital_admin_auth", "true");
       } else {
         setAuthError(true);
         setTimeout(() => setAuthError(false), 2000);
@@ -132,7 +132,7 @@ export default function AnalyticsPage() {
           <div className="flex flex-col items-center text-center mb-8">
             <div className="p-4 rounded-2xl bg-navy mb-5"><BarChart2 className="w-8 h-8 text-teal" /></div>
             <h1 className="text-3xl font-heading font-black text-navy mb-2">Analytics Login</h1>
-            <p className="text-muted-foreground text-sm">ERGO Advisor — Visitor Statistics</p>
+            <p className="text-muted-foreground text-sm">Next Gen Capital Advisor — Visitor Statistics</p>
           </div>
           <div className="space-y-4">
             <input type="password" placeholder="Admin password" value={password}
@@ -166,7 +166,7 @@ export default function AnalyticsPage() {
         <div className="flex items-center gap-3">
           <BarChart2 className="w-5 h-5 text-teal" />
           <span className="font-heading font-bold">Analytics Dashboard</span>
-          <span className="bg-teal/20 text-teal text-xs font-bold px-3 py-1 rounded-full">ERGO Advisor</span>
+          <span className="bg-teal/20 text-teal text-xs font-bold px-3 py-1 rounded-full">Next Gen Capital Advisor</span>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-slate-400 text-xs hidden sm:inline">Updated: {lastRefresh.toLocaleTimeString("en-GB")}</span>
@@ -174,7 +174,7 @@ export default function AnalyticsPage() {
             className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors">
             <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : ""}`} /> Refresh
           </button>
-          <button onClick={() => { setAuthed(false); sessionStorage.removeItem("ergo_admin_auth"); }}
+          <button onClick={() => { setAuthed(false); sessionStorage.removeItem("Next Gen Capital_admin_auth"); }}
             className="flex items-center gap-2 text-slate-400 hover:text-red-400 text-xs font-medium transition-colors">
             <LogOut className="w-3.5 h-3.5" /> Sign out
           </button>
@@ -344,3 +344,4 @@ export default function AnalyticsPage() {
     </div>
   );
 }
+

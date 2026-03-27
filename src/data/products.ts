@@ -28,15 +28,15 @@ export const products: Record<string, Product> = {
     slug: "altersvorsorge",
     icon: PiggyBank,
     name: "Retirement & Pension",
-    tagline: "The ERGO Pension Guarantee – Secure your living standards effortlessly in old age.",
+    tagline: "The Next Gen Capital Pension Guarantee – Secure your living standards effortlessly in old age.",
     backgroundPattern: "dots",
     problem: {
       text: "The statutory state pension is no longer sufficient. The average pension gap in Germany exceeds 800€ per month. Real risk of poverty in old age is a growing concern for many professionals.",
     },
     solution: {
-      title: "The ERGO Solution",
+      title: "The Next Gen Capital Solution",
       benefits: [
-        "ERGO Pension Guarantee — Guaranteed payouts with enormous tax benefits",
+        "Next Gen Capital Pension Guarantee — Guaranteed payouts with enormous tax benefits",
         "Flexible contributions starting from just 25€/month (adjustable anytime)",
         "Maximum state subsidies included (Riester / Rürup compatibility)",
         "Simple, English-friendly, fully digital contract management"
@@ -78,7 +78,7 @@ export const products: Record<string, Product> = {
       },
       {
         question: "Can I adjust my contributions during financial bottlenecks?",
-        answer: "Absolutely. The ERGO Pension grants full flexibility. You can pause premiums entirely or lower them securely to exactly 25€ per month."
+        answer: "Absolutely. The Next Gen Capital Pension grants full flexibility. You can pause premiums entirely or lower them securely to exactly 25€ per month."
       }
     ]
   },
@@ -92,7 +92,7 @@ export const products: Record<string, Product> = {
       text: "The loss of a main earner can leave a family in financial ruin. Rent, mortgages, and education costs don't stop, and state support is often minimal.",
     },
     solution: {
-      title: "The ERGO Solution",
+      title: "The Next Gen Capital Solution",
       benefits: [
         "High payout amounts for low monthly premiums",
         "Immediate protection starting from the first day",
@@ -121,7 +121,7 @@ export const products: Record<string, Product> = {
       text: "Public health insurance (GKV) covers only standard care. Implants, high-end dentures, and professional cleaning can cost thousands of euros out-of-pocket.",
     },
     solution: {
-      title: "The ERGO Solution",
+      title: "The Next Gen Capital Solution",
       benefits: [
         "Up to 100% coverage for implants, bridges, and crowns",
         "No waiting periods — protection starts immediately",
@@ -132,7 +132,7 @@ export const products: Record<string, Product> = {
     faqs: [
       {
         question: "Is there a waiting period?",
-        answer: "No, ERGO dental plans are known for having no waiting periods, meaning you are covered from day one."
+        answer: "No, Next Gen Capital dental plans are known for having no waiting periods, meaning you are covered from day one."
       },
       {
         question: "What about pre-existing conditions?",
@@ -150,7 +150,7 @@ export const products: Record<string, Product> = {
       text: "Statutory accident insurance only covers you at work and on the way there. 70% of accidents happen during leisure time, at home, or abroad where you have no state coverage.",
     },
     solution: {
-      title: "The ERGO Solution",
+      title: "The Next Gen Capital Solution",
       benefits: [
         "Worldwide protection 24 hours a day, at home and at work",
         "High capital payouts for long-term disability",
@@ -165,7 +165,7 @@ export const products: Record<string, Product> = {
       },
       {
         question: "Does it cover me outside of Germany?",
-        answer: "Yes, ERGO accident insurance provides worldwide protection, including medical evacuation if necessary."
+        answer: "Yes, Next Gen Capital accident insurance provides worldwide protection, including medical evacuation if necessary."
       }
     ]
   },
@@ -179,7 +179,7 @@ export const products: Record<string, Product> = {
       text: "Legal disputes with employers, landlords, or in traffic can be ruinously expensive. Many avoid seeking justice because of the high cost of lawyers and court fees.",
     },
     solution: {
-      title: "The ERGO Solution",
+      title: "The Next Gen Capital Solution",
       benefits: [
         "Full coverage of lawyerFees, court costs, and witness fees",
         "Free initial legal consultation via specialized hotline",
@@ -194,7 +194,7 @@ export const products: Record<string, Product> = {
       },
       {
         question: "Can I choose my own lawyer?",
-        answer: "Yes, ERGO allows you to choose your own specialized lawyer anywhere in Germany."
+        answer: "Yes, Next Gen Capital allows you to choose your own specialized lawyer anywhere in Germany."
       }
     ]
   },
@@ -208,7 +208,7 @@ export const products: Record<string, Product> = {
       text: "Public insurance often means long waiting times for specialists, basic hospital wards, and limited coverage for alternative medicine.",
     },
     solution: {
-      title: "The ERGO Solution",
+      title: "The Next Gen Capital Solution",
       benefits: [
         "Preferred treatment as a private patient (Chief Physician, Single Room)",
         "Guaranteed state-of-the-art medical treatment for life",
@@ -223,8 +223,9 @@ export const products: Record<string, Product> = {
       },
       {
         question: "Will my premiums rise as I get older?",
-        answer: "ERGO builds aging reserves to keep premiums as stable as possible in your later years."
+        answer: "Next Gen Capital builds aging reserves to keep premiums as stable as possible in your later years."
       }
     ]
   }
 };
+

@@ -14,8 +14,8 @@ const notoArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "ERGO Insurance Advisor | Berlin",
-  description: "Modern, independent ERGO insurance advisory in Berlin in 4 languages.",
+  title: "Next Gen Capital Insurance Advisor | Germany",
+  description: "Modern, independent Next Gen Capital insurance advisory in Germany in 4 languages.",
 };
 
 export default async function RootLayout({
@@ -38,11 +38,11 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "InsuranceAgency",
-              "name": "ERGO Versicherungsberater Mourad Labadi",
+              "name": "Next Gen Capital Versicherungsberater Next Gen Capital",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Musterstraße 123",
-                "addressLocality": "Berlin",
+                "addressLocality": "Germany",
                 "postalCode": "10115",
                 "addressCountry": "DE"
               },
@@ -58,3 +58,4 @@ export default async function RootLayout({
     </html>
   );
 }
+

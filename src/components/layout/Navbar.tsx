@@ -33,15 +33,8 @@ export function Navbar() {
   }, []);
 
   const handleProductsClick = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    const el = document.getElementById("products");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      // If not on homepage, navigate there first then scroll
-      router.push(`/${locale}#products`);
-    }
+    // Navigate to the products page
+    router.push(`/${locale}/produkte`);
   }, [locale, router]);
 
   const t = useTranslations('Navbar');
@@ -49,7 +42,7 @@ export function Navbar() {
   const links: Array<{ name: string; href: string; icon: any; action?: (e: React.MouseEvent) => void }> = [
     { name: t('home'), href: `/${locale}`, icon: Home },
     { name: t('about'), href: `/${locale}/ueber-mich`, icon: User },
-    { name: t('products'), href: `/${locale}#products`, icon: ShieldCheck, action: handleProductsClick },
+    { name: t('products'), href: `/${locale}/produkte`, icon: ShieldCheck, action: handleProductsClick },
     { name: t('seminars'), href: `/${locale}/seminare`, icon: GraduationCap },
     { name: t('resources'), href: `/${locale}/ressourcen`, icon: Briefcase },
     { name: t('contact'), href: `/${locale}/kontakt`, icon: Mail },
@@ -88,13 +81,17 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between max-w-7xl">
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center gap-2.5 group shrink-0">
-          <div className="relative">
-            <ShieldCheck className="h-9 w-9 text-teal transition-transform group-hover:scale-110 duration-300" />
-            <div className="absolute inset-0 bg-teal/20 rounded-full scale-150 opacity-0 group-hover:opacity-100 blur-md transition-all duration-300" />
+        <Link href={`/${locale}`} className="flex items-center gap-3 group shrink-0">
+          <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white shadow-sm border border-border/10 group-hover:scale-105 transition-transform duration-300">
+            <Image 
+              src="/logo.png" 
+              alt="Next Gen Capital Logo" 
+              fill 
+              className="object-contain p-1" 
+            />
           </div>
           <span className={`font-heading font-black text-xl transition-colors duration-300 ${scrolled ? "text-navy" : "text-navy"}`}>
-            Mourad <span className="text-teal">Labadi</span>
+            Next Gen <span className="text-teal">Capital</span>
           </span>
         </Link>
 

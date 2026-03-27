@@ -41,13 +41,13 @@ export function WhyMe() {
                   <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-slate-100 relative">
                     <Image
                       src="/mourad-headshot.png"
-                      alt="Mourad Labadi"
+                      alt="Next Gen Capital"
                       fill
                       className="object-cover"
                     />
                     {/* Secondary Lifestyle Image Overlay */}
                     <div className="absolute top-4 right-4 w-24 h-24 rounded-2xl overflow-hidden border-2 border-white shadow-lg hidden md:block">
-                      <Image src="/berlin_family.png" alt="Berlin Expat Life" fill className="object-cover" />
+                      <Image src="/berlin_family.png" alt="Germany Expat Life" fill className="object-cover" />
                     </div>
                     {/* Gradient overlay at bottom */}
                     <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-navy/80 to-transparent" />
@@ -128,3 +128,5 @@ export function WhyMe() {
     </section>
   );
 }
+
+

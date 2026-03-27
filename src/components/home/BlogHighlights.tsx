@@ -15,8 +15,8 @@ import { useLocale } from "next-intl";
 
 const POSTS = [
   {
-    title: "Liability in Berlin: Why a 'Haftpflicht' is Non-Negotiable",
-    excerpt: "In any city as litigious as Berlin, personal liability isn't a choice - it's a survival tool for your assets.",
+    title: "Liability in Germany: Why a 'Haftpflicht' is Non-Negotiable",
+    excerpt: "In any city as litigious as Germany, personal liability isn't a choice - it's a survival tool for your assets.",
     category: "Basics",
     time: "4 min read",
     img: "/berlin_coworking.png"
@@ -111,3 +111,5 @@ export function BlogHighlights() {
     </section>
   );
 }
+
+

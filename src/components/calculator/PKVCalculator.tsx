@@ -485,7 +485,7 @@ export function PKVCalculator() {
                           <tr>
                             <th className="p-8 font-black text-xs uppercase tracking-[0.2em] w-2/5 border-b-2 border-slate-100">Care Differences</th>
                             <th className="p-8 font-black text-xs uppercase tracking-widest text-center w-1/5 border-b-2 border-slate-100">GKV</th>
-                            <th className="p-8 font-black text-[10px] uppercase tracking-[0.3em] text-center bg-teal text-white w-2/5 border-b-2 border-teal">ERGO Premium (PKV)</th>
+                            <th className="p-8 font-black text-[10px] uppercase tracking-[0.3em] text-center bg-teal text-white w-2/5 border-b-2 border-teal">Next Gen Capital Premium (PKV)</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
@@ -539,3 +539,4 @@ export function PKVCalculator() {
     </div>
   );
 }
+

@@ -68,7 +68,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/berlin_abstract.png"
-          alt="Berlin Security"
+          alt="Germany Security"
           fill
           className="object-cover opacity-20 mix-blend-screen"
           priority
@@ -158,3 +158,5 @@ export function Hero() {
     </section>
   );
 }
+
+

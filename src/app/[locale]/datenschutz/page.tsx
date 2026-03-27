@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 
-export const metadata: Metadata = { title: "Datenschutzerklärung | ERGO Advisor Berlin" };
+export const metadata: Metadata = { title: "Datenschutzerklärung | Next Gen Capital" };
 
 export default function DatenschutzPage() {
   return (

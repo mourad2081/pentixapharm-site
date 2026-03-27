@@ -14,8 +14,9 @@ const notoArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "Next Gen Capital Insurance Advisor | Germany",
-  description: "Modern, independent Next Gen Capital insurance advisory in Germany in 4 languages.",
+  title: "Next Gen Capital | Independent Financial Advisors Germany",
+  description: "Expert financial advisory across Germany — health insurance, pensions, and asset protection in 5 languages: English, German, French, Arabic & Spanish.",
+  keywords: ["financial advisor Germany", "PKV health insurance", "pension planning", "independent advisor", "insurance Germany"],
 };
 
 export default async function RootLayout({
@@ -30,24 +31,23 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir} className="scroll-smooth">
       <head>
-        <script defer data-domain="mourad-versicherung.de" src="https://plausible.io/js/script.js"></script>
-        {/* Optional LocalBusiness Schema.org Script */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "InsuranceAgency",
-              "name": "Next Gen Capital Versicherungsberater Next Gen Capital",
+              "@type": "FinancialService",
+              "name": "Next Gen Capital",
+              "description": "Independent financial advisors in Germany — health insurance, pensions, and asset protection in 5 languages.",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Musterstraße 123",
-                "addressLocality": "Germany",
-                "postalCode": "10115",
                 "addressCountry": "DE"
               },
-              "telephone": "+49123456789",
-              "url": "https://mourad-versicherung.de"
+              "telephone": "+4917670845501",
+              "email": "contact@nextgencapital.de",
+              "url": "https://nextgencapital.de",
+              "areaServed": "DE",
+              "availableLanguage": ["English", "German", "French", "Arabic", "Spanish"]
             })
           }}
         />
@@ -58,4 +58,3 @@ export default async function RootLayout({
     </html>
   );
 }
-

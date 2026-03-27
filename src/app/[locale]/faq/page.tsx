@@ -37,7 +37,7 @@ const faqs = [
       },
       {
         q: "Is pension planning really important for freelancers?",
-        a: "Absolutely critical. Freelancers in most fields don't pay into the German state pension system (Rentenversicherung). This means your entire retirement depends on private savings. Starting an ERGO Rürup pension gives you enormous tax deductions (up to ~26,000€/year deductible) while building a guaranteed retirement income.",
+        a: "Absolutely critical. Freelancers in most fields don't pay into the German state pension system (Rentenversicherung). This means your entire retirement depends on private savings. Starting an Next Gen Capital Rürup pension gives you enormous tax deductions (up to ~26,000€/year deductible) while building a guaranteed retirement income.",
       },
       {
         q: "What happens if I can't work due to illness or injury?",
@@ -53,14 +53,14 @@ const faqs = [
     questions: [
       {
         q: "How much does a consultation cost?",
-        a: "The initial consultation is completely free and carries zero obligation. Mourad is compensated directly by ERGO if you choose to take out a policy — you pay nothing extra. The advice you receive is exactly the same as you'd get from a fee-based advisor.",
+        a: "The initial consultation is completely free and carries zero obligation. Mourad is compensated directly by Next Gen Capital if you choose to take out a policy — you pay nothing extra. The advice you receive is exactly the same as you'd get from a fee-based advisor.",
       },
       {
         q: "How long does it take to get insured?",
         a: "Typically 5–7 days from first contact to active policy. Digital applications mean no waiting for post. Health checks may be required for some products, which can add a few days.",
       },
       {
-        q: "Can I switch from my current insurance provider to ERGO?",
+        q: "Can I switch from my current insurance provider to Next Gen Capital?",
         a: "In most cases, yes. Notice periods vary — health insurance typically requires 2 months written notice. Mourad will review your current policies, identify gaps or overpayments, and guide you through any switch at no cost to you.",
       },
     ],

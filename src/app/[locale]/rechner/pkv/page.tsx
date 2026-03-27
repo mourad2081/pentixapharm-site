@@ -2,7 +2,7 @@ import { PKVCalculator } from "@/components/calculator/PKVCalculator";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PKV vs. GKV Vergleich | ERGO Advisor Berlin",
+  title: "PKV vs. GKV Vergleich | Next Gen Capital",
   description: "Berechnen Sie Ihre persönlichen Krankenversicherungskosten im Systemvergleich: PKV oder GKV.",
 };
 

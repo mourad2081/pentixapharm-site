@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 
-export const metadata: Metadata = { title: "Impressum | ERGO Advisor Berlin" };
+export const metadata: Metadata = { title: "Impressum | Next Gen Capital" };
 
 export default function ImpressumPage() {
   return (
@@ -10,7 +10,7 @@ export default function ImpressumPage() {
       <h3>Angaben gemäß § 5 TMG</h3>
       <p>
         <strong>Mourad Labadi</strong><br/>
-        Unabhängiger ERGO Versicherungsberater<br/>
+        Unabhängiger Next Gen Capital Versicherungsberater<br/>
         Musterstraße 123<br/>
         10115 Berlin<br/>
         Deutschland
@@ -19,7 +19,7 @@ export default function ImpressumPage() {
       <h3>Kontakt</h3>
       <p>
         Telefon: +49 (0) 123 456 789<br/>
-        E-Mail: mourad.labadi@ergo.de
+        E-Mail: mourad.labadi@Next Gen Capital.de
       </p>
 
       <h3>Berufsbezeichnung und berufsrechtliche Regelungen</h3>

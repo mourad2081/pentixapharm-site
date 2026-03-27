@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
   const post = getPostBySlug(params.slug);
   if (!post) return {};
   return {
-    title: `${post.meta.title} | ERGO Ratgeber`,
+    title: `${post.meta.title} | Next Gen Capital Blog`,
     description: post.meta.excerpt,
   };
 }
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: { locale: strin
             <div className="w-20 h-20 rounded-full bg-slate-200 border-2 border-border shrink-0" />
             <div>
               <h4 className="font-bold font-heading text-navy text-xl">Mourad Labadi</h4>
-              <p className="text-sm text-muted-foreground mt-1">Unabhängiger ERGO Versicherungsberater in Berlin. Experte für Expat-Finanzen, Altersvorsorge und PKV.</p>
+              <p className="text-sm text-muted-foreground mt-1">Unabhängiger Next Gen Capital Versicherungsberater in Berlin. Experte für Expat-Finanzen, Altersvorsorge und PKV.</p>
             </div>
           </div>
 

@@ -55,9 +55,9 @@ export default function ContactPage() {
                 },
                 { 
                   title: "Email Correspondence", 
-                  value: "mourad.labadi@ergo.de", 
+                  value: "mourad.labadi@Next Gen Capital.de", 
                   desc: "Official inquiries & documents", 
-                  href: "mailto:mourad.labadi@ergo.de", 
+                  href: "mailto:mourad.labadi@Next Gen Capital.de", 
                   icon: Mail, 
                   color: "bg-blue-500/10 text-blue-500",
                   hover: "hover:bg-blue-500 hover:text-white",

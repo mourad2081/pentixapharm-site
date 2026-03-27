@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 const guides = [
   {
-    title: "Your Ultimate ERGO PKV Guide",
+    title: "Your Ultimate Next Gen Capital PKV Guide",
     desc: "A comprehensive PDF breaking down private health insurance benefits, costs, and tax deductions specifically for expats and freelancers.",
     size: "2.4 MB PDF",
     icon: FileText,

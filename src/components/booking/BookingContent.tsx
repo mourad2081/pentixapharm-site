@@ -1,41 +1,50 @@
 "use client";
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
-import { Video, PhoneCall, MapPin, CheckCircle2, Clock, Star } from "lucide-react";
+import { useState } from "react";
+import { Video, PhoneCall, MapPin, CheckCircle2, Clock, Star, Globe2, ChevronRight, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+const TEAM = [
+  {
+    name: "Mourad Labadi",
+    role: "Senior Financial Advisor",
+    photo: "/mourad-headshot.png",
+    languages: ["English", "French", "German", "Arabic"],
+    specialty: "Pension planning, PKV, and asset protection specialist.",
+    calendly: "https://calendly.com/mourad-labadi",
+    phone: "+49 123 456 789",
+    email: "mourad.labadi@nextgencapital.de",
+    badge: "bg-teal",
+    calLink: "mouradlabadi/30min",
+  },
+  {
+    name: "Oscar Sunderland",
+    role: "Financial Advisor",
+    photo: "/mourad-headshot.png",
+    languages: ["English", "German"],
+    specialty: "Health insurance (PKV) and financial planning specialist.",
+    calendly: "https://calendly.com/oscar_sunderland",
+    phone: "+49 176 70845501",
+    email: "oscar.sunderland@nextgencapital.de",
+    badge: "bg-navy",
+    calLink: "oscar_sunderland/30min",
+  },
+];
+
+const checklist = [
+  "Detailed analysis of your current financial situation",
+  "Identification of hidden coverage gaps",
+  "Concrete, unbiased product recommendations",
+  "100% free, transparent, zero sales pressure",
+];
 
 export function BookingContent({ isEn: _ }: { isEn: boolean }) {
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({});
-      cal("ui", {
-        styles: { branding: { brandColor: "#0EA5A0" } },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
-  const cards = [
-    { icon: Video, title: "Video Call", desc: "30 Min • Zoom / Google Meet", color: "border-blue-100 bg-blue-50", iconColor: "text-blue-600" },
-    { icon: PhoneCall, title: "Phone Call", desc: "30 Min • We call you back", color: "border-teal/20 bg-teal/5", iconColor: "text-teal" },
-    { icon: MapPin, title: "In-Person Germany", desc: "60 Min • Office or Café", color: "border-navy/10 bg-navy/5", iconColor: "text-navy" },
-  ];
-
-  const checklist = [
-    "Detailed analysis of your current insurance situation",
-    "Identification of hidden coverage gaps",
-    "Concrete, unbiased product recommendations",
-    "100% free, transparent, zero sales pressure",
-  ];
-
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Hero Header */}
       <section className="py-20 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(14,165,160,0.15),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(212,168,83,0.08),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:30px_30px]" />
         <div className="container px-4 md:px-8 max-w-5xl mx-auto text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -48,95 +57,94 @@ export function BookingContent({ isEn: _ }: { isEn: boolean }) {
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 font-medium flex items-center justify-center gap-3">
               <Clock className="w-5 h-5 text-teal" />
-              30 Minutes &nbsp;•&nbsp; Online or In Person in Germany &nbsp;•&nbsp; Zero Obligation
+              30 Minutes &nbsp;•&nbsp; Online or In Person &nbsp;•&nbsp; Zero Obligation
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Booking Dashboard */}
+      {/* Choose Your Advisor */}
       <section className="py-16 bg-[#FAF9F6]">
-        <div className="container px-4 md:px-8 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
-
-          {/* Cal.com Embed */}
-          <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col gap-6">
-            
-            {/* Progress / Step Indicator Visual */}
-            <div className="bg-white border border-border shadow-sm p-5 rounded-2xl flex items-center justify-between relative overflow-hidden">
-              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-100 -translate-y-1/2 z-0" />
-              {[
-                { label: "Date & Time", status: "active" },
-                { label: "Your Details", status: "upcoming" },
-                { label: "Confirmation", status: "upcoming" }
-              ].map((step, i) => (
-                <div key={i} className="flex flex-col items-center gap-2 relative z-10 bg-white px-2">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors cursor-default ${step.status === 'active' ? 'bg-teal text-white shadow-lg shadow-teal/20' : 'bg-slate-100 text-slate-400'}`}>
-                    {i + 1}
-                  </div>
-                  <span className={`text-xs font-bold uppercase tracking-wider ${step.status === 'active' ? 'text-teal' : 'text-slate-400'}`}>{step.label}</span>
-                </div>
-              ))}
-            </div>
-
-            <Card className="border-border shadow-2xl rounded-3xl overflow-hidden bg-white">
-              <div className="w-full h-[650px] bg-white">
-                <Cal
-                  calLink="mouradlabadi/30min"
-                  style={{ width: "100%", height: "100%", overflow: "auto" }}
-                  config={{ layout: "month_view" }}
-                />
-              </div>
-            </Card>
+        <div className="container px-4 md:px-8 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading font-black text-navy mb-4">Choose Your Advisor</h2>
+            <p className="text-slate-500 font-medium max-w-xl mx-auto">Select the advisor that best fits your needs. Both offer a free 30-minute initial consultation.</p>
           </div>
 
-          {/* Sidebar */}
-          <div className="order-1 lg:order-2 space-y-8">
-            {/* Meeting Types */}
-            <div>
-              <h3 className="text-lg font-heading font-black text-navy mb-5 uppercase tracking-wide">Consultation Type</h3>
-              <div className="space-y-4">
-                {cards.map((c, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }}>
-                    <Card className={`border ${c.color} shadow-sm hover:shadow-md transition-shadow`}>
-                      <CardContent className="p-5 flex items-center gap-4">
-                        <div className={`p-2.5 rounded-xl bg-white shadow-sm ${c.iconColor}`}>
-                          <c.icon className="w-6 h-6" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-navy text-sm">{c.title}</h4>
-                          <span className="text-xs font-medium text-muted-foreground">{c.desc}</span>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {TEAM.map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.15 }}
+                className="bg-white rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-border/30"
+              >
+                <div className={`h-1.5 w-full ${member.badge}`} />
+                <div className="p-8">
+                  <div className="flex items-start gap-5 mb-6">
+                    <div className="relative h-20 w-20 rounded-2xl overflow-hidden bg-slate-100 border-2 border-white shadow-md shrink-0">
+                      <Image src={member.photo} alt={member.name} fill className="object-cover" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-heading font-black text-navy">{member.name}</h3>
+                      <p className="text-teal font-bold text-sm">{member.role}</p>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {member.languages.map(l => (
+                          <span key={l} className="text-[10px] px-2 py-0.5 bg-teal/10 text-teal rounded-full font-bold">{l}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-slate-500 text-sm leading-relaxed mb-6">{member.specialty}</p>
+                  
+                  <div className="flex flex-col gap-2 mb-6 text-xs text-slate-400 font-medium">
+                    <a href={`tel:${member.phone}`} className="hover:text-teal transition-colors">{member.phone}</a>
+                    <a href={`mailto:${member.email}`} className="hover:text-teal transition-colors">{member.email}</a>
+                  </div>
+                  
+                  <a
+                    href={member.calendly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full h-12 rounded-2xl bg-navy text-white text-sm font-black uppercase tracking-widest hover:bg-teal transition-all duration-300 active:scale-95 group"
+                  >
+                    Book with {member.name.split(' ')[0]}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-            {/* Checklist */}
-            <div className="bg-white border border-border/60 p-7 rounded-3xl shadow-sm">
-              <h3 className="text-lg font-heading font-black text-navy mb-6 uppercase tracking-wide">What to Expect</h3>
-              <ul className="space-y-5">
-                {checklist.map((item, i) => (
-                  <motion.li key={i} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-start gap-4">
-                    <CheckCircle2 className="w-5 h-5 text-teal shrink-0 mt-0.5" />
-                    <span className="text-navy text-sm font-medium leading-relaxed">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+          {/* What to expect */}
+          <div className="bg-white border border-border/60 p-10 rounded-[2.5rem] shadow-sm max-w-2xl mx-auto">
+            <h3 className="text-xl font-heading font-black text-navy mb-6 uppercase tracking-wide text-center">What to Expect</h3>
+            <ul className="space-y-5">
+              {checklist.map((item, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-teal shrink-0 mt-0.5" />
+                  <span className="text-navy text-sm font-medium leading-relaxed">{item}</span>
+                </motion.li>
+              ))}
+            </ul>
 
             {/* Trust note */}
-            <div className="bg-navy text-white p-6 rounded-3xl">
+            <div className="mt-8 bg-navy text-white p-6 rounded-2xl">
               <p className="text-sm font-medium text-slate-300 leading-relaxed">
                 🔒 <strong className="text-white">Privacy guaranteed.</strong> Your data is never shared or sold. Consultation details are protected under German data privacy law (DSGVO).
               </p>
             </div>
           </div>
-
         </div>
       </section>
     </div>
   );
 }
-

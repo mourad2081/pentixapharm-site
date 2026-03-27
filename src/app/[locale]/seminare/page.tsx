@@ -1,149 +1,236 @@
 "use client";
-import { Users, Calendar, MapPin, Video, ArrowRight, Clock, Star, Users2 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
+import { Video, Calendar, Clock, CheckCircle2, ArrowRight, Users, Shield, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
-const seminars = [
-  {
-    title: "Expats in Tech: The Ultimate Insurance Guide",
-    date: "April 15, 2026",
-    time: "18:00 - 19:30 CET",
-    type: "Webinar",
-    location: "Online (Zoom)",
-    spots: 12,
-    desc: "A specialized deep dive for tech professionals moving to Germany. We cover the GKV vs PKV dilemma, stock option implications, and why your employer's package might not be enough.",
-    icon: Video,
-    color: "from-teal/20 to-cyan-300/20",
-    tag: "Exclusive"
-  },
-  {
-    title: "Freelance Fearless: Income Protection Masterclass",
-    date: "May 5, 2026",
-    time: "10:00 - 12:00 CET",
-    type: "In-Person",
-    location: "ERGO Office Berlin, Musterstraße 123",
-    spots: 5,
-    desc: "Interactive workshop for independent contractors. Learn exactly how to structure your retirement savings for maximum tax deductions and how to insure your income against illness.",
-    icon: Users2,
-    color: "from-blue-400/20 to-indigo-400/20",
-    tag: "Limited"
-  },
-  {
-    title: "Tax Year-End Strategies with ERGO",
-    date: "June 14, 2026",
-    time: "19:00 - 20:00 CET",
-    type: "Webinar",
-    location: "Online (Zoom)",
-    spots: 50,
-    desc: "Last-minute strategies to maximize your tax returns for this calendar year using Rürup and Riester pensions. Quick, actionable, and vital for high-earners.",
-    icon: Video,
-    color: "from-emerald-400/20 to-teal/20",
-    tag: "Trending"
-  },
-];
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  question: string;
+}
 
 export default function SeminarsPage() {
+  const [form, setForm] = useState<FormData>({ name: "", email: "", phone: "", company: "", question: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    // Simulate form submission
+    await new Promise(r => setTimeout(r, 1200));
+    setSubmitted(true);
+    setLoading(false);
+  };
+
+  const topics = [
+    { icon: Heart, label: "GKV vs PKV explained simply" },
+    { icon: Shield, label: "What health insurance covers in Germany" },
+    { icon: Users, label: "How to choose the right plan for your situation" },
+    { icon: CheckCircle2, label: "Switching from public to private health insurance" },
+    { icon: Video, label: "Q&A with a certified health insurance expert" },
+  ];
+
   return (
-    <main className="min-h-screen bg-white relative pt-32 pb-24 selection:bg-teal selection:text-white">
-      {/* Dynamic BG */}
+    <main className="min-h-screen bg-white relative pt-32 pb-24">
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="text-center mb-24 pt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-           <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-teal/30 bg-teal/10 text-teal text-xs font-black uppercase tracking-[0.2em] mb-8">
-              <Users className="w-4 h-4" /> Professional Development
-           </span>
-           <h1 className="text-5xl md:text-7xl font-heading font-black text-navy mb-8 tracking-tighter">
-             Expert <span className="text-teal">Seminars</span>
-           </h1>
-           <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-             Join our free online and in-person events to learn how to master your finances and protect your future in Germany.
-           </p>
+        
+        {/* Header */}
+        <div className="text-center mb-20 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-teal/30 bg-teal/10 text-teal text-xs font-black uppercase tracking-[0.2em] mb-8">
+            <Users className="w-4 h-4" /> Free Webinar
+          </span>
+          <h1 className="text-5xl md:text-7xl font-heading font-black text-navy mb-8 tracking-tighter">
+            Health Insurance <span className="text-teal">Explained</span>
+          </h1>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            Join our free live webinar and finally understand Germany's health insurance system — in plain English. No jargon, no sales pitch.
+          </p>
         </div>
 
-        {/* Seminar Cards */}
-        <div className="grid grid-cols-1 gap-12">
-          {seminars.map((s, i) => (
-            <div 
-              key={i} 
-              className="group relative bg-white rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in slide-in-from-bottom-8"
-              style={{ animationDelay: `${i * 150}ms` }}
-            >
-               {/* Decorative tag */}
-               <div className="absolute -top-4 left-10 bg-navy text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl uppercase tracking-widest z-20 border border-white/10">
-                  {s.tag}
-               </div>
-
-               <div className="flex flex-col lg:flex-row h-full overflow-hidden rounded-[3.1rem]">
-                  {/* Visual Context */}
-                  <div className={`lg:w-1/3 bg-gradient-to-br ${s.color} p-12 flex flex-col justify-center items-center relative group-hover:scale-105 transition-transform duration-700`}>
-                     <div className="w-24 h-24 rounded-[2rem] bg-white flex items-center justify-center shadow-2xl mb-8 group-hover:rotate-12 transition-transform duration-500">
-                        <s.icon className="w-10 h-10 text-teal" />
-                     </div>
-                     <div className="text-center space-y-4">
-                        <div className="flex items-center justify-center gap-2 text-navy font-black text-sm uppercase tracking-widest bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
-                           <Calendar className="w-4 h-4" /> {s.date}
-                        </div>
-                        <div className="flex items-center justify-center gap-2 text-navy font-black text-sm uppercase tracking-widest bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
-                           <Clock className="w-4 h-4" /> {s.time}
-                        </div>
-                     </div>
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Left: Seminar Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            {/* Seminar Card */}
+            <div className="bg-navy rounded-[3rem] p-10 text-white mb-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(14,165,160,0.25),transparent_60%)]" />
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal/20 rounded-full text-teal text-xs font-black uppercase tracking-widest border border-teal/30 mb-8">
+                  <span className="w-2 h-2 bg-teal rounded-full animate-pulse" />
+                  Next Session
+                </div>
+                
+                <h2 className="text-3xl font-heading font-black mb-6 tracking-tight">
+                  Understanding Health Insurance in Germany
+                </h2>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Calendar className="w-5 h-5 text-teal shrink-0" />
+                    <span className="font-bold">April 22, 2026</span>
                   </div>
-
-                  {/* Content block */}
-                  <div className="p-12 lg:w-2/3 bg-white flex flex-col justify-between relative">
-                     <div>
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                           <div className="flex items-center gap-2 text-teal font-black text-[10px] uppercase tracking-[0.2em] bg-teal/5 px-3 py-1 rounded-full">
-                              <MapPin className="w-3.5 h-3.5" /> {s.location}
-                           </div>
-                           <div className="flex items-center gap-2 text-amber-600 font-black text-[10px] uppercase tracking-[0.2em] bg-amber-50 px-3 py-1 rounded-full border border-amber-100 animate-pulse">
-                              Only {s.spots} spots remaining
-                           </div>
-                        </div>
-                        
-                        <h3 className="text-3xl md:text-4xl font-heading font-black text-navy mb-6 group-hover:text-teal transition-colors duration-300 tracking-tight">{s.title}</h3>
-                        <p className="text-slate-500 text-lg mb-10 leading-relaxed font-medium">
-                           {s.desc}
-                        </p>
-                     </div>
-
-                     <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-50">
-                        <Button className="bg-navy hover:bg-teal text-white h-16 px-12 rounded-[1.5rem] font-black shadow-xl shadow-navy/20 transition-all text-sm uppercase tracking-widest flex items-center gap-3 active:scale-95">
-                           Register for free <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                        </Button>
-                        <div className="flex -space-x-4">
-                           {[1,2,3,4].map(num => (
-                              <div key={num} className="w-10 h-10 rounded-full border-4 border-white bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-400 overflow-hidden shadow-sm">
-                                 <Users className="w-4 h-4" />
-                              </div>
-                           ))}
-                           <div className="w-10 h-10 rounded-full border-4 border-white bg-teal text-white flex items-center justify-center text-[10px] font-black shadow-lg">
-                              +24
-                           </div>
-                        </div>
-                        <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Attending</span>
-                     </div>
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Clock className="w-5 h-5 text-teal shrink-0" />
+                    <span className="font-bold">18:00 – 19:30 CET</span>
                   </div>
-               </div>
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Video className="w-5 h-5 text-teal shrink-0" />
+                    <span className="font-bold">Online (Zoom) · Free</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-2 text-amber-400 font-black text-sm uppercase tracking-widest animate-pulse">
+                  <Users className="w-4 h-4" />
+                  Only 40 spots remaining
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
 
-        {/* Global CTA */}
-        <div className="mt-32 p-16 rounded-[4rem] bg-navy text-white text-center relative overflow-hidden shadow-3xl animate-in fade-in zoom-in duration-1000">
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(14,165,160,0.4)_0%,transparent_60%)]" />
-           <div className="relative z-10">
-              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-6 opacity-60">Custom Training</h4>
-              <h2 className="text-4xl md:text-5xl font-heading font-black mb-8 tracking-tighter">Need a session for your <br/><span className="text-teal underline decoration-teal/30 underline-offset-8">company team?</span></h2>
-              <p className="text-lg text-slate-300 max-w-xl mx-auto mb-10 font-medium">
-                 I provide private bilingual workshops for international companies in Berlin 
-                 to help their employees navigate the German insurance landscape.
-              </p>
-              <Button className="h-16 px-12 rounded-full bg-teal text-white font-black hover:bg-white hover:text-navy transition-all uppercase tracking-widest">
-                 Inquire About Workshops
-              </Button>
-           </div>
+            {/* What we cover */}
+            <div className="bg-slate-50 rounded-[2.5rem] p-8">
+              <h3 className="text-xl font-heading font-black text-navy mb-6">What We'll Cover</h3>
+              <ul className="space-y-4">
+                {topics.map((topic, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + i * 0.1 }}
+                    className="flex items-center gap-4"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-teal/10 flex items-center justify-center shrink-0">
+                      <topic.icon className="w-5 h-5 text-teal" />
+                    </div>
+                    <span className="text-navy font-bold text-sm">{topic.label}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Right: Registration Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            {submitted ? (
+              <div className="bg-white rounded-[3rem] border border-border shadow-sm p-12 text-center">
+                <div className="w-20 h-20 rounded-full bg-teal/10 flex items-center justify-center mx-auto mb-8">
+                  <CheckCircle2 className="w-10 h-10 text-teal" />
+                </div>
+                <h3 className="text-3xl font-heading font-black text-navy mb-4">You're Registered! 🎉</h3>
+                <p className="text-slate-500 font-medium leading-relaxed mb-8">
+                  Check your email for the Zoom link and calendar invite. We look forward to seeing you!
+                </p>
+                <button
+                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", company: "", question: "" }); }}
+                  className="text-teal font-black text-sm uppercase tracking-widest hover:underline"
+                >
+                  Register another person
+                </button>
+              </div>
+            ) : (
+              <div className="bg-white rounded-[3rem] border border-border shadow-sm p-10">
+                <h3 className="text-2xl font-heading font-black text-navy mb-2">Reserve Your Spot</h3>
+                <p className="text-slate-400 font-medium text-sm mb-8">Free registration — limited to 50 participants.</p>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="text-xs font-black text-navy uppercase tracking-widest block mb-2">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your full name"
+                      className="w-full h-14 px-5 border border-border rounded-2xl text-navy font-medium focus:outline-none focus:ring-2 focus:ring-teal/40 transition-all"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="text-xs font-black text-navy uppercase tracking-widest block mb-2">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="your@email.com"
+                      className="w-full h-14 px-5 border border-border rounded-2xl text-navy font-medium focus:outline-none focus:ring-2 focus:ring-teal/40 transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-black text-navy uppercase tracking-widest block mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      placeholder="+49 ..."
+                      className="w-full h-14 px-5 border border-border rounded-2xl text-navy font-medium focus:outline-none focus:ring-2 focus:ring-teal/40 transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-black text-navy uppercase tracking-widest block mb-2">Company / Employer</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={form.company}
+                      onChange={handleChange}
+                      placeholder="Optional"
+                      className="w-full h-14 px-5 border border-border rounded-2xl text-navy font-medium focus:outline-none focus:ring-2 focus:ring-teal/40 transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-black text-navy uppercase tracking-widest block mb-2">Your Question (Optional)</label>
+                    <textarea
+                      name="question"
+                      value={form.question}
+                      onChange={handleChange}
+                      rows={3}
+                      placeholder="Any specific topic you'd like us to cover?"
+                      className="w-full px-5 py-4 border border-border rounded-2xl text-navy font-medium focus:outline-none focus:ring-2 focus:ring-teal/40 transition-all resize-none"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full h-16 rounded-2xl bg-teal hover:bg-navy text-white font-black uppercase tracking-widest text-sm shadow-xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-3"
+                  >
+                    {loading ? (
+                      <span className="flex items-center gap-2">
+                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Registering...
+                      </span>
+                    ) : (
+                      <>Register for Free <ArrowRight className="w-5 h-5" /></>
+                    )}
+                  </Button>
+                </form>
+              </div>
+            )}
+          </motion.div>
         </div>
       </div>
     </main>

@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const reviews = [
   { name: "John T., Software Engineer", flag: "🇬🇧", stars: 5, text: "Mourad explained the German pension system in 30 minutes better than anyone else could in 3 years. The PKV transition was seamless and I saved a lot of money." },
-  { name: "Claire M., Freelance Designer", flag: "🇫🇷", stars: 5, text: "As a freelancer, I was terrified of making a mistake with my health insurance. Mourad found the perfect ERGO tariff that covers everything I need, but keeps my costs low right now." },
+  { name: "Claire M., Freelance Designer", flag: "🇫🇷", stars: 5, text: "As a freelancer, I was terrified of making a mistake with my health insurance. Mourad found the perfect Next Gen Capital tariff that covers everything I need, but keeps my costs low right now." },
   { name: "Ahmed K., IT Consultant", flag: "🇸🇾", stars: 5, text: "Highly recommend! No pressure, absolute transparency. He even advised me to stay in the public system for now because of my growing family, which shows he cares about the client, not just the commission." },
   { name: "Anna P., Expat Family", flag: "🇵🇱", stars: 5, text: "We had so many questions about child benefits and family insurance. Mourad took the time to explain everything step by step. We feel totally secure now." },
   { name: "Markus S., Startup Founder", flag: "🇩🇪", stars: 5, text: "Super transparent und extrem schnell. Die bAV Einrichtung für unser ganzes Team war innerhalb von einer Woche erledigt." },

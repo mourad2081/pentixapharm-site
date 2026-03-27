@@ -2,7 +2,7 @@ import { PensionCalculator } from "@/components/calculator/PensionCalculator";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Rentenlücken-Rechner | ERGO Advisor Berlin",
+  title: "Rentenlücken-Rechner | Next Gen Capital",
   description: "Berechnen Sie Ihre persönliche Rentenlücke und den benötigten monatlichen Sparbetrag in wenigen Klicks.",
 };
 

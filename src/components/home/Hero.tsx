@@ -21,7 +21,6 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 
   useEffect(() => {
     if (!started) return;
-    let frame = 0;
     const duration = 2000;
     const start = performance.now();
     const animate = (now: number) => {
@@ -29,19 +28,30 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * target));
-      if (progress < 1) frame = requestAnimationFrame(animate);
+      if (progress < 1) requestAnimationFrame(animate);
     };
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
+    requestAnimationFrame(animate);
+    return () => {};
   }, [started, target]);
 
   return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
 }
 
+// Floating animated orbs for dynamic background
+function FloatingOrbs() {
+  return (
+    <>
+      <div className="absolute top-20 left-[10%] w-72 h-72 bg-teal/20 rounded-full blur-[80px] animate-float pointer-events-none" />
+      <div className="absolute bottom-32 right-[8%] w-96 h-96 bg-blue-500/15 rounded-full blur-[100px] animate-float-delayed pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-40 right-[20%] w-48 h-48 bg-gold/10 rounded-full blur-[60px] animate-float pointer-events-none" style={{ animationDelay: '2s' }} />
+    </>
+  );
+}
+
 export function Hero() {
   const locale = useLocale();
   const [wordIndex, setWordIndex] = useState(0);
-  const containerRef = useRef(null);
 
   const t = useTranslations('Hero');
   const WORDS = [t('word1'), t('word2'), t('word3')];
@@ -55,38 +65,27 @@ export function Hero() {
 
   const stats = [
     { icon: Star, value: 500, suffix: "+", label: t('stat1Label') },
-    { icon: Globe2, value: 4, suffix: "", label: t('stat2Label') },
+    { icon: Globe2, value: 5, suffix: "", label: t('stat2Label') },
     { icon: TrendingUp, value: 100, suffix: "%", label: t('stat3Label') },
   ];
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-navy"
-    >
-      {/* Static hero background image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src="/berlin_abstract.png"
-          alt="Germany Security"
-          fill
-          className="object-cover opacity-20 mix-blend-screen"
-          priority
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy" />
-      </div>
-
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-navy">
+      {/* Dynamic animated background */}
+      <FloatingOrbs />
+      
       {/* Dot grid overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:40px_40px] opacity-60 z-0" />
+      
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy z-0" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/60 via-transparent to-navy/60 z-0" />
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 md:px-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-1000">
         
         {/* Pill badge */}
-        <div
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass border-teal/30 text-teal text-sm font-bold uppercase tracking-widest mb-10 shadow-lg"
-        >
+        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass border-teal/30 text-teal text-sm font-bold uppercase tracking-widest mb-10 shadow-lg">
           <span className="w-2 h-2 rounded-full bg-teal animate-pulse inline-block" />
           <ShieldCheck className="w-4 h-4" />
           <span className="text-white/90">{t('badge')}</span>
@@ -94,9 +93,7 @@ export function Hero() {
 
         {/* Main headline */}
         <div className="mb-6 overflow-hidden">
-          <h1
-            className="text-6xl md:text-8xl lg:text-[6.5rem] font-heading font-black text-white leading-[1] tracking-tight"
-          >
+          <h1 className="text-6xl md:text-8xl lg:text-[6.5rem] font-heading font-black text-white leading-[1] tracking-tight">
             <span className="block mb-2 min-h-[1.2em]">
               <span
                 key={wordIndex}
@@ -110,18 +107,14 @@ export function Hero() {
         </div>
 
         {/* Subheadline */}
-        <p
-          className="text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
-        >
+        <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
           {t('description')}
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
           <Link href={`/${locale}/termin`}>
-            <button
-              className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl overflow-hidden hover:scale-105 active:scale-95 transition-all duration-300"
-            >
+            <button className="relative group h-16 px-10 rounded-full bg-teal text-white text-lg font-bold shadow-xl shadow-teal/30 overflow-hidden hover:scale-105 active:scale-95 transition-all duration-300">
               <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative flex items-center gap-2">
                 {t('bookBtn')} <ArrowRight className="w-5 h-5 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
@@ -129,10 +122,8 @@ export function Hero() {
             </button>
           </Link>
 
-          <Link href="#products">
-            <button
-              className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border hover:scale-105 active:scale-95 transition-all duration-300"
-            >
+          <Link href={`/${locale}/produkte`}>
+            <button className="h-16 px-10 rounded-full glass text-white text-lg font-bold border-white/20 hover:border-white/40 border hover:scale-105 active:scale-95 transition-all duration-300">
               {t('exploreBtn')}
             </button>
           </Link>
@@ -154,9 +145,13 @@ export function Hero() {
             </div>
           ))}
         </div>
+        
+        {/* Scroll indicator */}
+        <div className="mt-20 flex flex-col items-center gap-2 opacity-40 animate-bounce">
+          <div className="w-px h-12 bg-white" />
+          <span className="text-white text-xs uppercase tracking-widest">{t('scroll')}</span>
+        </div>
       </div>
     </section>
   );
 }
-
-

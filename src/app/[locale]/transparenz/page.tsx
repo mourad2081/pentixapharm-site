@@ -50,12 +50,12 @@ export default function TransparencyPage() {
               <h2 className="text-3xl font-heading font-black text-navy leading-tight">2. How I Earn My Money</h2>
             </div>
             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              As an exclusive ERGO tied agent, my compensation works via a classic commission model. If — and only if — you decide that following our consultation, an ERGO product is the right fit for your situation, ERGO pays me a commission for arranging the contract and servicing it long-term.
+              As an exclusive Next Gen Capital tied agent, my compensation works via a classic commission model. If — and only if — you decide that following our consultation, an Next Gen Capital product is the right fit for your situation, Next Gen Capital pays me a commission for arranging the contract and servicing it long-term.
             </p>
             <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl mt-8">
               <h4 className="font-bold text-navy mb-2 flex items-center"><ChevronRight className="w-4 h-4 text-teal mr-2" /> What this means for you:</h4>
               <p className="text-slate-600 leading-relaxed">
-                Your premiums are exactly the same whether you close the contract directly on the ERGO website on your own, or if you do it through me. However, by doing it through me, you get a lifetime English-speaking dedicated advisor at no extra cost.
+                Your premiums are exactly the same whether you close the contract directly on the Next Gen Capital website on your own, or if you do it through me. However, by doing it through me, you get a lifetime English-speaking dedicated advisor at no extra cost.
               </p>
             </div>
           </motion.div>

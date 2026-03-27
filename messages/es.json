@@ -1,0 +1,109 @@
+{
+  "Navbar": {
+    "home": "Inicio",
+    "products": "Productos",
+    "about": "Nuestro Equipo",
+    "blog": "Blog",
+    "book": "Reservar Consulta",
+    "faq": "Preguntas Frecuentes",
+    "contact": "Contacto",
+    "resources": "Recursos",
+    "seminars": "Seminarios",
+    "joinUs": "Únete al Equipo"
+  },
+  "Hero": {
+    "badge": "Asesores Financieros Independientes · Alemania",
+    "word1": "Tu Futuro.",
+    "word2": "Tu Familia.",
+    "word3": "Tu Crecimiento.",
+    "titleEnd": "Asegurado.",
+    "description": "Asesoría financiera experta en Alemania — cubriendo Seguro de Salud, Pensiones y Protección de Activos en 5 idiomas.",
+    "bookBtn": "Reservar Consulta Gratuita",
+    "exploreBtn": "Ver Productos",
+    "stat1Label": "Clientes Satisfechos",
+    "stat2Label": "Hablamos tu idioma",
+    "stat3Label": "Consulta Gratuita",
+    "scroll": "Desplazar"
+  },
+  "TrustBar": {
+    "item1": "Socio Financiero de Confianza",
+    "item2": "Asesores Certificados",
+    "item3": "5 Idiomas",
+    "item4": "Consulta Inicial Gratuita",
+    "item5": "Valoración de 5 Estrellas",
+    "item6": "Servicio en toda Alemania",
+    "item7": "+500 Clientes Asesorados",
+    "item8": "Licencia §34d GewO"
+  },
+  "StatsSection": {
+    "title": "Los Números que Importan",
+    "desc": "Datos reales para decisiones reales sobre tu seguridad financiera.",
+    "stat1": "Brecha pensional mensual promedio en Alemania",
+    "stat2": "Umbral de ingresos para elegibilidad PKV (2024)",
+    "stat3": "Clientes asesorados personalmente",
+    "stat4": "Idiomas para tu consulta"
+  },
+  "WhyMe": {
+    "subtitle": "Conoce a Nuestro Equipo",
+    "titlePart1": "Asesores expertos.",
+    "titlePart2": "Tus socios de confianza.",
+    "desc": "Nuestro equipo aporta experiencia en finanzas corporativas internacionales y un enfoque multilingüe para proteger lo que más importa — tu futuro financiero en Alemania.",
+    "benefit1": "Experiencia en Finanzas Corporativas — verdadera pericia, no solo ventas",
+    "benefit2": "Consultas en 5 idiomas: Inglés, Alemán, Francés, Árabe y Español",
+    "benefit3": "Filosofía sin presión — enfoque 100% de asesoría",
+    "benefit4": "Soluciones personalizadas para tu situación única",
+    "btn1": "Conocer al Equipo",
+    "btn2": "Reservar una llamada",
+    "advisorName": "Next Gen Capital",
+    "advisorSubtitle": "Asesores Financieros Independientes, Alemania",
+    "floating1Label": "Años de Experiencia",
+    "floating2Label": "Idiomas",
+    "floating3Label": "Experto Certificado"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "links": "Enlaces Útiles",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "imprint": "Aviso Legal",
+    "privacy": "Política de Privacidad",
+    "bookBtn": "Reservar Consulta"
+  },
+  "CookieConsent": {
+    "msg": "Usamos cookies para mejorar tu experiencia de navegación y analizar nuestro tráfico. No se almacenan datos personales sin tu consentimiento.",
+    "accept": "Aceptar Todo",
+    "decline": "Rechazar No Esenciales"
+  },
+  "ProductCards": {
+    "subtitle": "Lo que Cubrimos",
+    "title": "Protección Integral",
+    "desc": "Carteras de inversión y seguros personalizadas precisamente para tu situación — desde protección patrimonial hasta acceso a atención médica premium.",
+    "viewDetails": "Ver detalles",
+    "p1Title": "Pensión y Jubilación",
+    "p1Desc": "Asegura tu nivel de vida en la jubilación con planes de pensión garantizados.",
+    "p2Title": "Seguro de Vida",
+    "p2Desc": "Protección financiera insustituible y tranquilidad para tus seres queridos.",
+    "p3Title": "Dental Complementario",
+    "p3Desc": "Sonrisas radiantes sin las exorbitantes facturas dentales y tiempos de espera.",
+    "p4Title": "Seguro de Accidentes",
+    "p4Desc": "Protección mundial de primer nivel 24/7 dondequiera que te lleve la vida.",
+    "p5Title": "Protección Jurídica",
+    "p5Desc": "Defiende tus derechos con facilidad y confianza en todas las disputas.",
+    "p6Title": "Salud Privada (PKV)",
+    "p6Desc": "Atención médica privada premium con acceso a especialistas adaptada para ti."
+  },
+  "ProductPage": {
+    "problemTitle": "El Reto",
+    "solutionTitle": "La Solución",
+    "tiersTitle": "Opciones de Plan",
+    "faqTitle": "Preguntas Frecuentes",
+    "ctaTitle": "¿Listo para un {name} seguro?",
+    "ctaDesc": "Reserva tu consulta inicial 100% gratuita ahora. Online, en persona o por teléfono.",
+    "ctaBtn": "Reservar Consulta Gratuita",
+    "benefitsTitle": "¿Por qué elegir Next Gen Capital?",
+    "included": "Incluido",
+    "notIncluded": "No incluido",
+    "features": "Características",
+    "problemHeading": "El Problema"
+  }
+}

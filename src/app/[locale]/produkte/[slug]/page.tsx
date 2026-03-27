@@ -197,7 +197,7 @@ export default function ProductPage({ params }: { params: { locale: string; slug
                       {product.tiers.map(tier => (
                         <TableHead key={tier.name} className="text-center text-lg text-white font-bold py-10">
                           <div className="flex flex-col items-center">
-                            <span className="text-teal text-sm uppercase tracking-widest mb-1">ERGO</span>
+                            <span className="text-teal text-sm uppercase tracking-widest mb-1">Next Gen Capital</span>
                             {tier.name}
                           </div>
                         </TableHead>
@@ -301,7 +301,7 @@ export default function ProductPage({ params }: { params: { locale: string; slug
           <div className="mt-16 flex items-center gap-6 text-white/40 font-bold uppercase tracking-widest text-xs">
              <span>Free Consultation</span>
              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
-             <span>Official ERGO Advisor</span>
+             <span>Official Next Gen Capital</span>
              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
              <span>Berlin Based</span>
           </div>

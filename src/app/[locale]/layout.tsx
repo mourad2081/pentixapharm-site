@@ -1,5 +1,5 @@
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import {getMessages, getLocale} from 'next-intl/server';
 import dynamic from 'next/dynamic';
 import { locales } from '@/i18n';
 import { notFound } from 'next/navigation';
@@ -23,10 +23,11 @@ export default async function LocaleLayout({
 }) {
   if (!locales.includes(locale)) notFound();
   
-  const messages = await getMessages();
+  // Fetch all messages for this locale
+  const messages = await getMessages({locale});
 
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages}>
       <ScrollProgress />
       <Navbar />
       <div className="flex-1 w-full">

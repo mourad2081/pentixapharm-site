@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import {
   FileText, User, Home, Calendar, MessageCircle,
-  Briefcase, GraduationCap, Mail, Users, ShieldCheck, Menu, X
+  Briefcase, GraduationCap, Mail, Users, ShieldCheck, Menu, X, BookOpen
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -27,6 +27,7 @@ export function Navbar() {
     { name: t('home'), href: `/${locale}`, icon: Home },
     { name: t('products'), href: `/${locale}/produkte`, icon: ShieldCheck },
     { name: t('seminars'), href: `/${locale}/seminare`, icon: GraduationCap },
+    { name: t('resources'), href: `/${locale}/ressourcen`, icon: BookOpen },
     { name: t('about'), href: `/${locale}/ueber-mich`, icon: User },
     { name: t('joinUs'), href: `/${locale}/join-us`, icon: Users },
     { name: t('blog'), href: `/${locale}/blog`, icon: FileText },
@@ -48,17 +49,24 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between max-w-7xl">
         {/* Logo */}
         <Link href={`/${locale}`} className="flex items-center gap-3 group shrink-0">
-          <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white shadow-sm border border-white/20 group-hover:scale-105 transition-transform duration-300">
+          <div className={`relative h-12 w-12 overflow-hidden rounded-xl bg-white shadow-xl border-2 border-white flex items-center justify-center transition-all duration-500 overflow-hidden ${scrolled ? "scale-90" : "scale-100"}`}>
             <Image
               src="/logo.png"
               alt="Next Gen Capital Logo"
-              fill
-              className="object-contain p-1"
+              width={48}
+              height={48}
+              className="object-contain p-2"
+              priority
             />
           </div>
-          <span className={`font-heading font-black text-xl transition-colors duration-300 ${scrolled ? "text-navy" : "text-white"}`}>
-            Next Gen <span className="text-teal">Capital</span>
-          </span>
+          <div className="flex flex-col -gap-1">
+            <span className={`font-heading font-black text-2xl tracking-tighter transition-colors duration-300 leading-none ${scrolled ? "text-navy" : "text-white"}`}>
+              Next Gen <span className="text-teal">Capital</span>
+            </span>
+            <span className={`text-[9px] font-black uppercase tracking-[0.3em] transition-colors duration-300 ${scrolled ? "text-slate-400" : "text-teal/80"}`}>
+              Financial Advisors
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Links */}

@@ -105,5 +105,80 @@
     "notIncluded": "Not included",
     "features": "Features",
     "problemHeading": "The Problem"
+  },
+  "FaqSection": {
+    "subtitle": "FAQ",
+    "title": "Your Questions, Answered",
+    "searchPlaceholder": "Search e.g. 'PKV', 'Visa'...",
+    "q1": "Is health insurance mandatory for my residence permit?",
+    "a1": "Yes, in Germany, valid health insurance is a requirement for all residents and for obtaining any long-term visa or residence permit. We help you choose the one that's right for your situation.",
+    "q2": "Why should I switch from Public (GKV) to Private (PKV)?",
+    "a2": "Private insurance often offers better services, faster specialist access, and can be cheaper if you are a young high-earner or freelancer. However, it's a long-term decision that needs careful planning.",
+    "q3": "What is the difference between 'Netto' and 'Brutto' for pensions?",
+    "a3": "Brutto is your gross salary before taxes and social contributions. Netto is what's in your bank account. Your pension will be a percentage of your last Netto income, hence the 'pension gap'.",
+    "q4": "How much does a personal consultation cost?",
+    "a4": "My initial consultation is 100% free and without any obligation. I'm compensated by the insurance providers, so you get expert advice at no extra cost.",
+    "q5": "Can I manage my insurance in English?",
+    "a5": "Yes! At Next Gen Capital, we offer multilingual support, and I personally advice in 4 languages. Most documentation is also available in English for expats."
+  },
+  "Testimonials": {
+    "subtitle": "Real Success Stories",
+    "title": "Client Appreciation",
+    "verifiedLabel": "Verified Client Reviews",
+    "pkvOptimization": "PKV Optimization",
+    "privateHealth": "Private Health (PKV)",
+    "pensionPlanning": "Pension Planning",
+    "accidentInsurance": "Accident Insurance",
+    "legalProtection": "Legal Protection",
+    "pkvPension": "PKV + Pension",
+    "dentalInsurance": "Supplemental Dental"
+  },
+  "Timeline": {
+    "subtitle": "Your Success Journey",
+    "title": "From Call to Covered",
+    "desc": "A seamless 5-step journey from first contact to full protection — typically done in under 7 days.",
+    "step1": "Free Discovery Call",
+    "step1Desc": "30-minute conversation in your language. No pressure, no jargon. We map out your situation and identify the gaps.",
+    "step2": "Custom Analysis",
+    "step2Desc": "Within 48 hours, I build your personalized insurance architecture — comparing products, costs, and tax advantages.",
+    "step3": "Clear Proposal",
+    "step3Desc": "A simple, visual proposal in your language. Everything explained. No surprises in the fine print — ever.",
+    "step4": "Seamless Sign-up",
+    "step4Desc": "Fully digital, bilingual forms. We handle the paperwork. You're covered and activated in days, not weeks.",
+    "step5": "Ongoing Support",
+    "step5Desc": "Life changes. I'm still here. Annual reviews, job changes, family updates — your coverage evolves with you.",
+    "day1": "Day 1",
+    "day23": "Day 2–3",
+    "day35": "Day 3–5",
+    "day57": "Day 5–7",
+    "forLife": "For Life",
+    "ctaTitle": "Ready to start your journey?",
+    "ctaBtn": "Book Your Free Call Now"
+  },
+  "Home": {
+    "finalCtaTitle": "Ready to secure your {future}?",
+    "finalCtaDesc": "Take the first step towards total peace of mind. Join over {count} clients who trust our expertise across Germany.",
+    "finalCtaBtn": "Book Free Discovery Call",
+    "future": "financial future"
+  },
+  "CompanyLogos": {
+    "title": "Our clients work at Germany's leading companies"
+  },
+  "InfographicsSection": {
+    "subtitle": "Visual Guides",
+    "title": "Product Infographics",
+    "desc": "Clear, visual breakdowns of each Next Gen Capital product — click any to view full size.",
+    "i1Title": "Dental Insurance",
+    "i1Sub": "Your Best Smile, Fully Protected",
+    "i1Desc": "See exactly how Next Gen Capital Dental coverage eliminates massive out-of-pocket costs — real €7,420 savings example.",
+    "i2Title": "Accident Insurance",
+    "i2Sub": "Your Life Uninterrupted, Fully Protected",
+    "i2Desc": "24/7 worldwide protection with lifelong pension options and immediate cash payouts from €500.",
+    "i3Title": "Dental Protection Plans",
+    "i3Sub": "Premium Dental Coverage Breakdown",
+    "i3Desc": "Compare Dental-Schutz 75, 90, and 100 — find the plan that gives you €0 out-of-pocket dental costs.",
+    "i4Title": "Legal Protection",
+    "i4Sub": "Your German Rights, Secured",
+    "i4Desc": "Navigate German courts and legal disputes with zero financial risk — tailored for expats."
   }
 }

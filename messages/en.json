@@ -67,7 +67,11 @@
     "legal": "Legal",
     "imprint": "Imprint",
     "privacy": "Privacy Policy",
-    "bookBtn": "Book Consultation"
+    "bookBtn": "Book Consultation",
+    "description": "Independent financial advisors in Germany. Health insurance, pensions, and asset protection in 5 languages.",
+    "services": "Services",
+    "company": "Company",
+    "location": "Available across Germany"
   },
   "CookieConsent": {
     "msg": "We use cookies to enhance your browsing experience and analyze our traffic. No personal data is stored without your consent.",

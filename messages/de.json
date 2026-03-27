@@ -67,7 +67,11 @@
     "legal": "Rechtliches",
     "imprint": "Impressum",
     "privacy": "Datenschutz",
-    "bookBtn": "Termin buchen"
+    "bookBtn": "Termin buchen",
+    "description": "Unabhängige Finanzberater in Deutschland. Krankenversicherung, Altersvorsorge und Vermögensschutz in 5 Sprachen.",
+    "services": "Leistungen",
+    "company": "Unternehmen",
+    "location": "In ganz Deutschland tätig"
   },
   "CookieConsent": {
     "msg": "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern und unseren Datenverkehr zu analysieren. Ohne Ihre Zustimmung werden keine personenbezogenen Daten gespeichert.",

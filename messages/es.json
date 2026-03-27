@@ -67,7 +67,11 @@
     "legal": "Legal",
     "imprint": "Aviso Legal",
     "privacy": "Política de Privacidad",
-    "bookBtn": "Reservar Consulta"
+    "bookBtn": "Reservar Consulta",
+    "description": "Asesores financieros independientes en Alemania. Seguros de salud, pensiones y protección de activos en 5 idiomas.",
+    "services": "Servicios",
+    "company": "Empresa",
+    "location": "Disponible en toda Alemania"
   },
   "CookieConsent": {
     "msg": "Utilizamos cookies para mejorar tu experiencia de navegación y analizar nuestro tráfico. No se almacenan datos personales sin tu consentimiento.",

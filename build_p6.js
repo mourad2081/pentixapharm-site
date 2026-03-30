@@ -1,4 +1,11 @@
-"use client";
+
+const fs = require('fs');
+const path = require('path');
+const B = __dirname;
+const w = (f, c) => { fs.mkdirSync(path.dirname(path.join(B,f)),{recursive:true}); fs.writeFileSync(path.join(B,f),c,'utf8'); console.log('✓',f); };
+
+// ── ADMIN PANEL ───────────────────────────────────────────────────────────────
+w('src/components/admin/AdminPanel.tsx',`"use client";
 import { useState, useEffect } from "react";
 import { Lock, LogOut, Plus, Trash2, Save, Eye, EyeOff, Download, Terminal, Atom, Edit3, Tag, AlertTriangle, CheckCircle, RefreshCw, ChevronRight } from "lucide-react";
 
@@ -91,7 +98,7 @@ export function AdminPanel() {
     if (toAdd.length===0) { notify("All seed articles already imported."); return; }
     save([...toAdd,...posts]);
     setImported(true);
-    notify(`Imported ${toAdd.length} articles from Pentixapharm.com archive.`);
+    notify(\`Imported \${toAdd.length} articles from Pentixapharm.com archive.\`);
   }
 
   function runCmd() {
@@ -99,10 +106,10 @@ export function AdminPanel() {
     setCmd("");
     setLog(prev=>[...prev, "> " + cmd]);
     if (c==="help") setLog(prev=>[...prev,"Commands: list | clear | import | stats | logout"]);
-    else if (c==="list") setLog(prev=>[...prev,...posts.map(p=>`[${p.id}] ${p.title.slice(0,50)}...`)]);
+    else if (c==="list") setLog(prev=>[...prev,...posts.map(p=>\`[\${p.id}] \${p.title.slice(0,50)}...\`)]);
     else if (c==="clear") setLog(["Terminal cleared."]);
     else if (c==="import") { importSeed(); setLog(prev=>[...prev,"Import initiated."]); }
-    else if (c==="stats") setLog(prev=>[...prev,`Total articles: ${posts.length} | Published: ${posts.filter(p=>p.published).length}`]);
+    else if (c==="stats") setLog(prev=>[...prev,\`Total articles: \${posts.length} | Published: \${posts.filter(p=>p.published).length}\`]);
     else if (c==="logout") { setAuth(false); setLog(["Logged out."]); }
     else setLog(prev=>[...prev,"Unknown command. Type 'help'."]);
   }
@@ -372,3 +379,6 @@ export function AdminPanel() {
     </div>
   );
 }
+`);
+
+console.log('\n✅ Phase 6 done — Admin Panel\n');

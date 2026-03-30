@@ -1,20 +1,19 @@
 "use client";
-import { useState } from "react";
-import { Video, PhoneCall, MapPin, CheckCircle2, Clock, Star, Globe2, ChevronRight, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Video, Star, Clock, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const TEAM = [
   {
     name: "Mourad Labadi",
     role: "Senior Financial Advisor",
     photo: "/mourad-headshot.png",
-    languages: ["English", "French", "German", "Arabic"],
-    specialty: "Pension planning, PKV, and asset protection specialist.",
+    languages: ["EN", "DE", "FR", "AR", "ES"],
+    specialty: "Pension planning, health insurance, and asset protection specialist.",
     calendly: "https://calendly.com/mourad-labadi",
-    phone: "+49 123 456 789",
-    email: "mourad.labadi@nextgencapital.de",
+    phone: "+49 176 612 11 392",
+    email: "beratung@nextgencapital.de",
     badge: "bg-teal",
     calLink: "mouradlabadi/30min",
   },
@@ -22,8 +21,8 @@ const TEAM = [
     name: "Oscar Sunderland",
     role: "Financial Advisor",
     photo: "/mourad-headshot.png",
-    languages: ["English", "German"],
-    specialty: "Health insurance (PKV) and financial planning specialist.",
+    languages: ["EN", "DE"],
+    specialty: "Health insurance and financial planning specialist.",
     calendly: "https://calendly.com/oscar_sunderland",
     phone: "+49 176 70845501",
     email: "oscar.sunderland@nextgencapital.de",
@@ -33,85 +32,84 @@ const TEAM = [
 ];
 
 const checklist = [
-  "Detailed analysis of your current financial situation",
-  "Identification of hidden coverage gaps",
-  "Concrete, unbiased product recommendations",
-  "100% free, transparent, zero sales pressure",
+  "Detailed analysis of your situation",
+  "Identification of coverage gaps",
+  "Unbiased product recommendations",
+  "100% free, zero pressure advice",
 ];
 
-export function BookingContent({ isEn: _ }: { isEn: boolean }) {
+export function BookingContent() {
+  const t = useTranslations("Navbar");
+
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Hero Header */}
-      <section className="py-20 bg-navy relative overflow-hidden">
+      <section className="py-24 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(14,165,160,0.15),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:30px_30px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
         <div className="container px-4 md:px-8 max-w-5xl mx-auto text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="inline-flex items-center gap-2 bg-teal/20 text-teal text-sm font-bold px-5 py-2 rounded-full mb-8 border border-teal/30">
-              <Star className="w-4 h-4" /> 100% Free — No Obligation
+            <span className="inline-flex items-center gap-2 bg-teal/20 text-teal text-xs font-black px-6 py-2.5 rounded-full mb-10 border border-teal/30 uppercase tracking-[0.3em] shadow-2xl">
+              <Star className="w-4 h-4" /> 100% Free. No Obligation
             </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-black text-white mb-6 tracking-tight">
+            <h1 className="text-5xl md:text-8xl font-heading font-black text-white mb-10 tracking-tighter leading-none">
               Book Your Free <br />
-              <span className="gradient-text">Initial Consultation</span>
+              <span className="text-teal underline decoration-teal/20 underline-offset-8">Initial Consultation</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 font-medium flex items-center justify-center gap-3">
-              <Clock className="w-5 h-5 text-teal" />
-              30 Minutes &nbsp;•&nbsp; Online or In Person &nbsp;•&nbsp; Zero Obligation
+            <p className="text-lg md:text-xl text-slate-400 font-black uppercase tracking-widest flex items-center justify-center gap-6">
+              <span className="flex items-center gap-2"><Clock className="w-5 h-5 text-teal" /> 30 Minutes</span>
+              <span className="text-white/20 hidden md:inline">|</span>
+              <span className="flex items-center gap-2"><Video className="w-5 h-5 text-teal" /> Online Call</span>
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Choose Your Advisor */}
-      <section className="py-16 bg-[#FAF9F6]">
+      <section className="py-24 bg-slate-50">
         <div className="container px-4 md:px-8 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-black text-navy mb-4">Choose Your Advisor</h2>
-            <p className="text-slate-500 font-medium max-w-xl mx-auto">Select the advisor that best fits your needs. Both offer a free 30-minute initial consultation.</p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-heading font-black text-navy mb-4 tracking-tight">Choose Your Advisor</h2>
+            <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Select the advisor that best fits your needs</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-24">
             {TEAM.map((member, i) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15 }}
-                className="bg-white rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-border/30"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-white rounded-[4rem] shadow-xl shadow-navy/5 hover:shadow-2xl transition-all duration-700 overflow-hidden border-0 group relative"
               >
-                <div className={`h-1.5 w-full ${member.badge}`} />
-                <div className="p-8">
-                  <div className="flex items-start gap-5 mb-6">
-                    <div className="relative h-20 w-20 rounded-2xl overflow-hidden bg-slate-100 border-2 border-white shadow-md shrink-0">
+                <div className={`h-2 w-full ${member.badge}`} />
+                <div className="p-10 md:p-14">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-10">
+                    <div className="relative h-32 w-32 rounded-[2.5rem] overflow-hidden bg-slate-100 border-4 border-white shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500 shrink-0">
                       <Image src={member.photo} alt={member.name} fill className="object-cover" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-heading font-black text-navy">{member.name}</h3>
-                      <p className="text-teal font-bold text-sm">{member.role}</p>
-                      <div className="flex flex-wrap gap-1 mt-2">
+                    <div className="text-center md:text-left pt-2">
+                      <h3 className="text-3xl font-heading font-black text-navy mb-1 tracking-tight">{member.name}</h3>
+                      <p className="text-teal font-black uppercase tracking-widest text-xs mb-4">{member.role}</p>
+                      <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                         {member.languages.map(l => (
-                          <span key={l} className="text-[10px] px-2 py-0.5 bg-teal/10 text-teal rounded-full font-bold">{l}</span>
+                          <span key={l} className="text-[10px] px-3 py-1 bg-slate-50 text-slate-400 rounded-lg font-black border border-slate-100">{l}</span>
                         ))}
                       </div>
                     </div>
                   </div>
                   
-                  <p className="text-slate-500 text-sm leading-relaxed mb-6">{member.specialty}</p>
-                  
-                  <div className="flex flex-col gap-2 mb-6 text-xs text-slate-400 font-medium">
-                    <a href={`tel:${member.phone}`} className="hover:text-teal transition-colors">{member.phone}</a>
-                    <a href={`mailto:${member.email}`} className="hover:text-teal transition-colors">{member.email}</a>
-                  </div>
+                  <p className="text-slate-500 text-lg font-bold leading-relaxed mb-10 text-center md:text-left">{member.specialty}</p>
                   
                   <a
                     href={member.calendly}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full h-12 rounded-2xl bg-navy text-white text-sm font-black uppercase tracking-widest hover:bg-teal transition-all duration-300 active:scale-95 group"
+                    className="flex items-center justify-center gap-4 w-full h-20 rounded-[2rem] bg-navy text-white text-lg font-black uppercase tracking-widest hover:bg-teal shadow-2xl shadow-navy/20 hover:-translate-y-2 transition-all duration-500 active:scale-95 group/btn"
                   >
-                    Book with {member.name.split(' ')[0]}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    Select {member.name.split(' ')[0]}
+                    <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform" />
                   </a>
                 </div>
               </motion.div>
@@ -119,28 +117,36 @@ export function BookingContent({ isEn: _ }: { isEn: boolean }) {
           </div>
 
           {/* What to expect */}
-          <div className="bg-white border border-border/60 p-10 rounded-[2.5rem] shadow-sm max-w-2xl mx-auto">
-            <h3 className="text-xl font-heading font-black text-navy mb-6 uppercase tracking-wide text-center">What to Expect</h3>
-            <ul className="space-y-5">
+          <div className="bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl shadow-navy/5 max-w-3xl mx-auto relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-teal/5 rounded-bl-full translate-x-12 -translate-y-12 transition-transform duration-700 group-hover:scale-110" />
+            
+            <h3 className="text-2xl font-heading font-black text-navy mb-10 uppercase tracking-widest text-xs text-center">What to Expect</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {checklist.map((item, i) => (
-                <motion.li
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="flex items-start gap-4"
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * i }}
+                  className="flex items-center gap-4"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-teal shrink-0 mt-0.5" />
-                  <span className="text-navy text-sm font-medium leading-relaxed">{item}</span>
-                </motion.li>
+                  <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center shrink-0">
+                     <CheckCircle2 className="w-5 h-5 text-teal" />
+                  </div>
+                  <span className="text-navy font-bold leading-snug">{item}</span>
+                </motion.div>
               ))}
-            </ul>
+            </div>
 
-            {/* Trust note */}
-            <div className="mt-8 bg-navy text-white p-6 rounded-2xl">
-              <p className="text-sm font-medium text-slate-300 leading-relaxed">
-                🔒 <strong className="text-white">Privacy guaranteed.</strong> Your data is never shared or sold. Consultation details are protected under German data privacy law (DSGVO).
-              </p>
+            {/* Privacy note */}
+            <div className="bg-navy text-white p-8 rounded-[2rem] flex items-center gap-6 relative overflow-hidden">
+                <div className="absolute right-0 bottom-0 w-32 h-32 bg-white/5 rounded-tl-full" />
+                <div className="text-3xl shrink-0">🔒</div>
+                <p className="text-sm font-bold text-slate-300 leading-relaxed relative z-10">
+                  <strong className="text-teal font-black uppercase tracking-widest mr-2">Secure & Confidential.</strong> 
+                  Your data is protected under German law (DSGVO). Consultations are strictly confidential.
+                </p>
             </div>
           </div>
         </div>

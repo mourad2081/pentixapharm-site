@@ -1,11 +1,3 @@
 import createMiddleware from 'next-intl/middleware';
-
-export default createMiddleware({
-  locales: ['en', 'de', 'fr', 'ar', 'es'],
-  defaultLocale: 'en',
-  localeDetection: true,
-});
-
-export const config = {
-  matcher: ['/((?!api|_next|.*\\..*|admin|analytics).*)']
-};
+export default createMiddleware({locales:['en','de'],defaultLocale:'en'});
+export const config={matcher:['/((?!api|admin|_next|.*\..*).*)']};

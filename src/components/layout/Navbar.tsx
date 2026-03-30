@@ -26,6 +26,7 @@ export function Navbar() {
     { label: t("news"), href: "/" + locale + "/news" },
     { label: t("investors"), href: "/" + locale + "/investors" },
     { label: t("stats"), href: "/" + locale + "/stats" },
+    { label: "IIS", href: "/" + locale + "/iis" },
     { label: t("careers"), href: "/" + locale + "/careers" },
   ];
 

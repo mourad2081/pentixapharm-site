@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, FlaskConical, Activity, FileText, Users, TrendingUp, ChevronRight, ExternalLink, Microscope, Zap, Atom } from "lucide-react";
-import Spline from '@splinetool/react-spline';
 
 const fadeUp = { hidden:{opacity:0,y:24}, show:{opacity:1,y:0} };
 const stagger = { show:{ transition:{ staggerChildren:0.1 } } };
@@ -39,7 +38,7 @@ export default function HomePage() {
         {/* Spline Base Layer */}
         <div className="absolute inset-0 z-0 opacity-60 mix-blend-screen pointer-events-none" style={{ filter: "saturate(1.2)" }}>
            {/* Fallback to CSS animations when Spline loads */}
-           <Spline scene="https://prod.spline.design/6Wq1Q7YGyMvqFl9J/scene.splinecode" />
+           
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center pt-24 pointer-events-auto">

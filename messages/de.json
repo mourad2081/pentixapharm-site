@@ -8,7 +8,9 @@
     "investors": "Investoren",
     "contact": "Kontakt",
     "stats": "Statistiken",
-    "contactIR": "IR-Kontakt"
+    "contactIR": "IR-Kontakt",
+    "careers": "Karriere",
+    "partnerships": "Partnerschaften"
   },
   "footer": {
     "tagline": "Fortschrittliche Präzisions-Radiopharmazeutika für eine bessere Zukunft.",
@@ -112,5 +114,10 @@
   "stats": {
     "title": "Forschungs- & Entwicklungsübersicht",
     "desc": "Verfolgung unserer klinischen Fortschritte, wissenschaftlichen Ergebnisse und Betriebskennzahlen."
+  },
+  "careers": {
+    "title": "Gestalten Sie die Zukunft der Theranostik",
+    "desc": "Werden Sie Teil von Pentixapharm bei der Entwicklung bahnbrechender CXCR4-gerichteter Radiopharmazeutika. Wir suchen leidenschaftliche Pioniere für unsere Teams in Berlin und Würzburg.",
+    "btn": "Offene Stellen ansehen"
   }
 }

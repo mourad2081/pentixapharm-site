@@ -1,4 +1,34 @@
-"use client";
+
+const fs = require('fs');
+const path = require('path');
+const B = __dirname;
+function w(f, c) { fs.mkdirSync(path.dirname(path.join(B,f)),{recursive:true}); fs.writeFileSync(path.join(B,f),c,'utf8'); console.log('✓',f); }
+function r(f) { return fs.readFileSync(path.join(B,f),'utf8'); }
+
+// ── 6. FOOTER ─────────────────────────────────────────────────────────────
+let footer = r('src/components/layout/Footer.tsx');
+if (!footer.includes('href={"/" + locale + "/careers"}')) {
+  // We'll replace the existing Links block
+  footer = footer.replace(/links: \[([\s\S]*?)\]/g, `links: [
+      { label: t("home"), href: "/" + locale },
+      { label: t("pipeline"), href: "/" + locale + "/pipeline" },
+      { label: t("about"), href: "/" + locale + "/about" },
+      { label: "Careers", href: "/" + locale + "/careers" }
+    ]`);
+  // And replace the logo in the footer to match navbar "Pentixa[pharm]" and Atom icon
+  footer = footer.replace(/<span className="font-heading font-bold text-white text-\[22px\] tracking-tight">.*?<\/span>/s, `<span className="font-heading font-bold text-white text-[22px] tracking-tight">Pentixa<span className="text-emerald">pharm</span></span>`);
+  footer = footer.replace(/<Activity className="w-6 h-6 text-emerald" \/>/, `<Atom className="w-6 h-6 text-emerald" />`);
+  // Import Atom if not there
+  if (!footer.includes('Atom')) {
+    footer = footer.replace(/import \{.*?\} from "lucide-react";/, `import { Mail, Phone, MapPin, ArrowRight, Activity, Atom } from "lucide-react";`);
+  }
+  fs.writeFileSync(path.join(B,'src/components/layout/Footer.tsx'), footer, 'utf8');
+  console.log('✓ src/components/layout/Footer.tsx');
+}
+
+
+// ── 7. HOME PAGE (Add Spline & Dynamic 3D) ──────────────────────────────
+w('src/app/[locale]/page.tsx',`"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
@@ -275,3 +305,5 @@ export default function HomePage() {
     </div>
   );
 }
+`);
+console.log("Updated Spline deps and rewrote src/app/[locale]/page.tsx completely!");

@@ -8,7 +8,9 @@
     "investors": "Investors",
     "contact": "Contact",
     "stats": "Stats",
-    "contactIR": "Contact IR"
+    "contactIR": "Contact IR",
+    "careers": "Careers",
+    "partnerships": "Partnerships"
   },
   "footer": {
     "tagline": "Advancing precision radiopharmaceuticals for a better tomorrow.",
@@ -112,5 +114,10 @@
   "stats": {
     "title": "Research & Development Overview",
     "desc": "Tracking our clinical progress, scientific output, and operational metrics."
+  },
+  "careers": {
+    "title": "Build the Future of Theranostics",
+    "desc": "Join Pentixapharm in developing ground-breaking CXCR4-targeted radiopharmaceuticals. We are seeking passionate trailblazers to join our team in Berlin and Würzburg.",
+    "btn": "View Open Positions"
   }
 }

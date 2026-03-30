@@ -5,8 +5,8 @@ const config: Config = {
   theme:{extend:{
     colors:{
       background:"hsl(var(--background))",foreground:"hsl(var(--foreground))",
-      navy:"#071429",navy2:"#0B1D3A",navy3:"#1E3250",
-      emerald:"#00B894",emeraldDark:"#00997A",cyan:"#00CEC9",gold:"#FDCB6E",
+      navy:"#041A2F",navy2:"#0A2A4A",navy3:"#133F6E",
+      emerald:"#00B1AB",emeraldDark:"#008A85",cyan:"#00D2FF",gold:"#FFB81C",
       card:{DEFAULT:"hsl(var(--card))",foreground:"hsl(var(--card-foreground))"},
       popover:{DEFAULT:"hsl(var(--popover))",foreground:"hsl(var(--popover-foreground))"},
       primary:{DEFAULT:"hsl(var(--primary))",foreground:"hsl(var(--primary-foreground))"},

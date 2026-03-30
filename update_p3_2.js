@@ -1,4 +1,47 @@
-"use client";
+
+const fs = require('fs');
+const path = require('path');
+const B = __dirname;
+function w(f, c) { fs.mkdirSync(path.dirname(path.join(B,f)),{recursive:true}); fs.writeFileSync(path.join(B,f),c,'utf8'); console.log('✓',f); }
+function r(f) { return fs.readFileSync(path.join(B,f),'utf8'); }
+
+function toLight(c) {
+  let content = c;
+  content = content.replace(/bg-navy/g, "bg-[#F8FAFD]");
+  content = content.replace(/bg-navy2/g, "bg-white");
+  content = content.replace(/text-white/g, "text-navy");
+  content = content.replace(/text-slate-300/g, "text-slate-600");
+  content = content.replace(/text-slate-400/g, "text-slate-500");
+  content = content.replace(/border-white\/8/g, "border-slate-200");
+  content = content.replace(/border-white\/10/g, "border-slate-200");
+  content = content.replace(/glass/g, "bg-white border border-slate-200 shadow-sm");
+  content = content.replace(/text-emerald/g, "text-[#00B1AB]"); // using inline for safety or just keep text-emerald since emerald is mapped
+  content = content.replace(/text-cyan/g, "text-[#00A3E0]");
+  content = content.replace(/text-gold/g, "text-[#F2A900]");
+  return content;
+}
+
+// Update all existing pages
+const pages = [
+  'src/app/[locale]/about/page.tsx',
+  'src/app/[locale]/pipeline/page.tsx',
+  'src/app/[locale]/investors/page.tsx',
+  'src/app/[locale]/news/page.tsx',
+  'src/app/[locale]/contact/page.tsx',
+  'src/app/[locale]/careers/page.tsx',
+  'src/app/[locale]/iis/page.tsx',
+];
+
+pages.forEach(p => {
+  if (fs.existsSync(path.join(B,p))) {
+    let content = r(p);
+    content = toLight(content);
+    w(p, content);
+  }
+});
+
+// Since About page needs Stats embedded, we will rewrite About page entirely to include Stats.
+w('src/app/[locale]/about/page.tsx', `"use client";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { Mail, Trophy, Calendar, Users, FlaskConical, Activity, BookOpen, Target, ShieldCheck } from "lucide-react";
@@ -91,3 +134,5 @@ export default function AboutPage() {
     </div>
   );
 }
+`);
+console.log("Rewrote About logic integrating Stats, applied light theme across standard pages.");

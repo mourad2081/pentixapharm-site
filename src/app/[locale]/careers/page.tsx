@@ -27,39 +27,39 @@ export default function CareersPage() {
   }, []);
 
   return (
-    <div className="bg-navy min-h-screen">
+    <div className="bg-[#F8FAFD] min-h-screen">
       <section className="relative pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy2 via-navy to-navy" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/5 rounded-full blur-3xl" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-cyan text-sm font-medium uppercase tracking-widest bg-cyan/10 px-4 py-1.5 rounded-full inline-block mb-3 border border-cyan/20">
+            <motion.span variants={fadeUp} className="text-[#00A3E0] text-sm font-medium uppercase tracking-widest bg-cyan/10 px-4 py-1.5 rounded-full inline-block mb-3 border border-cyan/20">
               Pentixapharm Careers
             </motion.span>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-white mb-5">{t("title")}</motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-400 max-w-2xl text-lg leading-relaxed mx-auto">{t("desc")}</motion.p>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-navy mb-5">{t("title")}</motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 max-w-2xl text-lg leading-relaxed mx-auto">{t("desc")}</motion.p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-20 bg-navy">
+      <section className="py-20 bg-[#F8FAFD]">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger} className="space-y-6">
             {jobs.length === 0 ? (
-               <div className="text-center py-20 bg-navy2 rounded-2xl border border-white/5">
+               <div className="text-center py-20 bg-[#F8FAFD]2 rounded-2xl border border-white/5">
                  <Briefcase className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-                 <p className="text-slate-400">There are currently no open positions. Please check back later.</p>
+                 <p className="text-slate-500">There are currently no open positions. Please check back later.</p>
                </div>
             ) : (
                jobs.map(job => (
-                 <motion.div key={job.id} variants={fadeUp} className="bg-navy2/50 backdrop-blur-md border border-white/10 rounded-2xl p-6 lg:p-8 hover:border-cyan/30 transition-all group flex flex-col md:flex-row md:items-center justify-between gap-6">
+                 <motion.div key={job.id} variants={fadeUp} className="bg-[#F8FAFD]2/50 backdrop-blur-md border border-slate-200 rounded-2xl p-6 lg:p-8 hover:border-cyan/30 transition-all group flex flex-col md:flex-row md:items-center justify-between gap-6">
                    <div className="flex-1">
-                     <h2 className="text-2xl font-bold font-heading text-white mb-3 group-hover:text-cyan transition-colors">{job.title}</h2>
-                     <div className="flex flex-wrap gap-4 text-sm text-slate-400 mb-4">
-                       <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-emerald"/> {job.location}</span>
-                       <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-gold"/> {job.type}</span>
+                     <h2 className="text-2xl font-bold font-heading text-navy mb-3 group-hover:text-[#00A3E0] transition-colors">{job.title}</h2>
+                     <div className="flex flex-wrap gap-4 text-sm text-slate-500 mb-4">
+                       <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-[#00B1AB]"/> {job.location}</span>
+                       <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#F2A900]"/> {job.type}</span>
                      </div>
-                     <p className="text-slate-300 leading-relaxed text-sm mb-4 line-clamp-2 md:line-clamp-none">{job.desc}</p>
+                     <p className="text-slate-600 leading-relaxed text-sm mb-4 line-clamp-2 md:line-clamp-none">{job.desc}</p>
                    </div>
                    <div className="shrink-0">
                      <a href={"mailto:careers@pentixapharm.com?subject=Application for " + encodeURIComponent(job.title)}
@@ -74,13 +74,13 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-navy2 border-t border-white/8 text-center">
+      <section className="py-20 bg-[#F8FAFD]2 border-t border-slate-200 text-center">
          <div className="container mx-auto px-6 max-w-2xl">
-            <h2 className="text-3xl font-bold text-white mb-4">Why Join Pentixapharm?</h2>
+            <h2 className="text-3xl font-bold text-navy mb-4">Why Join Pentixapharm?</h2>
             <div className="flex flex-col gap-3 items-start text-left mb-8 max-w-md mx-auto">
-               <span className="flex items-center gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-emerald"/> Work on Phase 3-ready radiopharmaceuticals.</span>
-               <span className="flex items-center gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-emerald"/> Agile, dynamic corporate culture.</span>
-               <span className="flex items-center gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-emerald"/> Competitive compensation & career growth.</span>
+               <span className="flex items-center gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-[#00B1AB]"/> Work on Phase 3-ready radiopharmaceuticals.</span>
+               <span className="flex items-center gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-[#00B1AB]"/> Agile, dynamic corporate culture.</span>
+               <span className="flex items-center gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-[#00B1AB]"/> Competitive compensation & career growth.</span>
             </div>
          </div>
       </section>

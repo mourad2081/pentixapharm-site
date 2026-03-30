@@ -1,4 +1,53 @@
-"use client";
+
+const fs = require('fs');
+const path = require('path');
+const B = __dirname;
+function w(f, c) { fs.mkdirSync(path.dirname(path.join(B,f)),{recursive:true}); fs.writeFileSync(path.join(B,f),c,'utf8'); console.log('✓',f); }
+function r(f) { return fs.readFileSync(path.join(B,f),'utf8'); }
+
+// ── 1. COLORS AND TAILWIND (Light Theme Biotech) ───────────────────────────
+let tw = r('tailwind.config.ts');
+// Replace colors with Pentixapharm genuine feel:
+// Deep Corporate Blue: #002A54 (navy)
+// Bright Cyan/Blue: #00A3E0 (cyan)
+// Light Gray backgrounds: #F8FAFD (slate-50)
+tw = tw.replace(/navy:"#041A2F",navy2:"#0A2A4A",navy3:"#133F6E",/g, 'navy:"#002A54",navy2:"#001D3D",navy3:"#001122",');
+tw = tw.replace(/cyan:"#00D2FF",gold:"#FFB81C"/g, 'cyan:"#00A3E0",gold:"#F2A900"'); // using Pentixapharm cyan, and a subtle gold/orange for highlight
+tw = tw.replace(/emerald:"#00B1AB",emeraldDark:"#008A85"/g, 'emerald:"#00B1AB",emeraldDark:"#008A85"');
+fs.writeFileSync(path.join(B,'tailwind.config.ts'), tw, 'utf8');
+
+let css = r('src/app/globals.css');
+// Force light theme
+css = css.replace(/body \{ @apply bg-white text-slate-800 font-sans; \}\n\.dark body \{ @apply bg-navy text-white; \}/g, 'body { @apply bg-[#F8FAFD] text-slate-800 font-sans; }');
+css = css.replace(/\.glass \{[^}]+\}/g, `.glass { @apply bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-sm }`);
+css = css.replace(/\.glass-emerald \{[^}]+\}/g, `.glass-emerald { @apply bg-[#00B1AB]/10 border border-[#00B1AB]/20 }`);
+css = css.replace(/text-white/g, 'text-slate-900').replace(/border-white\/[0-9]+/g, 'border-slate-200'); // Convert many text-white to dark in classes later
+fs.writeFileSync(path.join(B,'src/app/globals.css'), css, 'utf8');
+
+// ── 2. NAVBAR (Remove Stats, Add Technology, Change Styling) ───────────────
+let nav = r('src/components/layout/Navbar.tsx');
+nav = nav.replace(/\{ label: t\("stats"\), href: "\/" \+ locale \+ "\/stats" \},\n    \{ label: "IIS", href: "\/" \+ locale \+ "\/iis" \},/g, 
+  `{ label: "Technology", href: "/" + locale + "/technology" },\n    { label: "IIS", href: "/" + locale + "/iis" },`);
+// Make navbar light matching
+nav = nav.replace(/bg-navy\/90 backdrop-blur-xl/g, "bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm");
+nav = nav.replace(/text-white text-\[19px\]/g, "text-navy text-[19px]");
+nav = nav.replace(/text-slate-300/g, "text-slate-600");
+nav = nav.replace(/bg-white\/5/g, "bg-slate-100");
+nav = nav.replace(/text-slate-200/g, "text-slate-800");
+nav = nav.replace(/border-white\/10/g, "border-slate-200");
+nav = nav.replace(/bg-navy\/95/g, "bg-white/95");
+fs.writeFileSync(path.join(B,'src/components/layout/Navbar.tsx'), nav, 'utf8');
+
+// ── 3. MESSAGES ────────────────────────────────────────────────────────────
+let mEn = JSON.parse(r('messages/en.json'));
+let mDe = JSON.parse(r('messages/de.json'));
+delete mEn.nav.stats; delete mDe.nav.stats;
+mEn.nav.technology = "Technology"; mDe.nav.technology = "Technologie";
+fs.writeFileSync(path.join(B,'messages/en.json'), JSON.stringify(mEn, null, 2), 'utf8');
+fs.writeFileSync(path.join(B,'messages/de.json'), JSON.stringify(mDe, null, 2), 'utf8');
+
+// ── 4. HOME PAGE (Light Theme, Interactive Tabs, Photos) ───────────────────
+w('src/app/[locale]/page.tsx', `"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -265,3 +314,5 @@ export default function HomePage() {
     </div>
   );
 }
+`);
+console.log("Written Phase 3 Home Page updates.");

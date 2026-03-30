@@ -46,66 +46,66 @@ export default function NewsPage() {
   );
 
   const catColors: Record<string,string> = {
-    Clinical:"text-emerald bg-emerald/10 border-emerald/20",
-    Corporate:"text-cyan bg-cyan/10 border-cyan/20",
-    Financial:"text-gold bg-gold/10 border-gold/20",
+    Clinical:"text-[#00B1AB] bg-emerald/10 border-emerald/20",
+    Corporate:"text-[#00A3E0] bg-cyan/10 border-cyan/20",
+    Financial:"text-[#F2A900] bg-gold/10 border-gold/20",
     Regulatory:"text-purple-400 bg-purple-400/10 border-purple-400/20",
   };
 
   return (
-    <div className="bg-navy min-h-screen">
+    <div className="bg-[#F8FAFD] min-h-screen">
       {/* Header */}
       <section className="relative pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy2 via-navy to-navy" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-emerald text-sm font-medium uppercase tracking-widest">Press Office</motion.span>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-white mt-3 mb-5">{t("title")}</motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-400 max-w-2xl text-lg leading-relaxed">{t("desc")}</motion.p>
+            <motion.span variants={fadeUp} className="text-[#00B1AB] text-sm font-medium uppercase tracking-widest">Press Office</motion.span>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-navy mt-3 mb-5">{t("title")}</motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 max-w-2xl text-lg leading-relaxed">{t("desc")}</motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-navy2 border-y border-white/8 sticky top-16 z-30">
+      <section className="py-8 bg-[#F8FAFD]2 border-y border-slate-200 sticky top-16 z-30">
         <div className="container mx-auto px-6">
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             <div className="flex flex-wrap gap-2">
               {CATS.map(c => (
                 <button key={c} onClick={() => setFilter(c)}
                   className={"text-xs font-semibold px-4 py-1.5 rounded-full border transition-all " +
-                    (filter===c ? "bg-emerald text-navy border-emerald" : "text-slate-400 border-white/15 hover:border-emerald/40 hover:text-white")}>
+                    (filter===c ? "bg-emerald text-navy border-emerald" : "text-slate-500 border-white/15 hover:border-emerald/40 hover:text-navy")}>
                   {c}
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 w-full sm:w-64">
+            <div className="flex items-center gap-2 bg-white/5 border border-slate-200 rounded-full px-4 py-2 w-full sm:w-64">
               <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
               <input value={search} onChange={e=>setSearch(e.target.value)}
-                placeholder="Search news..." className="bg-transparent text-sm text-white placeholder-slate-600 outline-none w-full" />
+                placeholder="Search news..." className="bg-transparent text-sm text-navy placeholder-slate-600 outline-none w-full" />
             </div>
           </div>
         </div>
       </section>
 
       {/* News Grid */}
-      <section className="py-16 bg-navy">
+      <section className="py-16 bg-[#F8FAFD]">
         <div className="container mx-auto px-6">
           <AnimatePresence mode="wait">
             <motion.div key={filter+search} initial="hidden" animate="show" variants={stagger} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((n,i) => (
-                <motion.article key={n.id} variants={fadeUp} className="glass border border-white/8 rounded-2xl p-6 card-hover group flex flex-col">
+                <motion.article key={n.id} variants={fadeUp} className="bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-2xl p-6 card-hover group flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className={"text-xs font-semibold px-2.5 py-1 rounded-full border " + (catColors[n.cat] || "text-slate-400 bg-white/5 border-white/15")}>{n.cat}</span>
+                    <span className={"text-xs font-semibold px-2.5 py-1 rounded-full border " + (catColors[n.cat] || "text-slate-500 bg-white/5 border-white/15")}>{n.cat}</span>
                     <span className="flex items-center gap-1 text-xs text-slate-600">
                       <Calendar className="w-3 h-3" /> {new Date(n.date).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}
                     </span>
                   </div>
-                  <h2 className="font-heading font-bold text-white text-sm leading-snug mb-3 group-hover:text-emerald transition-colors flex-1">{n.title}</h2>
-                  <p className="text-slate-400 text-xs leading-relaxed mb-5 line-clamp-4">{n.excerpt}</p>
+                  <h2 className="font-heading font-bold text-navy text-sm leading-snug mb-3 group-hover:text-[#00B1AB] transition-colors flex-1">{n.title}</h2>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-5 line-clamp-4">{n.excerpt}</p>
                   <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/6">
                     <span className="text-xs text-slate-600">{n.source}</span>
-                    <span className="flex items-center gap-1 text-xs text-emerald font-medium">{t("readMore")}</span>
+                    <span className="flex items-center gap-1 text-xs text-[#00B1AB] font-medium">{t("readMore")}</span>
                   </div>
                 </motion.article>
               ))}

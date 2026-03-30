@@ -26,20 +26,20 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-navy min-h-screen">
+    <div className="bg-[#F8FAFD] min-h-screen">
       {/* Header */}
       <section className="relative pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy2 via-navy to-navy" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-emerald text-sm font-medium uppercase tracking-widest">Get in Touch</motion.span>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-white mt-3 mb-5">{t("title")}</motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-400 max-w-2xl text-lg leading-relaxed">{t("desc")}</motion.p>
+            <motion.span variants={fadeUp} className="text-[#00B1AB] text-sm font-medium uppercase tracking-widest">Get in Touch</motion.span>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-navy mt-3 mb-5">{t("title")}</motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 max-w-2xl text-lg leading-relaxed">{t("desc")}</motion.p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-20 bg-navy">
+      <section className="py-20 bg-[#F8FAFD]">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-5 gap-12 items-start">
             {/* Contact Info */}
@@ -51,17 +51,17 @@ export default function ContactPage() {
                 { icon:Phone, title:"Phone", detail:"+49 30 94892600", href:"tel:+4930948926" },
                 { icon:MapPin, title:"Headquarters", detail:"Robert-Rössle-Str. 10\n13125 Berlin, Germany", href:null },
               ].map((c,i) => (
-                <motion.div key={i} variants={fadeUp} className="glass border border-white/8 rounded-2xl p-5 card-hover">
+                <motion.div key={i} variants={fadeUp} className="bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-2xl p-5 card-hover">
                   <div className="flex items-start gap-4">
                     <div className="w-9 h-9 flex items-center justify-center bg-emerald/12 rounded-xl shrink-0">
-                      <c.icon className="w-4 h-4 text-emerald" />
+                      <c.icon className="w-4 h-4 text-[#00B1AB]" />
                     </div>
                     <div>
                       <p className="text-xs text-slate-500 mb-1">{c.title}</p>
                       {c.href ? (
-                        <a href={c.href} className="text-white hover:text-emerald transition-colors text-sm font-medium">{c.detail}</a>
+                        <a href={c.href} className="text-navy hover:text-[#00B1AB] transition-colors text-sm font-medium">{c.detail}</a>
                       ) : (
-                        <p className="text-white text-sm font-medium whitespace-pre-line leading-relaxed">{c.detail}</p>
+                        <p className="text-navy text-sm font-medium whitespace-pre-line leading-relaxed">{c.detail}</p>
                       )}
                     </div>
                   </div>
@@ -71,36 +71,36 @@ export default function ContactPage() {
 
             {/* Form */}
             <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger} className="md:col-span-3">
-              <motion.form variants={fadeUp} onSubmit={submit} className="glass border border-white/8 rounded-2xl p-8 space-y-5">
+              <motion.form variants={fadeUp} onSubmit={submit} className="bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-2xl p-8 space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs text-slate-400 mb-2">{tf("name")}</label>
+                    <label className="block text-xs text-slate-500 mb-2">{tf("name")}</label>
                     <input value={form.name} onChange={e=>setForm({...form,name:e.target.value})} required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600"
+                      className="w-full bg-white/5 border border-slate-200 rounded-xl px-4 py-3 text-navy text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600"
                       placeholder="Dr. Jane Doe" />
                   </div>
                   <div>
-                    <label className="block text-xs text-slate-400 mb-2">{tf("email")}</label>
+                    <label className="block text-xs text-slate-500 mb-2">{tf("email")}</label>
                     <input type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600"
+                      className="w-full bg-white/5 border border-slate-200 rounded-xl px-4 py-3 text-navy text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600"
                       placeholder="jane@institution.com" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-2">{tf("subject")}</label>
+                  <label className="block text-xs text-slate-500 mb-2">{tf("subject")}</label>
                   <input value={form.subject} onChange={e=>setForm({...form,subject:e.target.value})} required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600"
+                    className="w-full bg-white/5 border border-slate-200 rounded-xl px-4 py-3 text-navy text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600"
                     placeholder="Investor Relations Enquiry" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-2">{tf("message")}</label>
+                  <label className="block text-xs text-slate-500 mb-2">{tf("message")}</label>
                   <textarea value={form.message} onChange={e=>setForm({...form,message:e.target.value})} required rows={5}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600 resize-none"
+                    className="w-full bg-white/5 border border-slate-200 rounded-xl px-4 py-3 text-navy text-sm outline-none focus:border-emerald/50 focus:bg-white/8 transition-all placeholder-slate-600 resize-none"
                     placeholder="How can we help?" />
                 </div>
 
                 {status==="ok" && (
-                  <div className="flex items-center gap-2 text-emerald text-sm bg-emerald/10 border border-emerald/20 rounded-xl px-4 py-3">
+                  <div className="flex items-center gap-2 text-[#00B1AB] text-sm bg-emerald/10 border border-emerald/20 rounded-xl px-4 py-3">
                     <CheckCircle className="w-4 h-4" /> {tf("success")}
                   </div>
                 )}

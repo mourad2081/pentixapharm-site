@@ -19,8 +19,7 @@
 }
 @layer base {
   * { @apply border-border; }
-  body { @apply bg-white text-slate-800 font-sans; }
-.dark body { @apply bg-navy text-white; }
+  body { @apply bg-[#F8FAFD] text-slate-800 font-sans; }
   h1,h2,h3,h4,h5,h6 { @apply font-heading tracking-tight; }
   html { scroll-behavior:smooth; }
   ::selection { background:#00B894; color:#071429; }
@@ -30,8 +29,8 @@
   -webkit-background-clip:text; background-clip:text; color:transparent;
   background-size:200% auto; animation:gradient-x 6s ease infinite;
 }
-.glass { background:rgba(255,255,255,0.04); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.07); }
-.glass-emerald { background:rgba(0,184,148,0.07); backdrop-filter:blur(20px); border:1px solid rgba(0,184,148,0.18); }
+.glass { @apply bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-sm }
+.glass-emerald { @apply bg-[#00B1AB]/10 border border-[#00B1AB]/20 }
 .glow-emerald { box-shadow:0 0 40px rgba(0,184,148,0.25); }
 .card-hover { transition:all 0.3s ease; }
 .card-hover:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,184,148,0.15); }

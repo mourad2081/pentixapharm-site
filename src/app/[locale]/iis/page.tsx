@@ -17,71 +17,71 @@ export default function IISPage() {
   const locale = useLocale();
   
   return (
-    <div className="bg-navy min-h-screen">
+    <div className="bg-[#F8FAFD] min-h-screen">
       <section className="relative pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy2 via-navy to-navy" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald/5 rounded-full blur-[120px]" />
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-emerald text-sm font-bold uppercase tracking-widest bg-emerald/10 px-5 py-2 rounded-full inline-block mb-4 border border-emerald/20">
+            <motion.span variants={fadeUp} className="text-[#00B1AB] text-sm font-bold uppercase tracking-widest bg-emerald/10 px-5 py-2 rounded-full inline-block mb-4 border border-emerald/20">
               Investigator-Initiated Studies
             </motion.span>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">Advancing Science Together</motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-400 text-lg leading-relaxed">
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-navy mb-6">Advancing Science Together</motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 text-lg leading-relaxed">
               Pentixapharm deeply values independent research. We support academic and clinical investigators exploring novel applications of our CXCR4-targeted radiopharmaceuticals (PentixaFor and PentixaTher) through our global Investigator-Initiated Studies (IIS) program.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 bg-navy">
+      <section className="py-24 bg-[#F8FAFD]">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             
             {/* Left Sidebar (Instructions) */}
              <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger} className="lg:col-span-1 space-y-6">
-                 <motion.h2 variants={fadeUp} className="text-2xl font-bold font-heading text-white">IIS Application Process</motion.h2>
-                 <motion.p variants={fadeUp} className="text-sm text-slate-400 leading-relaxed">We provide clinical trial lots of [68Ga]Ga-PentixaFor kits or [177Lu]Lu-PentixaTher to approved academic protocols that align with our scientific mission.</motion.p>
+                 <motion.h2 variants={fadeUp} className="text-2xl font-bold font-heading text-navy">IIS Application Process</motion.h2>
+                 <motion.p variants={fadeUp} className="text-sm text-slate-500 leading-relaxed">We provide clinical trial lots of [68Ga]Ga-PentixaFor kits or [177Lu]Lu-PentixaTher to approved academic protocols that align with our scientific mission.</motion.p>
                  
-                 <motion.div variants={stagger} className="space-y-4 pt-4 border-t border-white/10">
+                 <motion.div variants={stagger} className="space-y-4 pt-4 border-t border-slate-200">
                     <motion.div variants={fadeUp} className="flex gap-3 items-start">
                        <span className="w-6 h-6 rounded bg-emerald text-navy font-bold flex items-center justify-center shrink-0">1</span>
-                       <p className="text-sm text-slate-300"><strong className="text-white block">Submit Concept</strong> Submit a 2-page concept sheet detailing the scientific rationale, clinical endpoints, and required clinical supply.</p>
+                       <p className="text-sm text-slate-600"><strong className="text-navy block">Submit Concept</strong> Submit a 2-page concept sheet detailing the scientific rationale, clinical endpoints, and required clinical supply.</p>
                     </motion.div>
                     <motion.div variants={fadeUp} className="flex gap-3 items-start">
                        <span className="w-6 h-6 rounded bg-emerald text-navy font-bold flex items-center justify-center shrink-0">2</span>
-                       <p className="text-sm text-slate-300"><strong className="text-white block">Medical Review</strong> Our Medical Affairs committee reviews submissions bi-monthly.</p>
+                       <p className="text-sm text-slate-600"><strong className="text-navy block">Medical Review</strong> Our Medical Affairs committee reviews submissions bi-monthly.</p>
                     </motion.div>
                     <motion.div variants={fadeUp} className="flex gap-3 items-start">
                        <span className="w-6 h-6 rounded bg-emerald text-navy font-bold flex items-center justify-center shrink-0">3</span>
-                       <p className="text-sm text-slate-300"><strong className="text-white block">Protocol & Contracting</strong> Upon conditional approval, full protocols are developed and IIS agreements are drafted.</p>
+                       <p className="text-sm text-slate-600"><strong className="text-navy block">Protocol & Contracting</strong> Upon conditional approval, full protocols are developed and IIS agreements are drafted.</p>
                     </motion.div>
                  </motion.div>
 
-                 <motion.div variants={fadeUp} className="bg-navy2/80 p-6 rounded-2xl border border-white/5 mt-6 border-l-4 border-l-cyan">
-                    <h3 className="text-white font-bold mb-2 flex items-center gap-2"><BookOpen className="w-5 h-5 text-cyan"/> Contact Medical Affairs</h3>
-                    <p className="text-xs text-slate-400 mb-4">For application templates and submission guidelines, please contact our clinical operations manager.</p>
-                    <a href="mailto:clinical@pentixapharm.com" className="text-sm font-bold text-cyan hover:text-white transition-colors">clinical@pentixapharm.com →</a>
+                 <motion.div variants={fadeUp} className="bg-[#F8FAFD]2/80 p-6 rounded-2xl border border-white/5 mt-6 border-l-4 border-l-cyan">
+                    <h3 className="text-navy font-bold mb-2 flex items-center gap-2"><BookOpen className="w-5 h-5 text-[#00A3E0]"/> Contact Medical Affairs</h3>
+                    <p className="text-xs text-slate-500 mb-4">For application templates and submission guidelines, please contact our clinical operations manager.</p>
+                    <a href="mailto:clinical@pentixapharm.com" className="text-sm font-bold text-[#00A3E0] hover:text-navy transition-colors">clinical@pentixapharm.com →</a>
                  </motion.div>
              </motion.div>
 
             {/* Right Side (Current IIS directory) */}
             <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger} className="lg:col-span-2">
-                <motion.h2 variants={fadeUp} className="text-2xl font-bold font-heading text-white mb-6">Directory of Ongoing Independent Studies</motion.h2>
+                <motion.h2 variants={fadeUp} className="text-2xl font-bold font-heading text-navy mb-6">Directory of Ongoing Independent Studies</motion.h2>
                 <div className="space-y-4">
                   {STUDIES.map((s) => (
-                    <motion.div key={s.id} variants={fadeUp} className="bg-navy2/40 backdrop-blur-md border border-white/5 hover:border-white/15 p-6 rounded-2xl transition-all group">
+                    <motion.div key={s.id} variants={fadeUp} className="bg-[#F8FAFD]2/40 backdrop-blur-md border border-white/5 hover:border-white/15 p-6 rounded-2xl transition-all group">
                        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
                           <div>
-                            <h3 className="text-lg font-bold text-white group-hover:text-emerald transition-colors">{s.title}</h3>
+                            <h3 className="text-lg font-bold text-navy group-hover:text-[#00B1AB] transition-colors">{s.title}</h3>
                             <div className="flex flex-wrap items-center gap-4 mt-2 text-xs font-semibold">
-                               <span className="text-cyan bg-cyan/10 px-2 py-0.5 rounded border border-cyan/20">{s.phase}</span>
-                               <span className="text-emerald flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5"/> {s.status}</span>
+                               <span className="text-[#00A3E0] bg-cyan/10 px-2 py-0.5 rounded border border-cyan/20">{s.phase}</span>
+                               <span className="text-[#00B1AB] flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5"/> {s.status}</span>
                             </div>
                           </div>
                        </div>
-                       <p className="text-slate-400 text-sm leading-relaxed mb-5">{s.desc}</p>
-                       <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 border-t border-white/5 text-sm text-slate-400">
+                       <p className="text-slate-500 text-sm leading-relaxed mb-5">{s.desc}</p>
+                       <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 border-t border-white/5 text-sm text-slate-500">
                           <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 opacity-70"/> {s.center}</span>
                           <span className="flex items-center gap-1.5"><FileText className="w-4 h-4 opacity-70"/> Lead Investigator: {s.inv}</span>
                        </div>

@@ -35,7 +35,8 @@ export default function AnimatedBackground() {
           style={{
             width: p.size,
             height: p.size,
-            filter: "blur(60px)"
+            filter: "blur(60px)",
+            willChange: "transform, opacity"
           }}
         />
       ))}

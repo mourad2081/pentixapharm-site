@@ -1,9 +1,11 @@
 "use client";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
-import { MapPin, UserCheck, Stethoscope, Microscope, Atom, ArrowUpRight, Activity, Target } from "lucide-react";
+import { MapPin, UserCheck, Stethoscope, Microscope, Atom, ArrowUpRight, Activity, Target, ChevronRight } from "lucide-react";
+import AnimatedBg from "@/components/visual/AnimatedBackground";
 
-const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 const MOL_IMG = "molecular_theranostic_structure_1774915435525.png";
@@ -16,100 +18,109 @@ const STUDIES = [
 ];
 
 export default function IISPage() {
+  const locale = useLocale();
   return (
-    <div className="bg-[#F8FAFD] min-h-screen text-slate-800">
-      <section className="relative pt-44 pb-28 overflow-hidden bg-white">
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#F8FAFD] to-transparent" />
-        <div className="absolute -right-20 -top-20 w-[600px] h-[400px] bg-cyan/5 rounded-[50%_50%_0_0] blur-[140px] rotate-45" />
-        <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+    <div className="bg-[#F8FAFC] min-h-screen text-slate-900 pb-32 selection:bg-[#00BDD5] selection:text-white">
+      {/* ── HEADER ─────────────────────────────────────────────────────────── */}
+      <section className="relative pt-64 pb-32 overflow-hidden bg-white border-b border-slate-100">
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#F8FAFC] to-transparent opacity-60" />
+        <div className="absolute -right-20 -top-20 w-[800px] h-[600px] bg-[#00BDD5]/5 rounded-[50%_50%_0_0] blur-[140px] rotate-45 pointer-events-none" />
+        <AnimatedBg />
+        
+        <div className="container mx-auto px-6 relative z-10 text-center max-w-7xl">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 text-cyan font-bold text-xs uppercase tracking-widest bg-cyan/10 px-6 py-2.5 rounded-full border border-cyan/20 mb-10">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-[#00BDD5] font-heading font-extrabold text-[10px] uppercase tracking-[0.6em] bg-white px-10 py-4 rounded-full border border-slate-100 shadow-xl mb-12 italic mt-10">
               Medical Affairs Support
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 leading-tight">Empowering Clinical <span className="text-teal">Pioneers</span></motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-600 text-xl leading-relaxed font-light">
-              We collaborate with researchers worldwide to uncover new therapeutic frontiers through our Investigator-Initiated Studies (IIS) program.
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-[9.5rem] font-heading font-extrabold text-[#001533] mb-12 italic leading-[0.75] tracking-tighter drop-shadow-sm">
+              Clinical <br/><span className="text-[#00BDD5] underline decoration-[#00BDD5]/10 underline-offset-10 px-4">Evidence.</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 text-2xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-12 border-x border-slate-100">
+              Collaborating with research centers worldwide to uncover new therapeutic frontiers through our Investigator-Initiated Studies (IIS) program.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* Grid Features */}
-      <section className="py-24 bg-[#F8FAFD] -mt-12 relative z-20">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
+      <section className="py-40 bg-[#F8FAFC]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
-              { icon: Atom, label: "Clinical Supply", text: "Priority access to clinical-grade PentixaFor and PentixaTher precursors.", color: "text-cyan" },
-              { icon: Microscope, label: "Scientific Review", text: "Collaborative review and scientific feedback from our oncology experts.", color: "text-teal" },
-              { icon: UserCheck, label: "Independent Control", text: "Full ownership of data generated within the academic protocol context.", color: "text-helixRed" },
+              { icon: Atom, label: "Clinical Supply", text: "Priority access to clinical-grade PentixaFor and PentixaTher precursors for academic validation.", color: "text-[#00BDD5]" },
+              { icon: Microscope, label: "Scientific Review", text: "Direct collaborative feedback from our senior molecular oncology and radiochemistry experts.", color: "text-[#00BDD5]" },
+              { icon: UserCheck, label: "Data Integrity", text: "Full ownership of patient data generated within the independent academic protocol context.", color: "text-[#001533]" },
             ].map((f, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 group hover:-translate-y-2 transition-all">
-                <div className={"w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform " + f.color}>
-                  <f.icon className="w-8 h-8" />
+              <motion.div key={i} whileHover={{y:-12}} className="bg-white p-14 rounded-[3.5rem] shadow-3xl border border-slate-100 group transition-all text-center">
+                <div className={"w-20 h-20 rounded-3xl bg-slate-50 flex items-center justify-center mb-10 shadow-inner group-hover:bg-[#001533] group-hover:rotate-12 mx-auto transition-all"}>
+                  <f.icon className={"w-10 h-10 " + f.color + " group-hover:text-[#00BDD5]"} />
                 </div>
-                <h3 className="text-2xl font-heading font-extrabold text-[#031835] mb-4">{f.label}</h3>
-                <p className="text-slate-500 leading-relaxed">{f.text}</p>
+                <h3 className="text-2xl font-heading font-extrabold text-[#001533] mb-4 italic tracking-tight uppercase leading-none">{f.label}</h3>
+                <p className="text-slate-500 leading-relaxed italic text-sm font-light mt-4 px-4">{f.text}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Process and Studies Section */}
       <section className="py-24">
-        <div className="container mx-auto px-6 grid lg:grid-cols-5 gap-16">
+        <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-5 gap-24">
+          
           <div className="lg:col-span-2">
-            <div className="sticky top-32">
-              <h2 className="text-4xl font-heading font-extrabold text-[#031835] mb-8 leading-tight">How to Apply</h2>
-              <div className="space-y-12">
+            <div className="sticky top-40 bg-white p-16 rounded-[5rem] shadow-4xl border border-slate-100 relative group overflow-hidden">
+              <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:rotate-12 transition-transform"><Activity className="w-64 h-64 text-[#00BDD5]" /></div>
+              <h2 className="text-5xl font-heading font-extrabold text-[#001533] mb-12 leading-none italic tracking-tighter">Accelerated <br/><span className="text-[#00BDD5]">Pathway</span></h2>
+              
+              <div className="space-y-12 mb-16">
                 {[
-                  { step: "01", title: "Study Concept Proposal", desc: "Submit a 2-3 page synopsis outlining the scientific rationale, clinical endpoints, and required supply of PentixaFor/Ther." },
-                  { step: "02", title: "Strategic Alignment Review", desc: "Our Medical Affairs committee evaluates proposals for scientific validity, safety profile, and strategic relevance." },
-                  { step: "03", title: "Contracting & Supply", desc: "Upon approval, legal IIS agreements are finalized and clinical logistic chains are established for delivery." },
+                  { step: "01", title: "Concept Proposal", desc: "Submit a 3-page synopsis outlining scientific rationale and isotope requirements." },
+                  { step: "02", title: "Alignment Review", desc: "Medical committee evaluation for clinical validity and safety regulatory profile." },
+                  { step: "03", title: "Asset Supply", desc: "Legal IIS agreements finalized and supply logistics chain activation." },
                 ].map((s, i) => (
-                  <div key={i} className="flex gap-6 items-start">
-                    <span className="text-5xl font-heading font-extrabold text-slate-200 mt-[-10px]">{s.step}</span>
+                  <div key={i} className="flex gap-8 items-start group/step">
+                    <span className="text-4xl font-heading font-extrabold text-[#00BDD5]/20 group-hover/step:text-[#00BDD5] transition-colors italic leading-none">{s.step}</span>
                     <div>
-                      <h4 className="font-heading font-extrabold text-[#031835] text-xl mb-2">{s.title}</h4>
-                      <p className="text-slate-500 leading-relaxed">{s.desc}</p>
+                      <h4 className="font-heading font-extrabold text-[#001533] text-xl mb-2 italic tracking-tight uppercase">{s.title}</h4>
+                      <p className="text-slate-500 leading-relaxed font-light italic text-sm">{s.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-16 bg-[#031835] text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan/20 blur-3xl rounded-full" />
-                <h3 className="text-2xl font-heading font-extrabold mb-4 relative z-10">Start Your Proposal</h3>
-                <p className="text-slate-400 text-sm mb-8 leading-relaxed relative z-10">Contact our Medical Affairs clinical team directly to request application templates.</p>
-                <a href="mailto:iis@pentixapharm.com" className="inline-flex items-center gap-3 px-8 py-4 bg-teal text-[#031835] font-bold rounded-full hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg relative z-10 font-heading">
-                  Submit Inquiry <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
+              
+              <a href="mailto:iis@pentixapharm.com" className="w-full py-8 bg-[#001533] text-white rounded-full font-heading font-extrabold text-[11px] uppercase tracking-[0.5em] italic flex items-center justify-center gap-6 hover:bg-[#00BDD5] transition-all shadow-3xl">
+                Submit Inquiry <ArrowUpRight className="w-6 h-6" />
+              </a>
             </div>
           </div>
 
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-[3.5rem] shadow-2xl border border-slate-100 p-8 md:p-16 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <img src={`/${MOL_IMG}`} className="w-64 h-64 object-contain" />
-              </div>
-              <h2 className="text-4xl font-heading font-extrabold text-[#031835] mb-8 border-b border-slate-100 pb-8">Ongoing Studies</h2>
-              <div className="space-y-6">
+             <div className="mb-14 px-8">
+                <span className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.6em] mb-4 block italic">Active Research Portfolio</span>
+                <h2 className="text-6xl font-heading font-extrabold text-[#001533] italic leading-tight tracking-tighter">Ongoing <span className="text-[#00BDD5]">Clinical</span> Studies</h2>
+             </div>
+             
+             <div className="space-y-8">
                 {STUDIES.map((s) => (
-                  <div key={s.id} className="p-8 bg-[#F8FAFD] border border-slate-100 rounded-3xl group hover:border-cyan/30 transition-all">
-                    <div className="flex flex-wrap items-center gap-4 mb-4">
-                      <span className="text-[10px] font-bold text-[#031835] bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">{s.phase}</span>
-                      <span className="text-[10px] font-bold text-white bg-teal px-3 py-1 rounded-full">{s.status}</span>
-                      <span className="text-xs text-slate-400 ml-auto font-medium flex items-center gap-1.5"><MapPin className="w-3 h-3" /> {s.center}</span>
+                  <motion.div key={s.id} whileHover={{x: 20}} className="p-12 bg-white border border-slate-100 rounded-[3.5rem] shadow-xl group transition-all duration-700 hover:shadow-4xl">
+                    <div className="flex flex-wrap items-center gap-6 mb-8">
+                      <span className="text-[10px] font-bold text-white bg-[#00BDD5] px-6 py-2 rounded-full uppercase tracking-widest italic">{s.phase}</span>
+                      <span className="text-[10px] font-bold text-[#001533] bg-slate-50 px-6 py-2 rounded-full border border-slate-100 uppercase tracking-widest italic">{s.status}</span>
+                      <span className="text-xs text-slate-400 ml-auto font-light italic flex items-center gap-3"><MapPin className="w-4 h-4 text-[#00BDD5]" /> {s.center}</span>
                     </div>
-                    <h3 className="text-xl font-heading font-extrabold text-[#031835] group-hover:text-cyan transition-colors leading-snug mb-4">{s.title}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-6">{s.desc}</p>
-                    <div className="flex justify-between items-center pt-4 border-t border-slate-200/50">
-                      <p className="text-xs font-bold text-[#031835] uppercase tracking-widest"><span className="text-slate-400 font-medium lowercase italic">led by </span> {s.inv}</p>
+                    <h3 className="text-3xl font-heading font-extrabold text-[#001533] group-hover:text-[#00BDD5] transition-colors leading-tight italic tracking-tighter mb-6">{s.title}</h3>
+                    <p className="text-slate-500 italic font-light leading-relaxed mb-8 text-lg">{s.desc}</p>
+                    <div className="flex justify-between items-center pt-8 border-t border-slate-100">
+                       <p className="text-[11px] font-extrabold text-[#001533] uppercase tracking-widest italic">
+                          <span className="text-slate-400 font-light lowercase">Principal investigator • </span> {s.inv}
+                       </p>
+                       <ChevronRight className="w-6 h-6 text-[#00BDD5]/30 group-hover:text-[#00BDD5] group-hover:translate-x-4 transition-all" />
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+             </div>
           </div>
+
         </div>
       </section>
     </div>

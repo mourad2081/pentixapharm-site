@@ -1,316 +1,450 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { 
-  ArrowRight, Activity, Beaker, ShieldCheck, Globe2, Zap, LayoutGrid, 
-  Newspaper, TrendingUp, BarChart3, Microscope, Building2, ExternalLink, 
-  Atom, Target, Play, Shield, FlaskConical, Network, Sparkles, 
-  ChevronRight, Download, MousePointer2 
-} from "lucide-react";
-import HelixBackground from "@/components/visual/HelixBackground";
-import AnimatedBackground from "@/components/visual/AnimatedBackground";
 import Link from "next/link";
+import { 
+  ArrowRight, ShieldCheck, Zap, Activity, Globe2, ScanFace, 
+  MapPin, Send, Cpu, Dna, FlaskConical, Target
+} from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } };
-const stagger = { show: { transition: { staggerChildren: 0.1 } } };
-
-const HERO_BG = "home_hero_dna_animated_png_1774941098595.png";
-
-const SEED_NEWS = [
-  { id:1, date:"2026-03-31", cat:"Corporate", title:"Erik Merten Appointed to Executive Board as Chief Technology Officer", excerpt:"Pentixapharm Holding AG strengthens its Executive Board to lead commercialisation readiness as the PANDA Phase 3 programme advances." },
-  { id:2, date:"2026-02-25", cat:"Regulatory", title:'FDA Issues "Study May Proceed" for Dual Theranostic INDs', excerpt:"The U.S. FDA has cleared both PentixaFor and PentixaTher investigational new drug applications, enabling first U.S. clinical use." },
-  { id:3, date:"2026-02-05", cat:"Clinical", title:"Phase 2 Data Confirm PentixaFor as Superior PET Diagnostic", excerpt:"Prospective study data confirm superior diagnostic performance over current gold standard in primary aldosteronism." },
-];
+// Common animation variants
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
+const stagger = { show: { transition: { staggerChildren: 0.15 } } };
 
 export default function HomePage() {
   const locale = useLocale();
   const t = useTranslations("common");
-  const [news, setNews] = useState(SEED_NEWS);
-  const [expandedNews, setExpandedNews] = useState<number | null>(null);
 
-  useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem("ptx_news") || "[]");
-      if (saved.length > 0) setNews([...saved, ...SEED_NEWS].slice(0, 3));
-    } catch {}
-  }, []);
+  // Organic background elements
+  const OrganicBackground = () => (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="organic-bg" />
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#00F2FF] opacity-10 blur-[150px] mix-blend-screen" />
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[#7B61FF] opacity-10 blur-[200px] mix-blend-screen" />
+    </div>
+  );
 
   return (
-    <div className="bg-[#010816] min-h-screen text-white overflow-hidden selection:bg-cyan selection:text-[#010816]">
+    <div className="min-h-screen bg-[#0a0b16] text-white overflow-hidden relative selection:bg-[#00F2FF]/30 selection:text-white">
+      <OrganicBackground />
       
-      {/* ── HERO SECTION ────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[110vh] flex items-center pt-20 px-6">
-        <div className="absolute inset-0 z-0 overflow-hidden">
-           <motion.img 
-             initial={{ scale: 1.1, rotate: 0 }}
-             animate={{ scale: 1.25, rotate: 2 }}
-             transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
-             src={`/${HERO_BG}`} 
-             className="w-full h-full object-cover opacity-60" 
-             alt="Hero Background" 
-           />
-           <div className="absolute inset-0 bg-gradient-to-b from-[#010816]/70 via-transparent to-[#010816]" />
-           <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#010816] to-transparent" />
-           <HelixBackground />
-           <AnimatedBackground />
-        </div>
-        
-        <div className="container mx-auto relative z-10">
-          <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-5xl">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-4 bg-[#031835] px-10 py-4 rounded-full mb-14 shadow-[0_30px_60px_-15px_rgba(3,24,53,0.3)] group hover:bg-cyan transition-all cursor-default scale-110 origin-left border border-white/10">
-              <div className="w-2.5 h-2.5 bg-teal rounded-full animate-pulse shadow-[0_0_12px_rgba(0,177,171,1)]" />
-              <span className="text-[11px] font-heading font-extrabold uppercase tracking-[0.5em] italic text-white group-hover:text-[#031835] transition-colors flex items-center gap-3">
-                <FlaskConical className="w-3.5 h-3.5"/> PHASE III CLINICAL STRATEGY
+      {/* ── 1. HERO SECTION ─────────────────────────────────────────────────── */}
+      <section className="relative min-h-[105vh] flex items-center pt-24 px-6 z-10">
+        <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          
+          <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-3xl">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-3 rounded-full mb-8 shadow-[0_0_20px_rgba(0,242,255,0.05)]">
+              <div className="w-2 h-2 bg-[#00F2FF] rounded-full animate-pulse shadow-[0_0_12px_rgba(0,242,255,1)]" />
+              <span className="text-xs font-heading font-semibold uppercase tracking-[0.3em] text-white/80">
+                Phase III Clinical Strategy
               </span>
             </motion.div>
             
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-[9rem] font-heading font-extrabold leading-[0.8] tracking-tighter mb-12 text-white drop-shadow-4xl italic">
-              See What <br />
-              <div className="relative inline-block overflow-hidden">
-                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan via-teal to-cyan animate-gradient-x italic">You Treat.</span>
-                 <motion.div 
-                   animate={{ x: ["-100%", "100%"] }} 
-                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                   className="absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
-                 />
-              </div>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-[5.5rem] font-heading font-semibold leading-[1.05] tracking-tight mb-8">
+              PRECISION RADIOPHARMACEUTICALS: <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FF] via-white to-[#7B61FF] animate-gradient-shift">
+                FIND & FIGHT CANCER.
+              </span>
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="max-w-2xl relative mb-16 group">
-               <div className="absolute -left-10 inset-y-0 w-1 bg-gradient-to-b from-cyan via-teal to-transparent" />
-               <p className="text-xl md:text-4xl text-slate-300 leading-relaxed font-light italic pl-10 group-hover:pl-16 transition-all duration-700">
-                  Precision discovery matched with targeted radio-therapeutic payload delivery. High specificity for CXCR4-expressing tumor clusters.
-               </p>
+            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-white/50 leading-relaxed font-light mb-12 max-w-2xl">
+              Our CXCR4 platform is inspired by precision molecular architecture, enabling an incredibly efficient computational diagnostic and therapeutic pipeline.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-6 items-center">
+              <Link href={`/${locale}/technology`} className="btn-glass btn-cyan w-full sm:w-auto text-center flex justify-center items-center gap-3">
+                PARTNER WITH US
+              </Link>
+              <Link href={`/${locale}/contact`} className="btn-glass btn-violet w-full sm:w-auto text-center flex justify-center items-center gap-3">
+                CONTACT US
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Abstract 3D Cell Mass representation using Framer Motion & CSS */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5 }}
+            className="relative lg:h-[600px] flex items-center justify-center pt-20 lg:pt-0"
+          >
+            {/* The core shape */}
+            <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]">
+              {/* Outer Glow */}
+              <div className="absolute inset-0 bg-[#00F2FF]/20 rounded-full blur-[80px]" />
+              
+              {/* Complex Rotating Base */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-4 rounded-[40%] bg-gradient-to-tr from-[#002A54] to-[#1a1444] border-4 border-white/5 shadow-2xl mix-blend-screen backdrop-blur-3xl overflow-hidden"
+              />
+              
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-8 rounded-[45%] bg-gradient-to-br from-[#00F2FF]/10 to-[#7B61FF]/10 border-2 border-[#00F2FF]/20 mix-blend-screen backdrop-blur-xl"
+              />
+
+              {/* Cyan Receptor Nodes */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.6, 1, 0.6]
+                  }}
+                  transition={{ 
+                    duration: 3 + i * 0.5, 
+                    repeat: Infinity, 
+                    repeatType: "reverse" 
+                  }}
+                  className="absolute w-4 h-4 bg-[#00F2FF] rounded-full shadow-[0_0_20px_#00F2FF] z-10"
+                  style={{
+                    top: `${40 + 40 * Math.sin(i * (Math.PI / 4))}%`,
+                    left: `${40 + 40 * Math.cos(i * (Math.PI / 4))}%`,
+                  }}
+                />
+              ))}
+
+              {/* Central Glowing Core */}
+              <div className="absolute inset-1/4 rounded-full bg-radial-gradient from-[#00F2FF]/40 to-transparent blur-2xl animate-pulseGlow" />
+
+              {/* Label 1 */}
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }}
+                className="absolute -left-12 top-1/3 glass-panel p-3 text-xs w-36 z-20"
+              >
+                <div className="text-[#00F2FF] font-semibold mb-1">CXCR4 receptor</div>
+                <div className="text-white/60 text-[10px]">Ligand tracer binding</div>
+              </motion.div>
+              
+              {/* Label 2 */}
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.5 }}
+                className="absolute -right-8 bottom-1/4 glass-panel glass-panel-violet p-3 text-xs w-40 z-20"
+              >
+                <div className="text-[#7B61FF] font-semibold mb-1">Therapeutic Payload</div>
+                <div className="text-white/60 text-[10px]">Targeted isotope decay</div>
+              </motion.div>
+
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ── 2. PRODUCT GRID ─────────────────────────────────────────────────── */}
+      <section className="relative py-24 z-10">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {/* FIND (Cyan) */}
+            <motion.div variants={fadeUp} className="glass-panel p-8 group flex flex-col h-full relative overflow-hidden">
+              <div className="absolute right-0 top-0 w-32 h-32 bg-[#00F2FF]/10 blur-[50px] rounded-full group-hover:bg-[#00F2FF]/20 transition-all font-heading" />
+              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-[#00F2FF]/10 mb-6 border border-[#00F2FF]/30 group-hover:scale-110 transition-transform">
+                <Dna className="w-7 h-7 text-[#00F2FF]" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-[#00F2FF] transition-colors">PentixaFor</h3>
+              <p className="text-sm font-light text-white/50 leading-relaxed mb-8 flex-grow">
+                High-precision diagnostic tracer for sensitive imaging, optimizing patient selection through visual validation.
+              </p>
+              <Link href={`/${locale}/pipeline`} className="flex items-center text-xs font-semibold tracking-widest text-[#00F2FF] uppercase mt-auto">
+                LEARN MORE <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+              </Link>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-12 items-center">
-              <Link href={`/${locale}/technology`} className="px-16 py-8 bg-cyan text-[#010816] rounded-full font-heading font-extrabold text-sm tracking-[0.4em] uppercase hover:bg-white hover:text-[#010816] transition-all shadow-[0_0_50px_rgba(0,255,255,0.2)] hover:-translate-y-3 flex items-center gap-8 group italic">
-                 <Network className="w-6 h-6 text-[#010816]" /> EXPLORE PLATFORM
+            <motion.div variants={fadeUp} className="glass-panel p-8 group flex flex-col h-full relative overflow-hidden">
+              <div className="absolute right-0 top-0 w-32 h-32 bg-[#00F2FF]/10 blur-[50px] rounded-full group-hover:bg-[#00F2FF]/20 transition-all" />
+              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-[#00F2FF]/10 mb-6 border border-[#00F2FF]/30 group-hover:scale-110 transition-transform">
+                <ShieldCheck className="w-7 h-7 text-[#00F2FF]" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-[#00F2FF] transition-colors">PentixaCheck</h3>
+              <p className="text-sm font-light text-white/50 leading-relaxed mb-8 flex-grow">
+                Validating the presence of CXCR4 targets to streamline the theranostic workflow securely.
+              </p>
+              <Link href={`/${locale}/pipeline`} className="flex items-center text-xs font-semibold tracking-widest text-[#00F2FF] uppercase mt-auto">
+                LEARN MORE <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
               </Link>
-              <Link href={`/${locale}/pipeline`} className="flex items-center gap-6 group">
-                 <div className="w-20 h-20 bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl flex items-center justify-center group-hover:rotate-12 transition-all shadow-2xl group-hover:bg-teal group-hover:text-white">
-                    <Target className="w-8 h-8 text-teal group-hover:text-white" />
-                 </div>
-                 <div className="flex flex-col">
-                    <span className="text-[12px] font-heading font-extrabold uppercase tracking-[0.4em] text-cyan group-hover:text-white transition-colors italic">Clinical Milestone</span>
-                    <span className="text-xl font-heading font-extrabold text-white italic tracking-tight flex items-center gap-3">Roadmap 2026 <ChevronRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" /></span>
-                 </div>
+            </motion.div>
+
+            {/* FIGHT (Violet) */}
+            <motion.div variants={fadeUp} className="glass-panel glass-panel-violet p-8 group flex flex-col h-full relative overflow-hidden">
+              <div className="absolute right-0 top-0 w-32 h-32 bg-[#7B61FF]/10 blur-[50px] rounded-full group-hover:bg-[#7B61FF]/20 transition-all font-heading" />
+              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-[#7B61FF]/10 mb-6 border border-[#7B61FF]/30 group-hover:scale-110 transition-transform">
+                <Zap className="w-7 h-7 text-[#7B61FF]" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-[#7B61FF] transition-colors">PentixaTher</h3>
+              <p className="text-sm font-light text-white/50 leading-relaxed mb-8 flex-grow">
+                Targeted therapeutic isotope vector delivering localized radiation to destroy cancerous structures.
+              </p>
+              <Link href={`/${locale}/pipeline`} className="flex items-center text-xs font-semibold tracking-widest text-[#7B61FF] uppercase mt-auto">
+                LEARN MORE <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+              </Link>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="glass-panel glass-panel-violet p-8 group flex flex-col h-full relative overflow-hidden">
+              <div className="absolute right-0 top-0 w-32 h-32 bg-[#7B61FF]/10 blur-[50px] rounded-full group-hover:bg-[#7B61FF]/20 transition-all" />
+              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-[#7B61FF]/10 mb-6 border border-[#7B61FF]/30 group-hover:scale-110 transition-transform">
+                <Activity className="w-7 h-7 text-[#7B61FF]" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-[#7B61FF] transition-colors">PentixaPulse</h3>
+              <p className="text-sm font-light text-white/50 leading-relaxed mb-8 flex-grow">
+                Accelerated particle therapy tracking for complex metastatic pathways and dynamic interventions.
+              </p>
+              <Link href={`/${locale}/pipeline`} className="flex items-center text-xs font-semibold tracking-widest text-[#7B61FF] uppercase mt-auto">
+                LEARN MORE <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
               </Link>
             </motion.div>
           </motion.div>
         </div>
-        
-        {/* Animated Mouse Indicator */}
-        <motion.div initial={{opacity:0}} animate={{opacity:0.4}} transition={{delay:2.5}} className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 cursor-pointer group">
-           <span className="text-[9px] font-extrabold uppercase tracking-[0.6em] opacity-40 italic group-hover:opacity-100 transition-opacity">Discover Indication Clusters</span>
-           <div className="w-8 h-12 border-2 border-[#031835]/30 rounded-full flex justify-center p-1 group-hover:border-[#031835] transition-colors">
-              <motion.div 
-                animate={{ y: [0, 15, 0] }} 
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1.5 h-1.5 bg-[#031835] rounded-full" 
-              />
-           </div>
-        </motion.div>
       </section>
 
-      {/* ── STRATEGIC VISION / INVESTOR TICKET ──────────────────────────────── */}
-      <section className="relative py-28 bg-[#031835] text-white overflow-hidden shadow-2xl">
-         <AnimatedBackground />
-         <div className="container mx-auto px-6 relative z-10">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-24">
-               
-               {/* Stock Ticket Visual */}
-               <motion.div 
-                initial={{opacity:0, scale:0.95}} 
-                whileInView={{opacity:1, scale:1}}
-                className="flex items-center gap-16 group cursor-pointer bg-white/5 p-10 rounded-[3rem] backdrop-blur-2xl border border-white/10 hover:bg-white/10 transition-all shadow-3xl flex-1 max-w-xl"
-               >
-                  <div className="flex flex-col gap-2 items-end border-r border-white/10 pr-16 group-hover:border-cyan/40 transition-colors">
-                     <span className="text-[11px] font-heading font-extrabold text-cyan uppercase tracking-[0.5em] italic mb-2 flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full"><TrendingUp className="w-3.5 h-3.5"/> DEUTSCHE BÖRSE</span>
-                     <span className="text-7xl font-heading font-extrabold tracking-tighter italic text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 group-hover:to-cyan transition-all">PTP.DE</span>
-                  </div>
-                  <div className="flex flex-col gap-3">
-                     <span className="text-[11px] font-heading font-extrabold text-teal uppercase tracking-[0.5em] italic mb-2 tracking-widest"><Shield className="w-3.5 h-3.5 inline mr-2"/> PRIME STANDARD</span>
-                     <div className="flex flex-col">
-                        <span className="text-2xl font-heading font-extrabold italic text-slate-300">Equity Value</span>
-                        <span className="text-sm font-light text-cyan opacity-60">High-transparency listing requirements.</span>
-                     </div>
-                  </div>
-               </motion.div>
-
-               {/* Stat Highlights */}
-               <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 flex-[2] border-l border-white/5 pl-16">
-                  {[
-                    { label: "IP Families", val: "12+", color: "text-white", icon: ShieldCheck },
-                    { label: "Clinical Use", val: "2,600+", color: "text-teal", icon: Activity },
-                    { label: "Sites", val: "Europe & US", color: "text-white", icon: Globe2 },
-                    { label: "Addressable Market", val: "€2.4B+", color: "text-cyan", icon: BarChart3 }
-                  ].map((stat, i) => (
-                    <motion.div key={i} whileHover={{y:-8, scale:1.05}} className="flex flex-col group/stat">
-                       <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover/stat:bg-white/10 shadow-inner group-hover/stat:rotate-12 transition-transform">
-                          <stat.icon className={`w-6 h-6 ${stat.color} opacity-80`} />
-                       </div>
-                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 italic opacity-60 group-hover/stat:text-cyan transition-colors">{stat.label}</span>
-                       <span className={`text-4xl font-heading font-extrabold italic tracking-tight ${stat.color}`}>{stat.val}</span>
-                    </motion.div>
-                  ))}
-               </div>
-
-               <Link href={`/${locale}/investors/portal`} className="group flex flex-col items-center gap-4">
-                  <div className="w-24 h-24 bg-cyan border-2 border-cyan shadow-[0_0_40px_rgba(0,177,171,0.4)] rounded-full flex items-center justify-center group-hover:bg-[#031835] transition-all transform group-hover:scale-110">
-                    <Download className="w-8 h-8 text-[#031835] group-hover:text-cyan" />
-                  </div>
-                  <span className="text-[11px] font-heading font-extrabold text-white uppercase tracking-[0.4em] italic opacity-60">Investor Dossier</span>
-               </Link>
-            </div>
-         </div>
-      </section>
-
-      {/* ── TECHNOLOGY SECTION ─────────────────────────────────────────────── */}
-      <section className="py-48 bg-[#010816] relative">
-         <div className="container mx-auto px-6 max-w-7xl relative z-10">
-            <div className="grid lg:grid-cols-2 gap-40 items-center">
-               <motion.div initial={{opacity:0, scale:0.9}} whileInView={{opacity:1, scale:1}} className="relative group p-10">
-                  <div className="absolute inset-0 bg-[#F8FAFD] rounded-[6rem] -rotate-3 group-hover:rotate-0 transition-transform duration-700 shadow-3xl" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-cyan/5 to-transparent rounded-[6rem] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative rounded-[5rem] overflow-hidden shadow-2xl group-hover:shadow-[0_80px_160px_-40px_rgba(3,24,53,0.3)] transition-all duration-1000">
-                     <img src="/molecular_interaction_cxcr4_1774918246066.png" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="CXCR4 Precision" />
-                  </div>
-                  <div className="absolute -bottom-8 -right-8 p-14 bg-[#031835] text-white rounded-[4rem] shadow-4xl max-w-sm border border-white/10 group-hover:shadow-cyan/10 transition-all">
-                     <div className="flex items-center gap-4 mb-6">
-                        <div className="w-10 h-10 rounded-2xl bg-cyan/10 flex items-center justify-center"><Atom className="w-6 h-6 text-cyan" /></div>
-                        <p className="text-[10px] font-heading font-extrabold text-cyan uppercase tracking-[0.5em] italic">PLATFORM FOCUS</p>
-                     </div>
-                     <p className="text-sm font-light leading-loose italic text-slate-300">
-                        Targeting the receptor dense CXCR4 over-expression in aggressive tumor micro-environments across oncology and cardiology.
-                     </p>
-                  </div>
-               </motion.div>
-               
-               <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger}>
-                  <motion.div variants={fadeUp} className="inline-flex items-center gap-4 text-cyan text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-12 italic border-b border-cyan/20 pb-4">
-                     <Microscope className="w-4 h-4"/> MECHANISM OF ACTION
-                  </motion.div>
-                  <motion.h2 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-extrabold text-white leading-[0.8] mb-14 italic tracking-tighter">Diagnostic <br/><span className="text-teal">Precision</span> Hub</motion.h2>
-                  <motion.p variants={fadeUp} className="text-slate-400 text-2xl leading-relaxed mb-16 font-light italic max-w-xl">
-                      Utilizing isotope-labeled ligands that lock onto tumor receptors with extreme binding affinity, transforming every MRI into a functional therapeutic map. 
-                  </motion.p>
-                  <div className="grid grid-cols-2 gap-16">
-                     <motion.div variants={fadeUp} className="space-y-4 group">
-                        <div className="w-20 h-20 rounded-[2.5rem] bg-white/5 border border-white/10 flex items-center justify-center shadow-2xl group-hover:bg-cyan transition-colors">
-                           <ShieldCheck className="w-10 h-10 text-cyan group-hover:text-[#010816] transition-colors" />
-                        </div>
-                        <h4 className="text-2xl font-heading font-extrabold text-white italic uppercase tracking-tighter pt-4">Visual Validation</h4>
-                        <p className="text-[13px] text-slate-400 font-light italic leading-relaxed">Ga-68 PET imaging to quantify receptor density and select responsive high-risk patients.</p>
-                     </motion.div>
-                     <motion.div variants={fadeUp} className="space-y-4 group">
-                        <div className="w-20 h-20 rounded-[2.5rem] bg-teal/10 flex items-center justify-center shadow-xl group-hover:bg-teal transition-colors">
-                           <Zap className="w-10 h-10 text-teal group-hover:text-white transition-colors animate-pulse" />
-                        </div>
-                        <h4 className="text-2xl font-heading font-extrabold text-teal italic uppercase tracking-tighter pt-4">Direct Eradication</h4>
-                        <p className="text-[13px] text-slate-400 font-light italic leading-relaxed">Internal Alpha/Beta radiation delivery directly inside the metastatic tumor clusters.</p>
-                     </motion.div>
-                  </div>
-               </motion.div>
-            </div>
-         </div>
-      </section>
-
-      {/* ── PARTNERING CALL TO ACTION ───────────────────────────────────────── */}
-      <section className="py-20 relative">
-         <div className="container mx-auto px-6">
-            <Link href={`/${locale}/partnering/licensing`} className="group flex flex-col md:flex-row items-center justify-between p-16 bg-[#F8FAFD] rounded-[4rem] border border-slate-100 hover:bg-[#031835] transition-all duration-700 shadow-xl gap-12 overflow-hidden relative">
-               <div className="absolute top-0 right-0 p-16 opacity-[0.03] group-hover:opacity-10 transition-opacity transform group-hover:scale-150 duration-1000">
-                  <Network className="w-96 h-96" />
-               </div>
-               <div className="max-w-3xl relative z-10">
-                  <span className="text-teal group-hover:text-cyan font-heading font-extrabold text-xs tracking-[0.5em] uppercase mb-6 block italic transition-colors">Strategic Alliances</span>
-                  <p className="text-5xl font-heading font-extrabold text-[#031835] group-hover:text-white leading-[1.1] italic tracking-tighter transition-colors">
-                     Global Licensing Opportunities for <br/> <span className="text-teal group-hover:text-cyan">PANDA-3 Indicatons.</span>
-                  </p>
-               </div>
-               <div className="relative z-10 scale-125 md:scale-100">
-                  <div className="px-16 py-7 bg-[#031835] group-hover:bg-cyan text-white group-hover:text-[#031835] rounded-full font-heading font-extrabold text-xs uppercase tracking-[0.5em] italic transition-all flex items-center gap-6 shadow-3xl">
-                     Licensing Hub <ArrowRight className="w-5 h-5 group-hover:translate-x-4 transition-transform" />
-                  </div>
-               </div>
-            </Link>
-         </div>
-      </section>
-
-      {/* ── NEWS INTEL GRID ─────────────────────────────────────────────────── */}
-      <section className="py-48 bg-[#F8FAFD] relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="flex flex-col lg:flex-row items-end justify-between mb-32 gap-12">
-             <div className="max-w-3xl">
-               <span className="text-cyan font-heading font-extrabold text-xs tracking-[0.6em] uppercase mb-8 block italic">Corporate Intelligence</span>
-               <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-[#031835] italic tracking-tighter leading-[0.8] mb-12">Latest <br/> <span className="text-teal underline decoration-cyan/20 decoration-8 underline-offset-10">Releases</span></h2>
-               <p className="text-slate-500 text-2xl font-light italic leading-relaxed max-w-xl">Updates on clinical enrollment, regulatory filings, and board-level strategy shifts.</p>
-             </div>
-             <Link href={`/${locale}/news`} className="px-14 py-6 border-2 border-[#031835] rounded-full text-[11px] font-heading font-extrabold uppercase tracking-widest hover:bg-[#031835] hover:text-white transition-all italic scale-110 shadow-xl group">
-                Full Repository Archive <ArrowRight className="inline ml-4 group-hover:translate-x-3 transition-transform" />
-             </Link>
+      {/* ── 3. THE PIPELINE ─────────────────────────────────────────────────── */}
+      <section className="relative py-24 z-10 border-t border-white/5 bg-[#0a0b16]/50">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-heading font-semibold mb-6">Pentixapharm <span className="text-[#00F2FF]">Research Pipeline</span></h2>
+            <p className="text-white/50 max-w-2xl mx-auto font-light">Progressing from in-vitro concepts through rigorous Phase I-III clinical evaluation stages globally.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-14">
-            {news.map((item, i) => (
-              <motion.article 
-                key={item.id} 
-                initial={{opacity:0, y:30}}
-                whileInView={{opacity:1, y:0}}
-                transition={{delay: i*0.1}}
-                whileHover={{y:-15}} 
-                className="bg-white border border-slate-100 rounded-[5rem] p-14 hover:shadow-[0_80px_160px_-40px_rgba(3,24,53,0.2)] transition-all duration-700 group flex flex-col relative overflow-hidden shadow-2xl"
-              >
-                <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:rotate-12 group-hover:scale-125 transition-all duration-1000"><Newspaper className="w-56 h-56" /></div>
-                <div className="flex items-center justify-between mb-12 relative z-10">
-                  <span className="text-[10px] font-heading font-extrabold px-6 py-2.5 rounded-full bg-[#F8FAFD] border border-slate-100 text-teal uppercase tracking-widest italic group-hover:bg-[#031835] group-hover:text-white transition-colors">{item.cat}</span>
-                  <span className="text-[10px] font-bold text-slate-400 italic opacity-60 tracking-widest">{item.date}</span>
-                </div>
-                <h3 className="text-3xl font-heading font-extrabold text-[#031835] leading-tight mb-10 group-hover:text-cyan transition-colors italic relative z-10 tracking-tighter">{item.title}</h3>
-                
-                <p className={"text-slate-500 text-sm leading-relaxed mb-14 font-light italic relative z-10 border-l-2 border-slate-50 group-hover:border-cyan/30 pl-6 transition-all duration-1000 " + (expandedNews === item.id ? "" : "line-clamp-3")}>
-                   {item.excerpt}
-                </p>
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            {/* 3D Orbital Isotope Chart (Left Side Diagram) */}
+            <div className="w-full lg:w-1/2 flex items-center justify-center relative min-h-[400px]">
+              <div className="absolute w-[400px] h-[400px] border border-white/10 rounded-full animate-orbit-slow" />
+              <div className="absolute w-[300px] h-[300px] border border-[#00F2FF]/20 rounded-full animate-orbit" />
+              <div className="absolute w-[200px] h-[200px] border border-[#7B61FF]/40 rounded-full animate-orbit-fast" />
+              
+              <div className="absolute bg-[#00F2FF]/30 w-[120px] h-[120px] rounded-full blur-[30px]" />
+              <div className="absolute bg-[#0a0b16] border-2 border-[#00F2FF]/50 w-[80px] h-[80px] rounded-[30%] animate-spin-slow flex items-center justify-center shadow-[0_0_30px_#00F2FF]" >
+                 <AtomIcon className="w-8 h-8 text-[#00F2FF]" />
+              </div>
 
-                <div className="mt-auto pt-12 border-t border-slate-50 flex items-center justify-between relative z-10">
-                   <button 
-                    onClick={() => setExpandedNews(expandedNews === item.id ? null : item.id)} 
-                    className="text-[12px] font-heading font-extrabold text-[#031835] uppercase tracking-widest hover:text-cyan transition-all italic flex items-center gap-3 group/btn"
-                   >
-                      {expandedNews === item.id ? "Minimize Brief " : "Read Research Brief "} <ChevronRight className={`w-4 h-4 group-hover/btn:translate-x-3 transition-transform ${expandedNews === item.id ? "-rotate-90" : ""}`} />
-                   </button>
-                   <Link href={`/${locale}/news`} className="group/nav"><Activity className="w-6 h-6 text-slate-100 group-hover:text-teal group-hover/nav:scale-125 transition-all" /></Link>
+              {/* Orbiting particles */}
+              <div className="absolute opacity-80" style={{ transform: 'translate(-150px, 0)' }}>
+                <div className="w-6 h-6 rounded-full bg-[#00F2FF] shadow-[0_0_15px_#00F2FF]" />
+                <span className="absolute top-8 -left-2 text-[10px] text-[#00F2FF]">Phase I</span>
+              </div>
+              <div className="absolute opacity-80" style={{ transform: 'translate(100px, -100px)' }}>
+                <div className="w-8 h-8 rounded-full bg-[#7B61FF] shadow-[0_0_15px_#7B61FF]" />
+                <span className="absolute top-10 -left-2 text-[10px] text-[#7B61FF]">Phase II</span>
+              </div>
+              <div className="absolute opacity-80" style={{ transform: 'translate(200px, 50px)' }}>
+                <div className="w-10 h-10 rounded-full bg-white shadow-[0_0_20px_white]" />
+                <span className="absolute top-12 left-0 text-[10px] text-white">Phase III</span>
+              </div>
+            </div>
+
+            {/* Data Table */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-4">
+               {[
+                 { nm: "PentixaFor", ind: "Neuroendocrine Tumors", ph: "III", p: "85%", c: "cyan" },
+                 { nm: "PentixaCheck", ind: "Prostate Cancer", ph: "II", p: "60%", c: "cyan" },
+                 { nm: "PentixaTher", ind: "Glioblastoma", ph: "II", p: "45%", c: "violet" },
+                 { nm: "PentixaPulse", ind: "Pancreatic Cancer", ph: "I", p: "25%", c: "violet" },
+                 { nm: "PentixaPulse", ind: "Pancreatic Cancer", ph: "I", p: "15%", c: "violet" },
+                 { nm: "PentixaFor", ind: "Prostate Cancer", ph: "III", p: "70%", c: "cyan" },
+               ].map((item, i) => (
+                 <div key={i} className={`glass-panel ${item.c === 'violet' ? 'glass-panel-violet' : ''} px-6 py-4 flex items-center justify-between group`}>
+                   <div className="flex-1 min-w-0 pr-4">
+                     <p className="font-semibold text-white text-sm">{item.nm}</p>
+                     <p className="text-white/40 font-light text-xs truncate">{item.ind}</p>
+                   </div>
+                   <div className="w-12 text-center text-xs font-semibold px-2">
+                     {item.ph}
+                   </div>
+                   <div className="flex-1 px-4">
+                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden relative">
+                         <div 
+                           className={`absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ${
+                             item.c === 'cyan' 
+                               ? 'bg-gradient-to-r from-transparent to-[#00F2FF] shadow-[0_0_10px_#00F2FF]' 
+                               : 'bg-gradient-to-r from-transparent to-[#7B61FF] shadow-[0_0_10px_#7B61FF]'
+                           }`} 
+                           style={{ width: item.p }} 
+                         />
+                      </div>
+                   </div>
+                   <div>
+                     <button className={`text-[10px] font-semibold px-4 py-2 rounded-full border border-white/20 transition-all ${
+                       item.c === 'cyan' ? 'hover:bg-[#00F2FF]/20 hover:text-[#00F2FF] hover:border-[#00F2FF]' : 'hover:bg-[#7B61FF]/20 hover:text-[#7B61FF] hover:border-[#7B61FF]'
+                     }`}>
+                       VIEW DATA
+                     </button>
+                   </div>
+                 </div>
+               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. LEADERSHIP ───────────────────────────────────────────────────── */}
+      <section className="relative py-24 z-10 border-t border-white/5 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[#7B61FF]/5 blur-[150px] rounded-full point-events-none" />
+        
+        <div className="container mx-auto px-6 text-center max-w-6xl relative z-10">
+          <h2 className="text-4xl md:text-6xl font-heading font-semibold mb-20">LEADERSHIP</h2>
+          
+          <div className="flex flex-wrap justify-center gap-12 md:gap-16">
+            {[
+              { n: "Dr. Evelyn Reed", t: "CEO & Co-founder", e: "20+ years experience", img: "/molecular_interaction_cxcr4_1774918246066.png" }, // reusing hero img conceptually or just an abstract gradient as fallback since we don't have portrait images
+              { n: "Erik Merten", t: "Chief Technology Officer", e: "15+ years experience", img: "/home_hero_dna_animated_png_1774941098595.png" },
+              { n: "Dr. Sarah Lin", t: "Head of R&D", e: "Ph.D in Radiochemistry", img: "" },
+              { n: "James Thorne", t: "Chief Medical Officer", e: "Oncology Specialist", img: "" },
+            ].map((usr, i) => (
+              <div key={i} className="flex flex-col items-center group cursor-pointer">
+                {/* Circular Profile Card */}
+                <div className="relative w-40 h-40 mb-6">
+                   {/* Glowing Halo */}
+                   <div className={`absolute inset-0 rounded-full blur-[8px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                     i % 2 === 0 ? 'bg-[#00F2FF]' : 'bg-[#7B61FF]'
+                   }`} />
+                   <div className={`absolute inset-1 rounded-full border border-white/10 z-10 overflow-hidden bg-[#121428] flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}>
+                      {usr.img ? (
+                        <div className="w-full h-full bg-white/5 bg-cover bg-center mix-blend-screen opacity-50 grayscale group-hover:grayscale-0 transition-all duration-700" style={{backgroundImage: `url(${usr.img})`}} />
+                      ) : (
+                        <ScanFace className="w-12 h-12 text-white/20" />
+                      )}
+                      
+                   </div>
+                   <div className="absolute inset-1 rounded-full border-2 border-transparent group-hover:border-white/20 z-20 transition-all" />
                 </div>
-              </motion.article>
+                
+                {/* Text Info */}
+                <div className="glass-panel px-6 py-4 min-w-[200px] border-white/5 opacity-80 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500">
+                  <h4 className="text-white font-semibold text-lg">{usr.n}</h4>
+                  <p className="text-[#00F2FF] text-xs font-semibold mb-1 uppercase tracking-wider">{usr.t}</p>
+                  <p className="text-white/40 text-[10px]">{usr.e}</p>
+                  <button className="mt-3 text-[10px] uppercase font-bold text-white/60 group-hover:text-white flex items-center justify-center w-full gap-1">
+                    Learn More <ChevronIcon className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
-      
-      {/* ── GLOBAL CONTACT CTA ──────────────────────────────────────────────── */}
-      <section className="py-48 bg-[#031835] text-white relative overflow-hidden">
-         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan/40 to-transparent" />
-         <AnimatedBackground />
-         <div className="container mx-auto px-6 text-center relative z-10 max-w-4xl">
-            <span className="inline-flex items-center gap-4 text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.8em] mb-12 italic bg-white/5 px-10 py-4 rounded-full border border-white/10 shadow-3xl transform">
-               <Globe2 className="w-4 h-4 animate-spin-slow" /> Global Clinical Headquarters
-            </span>
-            <h2 className="text-5xl md:text-7xl font-heading font-extrabold leading-[0.9] italic mb-16 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/40">
-               Engineering the <br/> <span className="text-cyan">Theranostic</span> Era.
-            </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-12 pt-8">
-               <Link href={`/${locale}/contact`} className="px-16 py-8 bg-cyan text-[#031835] rounded-full font-heading font-extrabold text-sm uppercase tracking-[0.5em] hover:bg-white transition-all shadow-[0_0_80px_rgba(0,177,171,0.3)] italic transform hover:scale-110 flex items-center gap-6">
-                  INITIATE DIALOGUE <ArrowRight className="w-5 h-5" />
-               </Link>
-               <Link href={`/${locale}/about`} className="text-[12px] font-heading font-extrabold uppercase tracking-[0.6em] text-white/50 hover:text-white transition-all border-b border-transparent hover:border-cyan pb-2 italic">
-                  Meet the Board
-               </Link>
+
+      {/* ── 5. CONTACT & GLOBAL REACH ────────────────────────────────────────── */}
+      <section className="relative py-32 z-10 border-t border-white/5 bg-[#0a0b16]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <h2 className="text-4xl md:text-5xl font-heading font-semibold mb-16 text-center lg:text-left">Contact & Partnerships</h2>
+          
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            
+            {/* Contact Form */}
+            <div className="glass-panel p-10 flex flex-col gap-6 relative overflow-hidden">
+               <div className="absolute -top-32 -left-32 w-64 h-64 bg-[#7B61FF]/10 blur-[100px] rounded-full pointer-events-none" />
+               <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-[#00F2FF]/10 blur-[100px] rounded-full pointer-events-none" />
+               
+               <div className="grid grid-cols-2 gap-6 relative z-10">
+                 <input type="text" placeholder="Name" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#00F2FF]/50 transition-colors placeholder:text-white/30" />
+                 <input type="email" placeholder="Email" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#00F2FF]/50 transition-colors placeholder:text-white/30" />
+               </div>
+               <input type="text" placeholder="Subject" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#00F2FF]/50 transition-colors placeholder:text-white/30 relative z-10" />
+               <textarea placeholder="Message" rows={5} className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#00F2FF]/50 transition-colors placeholder:text-white/30 resize-none relative z-10" />
+               
+               <div className="flex justify-center mt-4 relative z-10">
+                 <button className="btn-glass btn-cyan flex items-center gap-3 w-full sm:w-auto px-12 py-4 shadow-[0_0_30px_rgba(0,242,255,0.2)]">
+                   <Send className="w-4 h-4" /> SEND MESSAGE
+                 </button>
+               </div>
             </div>
-         </div>
+
+            {/* Interactive Globe / Network Map area */}
+            <div className="relative h-[500px] w-full flex items-center justify-center">
+               <div className="absolute inset-0 bg-radial-gradient from-[#00F2FF]/5 to-transparent blur-3xl rounded-full scale-150 pointer-events-none" />
+               
+               {/* Globe Base */}
+               <div className="absolute w-[400px] h-[400px] border border-white/10 rounded-full overflow-hidden shadow-[inset_0_0_60px_rgba(0,242,255,0.1)]">
+                 {/* Longitude / Latitude lines simulated */}
+                 {[...Array(6)].map((_, i) => (
+                   <div key={`lon-${i}`} className="absolute top-0 left-0 w-full h-full border border-white/5 rounded-full" style={{ transform: `scaleX(${Math.max(0.1, i/6)})` }} />
+                 ))}
+                 {[...Array(6)].map((_, i) => (
+                   <div key={`lat-${i}`} className="absolute top-0 left-0 w-full h-full border border-white/5 rounded-full" style={{ transform: `scaleY(${Math.max(0.1, i/6)})` }} />
+                 ))}
+               </div>
+
+               {/* Globe Glow */}
+               <div className="absolute w-[400px] h-[400px] rounded-full shadow-[0_0_80px_rgba(0,242,255,0.15)] pointer-events-none border border-[#00F2FF]/20" />
+
+               {/* Connection Lines (SVGs overlay) */}
+               <svg className="absolute w-[400px] h-[400px] pointer-events-none overflow-visible" viewBox="0 0 400 400">
+                  <path d="M 120 180 Q 200 50 280 150" fill="none" stroke="rgba(0,242,255,0.4)" strokeWidth="1" strokeDasharray="4 4" className="animate-pulse" />
+                  <path d="M 120 180 Q 200 300 320 250" fill="none" stroke="rgba(123,97,255,0.4)" strokeWidth="1.5" />
+                  <path d="M 280 150 Q 300 200 320 250" fill="none" stroke="rgba(0,242,255,0.3)" strokeWidth="1" />
+               </svg>
+
+               {/* Pins */}
+               <div className="absolute w-4 h-4 rounded-full bg-[#00F2FF] shadow-[0_0_15px_#00F2FF] z-10" style={{ top: '35%', left: '25%' }}>
+                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] text-white/70 whitespace-nowrap">Global HQ</div>
+               </div>
+               
+               <div className="absolute w-4 h-4 rounded-full bg-[#7B61FF] shadow-[0_0_15px_#7B61FF] z-10" style={{ top: '30%', left: '68%' }}>
+                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] text-white/70 whitespace-nowrap">EU Operations</div>
+               </div>
+               
+               <div className="absolute w-3 h-3 rounded-full bg-white shadow-[0_0_15px_white] z-10 animate-pulse" style={{ top: '60%', left: '78%' }}>
+                 <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] text-[#00F2FF] whitespace-nowrap font-bold">Partner Locations</div>
+               </div>
+            </div>
+
+          </div>
+
+          {/* Sub-cards */}
+          <div className="grid md:grid-cols-3 gap-6 mt-16">
+            <div className="glass-panel p-6 flex items-start gap-4 hover:border-[#00F2FF]/30 transition-colors">
+              <FlaskConical className="w-8 h-8 text-[#00F2FF]" />
+              <div>
+                <h4 className="text-sm font-semibold mb-2">R&D COLLABORATION</h4>
+                <p className="text-xs text-white/50 mb-2">Explore the latest strategic advancements and cross-industry innovations.</p>
+                <Link href="#" className="text-xs text-[#00F2FF] font-semibold hover:underline">LEARN MORE</Link>
+              </div>
+            </div>
+            
+            <div className="glass-panel glass-panel-violet p-6 flex items-start gap-4">
+              <Cpu className="w-8 h-8 text-[#7B61FF]" />
+              <div>
+                <h4 className="text-sm font-semibold mb-2">CLINICAL SUPPLY</h4>
+                <p className="text-xs text-white/50 mb-2">Secured isotope sourcing and production timelines worldwide.</p>
+                <Link href="#" className="text-xs text-[#7B61FF] font-semibold hover:underline">LEARN MORE</Link>
+              </div>
+            </div>
+            
+            <div className="glass-panel p-6 flex items-start gap-4 hover:border-white/30 transition-colors">
+              <MapPin className="w-8 h-8 text-yellow-500" />
+              <div>
+                <h4 className="text-sm font-semibold mb-2 text-yellow-500">COMMERCIALIZATION</h4>
+                <p className="text-xs text-white/50 mb-2">Global deployment paths for therapeutic pipelines to main markets.</p>
+                <Link href="#" className="text-xs text-yellow-500 font-semibold hover:underline">LEARN MORE</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
     </div>
   );
 }
+
+// Simple internal icon helpers
+const AtomIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <circle cx="12" cy="12" r="3"/>
+    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/>
+    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/>
+    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)"/>
+  </svg>
+)
+
+const ChevronIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+)

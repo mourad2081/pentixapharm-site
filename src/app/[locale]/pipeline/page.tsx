@@ -1,8 +1,10 @@
 "use client";
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
+import Image from "next/image";
 import { ChevronDown, Beaker, ShieldAlert, Target, Zap, Microscope, BookOpen, Activity, ArrowRight, Info, LayoutGrid, CheckCircle2, TrendingUp, Globe2, BarChart3, Atom } from "lucide-react";
+import AnimatedBg from "@/components/visual/AnimatedBackground";
 
 const PIPELINE = [
   { 
@@ -66,6 +68,7 @@ const PIPELINE = [
 export default function PipelinePage() {
   const [filter, setFilter] = useState("All");
   const [expandedId, setExpandedId] = useState<string | null>("pfor-pa");
+  const locale = useLocale();
 
   const filteredData = useMemo(() => {
     return filter === "All" ? PIPELINE : PIPELINE.filter(p => p.category === filter);
@@ -75,48 +78,50 @@ export default function PipelinePage() {
   const MOL_IMG = "pipeline_clinical_premium_png_1774941240816.png";
 
   return (
-    <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-24">
+    <div className="bg-[#F8FAFC] min-h-screen text-slate-900 pb-32 selection:bg-[#00BDD5] selection:text-white overflow-hidden">
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 overflow-hidden bg-[#010816] border-b border-white/5 text-white">
-         <div className="absolute inset-0 z-0 overflow-hidden scale-110 opacity-60 mix-blend-screen">
-            <img src={`/${MOL_IMG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Pipeline Background" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#010816] via-[#010816]/50 to-transparent" />
-         </div>
-        <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+      <section className="relative pt-64 pb-32 overflow-hidden bg-white border-b border-slate-100">
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#F8FAFC] to-transparent opacity-60" />
+        <div className="absolute inset-0 z-0 opacity-[0.08] pointer-events-none grayscale">
+           <img src={`/${MOL_IMG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Pipeline" />
+        </div>
+        <AnimatedBg />
+        
+        <div className="container mx-auto px-6 relative z-10 text-center max-w-7xl">
           <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}>
-            <span className="text-cyan text-xs font-bold uppercase tracking-[0.3em] bg-white/5 backdrop-blur-xl px-10 py-3 rounded-full inline-block mb-10 border border-white/10 italic shadow-2xl">Clinical Evolution Platform</span>
-            <h1 className="text-6xl md:text-[7rem] font-heading font-extrabold text-white mb-8 leading-[0.8] italic tracking-tighter drop-shadow-2xl">Advanced <span className="text-teal">Pipeline</span></h1>
-            <p className="text-slate-300 text-2xl leading-relaxed font-light max-w-4xl italic border-l-2 border-cyan/40 pl-8">
-              From breakthrough discovery to Phase 3 readiness. We are developing proprietary ligands to transform treatment paradigms for orphan diseases and hard-to-treat cancers.
-            </p>
+            <span className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.6em] bg-white px-10 py-4 rounded-full inline-block mb-12 border border-slate-100 shadow-xl italic mt-10">Clinical Innovation Matrix</span>
+            <h1 className="text-6xl md:text-[9.5rem] font-heading font-extrabold text-[#001533] mb-12 italic leading-[0.75] tracking-tighter drop-shadow-sm">Advanced <br/><span className="text-[#00BDD5] underline decoration-[#00BDD5]/10 underline-offset-10 px-4">Pipeline.</span></h1>
+            <motion.p className="text-slate-500 text-2xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-12 border-x border-slate-100">
+              From breakthrough molecular discovery to Phase 3 registration readiness. We transform clinical standards through targeted radiochemistry.
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* ── PIPELINE CHART ──────────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#F8FAFD]">
-         <div className="container mx-auto px-6 max-w-6xl">
-            <div className="flex flex-col lg:flex-row items-center justify-between mb-16 gap-8">
-               <div className="flex bg-white border border-slate-200 p-1.5 rounded-2xl shadow-xl">
+      <section className="py-40 bg-[#F8FAFC]">
+         <div className="container mx-auto px-6 max-w-7xl">
+            <div className="flex flex-col lg:flex-row items-center justify-between mb-24 gap-12">
+               <div className="flex bg-white/50 backdrop-blur-xl border border-slate-200 p-2 rounded-[2.5rem] shadow-2xl">
                   {["All", "Diagnostic", "Therapeutic", "Antibody"].map((f) => (
                     <button key={f} onClick={() => setFilter(f)} 
-                      className={"px-7 py-3.5 rounded-xl font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all " + (filter===f ? "bg-[#031835] text-white shadow-lg scale-105" : "text-slate-500 hover:bg-slate-50 hover:text-[#031835]")}>
+                      className={"px-10 py-5 rounded-[2rem] font-heading font-extrabold text-[10px] uppercase tracking-[0.2em] transition-all italic " + (filter===f ? "bg-[#001533] text-white shadow-xl scale-105" : "text-slate-400 hover:bg-white hover:text-[#001533] shadow-sm")}>
                        {f}
                     </button>
                   ))}
                </div>
-               <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.3em] flex items-center gap-3 italic">
-                  <Info className="w-4 h-4 text-cyan" /> Click Molecule bars to expand scientific details
+               <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.3em] flex items-center gap-4 italic opacity-60">
+                  <Info className="w-5 h-5 text-[#00BDD5]" /> Interactive Science: Select an asset to expand dossier
                </div>
             </div>
 
-            <div className="bg-white rounded-[4rem] shadow-2xl border border-slate-100 overflow-hidden relative">
-               <div className="p-8 lg:p-20">
-                  <div className="flex items-center border-b border-slate-100 pb-8 mb-16 hidden md:flex">
-                     <div className="w-[30%] text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.4em] pl-6 italic">Target / Asset Indication</div>
-                     <div className="w-[70%] flex justify-between px-10">
+            <div className="bg-white rounded-[5rem] shadow-4xl border border-slate-100 overflow-hidden relative">
+               <div className="p-10 lg:p-24">
+                  <div className="flex items-center border-b border-slate-100 pb-12 mb-16 hidden md:flex">
+                     <div className="w-[30%] text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.5em] pl-10 italic">Target Asset / Indication Stack</div>
+                     <div className="w-[70%] flex justify-between px-16">
                         {phases.map(ph => (
-                          <div key={ph} className="flex-1 text-center text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.3em] border-l border-slate-50 first:border-none italic">
+                          <div key={ph} className="flex-1 text-center text-[10px] font-extrabold text-slate-300 uppercase tracking-[0.4em] italic first:border-none">
                              {ph}
                           </div>
                         ))}
@@ -126,35 +131,32 @@ export default function PipelinePage() {
                   <div className="space-y-16">
                      <AnimatePresence mode="popLayout">
                         {filteredData.map((p) => (
-                          <motion.div key={p.id} initial={{opacity:0, scale:0.98, y:20}} animate={{opacity:1, scale:1, y:0}} exit={{opacity:0, scale:0.95}} layout className="group">
-                             <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-0 cursor-pointer mb-4" onClick={() => setExpandedId(expandedId === p.id ? null : p.id)}>
+                          <motion.div key={p.id} initial={{opacity:0, scale:0.98}} animate={{opacity:1, scale:1}} exit={{opacity:0}} layout className="group">
+                             <div className="flex flex-col md:flex-row md:items-center gap-10 cursor-pointer" onClick={() => setExpandedId(expandedId === p.id ? null : p.id)}>
                                 <div className="md:w-[30%] pr-10">
-                                   <div className="flex items-center gap-6">
-                                      <div className={"w-16 h-16 rounded-3xl flex items-center justify-center shrink-0 shadow-2xl transition-transform group-hover:rotate-6 " + (p.color==="teal"?"bg-teal/10 text-teal":p.color==="cyan"?"bg-cyan/10 text-cyan":"bg-helixRed/10 text-helixRed")}>
-                                         {p.category==="Diagnostic"?<Microscope className="w-7 h-7"/> : p.category==="Therapeutic"?<Zap className="w-7 h-7"/> : <Beaker className="w-7 h-7"/>}
+                                   <div className="flex items-center gap-8">
+                                      <div className={"w-20 h-20 rounded-[2.5rem] flex items-center justify-center shrink-0 shadow-xl transition-all group-hover:rotate-[15deg] group-hover:scale-110 " + (p.color==="teal"?"bg-[#00BDD5]/10 text-[#00BDD5]":p.color==="cyan"?"bg-[#00BDD5]/10 text-[#00BDD5]":"bg-red-50 text-red-500")}>
+                                         {p.category==="Diagnostic"?<Microscope className="w-8 h-8"/> : p.category==="Therapeutic"?<Zap className="w-8 h-8"/> : <Beaker className="w-8 h-8"/>}
                                       </div>
                                       <div>
-                                         <h3 className="font-heading font-extrabold text-[#031835] text-2xl leading-tight group-hover:text-cyan transition-colors italic">{p.name}</h3>
-                                         <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.2em] mt-2 italic">{p.ind}</p>
+                                         <h3 className="font-heading font-extrabold text-[#001533] text-4xl leading-none group-hover:text-[#00BDD5] transition-colors italic tracking-tighter">{p.name}</h3>
+                                         <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.3em] mt-3 italic leading-tight">{p.ind}</p>
                                       </div>
                                    </div>
                                 </div>
 
-                                <div className="md:w-[70%] relative h-14 bg-slate-50 border border-slate-100 rounded-full overflow-hidden shadow-inner group-hover:border-slate-200 transition-all">
+                                <div className="md:w-[70%] relative h-16 bg-slate-50 border border-slate-100 rounded-full overflow-hidden group-hover:shadow-inner transition-all shadow-sm">
                                    <motion.div 
                                       initial={{width: 0}}
                                       animate={{width: (p.phaseIndex / 4) * 100 + "%"}}
-                                      className={"absolute inset-y-0 left-0 transition-all " + (p.color==="teal"?"bg-gradient-to-r from-teal/40 to-teal":p.color==="cyan"?"bg-gradient-to-r from-cyan/40 to-cyan":"bg-gradient-to-r from-helixRed/40 to-helixRed")}
+                                      className={"absolute inset-y-0 left-0 transition-all " + (p.color==="teal"?"bg-gradient-to-r from-[#00BDD5]/30 to-[#00BDD5]":p.color==="cyan"?"bg-gradient-to-r from-[#00BDD5]/30 to-[#00BDD5]":"bg-gradient-to-r from-red-200 to-red-500")}
                                    >
-                                      <div className="absolute inset-y-0 right-0 w-10 flex items-center justify-center">
-                                         <div className="w-2.5 h-2.5 rounded-full bg-white animate-pulse shadow-[0_0_15px_rgba(255,255,255,1)]" />
+                                      <div className="absolute inset-y-0 right-0 w-12 flex items-center justify-center">
+                                         <div className="w-3 h-3 rounded-full bg-white animate-pulse shadow-2xl" />
                                       </div>
                                    </motion.div>
-                                   <div className="absolute inset-x-0 inset-y-0 flex justify-between pointer-events-none opacity-10">
-                                      {phases.map((_, i) => <div key={i} className="flex-1 border-r border-slate-700 h-full last:border-none" />)}
-                                   </div>
-                                   <div className="absolute inset-0 flex items-center px-10 pointer-events-none">
-                                      <span className="text-[10px] font-extrabold text-[#031835] ml-auto opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-[0.3em] italic">{p.phase}</span>
+                                   <div className="absolute inset-0 flex items-center px-12 pointer-events-none">
+                                      <span className="text-[10px] font-extrabold text-[#001533] ml-auto opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-[0.5em] italic">{p.phase} Status</span>
                                    </div>
                                 </div>
                              </div>
@@ -162,38 +164,36 @@ export default function PipelinePage() {
                              <AnimatePresence>
                                 {expandedId === p.id && (
                                   <motion.div initial={{opacity:0, height:0}} animate={{opacity:1, height:"auto"}} exit={{opacity:0, height:0}} className="overflow-hidden">
-                                     <div className="pt-12 pb-16 px-4 border-t border-slate-50 mt-10 grid lg:grid-cols-3 gap-16">
-                                        <div className="lg:col-span-2 space-y-10">
+                                     <div className="pt-16 pb-16 px-6 border-t border-slate-50 mt-14 grid lg:grid-cols-3 gap-24">
+                                        <div className="lg:col-span-2 space-y-12">
                                            <div>
-                                              <h4 className="text-2xl font-heading font-extrabold text-[#031835] mb-4 italic">Mechanism & Potential</h4>
-                                              <p className="text-slate-600 leading-relaxed text-lg font-light italic">{p.fullContent}</p>
+                                              <span className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.6em] mb-6 block italic">Scientific Dossier</span>
+                                              <h4 className="text-4xl font-heading font-extrabold text-[#001533] mb-6 italic tracking-tight uppercase">Mechanism of Action</h4>
+                                              <p className="text-slate-500 leading-relaxed text-xl font-light italic">{p.fullContent}</p>
                                            </div>
-                                           <div className="bg-[#F8FAFD] p-10 rounded-[3rem] border border-slate-100 space-y-6 shadow-inner">
-                                              <div className="flex items-center gap-4 border-b border-slate-200 pb-4">
-                                                 <TrendingUp className="w-6 h-6 text-cyan" />
-                                                 <p className="text-xs font-heading font-extrabold text-[#031835] uppercase tracking-widest italic">Market Outlook</p>
+                                           <div className="bg-slate-50 p-12 rounded-[4rem] border border-slate-100 space-y-8 relative overflow-hidden group/mkt">
+                                              <div className="absolute bottom-[-20%] right-[-10%] opacity-[0.03] group-hover/mkt:scale-110 transition-transform"><TrendingUp className="w-64 h-64 text-[#001533]" /></div>
+                                              <div className="flex items-center gap-6 border-b border-white pb-6 relative z-10">
+                                                 <Activity className="w-8 h-8 text-[#00BDD5]" />
+                                                 <p className="text-[11px] font-heading font-extrabold text-[#001533] uppercase tracking-[0.3em] italic">Market Strategy & Outlook</p>
                                               </div>
-                                              <p className="text-slate-600 italic font-light leading-relaxed">{p.marketPotential}</p>
-                                           </div>
-                                           <div className="flex flex-wrap gap-4">
-                                              <span className="px-6 py-3 bg-white border border-slate-200 rounded-2xl text-[10px] font-extrabold text-slate-500 uppercase tracking-widest shadow-sm">Molecule: {p.molecule}</span>
-                                              <span className="px-6 py-3 bg-white border border-slate-200 rounded-2xl text-[10px] font-extrabold text-slate-500 uppercase tracking-widest shadow-sm">Lead Isotope: {p.id.includes('pfor')?'Ga-68':'Lu-177/Y-90'}</span>
+                                              <p className="text-slate-500 italic font-light leading-relaxed text-lg relative z-10">{p.marketPotential}</p>
                                            </div>
                                         </div>
-                                        <div className="bg-[#031835] text-white rounded-[3.5rem] p-12 shadow-2xl relative overflow-hidden group/card shadow-navy/30">
-                                           <div className="absolute top-0 right-0 p-10 opacity-10 group-hover/card:scale-110 transition-transform"><Atom className="w-32 h-32" /></div>
-                                           <h4 className="text-sm font-heading font-extrabold uppercase tracking-[0.4em] mb-10 flex items-center gap-3 italic text-cyan"><LayoutGrid className="w-4 h-4"/> Path to Clinic</h4>
-                                           <ul className="space-y-6 relative z-10">
+                                        <div className="bg-[#001533] text-white rounded-[5rem] p-16 shadow-4xl relative overflow-hidden group/card">
+                                           <div className="absolute top-0 right-0 p-12 opacity-5"><Atom className="w-48 h-48" /></div>
+                                           <h4 className="text-[11px] font-heading font-extrabold uppercase tracking-[0.5em] mb-12 flex items-center gap-4 italic text-[#00BDD5]"><LayoutGrid className="w-5 h-5"/> Institutional Milestones</h4>
+                                           <ul className="space-y-8 relative z-10">
                                               {p.milestones.map((ms, idx) => (
-                                                <li key={idx} className="flex gap-5 items-start">
-                                                   <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/card:bg-cyan/20 transition-colors"><CheckCircle2 className="w-3.5 h-3.5 text-cyan"/></div>
-                                                   <span className="text-sm text-slate-300 font-medium italic leading-snug">{ms}</span>
+                                                <li key={idx} className="flex gap-6 items-start">
+                                                   <div className="w-8 h-8 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 mt-0.5 border border-white/5 group-hover/card:border-[#00BDD5] transition-all"><CheckCircle2 className="w-4 h-4 text-[#00BDD5]"/></div>
+                                                   <span className="text-base text-slate-300 font-light italic leading-snug">{ms}</span>
                                                 </li>
                                               ))}
                                            </ul>
-                                           <div className="mt-12 bg-white/5 p-6 rounded-[2rem] border border-white/5 backdrop-blur-sm">
-                                              <p className="text-[10px] font-bold text-[#00B1AB] uppercase tracking-widest mb-3 italic">Commercial Readiness</p>
-                                              <p className="text-xs text-slate-400 font-light leading-relaxed">GMP scale-up and Centralized Radio-Pharmacy logistics secured for pivotal phases.</p>
+                                           <div className="mt-16 pt-12 border-t border-white/5">
+                                              <p className="text-[10px] font-bold text-[#00BDD5] uppercase tracking-widest mb-4 italic">Operational Readiness</p>
+                                              <p className="text-sm text-slate-400 font-light italic leading-relaxed">Centralized CMC logistics secured for Phase 3 PANDA trial execution across 25+ global sites.</p>
                                            </div>
                                         </div>
                                      </div>
@@ -209,49 +209,47 @@ export default function PipelinePage() {
          </div>
       </section>
 
-      {/* ── NEW FEATURE: MOA / SCIENCE SECTION ─────────────────────────────── */}
-      <section className="py-28 bg-white border-y border-slate-100 overflow-hidden">
-         <div className="container mx-auto px-6 max-w-6xl">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
-               <motion.div initial={{opacity:0, x:-20}} whileInView={{opacity:1, x:0}} viewport={{once:true}}>
-                  <span className="text-cyan text-xs font-extrabold uppercase tracking-[0.4em] italic mb-6 block">Molecular Strategy</span>
-                  <h2 className="text-4xl md:text-6xl font-heading font-extrabold text-[#031835] leading-tight mb-8 italic">The <span className="text-teal">Seeing</span> and <span className="text-cyan">Treating</span> Cycle</h2>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-10 font-light italic">
-                     Our pipeline is built on the unique ability of our ligands to carry dynamic payloads. By swapping a diagnostic isotope (Gallium-68) for a therapeutic one (Lutetium-177 or Yttrium-90) onto the same targeting platform (PentixaFor/Ther), we ensure precision ablation of tumors identified via PET/CT.
-                  </p>
-                  <div className="grid grid-cols-2 gap-8">
-                     <div className="p-10 bg-[#F8FAFD] rounded-[3rem] border border-slate-100 group hover:shadow-2xl transition-all">
-                        <Activity className="w-10 h-10 text-teal mb-6 group-hover:scale-110 transition-transform"/>
-                        <h4 className="font-heading font-extrabold text-[#031835] text-xl mb-3 tracking-tight italic text-teal">Diagnostic</h4>
-                        <p className="text-slate-500 text-xs italic font-light">Identifying target expression at the molecular level with near 100% specificity.</p>
-                     </div>
-                     <div className="p-10 bg-[#031835] text-white rounded-[3rem] shadow-2xl group hover:shadow-cyan/20 transition-all">
-                        <Zap className="w-10 h-10 text-cyan mb-6 group-hover:scale-110 transition-transform"/>
-                        <h4 className="font-heading font-extrabold text-cyan text-xl mb-3 tracking-tight italic">Therapeutic</h4>
-                        <p className="text-slate-400 text-xs italic font-light">Targeted radiopharmaceutical therapy (TRT) delivering precision cell death.</p>
-                     </div>
+      {/* ── SCIENCE SECTION ─────────────────────────────── */}
+      <section className="py-48 bg-white border-y border-slate-100 overflow-hidden relative">
+         <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-2 gap-32 items-center">
+            <motion.div>
+               <span className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.6em] italic mb-8 block">Theranostic Core Engine</span>
+               <h2 className="text-6xl md:text-8xl font-heading font-extrabold text-[#001533] leading-none mb-12 italic tracking-tighter">The <span className="text-[#00BDD5]">Isotope</span> <br/> Exchange.</h2>
+               <p className="text-slate-500 text-2xl leading-relaxed mb-16 font-light italic">
+                  One platform, two distinct outcomes. By swapping the diagnostic 'scout' for a therapeutic 'sniper' isotope, we ensure 100% molecular alignment between imaging and treatment.
+               </p>
+               <div className="grid grid-cols-2 gap-10">
+                  <div className="p-12 bg-slate-50 rounded-[4rem] group hover:bg-white hover:shadow-4xl transition-all border border-slate-100">
+                     <Microscope className="w-12 h-12 text-[#00BDD5] mb-8 group-hover:scale-110 transition-transform"/>
+                     <h4 className="font-heading font-extrabold text-[#001533] text-2xl mb-4 italic tracking-tight uppercase">Diagnostic</h4>
+                     <p className="text-slate-400 text-sm italic font-light">Identifying target receptor load with near-perfect sensitivity across PET/CT protocols.</p>
                   </div>
-               </motion.div>
-               <div className="relative group">
-                  <div className="absolute inset-0 bg-cyan opacity-[0.03] rounded-[4rem] group-hover:opacity-[0.06] transition-opacity" />
-                  <img src="/biotech_lab_researcher_1774915416227.png" className="rounded-[4rem] shadow-2xl skew-y-1 group-hover:skew-y-0 transition-transform duration-700 object-cover h-[500px] w-full" alt="Precision Science" />
+                  <div className="p-12 bg-[#001533] text-white rounded-[4rem] shadow-4xl group transition-all border border-transparent">
+                     <Zap className="w-12 h-12 text-[#00BDD5] mb-8 group-hover:scale-110 transition-transform"/>
+                     <h4 className="font-heading font-extrabold text-[#00BDD5] text-2xl mb-4 italic tracking-tight uppercase">Therapeutic</h4>
+                     <p className="text-slate-400 text-sm italic font-light">Direct and systematic ablation of the identified tumor clusters via potent radio-payloads.</p>
+                  </div>
                </div>
+            </motion.div>
+            <div className="relative">
+               <div className="absolute inset-0 bg-[#00BDD5]/5 rounded-[6rem] -rotate-3 group-hover:rotate-0 transition-transform duration-1000" />
+               <img src="/biotech_lab_researcher_1774915416227.png" className="rounded-[6rem] shadow-4xl relative z-10 h-[700px] w-full object-cover grayscale opacity-80" alt="Science" />
             </div>
          </div>
       </section>
 
-      {/* ── FINAL CTA: INVESTORS / PARTNERS ──────────────────────────────────── */}
-      <section className="py-24">
-         <div className="container mx-auto px-6 max-w-4xl text-center">
-            <h3 className="text-3xl font-heading font-extrabold text-[#031835] mb-8 tracking-tighter italic">Transforming Medicine Together</h3>
-            <p className="text-slate-500 text-xl leading-relaxed mb-12 font-light italic px-10">We are open to strategic discussions for regional licensing and co-development of our priority CXCR4 and CD24 assets.</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-               <button className="px-12 py-5 bg-[#031835] text-white font-heading font-extrabold rounded-full hover:bg-cyan hover:text-navy transition-all shadow-2xl flex items-center gap-3">
-                 Licensing Portal <Globe2 className="w-5 h-5" />
-               </button>
-               <button className="px-12 py-5 bg-white border-2 border-[#031835] text-[#031835] font-heading font-extrabold rounded-full hover:bg-slate-50 transition-all shadow-sm flex items-center gap-3">
-                 Investor Roadmap <BarChart3 className="w-5 h-5" />
-               </button>
+      {/* ── FINAL CTA ──────────────────────────────────── */}
+      <section className="py-40 text-center">
+         <div className="container mx-auto px-6 max-w-4xl">
+            <h3 className="text-4xl md:text-6xl font-heading font-extrabold text-[#001533] mb-12 tracking-tighter italic leading-none">Visionary Science. <br/> <span className="text-[#00BDD5]">Global Scale.</span></h3>
+            <p className="text-slate-500 text-2xl leading-relaxed mb-20 font-light italic px-10">We prioritize clinical success through transparency and scientific collaboration across the global hematology and oncology networks.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+               <Link href={`/${locale}/partnering/licensing`} className="px-16 py-8 bg-[#001533] text-white font-heading font-extrabold rounded-full hover:bg-[#00BDD5] transition-all shadow-4xl text-[11px] uppercase tracking-[0.5em] italic flex items-center gap-6">
+                 Licensing Matrix <Globe2 className="w-6 h-6" />
+               </Link>
+               <Link href={`/${locale}/investors/portal`} className="px-16 py-8 bg-white border-2 border-slate-100 text-[#001533] font-heading font-extrabold rounded-full hover:bg-slate-50 transition-all shadow-xl text-[11px] uppercase tracking-[0.5em] italic flex items-center gap-6">
+                 Investor Fact-Sheet <BarChart3 className="w-6 h-6" />
+               </Link>
             </div>
          </div>
       </section>

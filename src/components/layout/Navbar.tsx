@@ -20,12 +20,13 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: `/${locale}/news`, label: "News" },
     { href: `/${locale}/pipeline`, label: "Pipeline" },
     { href: `/${locale}/technology`, label: "Technology" },
-    { href: `/${locale}/research`, label: "Research" },
-    { href: `/${locale}/partnering/licensing`, label: "Licensing", highlight: true },
-    { href: `/${locale}/investors/portal`, label: "Investors", secondary: true },
+    { href: `/${locale}/iis`, label: "IIS" },
+    { href: `/${locale}/investors/portal`, label: "Investors" },
+    { href: `/${locale}/partnering/licensing`, label: "Partnering", highlight: true },
+    { href: `/${locale}/news`, label: "News" },
+    { href: `/${locale}/careers`, label: "Careers", secondary: true },
   ];
 
   return (

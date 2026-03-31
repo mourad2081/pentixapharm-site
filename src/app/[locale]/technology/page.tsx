@@ -4,24 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
 import { 
   ArrowRight, Activity, Microscope, Zap, ShieldAlert, Atom, Layers, 
-  Factory, Container, Search, Database, Network, Fingerprint, Focus,
-  ChevronRight
+  Factory, Container, Search, Database, Network, Fingerprint, Focus
 } from "lucide-react";
-import AnimatedBg from "@/components/visual/AnimatedBackground";
-import HelixBackground from "@/components/visual/HelixBackground";
 import Link from "next/link";
 
-const fadeUp = { hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0 } };
-const stagger = { show: { transition: { staggerChildren: 0.15 } } };
-
-const HERO_BG = "tech_hero_bg_png_1774920464102.png";
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
+const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 const MECHANISMS = [
-  { id: "cxcr4", label: "CXCR4 Precision", icon: Atom, color: "text-[#00BDD5]" },
-  { id: "cd24", label: "CD24 Glycans", icon: Layers, color: "text-[#A7303E]" },
-  { id: "theranostics", label: "Theranostics", icon: Activity, color: "text-[#00BDD5]" },
-  { id: "cmc", label: "Global Supply", icon: Factory, color: "text-[#00BDD5]" },
-  { id: "discovery", label: "Discovery", icon: Search, color: "text-[#22c55e]" }
+  { id: "cxcr4", label: "CXCR4 Precision", icon: Atom, color: "text-[#00F2FF]" },
+  { id: "cd24", label: "CD24 Glycans", icon: Layers, color: "text-[#7B61FF]" },
+  { id: "theranostics", label: "Theranostics", icon: Activity, color: "text-[#00F2FF]" },
+  { id: "cmc", label: "Global Supply", icon: Factory, color: "text-[#00F2FF]" },
+  { id: "discovery", label: "Discovery", icon: Search, color: "text-white" }
 ];
 
 export default function TechnologyPage() {
@@ -29,39 +24,33 @@ export default function TechnologyPage() {
   const locale = useLocale();
   
   return (
-    <div className="bg-[#F8FAFC] min-h-screen text-slate-800 overflow-hidden selection:bg-[#00BDD5] selection:text-white">
+    <div className="min-h-screen text-white overflow-hidden selection:bg-[#00F2FF]/30 selection:text-white pt-24 pb-32">
+      
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-64 pb-56 overflow-hidden bg-white border-b border-slate-100">
-        <div className="absolute inset-0 z-0 overflow-hidden opacity-[0.15]">
-           <img src={`/${HERO_BG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Technology Background" />
-           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-[#F8FAFC]" />
-           <AnimatedBg />
-           <HelixBackground />
-        </div>
-        
+      <section className="relative pt-20 pb-20 overflow-hidden border-b border-white/5">
         <div className="container mx-auto px-6 relative z-10 max-w-7xl text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.6em] bg-white px-10 py-4 rounded-full mb-14 border border-slate-100 shadow-xl italic">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-[#00F2FF] text-[10px] font-heading font-semibold uppercase tracking-[0.4em] bg-white/5 backdrop-blur-md px-8 py-3 rounded-full mb-10 border border-[#00F2FF]/20 shadow-[0_0_15px_rgba(0,242,255,0.1)]">
               <Microscope className="w-4 h-4" /> Molecular Science & Engineering
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-[9.5rem] font-heading font-extrabold mb-12 italic leading-[0.75] tracking-tighter text-[#001533]">
-              Science of <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#001533] via-[#00BDD5] to-[#001533] animate-gradient-x underline decoration-[#00BDD5]/10 underline-offset-10">Precision.</span>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-semibold mb-8 tracking-tighter">
+              Science of <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FF] to-[#7B61FF]">Precision.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-500 text-2xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-12 border-x border-slate-100">
+            <motion.p variants={fadeUp} className="text-white/60 text-xl md:text-2xl leading-relaxed font-light max-w-4xl mx-auto mb-16">
               Utilizing proprietary biological targets to deliver high-affinity radiochemistry, providing a leading standard of care in oncology and endocrinology.
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-16 pt-8">
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-12 pt-8">
                <div className="flex items-center gap-4">
-                  <Fingerprint className="w-5 h-5 text-[#00BDD5]" />
-                  <p className="text-[10px] font-heading font-extrabold text-slate-400 uppercase tracking-widest italic">Target Specificity</p>
+                  <Fingerprint className="w-5 h-5 text-[#00F2FF]" />
+                  <p className="text-[10px] font-heading font-semibold text-white/50 uppercase tracking-widest">Target Specificity</p>
                </div>
                <div className="flex items-center gap-4">
-                  <Focus className="w-5 h-5 text-[#00BDD5]" />
-                  <p className="text-[10px] font-heading font-extrabold text-slate-400 uppercase tracking-widest italic">Bioretention Affinity</p>
+                  <Focus className="w-5 h-5 text-[#00F2FF]" />
+                  <p className="text-[10px] font-heading font-semibold text-white/50 uppercase tracking-widest">Bioretention Affinity</p>
                </div>
                <div className="flex items-center gap-4">
-                  <Network className="w-5 h-5 text-[#00BDD5]" />
-                  <p className="text-[10px] font-heading font-extrabold text-slate-400 uppercase tracking-widest italic">Isotope Modularity</p>
+                  <Network className="w-5 h-5 text-[#00F2FF]" />
+                  <p className="text-[10px] font-heading font-semibold text-white/50 uppercase tracking-widest">Isotope Modularity</p>
                </div>
             </motion.div>
           </motion.div>
@@ -69,100 +58,106 @@ export default function TechnologyPage() {
       </section>
 
       {/* ── INTERACTIVE TABS SECTION ────────────────────────────────────────── */}
-      <section className="pb-48 pt-24 bg-[#F8FAFC] relative z-20">
+      <section className="pb-32 pt-20 relative z-20">
         <div className="container mx-auto px-6 max-w-7xl">
           
-          <div className="flex flex-wrap justify-center gap-4 mb-24 relative z-30 -mt-40">
+          <div className="flex flex-wrap justify-center gap-4 mb-20">
             {MECHANISMS.map(m => (
                <button key={m.id} onClick={() => setActiveTab(m.id)}
-                 className={"flex items-center gap-5 px-12 py-8 rounded-[3rem] font-heading font-extrabold text-[11px] uppercase tracking-[0.5em] transition-all outline-none italic border " + (activeTab===m.id ? "bg-[#001533] border-[#00BDD5]/30 text-white shadow-2xl scale-110" : "bg-white border-slate-200 text-slate-400 hover:bg-slate-50 hover:text-[#001533] shadow-lg")}>
-                  <m.icon className={"w-5 h-5 transition-transform duration-500 " + (activeTab===m.id ? "text-[#00BDD5]" : m.color)} /> {m.label}
+                 className={`flex items-center gap-4 px-8 py-4 rounded-full font-heading font-semibold text-[11px] uppercase tracking-widest transition-all outline-none border ${
+                   activeTab === m.id 
+                     ? "bg-[#00F2FF]/10 border-[#00F2FF]/50 text-white shadow-[0_0_20px_rgba(0,242,255,0.2)]" 
+                     : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white"
+                 }`}>
+                  <m.icon className={`w-4 h-4 transition-transform duration-500 ${activeTab === m.id ? "text-[#00F2FF]" : m.color}`} /> {m.label}
                </button>
             ))}
           </div>
 
-          <motion.div layout className="bg-white rounded-[5rem] p-16 lg:p-24 shadow-3xl border border-slate-100 relative overflow-hidden min-h-[700px] flex items-center">
-             <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-gradient-radial from-[#00BDD5]/5 via-transparent to-transparent opacity-60 pointer-events-none translate-x-1/3 -translate-y-1/3" />
+          <motion.div layout className="glass-panel p-10 lg:p-16 relative overflow-hidden min-h-[500px] flex items-center">
              <AnimatePresence mode="wait">
                
                {activeTab === "cxcr4" && (
-                 <motion.div key="cxcr4" initial={{opacity:0, x:40}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-40}} className="relative z-10 w-full" transition={{duration:0.6}}>
-                    <div className="grid lg:grid-cols-2 gap-24 items-center">
+                 <motion.div key="cxcr4" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-20}} className="relative z-10 w-full" transition={{duration:0.4}}>
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
                        <div>
-                          <span className="text-[#00BDD5] font-heading font-extrabold text-[10px] uppercase tracking-[0.6em] mb-6 block italic">Core Pipeline Matrix</span>
-                          <h2 className="text-6xl lg:text-8xl font-heading font-extrabold text-[#001533] mb-12 leading-none italic tracking-tighter">Molecular <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#001533] to-[#00BDD5]">CXCR4</span> Hub</h2>
-                          <p className="text-slate-500 text-xl leading-relaxed mb-16 font-light italic">
+                          <span className="text-[#00F2FF] font-heading font-semibold text-[10px] uppercase tracking-[0.4em] mb-6 block">Core Pipeline Matrix</span>
+                          <h2 className="text-5xl lg:text-7xl font-heading font-semibold text-white mb-8 leading-none tracking-tighter">Molecular <br/><span className="text-[#00F2FF]">CXCR4</span> Hub</h2>
+                          <p className="text-white/60 text-lg leading-relaxed mb-12 font-light">
                             Targeting aggressive tumor micro-environments with extreme specificity. CXCR4 ligands enable high-resolution PET/CT scout mapping followed by sniper-grade therapeutic ablation using potent isotopes.
                           </p>
-                          <div className="space-y-8">
-                             <div className="bg-slate-50/50 p-12 rounded-[3.5rem] border border-slate-100 flex gap-8 group hover:bg-white hover:shadow-2xl transition-all duration-700">
-                                <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center shrink-0 shadow-xl group-hover:bg-[#001533] transition-all"><ShieldAlert className="w-8 h-8 text-[#00BDD5]"/></div>
+                          <div className="space-y-6">
+                             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 flex gap-6 hover:bg-white/10 transition-all">
+                                <div className="w-14 h-14 bg-[#00F2FF]/10 rounded-2xl flex items-center justify-center shrink-0 border border-[#00F2FF]/20"><ShieldAlert className="w-6 h-6 text-[#00F2FF]"/></div>
                                 <div>
-                                   <p className="text-[#001533] font-extrabold text-2xl mb-2 italic tracking-tight uppercase">High Affinity</p>
-                                   <p className="text-slate-500 text-sm leading-relaxed font-light italic">Exceptional binding to tumor-specific receptors while maintaining clear diagnostic background ratios.</p>
+                                   <p className="text-white font-semibold text-lg mb-1 tracking-tight">High Affinity</p>
+                                   <p className="text-white/50 text-sm leading-relaxed font-light">Exceptional binding to tumor-specific receptors while maintaining clear diagnostic background ratios.</p>
                                 </div>
                              </div>
-                             <div className="bg-slate-50/50 p-12 rounded-[3.5rem] border border-slate-100 flex gap-8 group hover:bg-white hover:shadow-2xl transition-all duration-700">
-                                <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center shrink-0 shadow-xl group-hover:bg-[#00BDD5] transition-all"><Zap className="w-8 h-8 text-[#00BDD5]"/></div>
+                             <div className="bg-white/5 p-8 rounded-3xl border border-[#7B61FF]/10 flex gap-6 hover:bg-[#7B61FF]/10 transition-all">
+                                <div className="w-14 h-14 bg-[#7B61FF]/10 rounded-2xl flex items-center justify-center shrink-0 border border-[#7B61FF]/20"><Zap className="w-6 h-6 text-[#7B61FF]"/></div>
                                 <div>
-                                   <p className="text-[#001533] font-extrabold text-2xl mb-2 italic tracking-tight uppercase">Toxic Load Delivery</p>
-                                   <p className="text-slate-500 text-sm leading-relaxed font-light italic">Precise administration of Lutetium-177 or Yttrium-90 into the metastatic tumor cluster.</p>
+                                   <p className="text-white font-semibold text-lg mb-1 tracking-tight">Toxic Load Delivery</p>
+                                   <p className="text-white/50 text-sm leading-relaxed font-light">Precise administration of Lutetium-177 or Yttrium-90 into the metastatic tumor cluster.</p>
                                 </div>
                              </div>
                           </div>
                        </div>
-                       <div className="relative group">
-                          <div className="relative bg-white rounded-[4rem] p-10 border border-slate-100 shadow-2xl group-hover:-translate-y-4 transition-all duration-1000">
-                             <img src="/molecular_theranostic_structure_1774915435525.png" alt="CXCR4 Architecture" className="w-full h-[600px] object-cover rounded-[3rem] group-hover:scale-105 transition-transform duration-1000" />
+                       <div className="relative flex justify-center items-center h-[500px]">
+                          <div className="absolute inset-0 bg-radial-gradient from-[#00F2FF]/20 to-transparent blur-3xl rounded-full" />
+                          <div className="w-64 h-64 border border-[#00F2FF]/30 rounded-full animate-orbit-slow" />
+                          <div className="absolute w-48 h-48 border border-[#7B61FF]/40 rounded-full animate-orbit" />
+                          <div className="absolute bg-[#0a0b16] border border-[#00F2FF]/50 w-24 h-24 rounded-full flex items-center justify-center shadow-[0_0_30px_#00F2FF]">
+                             <Atom className="w-10 h-10 text-[#00F2FF]" />
                           </div>
+                          {/* Simulated particles */}
+                          <div className="absolute w-4 h-4 rounded-full bg-[#00F2FF]" style={{top: '20%', left: '30%', boxShadow: '0 0 10px #00F2FF'}} />
+                          <div className="absolute w-6 h-6 rounded-full bg-[#7B61FF]" style={{bottom: '20%', right: '30%', boxShadow: '0 0 15px #7B61FF'}} />
                        </div>
                     </div>
                  </motion.div>
                )}
                
                {activeTab === "cd24" && (
-                 <motion.div key="cd24" initial={{opacity:0, x:40}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-40}} className="relative z-10 w-full" transition={{duration:0.6}}>
-                    <div className="grid lg:grid-cols-2 gap-24 items-center">
+                 <motion.div key="cd24" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-20}} className="relative z-10 w-full" transition={{duration:0.4}}>
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
                        <div>
-                          <span className="text-[#A7303E] font-heading font-extrabold text-[10px] uppercase tracking-[0.6em] mb-6 block italic">Immuno-Oncology Integration</span>
-                          <h2 className="text-6xl lg:text-8xl font-heading font-extrabold text-[#001533] mb-12 leading-none italic tracking-tighter">Glycan <br/><span className="text-[#A7303E]">Targeting</span></h2>
-                          <p className="text-slate-500 text-xl leading-relaxed mb-16 font-light italic">
+                          <span className="text-[#7B61FF] font-heading font-semibold text-[10px] uppercase tracking-[0.4em] mb-6 block">Immuno-Oncology Integration</span>
+                          <h2 className="text-5xl lg:text-7xl font-heading font-semibold text-white mb-8 leading-none tracking-tighter">Glycan <br/><span className="text-[#7B61FF]">Targeting</span></h2>
+                          <p className="text-white/60 text-lg leading-relaxed mb-12 font-light">
                              GT-008 is a first-in-class antibody designed to differentiate cancer from normal tissue through advanced glycan-specific binding. This activates the innate immune system for systematic tumor clearance.
                           </p>
-                          <div className="p-12 bg-[#A7303E]/5 border border-[#A7303E]/10 rounded-[3.5rem] shadow-sm">
-                             <h4 className="font-heading font-extrabold text-[#A7303E] uppercase tracking-widest text-xl mb-6 italic">Precision Logic</h4>
-                             <p className="text-slate-600 text-base leading-relaxed font-light italic">Activates macrophages and NK cells to locate and eliminate solid tumor clusters through ADCC-mediated phagocytosis.</p>
+                          <div className="p-10 glass-panel-violet">
+                             <h4 className="font-heading font-semibold text-[#7B61FF] uppercase tracking-widest text-lg mb-4">Precision Logic</h4>
+                             <p className="text-white/70 text-sm leading-relaxed font-light">Activates macrophages and NK cells to locate and eliminate solid tumor clusters through ADCC-mediated phagocytosis.</p>
                           </div>
                        </div>
-                       <div className="bg-[#001533] rounded-[4rem] overflow-hidden min-h-[600px] shadow-3xl relative group">
-                          <img src="/patient_centered_healthcare_biotech_1774918263283.png" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-all duration-1000" alt="Immunotherapy" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#001533] via-transparent to-transparent z-10" />
-                          <div className="relative z-20 h-full flex flex-col justify-end p-16">
-                             <span className="inline-block px-8 py-3 bg-[#A7303E] text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-8 italic shadow-2xl">First in Class</span>
-                             <h4 className="font-heading font-extrabold text-white text-5xl italic tracking-tighter leading-tight">Solid Tumor <br/> Eradication</h4>
-                          </div>
+                       <div className="glass-panel-violet p-12 flex flex-col justify-center items-center min-h-[400px] text-center relative overflow-hidden">
+                          <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.2)_0%,transparent_70%)]" />
+                          <span className="inline-block px-6 py-2 bg-[#7B61FF]/20 text-[#7B61FF] border border-[#7B61FF]/50 text-[10px] font-bold uppercase tracking-widest rounded-full mb-6 relative z-10">First in Class</span>
+                          <h4 className="font-heading font-semibold text-white text-4xl tracking-tighter leading-tight relative z-10">Solid Tumor <br/> Eradication</h4>
                        </div>
                     </div>
                  </motion.div>
                )}
 
                {activeTab === "theranostics" && (
-                 <motion.div key="theranostics" initial={{opacity:0, x:40}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-40}} className="relative z-10 w-full" transition={{duration:0.6}}>
-                    <div className="text-center max-w-5xl mx-auto mb-20">
-                       <h2 className="text-6xl lg:text-8xl font-heading font-extrabold text-[#001533] mb-10 leading-none italic tracking-tighter">Dual-Action <span className="text-[#00BDD5]">Logic</span></h2>
-                       <p className="text-slate-500 text-2xl leading-relaxed mb-16 font-light italic px-10">We treat only what we see. Visualizing the target ensures 100% therapeutic focus on the lesion while shielding healthy tissue.</p>
+                 <motion.div key="theranostics" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-20}} className="relative z-10 w-full" transition={{duration:0.4}}>
+                    <div className="text-center max-w-4xl mx-auto mb-16">
+                       <h2 className="text-5xl lg:text-7xl font-heading font-semibold text-white mb-8 leading-none tracking-tighter">Dual-Action <span className="text-[#00F2FF]">Logic</span></h2>
+                       <p className="text-white/60 text-xl leading-relaxed font-light">We treat only what we see. Visualizing the target ensures 100% therapeutic focus on the lesion while shielding healthy tissue.</p>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-10">
+                    <div className="grid md:grid-cols-3 gap-8">
                        {[
-                         { step:"01", title:"Scout", val:"Visually identify lesion load via PentixaFor PET/CT mapping.", icon:Search, color:"bg-slate-50 text-[#00BDD5] border-slate-100" },
-                         { step:"02", title:"Verify", val:"Quantify target density to predict therapeutic response accuracy.", icon:Focus, color:"bg-slate-50 text-[#00BDD5] border-slate-100" },
-                         { step:"03", title:"Sniper", val:"Deliver therapeutic PentixaTher directly to the mapped sites.", icon:Zap, color:"bg-[#001533] text-white border-transparent" }
+                         { step:"01", title:"Scout", val:"Visually identify lesion load via PentixaFor PET/CT mapping.", icon:Search, color:"text-[#00F2FF]", border: "border-[#00F2FF]/30" },
+                         { step:"02", title:"Verify", val:"Quantify target density to predict therapeutic response accuracy.", icon:Focus, color:"text-white", border: "border-white/30" },
+                         { step:"03", title:"Sniper", val:"Deliver therapeutic PentixaTher directly to the mapped sites.", icon:Zap, color:"text-[#7B61FF]", border: "border-[#7B61FF]/30" }
                        ].map((s,i) => (
-                         <div key={i} className="p-14 rounded-[3.5rem] bg-white border border-slate-100 transition-all hover:-translate-y-4 hover:shadow-3xl flex flex-col items-center text-center">
-                            <span className="text-5xl font-heading font-extrabold text-slate-100 mb-10 block italic">{s.step}</span>
-                            <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center mb-10 shadow-xl ${s.color}`}><s.icon className="w-10 h-10"/></div>
-                            <h4 className="font-heading font-extrabold text-[#001533] text-3xl mb-4 italic tracking-tight">{s.title}</h4>
-                            <p className="text-slate-500 text-sm leading-relaxed font-light italic">{s.val}</p>
+                         <div key={i} className={`p-10 rounded-3xl bg-white/5 border ${s.border} flex flex-col items-center text-center transition-transform hover:-translate-y-2`}>
+                            <span className="text-3xl font-heading font-semibold text-white/20 mb-6 block">{s.step}</span>
+                            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-white/5 ${s.color}`}><s.icon className="w-8 h-8"/></div>
+                            <h4 className="font-heading font-semibold text-white text-xl mb-3 tracking-tight">{s.title}</h4>
+                            <p className="text-white/50 text-xs leading-relaxed font-light">{s.val}</p>
                          </div>
                        ))}
                     </div>
@@ -170,62 +165,62 @@ export default function TechnologyPage() {
                )}
 
                {activeTab === "cmc" && (
-                 <motion.div key="cmc" initial={{opacity:0, x:40}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-40}} className="relative z-10 w-full" transition={{duration:0.6}}>
-                    <div className="grid lg:grid-cols-2 gap-24 items-center">
+                 <motion.div key="cmc" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-20}} className="relative z-10 w-full" transition={{duration:0.4}}>
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
                        <div>
-                          <span className="text-[#00BDD5] font-heading font-extrabold text-[10px] uppercase tracking-[0.6em] mb-6 block italic">Industrial Scale Integrity</span>
-                          <h2 className="text-6xl lg:text-8xl font-heading font-extrabold text-[#001533] mb-12 leading-none italic tracking-tighter">24H Global <br/><span className="text-[#00BDD5]">Supply</span> Hub</h2>
-                          <p className="text-slate-500 text-xl leading-relaxed mb-16 font-light italic">
+                          <span className="text-[#00F2FF] font-heading font-semibold text-[10px] uppercase tracking-[0.4em] mb-6 block">Industrial Scale Integrity</span>
+                          <h2 className="text-5xl lg:text-7xl font-heading font-semibold text-white mb-8 leading-none tracking-tighter">24H Global <br/><span className="text-[#00F2FF]">Supply</span> Hub</h2>
+                          <p className="text-white/60 text-lg leading-relaxed mb-12 font-light">
                              Time-critical isotope logistics. Integrated CMC network ensuring just-in-time delivery to clinical sites across Europe and North America within 24 hours.
                           </p>
                           <div className="flex flex-col gap-6">
-                             <div className="flex items-center gap-8 p-10 bg-slate-50/50 border border-slate-100 rounded-[3rem] group hover:bg-white hover:shadow-2xl transition-all">
-                                <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center shadow-xl group-hover:bg-[#001533] transition-all"><Container className="w-8 h-8 text-[#00BDD5]"/></div>
+                             <div className="flex items-center gap-6 p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-[#00F2FF]/30 transition-colors">
+                                <div className="w-12 h-12 bg-[#00F2FF]/10 rounded-xl flex items-center justify-center"><Container className="w-6 h-6 text-[#00F2FF]"/></div>
                                 <div>
-                                   <p className="font-heading font-extrabold text-[#001533] text-2xl italic tracking-tight">DUAL HUB MATRIX</p>
-                                   <p className="text-slate-500 text-sm font-light italic">Strategic labeling centers in the EU and US.</p>
+                                   <p className="font-heading font-semibold text-white text-lg tracking-tight">DUAL HUB MATRIX</p>
+                                   <p className="text-white/50 text-xs font-light">Strategic labeling centers in the EU and US.</p>
                                 </div>
                              </div>
-                             <div className="flex items-center gap-8 p-10 bg-slate-50/50 border border-slate-100 rounded-[3rem] group hover:bg-white hover:shadow-2xl transition-all">
-                                <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center shadow-xl group-hover:bg-[#001533] transition-all"><Activity className="w-8 h-8 text-[#00BDD5]"/></div>
+                             <div className="flex items-center gap-6 p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-[#7B61FF]/30 transition-colors">
+                                <div className="w-12 h-12 bg-[#7B61FF]/10 rounded-xl flex items-center justify-center"><Activity className="w-6 h-6 text-[#7B61FF]"/></div>
                                 <div>
-                                   <p className="font-heading font-extrabold text-[#001533] text-2xl italic tracking-tight">LOGISTICS COLD CHAIN</p>
-                                   <p className="text-slate-500 text-sm font-light italic">Precision isotope transport for pivotal Phase 3 trials.</p>
+                                   <p className="font-heading font-semibold text-white text-lg tracking-tight">LOGISTICS COLD CHAIN</p>
+                                   <p className="text-white/50 text-xs font-light">Precision isotope transport for pivotal Phase 3 trials.</p>
                                 </div>
                              </div>
                           </div>
                        </div>
-                       <div className="bg-slate-50 rounded-[5rem] overflow-hidden relative shadow-2xl">
-                          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2600" className="w-full h-full object-cover grayscale opacity-80" alt="Lab" />
+                       <div className="glass-panel p-10 min-h-[400px] flex items-center justify-center text-center">
+                          <Globe2 className="w-32 h-32 text-white/10 animate-pulseGlow" />
                        </div>
                     </div>
                  </motion.div>
                )}
 
                {activeTab === "discovery" && (
-                 <motion.div key="discovery" initial={{opacity:0, x:40}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-40}} className="relative z-10 w-full" transition={{duration:0.6}}>
-                    <div className="grid lg:grid-cols-2 gap-24 items-center">
+                 <motion.div key="discovery" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-20}} className="relative z-10 w-full" transition={{duration:0.4}}>
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
                        <div>
-                          <span className="text-[#22c55e] font-heading font-extrabold text-[10px] uppercase tracking-[0.6em] mb-6 block italic">Next Gen Discovery</span>
-                          <h2 className="text-6xl lg:text-8xl font-heading font-extrabold text-[#001533] mb-12 leading-none italic tracking-tighter">Molecular <br/><span className="text-[#22c55e]">Discovery</span></h2>
-                          <p className="text-slate-500 text-xl leading-relaxed mb-16 font-light italic">
+                          <span className="text-white font-heading font-semibold text-[10px] uppercase tracking-[0.4em] mb-6 block">Next Gen Discovery</span>
+                          <h2 className="text-5xl lg:text-7xl font-heading font-semibold text-white mb-8 leading-none tracking-tighter">Molecular <br/><span className="text-[#00F2FF]">Discovery</span></h2>
+                          <p className="text-white/60 text-lg leading-relaxed mb-12 font-light">
                              Computational docking and screening of molecular variants to optimize therapeutic half-lives and maximize target retention rates.
                           </p>
-                          <Link href={`/${locale}/contact`} className="px-14 py-6 bg-[#001533] text-white rounded-full font-heading font-extrabold text-[10px] uppercase tracking-widest italic hover:bg-[#22c55e] hover:text-[#001533] transition-all shadow-2xl inline-flex items-center gap-6">
-                             Scientific Collab <Database className="w-5 h-5" />
+                          <Link href={`/${locale}/contact`} className="btn-glass btn-cyan inline-flex items-center gap-4">
+                             Scientific Collab <Database className="w-4 h-4" />
                           </Link>
                        </div>
-                       <div className="grid md:grid-cols-2 gap-8">
+                       <div className="grid md:grid-cols-2 gap-6">
                           {[
                             { title:"Docking", val:"In-silico receptor modeling." },
                             { title:"Synthesis", val:"Modular isotope pairing." },
                             { title:"Optimization", val:"Clearance rate reduction." },
                             { title:"Verification", val:"PDX model validation." }
                           ].map((b,i) => (
-                            <div key={i} className="p-12 rounded-[2.5rem] bg-white border border-slate-100 shadow-lg hover:shadow-2xl transition-all text-center">
-                               <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 mx-auto"><Focus className="w-6 h-6 text-[#22c55e]"/></div>
-                               <h4 className="font-heading font-extrabold text-[#001533] text-xl mb-2 italic tracking-tight">{b.title}</h4>
-                               <p className="text-slate-400 text-xs italic font-light">{b.val}</p>
+                            <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-[#00F2FF]/40 transition-colors text-center">
+                               <div className="w-10 h-10 bg-[#00F2FF]/10 rounded-xl flex items-center justify-center mb-4 mx-auto"><Focus className="w-5 h-5 text-[#00F2FF]"/></div>
+                               <h4 className="font-heading font-semibold text-white text-lg mb-1 tracking-tight">{b.title}</h4>
+                               <p className="text-white/50 text-[10px] font-light">{b.val}</p>
                             </div>
                           ))}
                        </div>
@@ -239,17 +234,14 @@ export default function TechnologyPage() {
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="py-48 text-center container mx-auto px-6">
-         <div className="bg-white rounded-[6rem] p-24 border border-slate-100 shadow-3xl relative overflow-hidden">
-            <div className="absolute inset-0 z-0 opacity-5">
-               <img src={`/${HERO_BG}`} className="w-full h-full object-cover grayscale" alt="Technology Background" />
-            </div>
-            <div className="relative z-10 max-w-4xl mx-auto">
-               <span className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.8em] mb-10 block italic">Strategic Dialogue</span>
-               <h3 className="text-5xl md:text-8xl font-heading font-extrabold mb-10 italic tracking-tighter text-[#001533] leading-none">The Science of <br/> <span className="text-[#00BDD5]">Co-Development.</span></h3>
-               <p className="text-slate-500 mb-16 font-light text-2xl italic">We collaborate with global academic centers and strategic pharmaceutical partners to scale the theranostic era.</p>
-               <Link href={`/${locale}/contact`} className="inline-flex items-center gap-8 px-16 py-8 bg-[#001533] text-white font-heading font-extrabold uppercase text-[11px] tracking-[0.5em] rounded-full hover:bg-[#00BDD5] transition-all shadow-2xl italic group transform hover:scale-110">
-                 Connect with Science Team <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+      <section className="py-24 text-center container mx-auto px-6 max-w-4xl">
+         <div className="glass-panel p-16 relative overflow-hidden">
+            <div className="relative z-10">
+               <span className="text-[#00F2FF] text-[10px] font-heading font-semibold uppercase tracking-[0.5em] mb-6 block">Strategic Dialogue</span>
+               <h3 className="text-4xl md:text-6xl font-heading font-semibold mb-8 tracking-tighter text-white leading-none">The Science of <br/> <span className="text-[#00F2FF]">Co-Development.</span></h3>
+               <p className="text-white/60 mb-12 font-light text-xl">We collaborate with global academic centers and strategic pharmaceutical partners to scale the theranostic era.</p>
+               <Link href={`/${locale}/contact`} className="btn-glass btn-cyan inline-flex items-center gap-4">
+                 Connect with Science Team <ArrowRight className="w-4 h-4" />
                </Link>
             </div>
          </div>

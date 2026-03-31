@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="space-y-12">
             <Link href={`/${locale}`} className="flex items-center gap-4 group">
                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-2 shadow-2xl group-hover:rotate-6 transition-transform">
-                  <img src="/pentixapharm_logo_new.jpg" className="w-auto h-8 object-contain" alt="Pentixapharm" />
+                  <img src="/logo.jpg" className="w-auto h-8 object-contain" alt="Pentixapharm" />
                </div>
                <span className="text-3xl font-heading font-extrabold tracking-tighter italic">PENTIXAPHARM</span>
             </Link>

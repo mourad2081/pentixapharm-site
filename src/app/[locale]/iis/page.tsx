@@ -2,9 +2,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
-import { MapPin, UserCheck, Stethoscope, Microscope, Atom, ArrowUpRight, Activity, Target, ChevronRight } from "lucide-react";
+import { 
+  MapPin, UserCheck, Stethoscope, Microscope, Atom, ArrowUpRight, 
+  Activity, Target, ChevronRight, Globe2, Sparkles, Send
+} from "lucide-react";
+import AnimatedBg from "@/components/visual/AnimatedBackground";
 
-const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 const STUDIES = [
@@ -17,100 +21,101 @@ const STUDIES = [
 export default function IISPage() {
   const locale = useLocale();
   return (
-    <div className="min-h-screen text-white pb-32 selection:bg-[#00F2FF]/30 selection:text-white pt-24 overflow-hidden">
+    <div className="bg-[#F8FAFC] dark:bg-[#0a0b16] min-h-screen text-slate-900 dark:text-white transition-colors duration-700 pb-32 pt-24 selection:bg-[#00BDD5] selection:text-white">
       
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-20 pb-20 overflow-hidden border-b border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#00F2FF]/5 rounded-[50%_50%_0_0] blur-[120px] pointer-events-none" />
+      <section className="relative pt-32 pb-24 overflow-hidden bg-white dark:bg-[#0a0b16] border-b border-slate-100 dark:border-white/5 transition-colors">
+        <AnimatedBg />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-[#00BDD5]/5 dark:bg-[#00BDD5]/10 rounded-full blur-[140px] pointer-events-none transition-colors" />
         
         <div className="container mx-auto px-6 relative z-10 text-center max-w-7xl">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-[#00F2FF] font-heading font-semibold text-[10px] uppercase tracking-[0.4em] bg-white/5 px-8 py-3 rounded-full border border-white/10 shadow-[0_0_15px_rgba(0,242,255,0.1)] mb-10">
-              Medical Affairs Support
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-4 text-[#00BDD5] font-heading font-extrabold text-[10px] uppercase tracking-[0.6em] bg-white dark:bg-white/5 px-10 py-4 rounded-full border border-slate-100 dark:border-white/10 shadow-xl mb-12 italic mt-10 transition-colors">
+              Medical Affairs Collaboration
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-semibold text-white mb-8 tracking-tighter drop-shadow-sm">
-              Clinical <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FF] to-[#7B61FF]">Evidence.</span>
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-[9.5rem] font-heading font-extrabold text-[#001533] dark:text-white mb-12 leading-[0.75] tracking-tighter italic drop-shadow-sm transition-colors">
+              Clinical <br/><span className="text-[#00BDD5]">Evidence.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/60 text-xl md:text-2xl leading-relaxed font-light max-w-4xl mx-auto mb-16 px-12">
-              Collaborating with research centers worldwide to uncover new therapeutic frontiers through our Investigator-Initiated Studies (IIS) program.
+            <motion.p variants={fadeUp} className="text-slate-500 dark:text-slate-400 text-2xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-12 border-x border-slate-100 dark:border-white/5 transition-colors">
+              Collaborating with global leading research centers to expand the molecular frontier through our independent Investigator-Initiated Studies (IIS) program.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Grid Features */}
-      <section className="py-32 relative z-20">
+      {/* ── CORE PILLARS ────────────────────────────────────────────────────── */}
+      <section className="py-32 relative z-20 transition-colors">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
-              { icon: Atom, label: "Clinical Supply", text: "Priority access to clinical-grade PentixaFor and PentixaTher precursors for academic validation.", color: "text-[#00F2FF]" },
-              { icon: Microscope, label: "Scientific Review", text: "Direct collaborative feedback from our senior molecular oncology and radiochemistry experts.", color: "text-[#00F2FF]" },
-              { icon: UserCheck, label: "Data Integrity", text: "Full ownership of patient data generated within the independent academic protocol context.", color: "text-[#7B61FF]" },
+              { icon: Atom, label: "Clinical Supply", text: "Priority access to clinical-grade PentixaFor and PentixaTher precursors for academic validation.", color: "text-[#00BDD5]" },
+              { icon: Microscope, label: "Scientific Review", text: "Direct collaboration with our senior molecular oncology and radiochemistry experts.", color: "text-[#00BDD5]" },
+              { icon: UserCheck, label: "Data Integrity", text: "Full ownership of patient data remains within the independent academic protocol context.", color: "text-[#7B61FF]" },
             ].map((f, i) => (
-              <motion.div key={i} whileHover={{y:-6}} className="glass-panel p-10 rounded-3xl border border-white/10 group text-center transition-all bg-white/5">
-                <div className={`w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 mx-auto group-hover:bg-white/10 transition-colors`}>
-                  <f.icon className={`w-8 h-8 ${f.color} drop-shadow-[0_0_10px_currentColor]`} />
+              <motion.div key={i} whileHover={{y:-12}} className="bg-white dark:bg-[#121428] p-16 rounded-[4rem] border border-slate-100 dark:border-white/10 group text-center transition-all shadow-xl hover:shadow-4xl">
+                <div className={`w-20 h-20 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 flex items-center justify-center mb-10 mx-auto group-hover:bg-[#001533] group-hover:rotate-[15deg] transition-all shadow-sm`}>
+                  <f.icon className={`w-10 h-10 ${f.color} group-hover:text-white transition-colors`} />
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-white mb-4 tracking-tight uppercase leading-none">{f.label}</h3>
-                <p className="text-white/50 leading-relaxed text-sm font-light mt-4">{f.text}</p>
+                <h3 className="text-2xl font-heading font-extrabold text-[#001533] dark:text-white mb-6 italic tracking-tight uppercase leading-none transition-colors">{f.label}</h3>
+                <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-base italic font-light mt-4 transition-colors">{f.text}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process and Studies Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-5 gap-16">
+      {/* ── PROCESS & ACTIVE PORTFOLIO ────────────────────────────────────────── */}
+      <section className="py-24 transition-colors">
+        <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-5 gap-20">
           
           <div className="lg:col-span-2">
-            <div className="sticky top-40 glass-panel p-12 relative group overflow-hidden">
-              <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:rotate-[15deg] transition-transform duration-700"><Activity className="w-48 h-48 text-[#00F2FF]" /></div>
-              <h2 className="text-4xl font-heading font-semibold text-white mb-10 leading-none tracking-tighter">Accelerated <br/><span className="text-[#00F2FF]">Pathway</span></h2>
+            <div className="sticky top-40 bg-[#001533] dark:bg-[#121428] p-16 rounded-[5rem] relative group overflow-hidden shadow-4xl text-white border border-white/5">
+              <div className="absolute top-0 right-0 p-12 opacity-[0.05] group-hover:rotate-[20deg] group-hover:scale-125 transition-transform duration-1000"><Activity className="w-64 h-64 text-white" /></div>
+              <h2 className="text-5xl font-heading font-extrabold text-white mb-16 leading-[0.8] tracking-tighter italic italic">Accelerated <br/><span className="text-[#00BDD5]">Inquiry.</span></h2>
               
-              <div className="space-y-10 mb-12">
+              <div className="space-y-12 mb-16">
                 {[
-                  { step: "01", title: "Concept Proposal", desc: "Submit a 3-page synopsis outlining scientific rationale and isotope requirements." },
-                  { step: "02", title: "Alignment Review", desc: "Medical committee evaluation for clinical validity and safety regulatory profile." },
-                  { step: "03", title: "Asset Supply", desc: "Legal agreements finalized and supply logistics chain activation." },
+                  { step: "01", title: "Concept Protocol", desc: "Submit a synopsis outlining scientific rationale and isotope requirements." },
+                  { step: "02", title: "Medical Review", desc: "Executive committee evaluation for clinical validity and safety metrics." },
+                  { step: "03", title: "Asset Pipeline", desc: "Finalize supply logistics and cold-chain radiolabeling activation." },
                 ].map((s, i) => (
-                  <div key={i} className="flex gap-6 items-start group/step">
-                    <span className="text-3xl font-heading font-semibold text-white/10 group-hover/step:text-[#00F2FF] transition-colors leading-none">{s.step}</span>
-                    <div>
-                      <h4 className="font-heading font-semibold text-white text-lg mb-2 tracking-tight uppercase">{s.title}</h4>
-                      <p className="text-white/50 leading-relaxed font-light text-sm">{s.desc}</p>
+                  <div key={i} className="flex gap-8 items-start group/step">
+                    <span className="text-4xl font-heading font-extrabold text-white/10 group-hover/step:text-[#00BDD5] transition-colors italic transition-colors leading-none">{s.step}</span>
+                    <div className="pt-1">
+                      <h4 className="font-heading font-extrabold text-white text-xl mb-3 tracking-tighter italic uppercase transition-colors">{s.title}</h4>
+                      <p className="text-slate-400 leading-relaxed font-light italic text-base transition-colors">{s.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
               
-              <a href="mailto:iis@pentixapharm.com" className="btn-glass btn-cyan w-full justify-center gap-4">
-                Submit Inquiry <ArrowUpRight className="w-4 h-4" />
+              <a href="mailto:iis@pentixapharm.com" className="w-full flex items-center justify-center gap-6 px-12 py-8 bg-[#00BDD5] text-white rounded-3xl font-heading font-extrabold text-[12px] uppercase tracking-[0.5em] hover:bg-white hover:text-[#001533] transition-all shadow-2xl italic">
+                Contact Medical Hub <Send className="w-5 h-5" />
               </a>
             </div>
           </div>
 
           <div className="lg:col-span-3">
-             <div className="mb-10 px-4">
-                <span className="text-[#00F2FF] text-[10px] font-heading font-semibold uppercase tracking-[0.4em] mb-4 block">Active Research Portfolio</span>
-                <h2 className="text-5xl font-heading font-semibold text-white leading-tight tracking-tighter">Ongoing <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FF] to-[#7B61FF]">Clinical</span> Studies</h2>
+             <div className="mb-16 px-6">
+                <span className="text-[#00BDD5] text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-6 block italic transition-colors">Global Study Registry</span>
+                <h2 className="text-6xl md:text-8xl font-heading font-extrabold text-[#001533] dark:text-white leading-[0.85] tracking-tighter italic transition-colors">Active <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BDD5] to-[#7B61FF]">Research.</span></h2>
              </div>
              
-             <div className="space-y-6">
+             <div className="space-y-8">
                 {STUDIES.map((s) => (
-                  <motion.div key={s.id} whileHover={{x: 8}} className="p-8 bg-white/5 border border-white/10 rounded-3xl group transition-all duration-300 hover:bg-white/10">
-                    <div className="flex flex-wrap items-center gap-4 mb-6">
-                      <span className="text-[10px] font-bold text-black bg-[#00F2FF] px-4 py-1.5 rounded-full uppercase tracking-widest">{s.phase}</span>
-                      <span className="text-[10px] font-bold text-[#00F2FF] bg-[#00F2FF]/10 border border-[#00F2FF]/30 px-4 py-1.5 rounded-full uppercase tracking-widest">{s.status}</span>
-                      <span className="text-xs text-white/50 ml-auto font-light flex items-center gap-2"><MapPin className="w-3 h-3 text-[#00F2FF]" /> {s.center}</span>
+                  <motion.div key={s.id} whileHover={{x: 12}} className="p-12 bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-[4rem] group transition-all duration-500 hover:shadow-4xl shadow-xl">
+                    <div className="flex flex-wrap items-center gap-6 mb-10">
+                      <span className="text-[10px] font-extrabold text-white bg-[#001533] dark:bg-[#00BDD5] dark:text-[#001533] px-6 py-2.5 rounded-full uppercase tracking-widest italic transition-colors">{s.phase}</span>
+                      <span className="text-[10px] font-extrabold text-[#00BDD5] bg-[#00BDD5]/10 border border-[#00BDD5]/30 px-6 py-2.5 rounded-full uppercase tracking-widest italic">{s.status}</span>
+                      <span className="text-sm text-slate-400 ml-auto font-light flex items-center gap-4 italic transition-colors"><MapPin className="w-4 h-4 text-[#00BDD5]" /> {s.center}</span>
                     </div>
-                    <h3 className="text-2xl font-heading font-semibold text-white group-hover:text-[#00F2FF] transition-colors leading-tight tracking-tighter mb-4">{s.title}</h3>
-                    <p className="text-white/60 font-light leading-relaxed mb-6 text-sm">{s.desc}</p>
-                    <div className="flex justify-between items-center pt-6 border-t border-white/10">
-                       <p className="text-[10px] font-bold text-white uppercase tracking-widest">
-                          <span className="text-white/40 font-light lowercase">Principal investigator • </span> {s.inv}
+                    <h3 className="text-3xl font-heading font-extrabold text-[#001533] dark:text-white group-hover:text-[#00BDD5] transition-colors leading-[0.9] tracking-tighter italic mb-8 uppercase transition-colors">{s.title}</h3>
+                    <p className="text-slate-500 dark:text-slate-400 font-light italic leading-relaxed mb-10 text-lg transition-colors">{s.desc}</p>
+                    <div className="flex justify-between items-center pt-8 border-t border-slate-100 dark:border-white/10 transition-colors">
+                       <p className="text-[10px] font-extrabold text-[#001533] dark:text-white uppercase tracking-widest italic transition-colors">
+                          <span className="text-slate-400 font-light lowercase">Principal investigator • </span> {s.inv}
                        </p>
-                       <ChevronRight className="w-5 h-5 text-white/20 group-hover:text-[#00F2FF] group-hover:translate-x-2 transition-all" />
+                       <ChevronRight className="w-6 h-6 text-slate-200 dark:text-white/10 group-hover:text-[#00BDD5] group-hover:translate-x-3 transition-all" />
                     </div>
                   </motion.div>
                 ))}
@@ -118,6 +123,20 @@ export default function IISPage() {
           </div>
 
         </div>
+      </section>
+
+      {/* ── FINAL GLOBAL FOOTER CTA ────────────────────────────────────────── */}
+      <section className="py-32 text-center container mx-auto px-6 max-w-5xl">
+         <div className="bg-white dark:bg-[#121428] rounded-[5rem] p-24 lg:p-32 relative overflow-hidden shadow-4xl border border-slate-100 dark:border-white/5 group transition-colors">
+            <div className="relative z-10">
+               <span className="text-[#00BDD5] text-[12px] font-heading font-extrabold uppercase tracking-[0.5em] mb-10 block italic transition-colors">Worldwide Evidence Synthesis</span>
+               <h3 className="text-5xl md:text-[6.5rem] font-heading font-extrabold mb-12 tracking-tighter text-[#001533] dark:text-white leading-[0.8] italic transition-colors">Bridging Clinical <br /> <span className="text-[#00BDD5]">Frontiers.</span></h3>
+               <p className="text-slate-500 dark:text-slate-400 mb-16 font-light text-2xl italic leading-relaxed max-w-3xl mx-auto transition-colors">Our IIS program represents our institutional commitment to medical growth through academic autonomy and technical excellence.</p>
+               <a href="mailto:info@pentixapharm.com" className="px-16 py-8 bg-[#00BDD5] text-white rounded-2xl font-heading font-extrabold text-[12px] uppercase tracking-[0.5em] hover:bg-[#001533] dark:hover:bg-white dark:hover:text-[#001533] transition-all shadow-4xl italic flex items-center gap-8 mx-auto w-max">
+                 Submit New Proposal <ArrowUpRight className="w-6 h-6" />
+               </a>
+            </div>
+         </div>
       </section>
     </div>
   );

@@ -3,10 +3,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { Users, BookOpen, Activity, Target, ShieldCheck, Globe2, Building2, Linkedin, ExternalLink, GraduationCap, Award, Scale, Heart, Shield, History, Milestone, Compass, ArrowRight } from "lucide-react";
+import { 
+  Users, BookOpen, Activity, Target, ShieldCheck, Globe2, Building2, 
+  Linkedin, ExternalLink, GraduationCap, Award, Scale, Heart, Shield, 
+  History, Milestone, Compass, ArrowRight, Sparkles
+} from "lucide-react";
 import AnimatedBg from "@/components/visual/AnimatedBackground";
 
-const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 const LAB_IMG = "about_lab_premium_png_1774940963712.png";
@@ -27,42 +31,45 @@ const HISTORY = [
 export default function AboutPage() {
   const locale = useLocale();
   return (
-    <div className="bg-[#F8FAFC] min-h-screen text-slate-900 pb-32 selection:bg-[#00BDD5] selection:text-white">
+    <div className="bg-[#F8FAFC] dark:bg-[#0a0b16] min-h-screen text-slate-900 dark:text-white transition-colors duration-700 pb-32 selection:bg-[#00BDD5] selection:text-white">
+      
       {/* ── HERO ────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-64 pb-32 min-h-[70vh] flex items-center overflow-hidden bg-white border-b border-slate-100">
-        <div className="absolute inset-0 z-0 opacity-[0.12] pointer-events-none">
-           <img src={`/${LAB_IMG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Laboratory" />
-           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/50 to-transparent" />
+      <section className="relative pt-64 pb-32 min-h-[85vh] flex items-center overflow-hidden bg-white dark:bg-[#0a0b16] border-b border-slate-100 dark:border-white/5 transition-colors">
+        <div className="absolute inset-0 z-0 opacity-[0.15] dark:opacity-[0.25] pointer-events-none transition-opacity">
+           <img src={`/${LAB_IMG}`} className="w-full h-full object-cover animate-slow-zoom blur-sm" alt="Laboratory" />
+           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white dark:from-[#0a0b16] via-white/50 dark:via-[#0a0b16]/50 to-transparent transition-colors" />
            <AnimatedBg />
         </div>
         <div className="container mx-auto px-6 relative z-10 text-center max-w-7xl">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.6em] bg-white px-10 py-4 rounded-full inline-block mb-12 border border-slate-100 shadow-xl italic mt-10">Global Precision Oncology Leader</motion.span>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-[9.5rem] font-heading font-extrabold mb-12 leading-[0.75] tracking-tighter text-[#001533] italic drop-shadow-sm">
-              Advancing <br/><span className="text-[#00BDD5] underline decoration-[#00BDD5]/10 underline-offset-10">Theranostics.</span>
+            <motion.span variants={fadeUp} className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.7em] bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 px-12 py-5 rounded-full inline-block mb-12 shadow-2xl italic mt-10 transition-colors">
+              Global Precision Oncology Leader
+            </motion.span>
+            <motion.h1 variants={fadeUp} className="text-7xl md:text-[11rem] font-heading font-extrabold mb-12 leading-[0.7] tracking-tighter text-[#001533] dark:text-white italic drop-shadow-sm transition-colors">
+              Advancing <br/><span className="text-[#00BDD5]">Theranostics.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-500 text-2xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-12 border-x border-slate-100">
-              Transforming the future of oncology and endocrinology through extreme molecular specificity and targeted radiopharmaceutical treatment.
+            <motion.p variants={fadeUp} className="text-slate-500 dark:text-slate-400 text-2xl md:text-4xl leading-relaxed font-light italic max-w-5xl mx-auto mb-16 px-12 border-x border-slate-100 dark:border-white/5 transition-colors">
+              Transforming oncology through extreme molecular specificity and targeted radiopharmaceutical infrastructure.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* ── CORE VALUES ────────────────────────────────────────────────────────── */}
-      <section className="py-40 bg-white relative">
+      <section className="py-48 bg-white dark:bg-[#0a0b16] relative transition-colors duration-700">
          <div className="container mx-auto px-6 max-w-7xl">
             <div className="grid md:grid-cols-3 gap-16">
                {[
                  { icon: Compass, title: "Precision", desc: "Identifying the precise molecular signature of a patient's disease before starting therapy.", color: "text-[#00BDD5]" },
-                 { icon: Shield, title: "Ethics", desc: "Absolute compliance with GCP/GLP and a commitment to transparent clinical reporting.", color: "text-[#001533]" },
-                 { icon: Award, title: "Excellence", desc: "Turning the latest radiopharmaceutical breakthroughs into industry-leading clinical assets.", color: "#00BDD5" }
+                 { icon: Shield, title: "Ethics", desc: "Absolute compliance with GCP/GLP and a commitment to transparent clinical reporting.", color: "text-[#001533] dark:text-white" },
+                 { icon: Award, title: "Excellence", desc: "Turning the latest radiopharmaceutical breakthroughs into industry-leading clinical assets.", color: "text-[#00BDD5]" }
                ].map((v, i) => (
-                 <motion.div key={i} whileHover={{ y: -12 }} className="p-16 rounded-[4rem] bg-slate-50/50 border border-slate-100 group transition-all text-center hover:bg-white hover:shadow-3xl">
-                    <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mb-10 mx-auto shadow-xl group-hover:bg-[#001533] group-hover:rotate-12 transition-all">
-                       <v.icon className={"w-10 h-10 " + (typeof v.color === 'string' && v.color.startsWith('text-') ? v.color : "text-[#00BDD5]")}/>
+                 <motion.div key={i} whileHover={{ y: -15 }} className="p-16 rounded-[4rem] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 group transition-all text-center hover:bg-white dark:hover:bg-white/10 hover:shadow-4xl">
+                    <div className="w-24 h-24 bg-white dark:bg-[#121428] rounded-3xl flex items-center justify-center mb-12 mx-auto shadow-2xl group-hover:bg-[#001533] group-hover:rotate-12 transition-all">
+                       <v.icon className={"w-12 h-12 " + v.color}/>
                     </div>
-                    <h3 className="text-2xl font-heading font-extrabold text-[#001533] mb-6 italic tracking-tight uppercase">Pentixa <span className="text-[#00BDD5]">{v.title}</span></h3>
-                    <p className="text-slate-500 text-sm italic font-light leading-relaxed">{v.desc}</p>
+                    <h3 className="text-3xl font-heading font-extrabold text-[#001533] dark:text-white mb-8 italic tracking-tight uppercase transition-colors">Pentixa <span className="text-[#00BDD5]">{v.title}</span></h3>
+                    <p className="text-slate-500 dark:text-slate-400 text-lg italic font-light leading-relaxed transition-colors">{v.desc}</p>
                  </motion.div>
                ))}
             </div>
@@ -70,22 +77,22 @@ export default function AboutPage() {
       </section>
 
       {/* ── TIMELINE ──────────────────────────────────────────────────────────── */}
-      <section className="py-40 bg-[#F8FAFC] border-y border-slate-200/50">
+      <section className="py-48 bg-[#F8FAFC] dark:bg-[#121428] border-y border-slate-200/50 dark:border-white/5 transition-colors duration-700">
          <div className="container mx-auto px-6 max-w-7xl">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-16">
                <div className="max-w-2xl">
-                  <span className="text-[#00BDD5] font-heading font-extrabold text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Institutional Roadmap</span>
-                  <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-[#001533] italic leading-tight tracking-tighter">A Legacy of <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#001533] to-[#00BDD5]">Scientific</span> Impact</h2>
+                  <span className="text-[#00BDD5] font-heading font-extrabold text-[12px] uppercase tracking-[0.6em] mb-6 block italic">Institutional Roadmap</span>
+                  <h2 className="text-6xl md:text-[8rem] font-heading font-extrabold text-[#001533] dark:text-white italic leading-[0.8] tracking-tighter transition-colors">A Legacy of <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BDD5] to-[#7B61FF]">Scientific</span> Impact.</h2>
                </div>
-               <p className="text-slate-500 text-lg md:text-xl italic font-light max-w-md pb-4 border-b border-[#00BDD5]/30">Tracing our evolution from university-born molecular engineering to a publicly listed biotech powerhouse.</p>
+               <p className="text-slate-500 dark:text-slate-400 text-2xl italic font-light max-w-md pb-8 border-b-2 border-[#00BDD5]/30 transition-colors">Tracing our evolution from university-born engineering to a publicly listed biotech powerhouse.</p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
                {HISTORY.map((h, i) => (
-                 <motion.div key={i} whileHover={{y:-10}} className="bg-white p-12 rounded-[3.5rem] shadow-xl border border-slate-100 flex flex-col group h-full">
-                    <span className="text-4xl font-heading font-extrabold text-[#00BDD5] tracking-tighter group-hover:scale-110 mb-8 block transition-transform">{h.year}</span>
-                    <h4 className="text-2xl font-heading font-extrabold text-[#001533] mb-4 italic tracking-tight uppercase leading-tight">{h.title}</h4>
-                    <p className="text-slate-500 font-light italic leading-relaxed text-sm mt-auto">{h.desc}</p>
+                 <motion.div key={i} whileHover={{y:-12}} className="bg-white dark:bg-white/5 p-16 rounded-[4.5rem] shadow-2xl border border-slate-100 dark:border-white/10 flex flex-col group h-full transition-all">
+                    <span className="text-5xl font-heading font-extrabold text-[#00BDD5] tracking-tighter group-hover:scale-110 mb-10 block transition-transform italic">{h.year}</span>
+                    <h4 className="text-3xl font-heading font-extrabold text-[#001533] dark:text-white mb-6 italic tracking-tight uppercase leading-tight transition-colors">{h.title}</h4>
+                    <p className="text-slate-500 dark:text-slate-400 font-light italic leading-relaxed text-base mt-auto transition-colors">{h.desc}</p>
                  </motion.div>
                ))}
             </div>
@@ -93,27 +100,28 @@ export default function AboutPage() {
       </section>
 
       {/* ── EXECUTIVE TEAM ─────────────────────────────────────────────────────── */}
-      <section className="py-48 bg-white overflow-hidden">
+      <section className="py-56 bg-white dark:bg-[#0a0b16] overflow-hidden transition-colors duration-700">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-32">
-            <span className="text-cyan font-heading font-extrabold text-xs tracking-[0.6em] uppercase mb-6 block italic">Managing Directors</span>
-            <h2 className="text-6xl md:text-8xl font-heading font-extrabold text-[#001533] italic leading-[0.8] tracking-tighter">The Executive <br/> <span className="text-[#00BDD5]">Board.</span></h2>
+          <div className="text-center mb-40">
+            <span className="text-[#00BDD5] font-heading font-extrabold text-xs tracking-[0.7em] uppercase mb-10 block italic">Managing Directors</span>
+            <h2 className="text-7xl md:text-[10rem] font-heading font-extrabold text-[#001533] dark:text-white italic leading-[0.7] tracking-tighter transition-colors">The Executive <br/> <span className="text-[#00BDD5]">Board.</span></h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-16">
+          <div className="grid md:grid-cols-3 gap-20">
             {EXEC_BOARD.map((m, i) => (
-              <motion.div key={i} whileHover={{ y: -15 }} className="bg-[#F8FAFC] border border-slate-100 rounded-[4rem] p-16 hover:shadow-3xl transition-all group relative">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-40 h-40 rounded-[3.5rem] bg-[#001533] flex items-center justify-center mb-12 shadow-2xl group-hover:rotate-[15deg] group-hover:bg-[#00BDD5] transition-all duration-700">
-                    <span className="text-white font-heading font-extrabold text-6xl italic">{m.init}</span>
+              <motion.div key={i} whileHover={{ y: -20 }} className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-[5rem] p-16 hover:shadow-4xl transition-all group relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:scale-125 transition-transform"><Sparkles className="w-32 h-32 text-[#00BDD5]" /></div>
+                <div className="flex flex-col items-center text-center relative z-10">
+                  <div className="w-48 h-48 rounded-[4rem] bg-[#001533] dark:bg-white/10 flex items-center justify-center mb-16 shadow-4xl group-hover:rotate-[15deg] group-hover:bg-[#00BDD5] transition-all duration-700">
+                    <span className="text-white font-heading font-extrabold text-7xl italic">{m.init}</span>
                   </div>
-                  <h3 className="font-heading font-extrabold text-[#001533] text-4xl italic tracking-tight mb-2">{m.name}</h3>
-                  <span className="text-[10px] text-white font-extrabold uppercase tracking-[0.3em] bg-[#00BDD5] px-8 py-3 rounded-full mb-10 shadow-lg">{m.role}</span>
-                  <p className="text-slate-500 text-[15px] leading-relaxed italic font-light mb-12">{m.bio}</p>
+                  <h3 className="font-heading font-extrabold text-[#001533] dark:text-white text-5xl italic tracking-tight mb-4 transition-colors">{m.name}</h3>
+                  <span className="text-[11px] text-white font-extrabold uppercase tracking-[0.4em] bg-[#00BDD5] px-10 py-4 rounded-full mb-12 shadow-2xl italic">{m.role}</span>
+                  <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed italic font-light mb-16 transition-colors">{m.bio}</p>
                   
-                  <div className="flex gap-4 pt-10 border-t border-slate-200/50 w-full justify-center">
-                    <button className="p-4 bg-white rounded-full text-slate-300 hover:text-[#001533] shadow-sm transition-all"><Linkedin className="w-6 h-6"/></button>
-                    <button className="flex items-center gap-3 px-8 bg-[#001533] text-white rounded-full text-[10px] font-bold uppercase tracking-widest italic hover:bg-[#00BDD5] transition-all">Profile <ArrowRight className="w-4 h-4"/></button>
+                  <div className="flex gap-6 pt-12 border-t border-slate-200/50 dark:border-white/10 w-full justify-center transition-colors">
+                    <button className="p-6 bg-white dark:bg-white/10 rounded-full text-slate-300 hover:text-[#00BDD5] shadow-xl transition-all border border-slate-100 dark:border-white/10"><Linkedin className="w-8 h-8"/></button>
+                    <button className="flex items-center gap-4 px-10 bg-[#001533] dark:bg-white text-white dark:text-[#001533] rounded-full text-[11px] font-extrabold uppercase tracking-widest italic hover:bg-[#00BDD5] dark:hover:bg-[#00BDD5] dark:hover:text-white transition-all shadow-xl">Profile <ArrowRight className="w-5 h-5"/></button>
                   </div>
                 </div>
               </motion.div>
@@ -123,27 +131,27 @@ export default function AboutPage() {
       </section>
 
       {/* ── SUSTAINABILITY ──────────────────────────────────────────────────── */}
-      <section className="py-40 bg-[#001533] relative overflow-hidden rounded-[8rem] mx-6 shadow-3xl">
-        <div className="absolute inset-0 z-0 opacity-10">
-           <img src="/patient_centered_healthcare_biotech_1774918263283.png" className="w-full h-full object-cover" />
+      <section className="py-48 bg-[#001533] dark:bg-[#121428] relative overflow-hidden rounded-[10rem] mx-8 shadow-4xl mb-48 transition-colors duration-700">
+        <div className="absolute inset-0 z-0 opacity-[0.2] pointer-events-none">
+           <img src="/patient_centered_healthcare_biotech_1774918263283.png" className="w-full h-full object-cover blur-[2px]" />
         </div>
-        <div className="container mx-auto px-12 relative z-10 max-w-7xl flex flex-col items-center text-center">
-           <span className="text-[#00BDD5] font-heading font-extrabold text-xs uppercase tracking-[0.6em] mb-10 block italic">Pentixa ESG Protocol</span>
-           <h2 className="text-5xl md:text-8xl font-heading font-extrabold text-white leading-none mb-12 italic tracking-tighter">Pioneering <span className="text-[#00BDD5]">Sustainable</span> Care</h2>
-           <p className="text-slate-300 text-xl md:text-2xl leading-relaxed font-light italic mb-20 max-w-3xl">We integrate corporate responsibility into every radiolabeling cycle, ensuring our medical impact is ethical, global, and highly lean.</p>
+        <div className="container mx-auto px-16 relative z-10 max-w-7xl flex flex-col items-center text-center">
+           <span className="text-[#00BDD5] font-heading font-extrabold text-sm uppercase tracking-[1em] mb-12 block italic">Pentixa ESG Protocol</span>
+           <h2 className="text-6xl md:text-[9.5rem] font-heading font-extrabold text-white leading-[0.75] mb-16 italic tracking-tighter">Pioneering <span className="text-[#00BDD5]">Lean</span> Care.</h2>
+           <p className="text-slate-300 text-2xl md:text-3xl leading-relaxed font-light italic mb-24 max-w-4xl border-x border-white/10 px-12">We integrate corporate responsibility into every radiolabeling lifecycle, ensuring our medical impact is highly efficient and globally sustainable.</p>
            
-           <div className="grid md:grid-cols-3 gap-12 w-full">
+           <div className="grid md:grid-cols-3 gap-16 w-full">
               {[
-                { title: "Environmental", icon: Globe2, desc: "Reducing radiopharmaceutical waste across the logistics cold chain." },
-                { title: "Social Impact", icon: Heart, desc: "Scaling IIS programs to reach underserved oncology clinical sites." },
-                { title: "Governance", icon: Scale, desc: "Maintaining Prime Standard transparency for FSE-listed maturity." }
+                { title: "Environmental", icon: Globe2, desc: "Reducing radiopharmaceutical waste across the logistics cold chain via optimized delivery vectors." },
+                { title: "Social Impact", icon: Heart, desc: "Scaling IIS programs to reach underserved oncology clinical sites globally." },
+                { title: "Governance", icon: Scale, desc: "Maintaining Prime Standard transparency and world-class GCP/GLP regulatory alignment." }
               ].map((item, i) => (
-                <div key={i} className="bg-white/10 backdrop-blur-3xl p-16 rounded-[4rem] border border-white/10 group hover:bg-white hover:scale-105 transition-all">
-                   <div className="w-20 h-20 rounded-3xl bg-[#00BDD5] flex items-center justify-center mb-10 mx-auto shadow-2xl group-hover:rotate-12 transition-all">
-                      <item.icon className="w-8 h-8 text-white" />
+                <div key={i} className="bg-white/10 backdrop-blur-3xl p-16 rounded-[5rem] border border-white/10 group hover:bg-white hover:scale-105 transition-all duration-700">
+                   <div className="w-24 h-24 rounded-3xl bg-[#00BDD5] flex items-center justify-center mb-12 mx-auto shadow-4xl group-hover:rotate-[20deg] transition-all">
+                      <item.icon className="w-10 h-10 text-white" />
                    </div>
-                   <h3 className="text-2xl font-heading font-extrabold text-white group-hover:text-[#001533] mb-6 italic transition-colors tracking-tight uppercase">{item.title}</h3>
-                   <p className="text-slate-400 group-hover:text-slate-600 text-sm leading-relaxed font-light italic transition-colors">{item.desc}</p>
+                   <h3 className="text-3xl font-heading font-extrabold text-white group-hover:text-[#001533] mb-8 italic transition-colors tracking-tight uppercase">{item.title}</h3>
+                   <p className="text-slate-400 group-hover:text-slate-600 text-lg leading-relaxed font-light italic transition-colors p-2">{item.desc}</p>
                 </div>
               ))}
            </div>

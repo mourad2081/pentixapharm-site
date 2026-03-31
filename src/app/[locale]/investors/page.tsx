@@ -1,10 +1,15 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { TrendingUp, FileText, Mail, Phone, BarChart3, ExternalLink, Calendar, Building2 } from "lucide-react";
+import { 
+  TrendingUp, FileText, Mail, Phone, BarChart3, ExternalLink, 
+  Calendar, Building2, ArrowRight, Sparkles, Globe2, Activity 
+} from "lucide-react";
+import AnimatedBg from "@/components/visual/AnimatedBackground";
 
-const fadeUp = { hidden:{opacity:0,y:24}, show:{opacity:1,y:0} };
-const stagger = { show:{ transition:{ staggerChildren:0.1 } } };
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } };
+const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 const FINANCIALS = [
   { label:"Net Loss FY2024", value:"€12.8M", note:"Full year audited" },
@@ -32,63 +37,84 @@ const REPORTS = [
 export default function InvestorsPage() {
   const t = useTranslations("investors");
   return (
-    <div className="bg-[#F8FAFD] min-h-screen">
-      {/* Header */}
-      <section className="relative pt-36 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy2 via-navy to-navy" />
-        <div className="container mx-auto px-6 relative z-10">
+    <div className="bg-[#F8FAFC] dark:bg-[#0a0b16] min-h-screen text-slate-900 dark:text-white transition-colors duration-700 pb-32 selection:bg-[#00BDD5] selection:text-white">
+      
+      {/* ── HERO ────────────────────────────────────────────────────────────── */}
+      <section className="relative pt-64 pb-32 overflow-hidden bg-white dark:bg-[#0a0b16] border-b border-slate-100 dark:border-white/5 transition-colors">
+        <AnimatedBg />
+        <div className="absolute top-1/2 left-1/2 w-[1200px] h-[600px] bg-[#00BDD5]/5 dark:bg-[#00BDD5]/10 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        
+        <div className="container mx-auto px-6 relative z-10 text-center max-w-7xl">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[#00B1AB] text-sm font-medium uppercase tracking-widest">Investor Relations</motion.span>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-heading font-bold text-navy mt-3 mb-5">{t("title")}</motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-500 max-w-2xl text-lg leading-relaxed">{t("desc")}</motion.p>
+            <motion.span variants={fadeUp} className="text-[#00BDD5] text-[10px] font-heading font-extrabold uppercase tracking-[0.7em] bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 px-12 py-5 rounded-full inline-block mb-12 shadow-2xl italic mt-10 transition-colors">
+              Institutional Investor Relations
+            </motion.span>
+            <motion.h1 variants={fadeUp} className="text-7xl md:text-[11rem] font-heading font-extrabold mb-12 leading-[0.7] tracking-tighter text-[#001533] dark:text-white italic drop-shadow-sm transition-colors">
+              Capital <br/><span className="text-[#00BDD5]">Transparency.</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 dark:text-slate-400 text-2xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-12 border-x border-slate-100 dark:border-white/5 transition-colors">
+              Our commitment to clear corporate governance and clinical milestone reporting ensures long-term institutional value creation.
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stock Info */}
-      <section className="py-16 bg-[#F8FAFD]2 border-y border-slate-200">
-        <div className="container mx-auto px-6">
+      {/* ── STOCK DASHBOARD ─────────────────────────────────────────────────── */}
+      <section className="py-24 bg-white dark:bg-[#0a0b16] border-b border-slate-100 dark:border-white/5 transition-colors">
+        <div className="container mx-auto px-6 max-w-7xl">
           <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-2xl font-heading font-bold text-navy mb-8">{t("stockTitle")}</motion.h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+               <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-heading font-extrabold text-[#001533] dark:text-white italic tracking-tighter transition-colors p-4 border-l-4 border-[#00BDD5]">Equity Information</motion.h2>
+               <motion.div variants={fadeUp} className="flex items-center gap-6 p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/10 shadow-xl transition-colors">
+                  <Activity className="w-8 h-8 text-[#00BDD5]" />
+                  <div>
+                    <p className="text-[10px] font-extrabold text-[#00BDD5] uppercase tracking-widest italic mb-1 italic">Listing Standard</p>
+                    <p className="text-[#001533] dark:text-white font-extrabold text-xl italic transition-colors">Frankfurt Prime Standard</p>
+                  </div>
+               </motion.div>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-16">
               {[
                 { label:"Ticker", val:"PTP" },
-                { label:"Exchange", val:"Frankfurt Prime Standard" },
+                { label:"Exchange", val:"FSE Prime" },
                 { label:"ISIN", val:"DE000A40AEG0" },
                 { label:"WKN", val:"A40AEG" },
                 { label:"IPO Price", val:"€5.10" },
+                { label:"Status", val:"Listed" },
               ].map((s,i) => (
-                <motion.div key={i} variants={fadeUp} className="bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-2xl p-5 text-center">
-                  <div className="text-xs text-slate-500 mb-2">{s.label}</div>
-                  <div className="font-heading font-bold text-navy text-base">{s.val}</div>
+                <motion.div key={i} variants={fadeUp} className="bg-white dark:bg-[#121428] border border-slate-100 dark:border-white/10 shadow-xl rounded-[2.5rem] p-10 text-center hover:scale-105 transition-all">
+                  <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 italic p-2">{s.label}</div>
+                  <div className="font-heading font-extrabold text-[#001533] dark:text-white text-2xl italic transition-colors">{s.val}</div>
                 </motion.div>
               ))}
             </div>
-            <motion.div variants={fadeUp} className="mt-4">
-              <div className="inline-flex items-center gap-2 text-sm text-slate-500 bg-white/4 border border-slate-200 rounded-xl px-4 py-3">
-                <span className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
-                Stock quote data: visit <a href="https://www.boerse-frankfurt.de/equity/pentixapharm-holding-ag" target="_blank" className="text-[#00B1AB] hover:underline ml-1">Börse Frankfurt</a>
-                <ExternalLink className="w-3 h-3 ml-0.5" />
-              </div>
+            
+            <motion.div variants={fadeUp} className="flex justify-center">
+              <a href="https://www.boerse-frankfurt.de/equity/pentixapharm-holding-ag" target="_blank" className="inline-flex items-center gap-6 px-12 py-6 bg-[#00BDD5] text-white rounded-2xl font-heading font-extrabold text-[11px] uppercase tracking-[0.5em] hover:bg-[#001533] transition-all shadow-4xl italic">
+                Live Stock Quote <ExternalLink className="w-5 h-5" />
+              </a>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Key Financials */}
-      <section className="py-20 bg-[#F8FAFD]">
-        <div className="container mx-auto px-6">
+      {/* ── KEY FINANCIALS ───────────────────────────────────────────────────── */}
+      <section className="py-48 bg-[#F8FAFC] dark:bg-[#121428] transition-colors duration-700">
+        <div className="container mx-auto px-6 max-w-7xl">
           <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger}>
-            <motion.div variants={fadeUp} className="flex items-center gap-2 mb-8">
-              <BarChart3 className="w-5 h-5 text-[#00B1AB]" />
-              <h2 className="text-2xl font-heading font-bold text-navy">{t("finTitle")}</h2>
-            </motion.div>
-            <div className="grid md:grid-cols-3 gap-5">
+            <div className="text-center mb-32">
+              <span className="text-[#00BDD5] font-heading font-extrabold text-xs tracking-[0.7em] uppercase mb-10 block italic">Core Financial Metrics</span>
+              <h2 className="text-6xl md:text-[8rem] font-heading font-extrabold text-[#001533] dark:text-white leading-[0.8] tracking-tighter italic transition-colors">Balance <br/><span className="text-[#00BDD5]">Precision.</span></h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
               {FINANCIALS.map((f,i) => (
-                <motion.div key={i} variants={fadeUp} className="bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-2xl p-6 card-hover">
-                  <p className="text-xs text-slate-500 mb-2">{f.label}</p>
-                  <p className="text-3xl font-heading font-bold text-navy mb-1">{f.value}</p>
-                  <p className="text-xs text-slate-600">{f.note}</p>
+                <motion.div key={i} variants={fadeUp} className="bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-4xl rounded-[4.5rem] p-16 hover:shadow-3xl transition-all group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:scale-125 transition-transform"><BarChart3 className="w-32 h-32 text-[#00BDD5]" /></div>
+                  <p className="text-[11px] font-extrabold text-slate-400 dark:text-slate-500 mb-8 uppercase tracking-[0.4em] italic p-1 border-b border-slate-100 dark:border-white/5 transition-colors">{f.label}</p>
+                  <p className="text-5xl font-heading font-extrabold text-[#001533] dark:text-white mb-6 italic tracking-tighter transition-colors">{f.value}</p>
+                  <p className="text-base text-slate-400 dark:text-slate-500 font-light italic transition-colors p-2">{f.note}</p>
                 </motion.div>
               ))}
             </div>
@@ -96,21 +122,25 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* Financial Calendar + Reports */}
-      <section className="py-20 bg-[#F8FAFD]2">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Calendar */}
+      {/* ── CALENDAR & REPORTS ────────────────────────────────────────────────── */}
+      <section className="py-48 bg-white dark:bg-[#0a0b16] border-y border-slate-200/50 dark:border-white/5 transition-colors duration-700">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-32">
+            
+            {/* Financial Calendar */}
             <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger}>
-              <motion.div variants={fadeUp} className="flex items-center gap-2 mb-6">
-                <Calendar className="w-5 h-5 text-[#00B1AB]" />
-                <h2 className="text-2xl font-heading font-bold text-navy">{t("calTitle")}</h2>
+              <motion.div variants={fadeUp} className="flex items-center gap-6 mb-16 border-l-8 border-[#00BDD5] pl-10">
+                <Calendar className="w-12 h-12 text-[#00BDD5]" />
+                <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-[#001533] dark:text-white italic tracking-tighter transition-colors uppercase leading-none">Financial <br/><span className="text-[#00BDD5]">Calendar.</span></h2>
               </motion.div>
-              <div className="space-y-3">
+              <div className="space-y-8">
                 {CALENDAR.map((c,i) => (
-                  <motion.div key={i} variants={fadeUp} className="flex items-start gap-4 bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-xl p-4">
-                    <span className="text-[#00B1AB] text-xs font-semibold bg-emerald/10 border border-emerald/20 px-2.5 py-1 rounded-full whitespace-nowrap">{c.date}</span>
-                    <p className="text-slate-600 text-sm">{c.event}</p>
+                  <motion.div key={i} variants={fadeUp} className="flex items-center gap-10 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-2xl rounded-[3.5rem] p-12 hover:bg-white dark:hover:bg-white/10 transition-all group">
+                    <div className="flex flex-col items-center justify-center p-6 bg-[#001533] dark:bg-[#00BDD5] rounded-3xl group-hover:scale-110 transition-transform shadow-xl">
+                       <span className="text-white dark:text-[#001533] font-heading font-extrabold text-2xl italic transition-colors leading-none">{c.date.split(' ')[0]}</span>
+                       <span className="text-white/70 dark:text-[#001533]/70 font-heading font-extrabold text-[10px] uppercase tracking-widest transition-colors">{c.date.split(' ')[1]}</span>
+                    </div>
+                    <p className="text-[#001533] dark:text-white text-xl font-light italic leading-relaxed transition-colors">{c.event}</p>
                   </motion.div>
                 ))}
               </div>
@@ -118,21 +148,23 @@ export default function InvestorsPage() {
 
             {/* Reports */}
             <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger}>
-              <motion.div variants={fadeUp} className="flex items-center gap-2 mb-6">
-                <FileText className="w-5 h-5 text-[#00A3E0]" />
-                <h2 className="text-2xl font-heading font-bold text-navy">Reports & Documents</h2>
+              <motion.div variants={fadeUp} className="flex items-center gap-6 mb-16 border-l-8 border-[#7B61FF] pl-10">
+                <FileText className="w-12 h-12 text-[#7B61FF]" />
+                <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-[#001533] dark:text-white italic tracking-tighter transition-colors uppercase leading-none">Global <br/><span className="text-[#7B61FF]">Reports.</span></h2>
               </motion.div>
-              <div className="space-y-3">
+              <div className="space-y-8">
                 {REPORTS.map((r,i) => (
                   <motion.div key={i} variants={fadeUp}
-                    className="flex items-center justify-between bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-xl p-4 card-hover cursor-pointer group">
+                    className="flex items-center justify-between bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-2xl rounded-[3.5rem] p-12 hover:bg-white dark:hover:bg-white/10 group cursor-pointer transition-all">
                     <div>
-                      <p className="text-navy font-medium text-sm group-hover:text-[#00B1AB] transition-colors">{r.name}</p>
-                      <p className="text-slate-500 text-xs">{r.date}</p>
+                      <p className="text-[#001533] dark:text-white font-extrabold text-2xl italic tracking-tight group-hover:text-[#00BDD5] transition-colors uppercase transition-colors">{r.name}</p>
+                      <p className="text-slate-400 font-light italic text-base mt-2 transition-colors">{r.date}</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-slate-500 bg-white/5 border border-slate-200 px-2 py-0.5 rounded">{r.type}</span>
-                      <ExternalLink className="w-4 h-4 text-slate-600 group-hover:text-[#00B1AB] transition-colors" />
+                    <div className="flex items-center gap-6">
+                      <span className="text-[10px] font-extrabold text-[#7B61FF] bg-[#7B61FF]/10 border border-[#7B61FF]/30 px-6 py-2 rounded-full uppercase tracking-widest italic">{r.type}</span>
+                      <div className="w-16 h-16 bg-white dark:bg-white/10 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <ExternalLink className="w-6 h-6 text-slate-400 group-hover:text-[#00BDD5] transition-colors" />
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -142,24 +174,28 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* IR Contact */}
-      <section className="py-20 bg-[#F8FAFD] border-t border-slate-200">
+      {/* ── IR CONTACT ──────────────────────────────────────────────────────── */}
+      <section className="py-48 bg-[#F8FAFC] dark:bg-[#121428] transition-colors duration-700">
         <div className="container mx-auto px-6">
-          <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger} className="max-w-lg mx-auto text-center">
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-4">
-              <Building2 className="w-6 h-6 text-[#00B1AB]" />
-              <h2 className="text-2xl font-heading font-bold text-navy">Investor Relations Contact</h2>
-            </motion.div>
-            <motion.p variants={fadeUp} className="text-slate-500 mb-8">For investor enquiries, financial results or media requests, please contact our IR team.</motion.p>
-            <motion.div variants={stagger} className="flex flex-col gap-3 items-center">
-              <motion.a variants={fadeUp} href={"mailto:" + t("irContact")}
-                className="flex items-center gap-3 px-7 py-3.5 bg-emerald text-navy font-bold rounded-full hover:bg-emerald/90 transition-all">
-                <Mail className="w-4 h-4" /> {t("irContact")}
-              </motion.a>
-              <motion.div variants={fadeUp} className="flex items-center gap-2 text-slate-500 text-sm">
-                <Phone className="w-4 h-4 text-[#00B1AB]/60" /> {t("irPhone")}
-              </motion.div>
-            </motion.div>
+          <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger} className="max-w-4xl mx-auto text-center bg-white dark:bg-[#0a0b16] p-24 rounded-[6rem] shadow-4xl border border-slate-100 dark:border-white/10 transition-colors group">
+            <div className="relative z-10">
+               <motion.div variants={fadeUp} className="flex flex-col items-center justify-center gap-10 mb-12">
+                 <div className="w-24 h-24 bg-[#001533] dark:bg-[#00BDD5] rounded-[2.5rem] flex items-center justify-center shadow-4xl group-hover:rotate-[15deg] transition-all duration-700">
+                    <Building2 className="w-12 h-12 text-white dark:text-[#001533] transition-colors" />
+                 </div>
+                 <h2 className="text-6xl md:text-8xl font-heading font-extrabold text-[#001533] dark:text-white italic tracking-tighter transition-colors uppercase leading-[0.8] transition-colors">Investor <br/> <span className="text-[#00BDD5]">Contacts.</span></h2>
+               </motion.div>
+               <motion.p variants={fadeUp} className="text-slate-500 dark:text-slate-400 text-2xl font-light italic mb-20 max-w-2xl mx-auto transition-colors">For analyst enquiries, financial results, or global capital market requests, please connect with our IR synthesis team.</motion.p>
+               <motion.div variants={stagger} className="flex flex-col sm:flex-row gap-12 items-center justify-center">
+                 <motion.a variants={fadeUp} href="mailto:ir@pentixapharm.com"
+                   className="flex items-center gap-8 px-16 py-8 bg-[#001533] dark:bg-white text-white dark:text-[#001533] font-heading font-extrabold rounded-3xl hover:bg-[#00BDD5] dark:hover:bg-[#00BDD5] dark:hover:text-white transition-all shadow-4xl italic text-[11px] uppercase tracking-[0.5em]">
+                   <Mail className="w-6 h-6 border-r border-white/20 dark:border-[#001533]/20 pr-4" /> Message Desk
+                 </motion.a>
+                 <motion.div variants={fadeUp} className="flex items-center gap-6 text-slate-400 dark:text-slate-500 text-lg italic transition-colors">
+                   <Phone className="w-6 h-6 text-[#00BDD5]" /> +49 (0) 931 3292 633
+                 </motion.div>
+               </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

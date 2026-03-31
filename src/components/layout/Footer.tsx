@@ -32,11 +32,13 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4">Company</h3>
-            <ul className="space-y-2.5">
-              {["about","pipeline","news","investors","contact"].map(k => (
+            <h3 className="text-white font-heading font-extrabold text-sm mb-6 uppercase tracking-widest opacity-50">Discovery</h3>
+            <ul className="space-y-3.5">
+              {["about","pipeline","technology","iis","news","investors","careers"].map(k => (
                 <li key={k}>
-                  <Link href={"/" + locale + "/" + k} className="text-slate-400 hover:text-emerald text-sm transition-colors">{nav(k)}</Link>
+                  <Link href={"/" + locale + "/" + k} className="text-slate-400 hover:text-teal text-sm font-medium transition-all hover:translate-x-1 inline-block">
+                    {k === "iis" ? "IIS Program" : k === "technology" ? "Technology" : nav(k)}
+                  </Link>
                 </li>
               ))}
             </ul>

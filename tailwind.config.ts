@@ -6,7 +6,11 @@ const config: Config = {
     colors:{
       background:"hsl(var(--background))",foreground:"hsl(var(--foreground))",
       navy:"#002A54",navy2:"#001D3D",navy3:"#001122",
-      emerald:"#00B1AB",emeraldDark:"#008A85",cyan:"#00A3E0",gold:"#F2A900",
+      cyan:"#00A3E0",
+      teal:"#00B1AB",
+      sky:"#9EDCED",
+      helixRed:"#A7303E",
+      emerald:"#00B1AB",emeraldDark:"#008A85",gold:"#F2A900",
       card:{DEFAULT:"hsl(var(--card))",foreground:"hsl(var(--card-foreground))"},
       popover:{DEFAULT:"hsl(var(--popover))",foreground:"hsl(var(--popover-foreground))"},
       primary:{DEFAULT:"hsl(var(--primary))",foreground:"hsl(var(--primary-foreground))"},

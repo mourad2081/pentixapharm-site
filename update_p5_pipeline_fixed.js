@@ -1,4 +1,12 @@
-"use client";
+
+const fs = require('fs');
+const path = require('path');
+const B = __dirname;
+function w(f, c) { fs.mkdirSync(path.dirname(path.join(B,f)),{recursive:true}); fs.writeFileSync(path.join(B,f),c,'utf8'); console.log('✓',f); }
+
+const MOL_IMG = "molecular_theranostic_structure_1774915435525.png";
+
+w('src/app/[locale]/pipeline/page.tsx', `"use client";
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
@@ -73,7 +81,7 @@ export default function PipelinePage() {
     <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-24">
       <section className="relative pt-44 pb-28 overflow-hidden bg-white border-b border-slate-200">
          <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-            <img src="/${MOL_IMG}" className="w-[500px] h-[500px] object-contain rotate-12" />
+            <img src="/\${MOL_IMG}" className="w-[500px] h-[500px] object-contain rotate-12" />
          </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}>
@@ -189,3 +197,5 @@ export default function PipelinePage() {
     </div>
   );
 }
+`);
+console.log("Pipeline page with Gantt bars fixed and updated.");

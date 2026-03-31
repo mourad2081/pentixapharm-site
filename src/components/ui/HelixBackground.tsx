@@ -26,7 +26,7 @@ export function HelixBackground() {
       <svg className="absolute w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="helix" width="100" height="100" patternUnits="userSpaceOnUse">
-             <path d="M 0 50 Q 25 0 50 50 Q 75 100 100 50" fill="none" stroke="#002A54" strokeWidth="1" />
+             <path d="M 0 50 Q 25 0 50 50 Q 75 100 100 50" fill="none" stroke="#031835" strokeWidth="1" />
              <path d="M 0 50 Q 25 100 50 50 Q 75 0 100 50" fill="none" stroke="#00A3E0" strokeWidth="1" />
           </pattern>
         </defs>

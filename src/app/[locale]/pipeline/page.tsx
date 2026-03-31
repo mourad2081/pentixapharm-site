@@ -84,7 +84,7 @@ export default function PipelinePage() {
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}>
             <span className="text-cyan text-xs font-bold uppercase tracking-[0.3em] bg-cyan/10 px-6 py-2.5 rounded-full inline-block mb-6 border border-cyan/20 italic">Clinical Evolution</span>
-            <h1 className="text-6xl md:text-7xl font-heading font-extrabold text-[#002A54] mb-8 leading-tight italic">Advanced <span className="text-teal">Pipeline</span></h1>
+            <h1 className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 leading-tight italic">Advanced <span className="text-teal">Pipeline</span></h1>
             <p className="text-slate-600 text-xl leading-relaxed font-light max-w-3xl italic">
               From breakthrough discovery to Phase 3 readiness. We are developing proprietary ligands to transform treatment paradigms for orphan diseases and hard-to-treat cancers.
             </p>
@@ -99,7 +99,7 @@ export default function PipelinePage() {
                <div className="flex bg-white border border-slate-200 p-1.5 rounded-2xl shadow-xl">
                   {["All", "Diagnostic", "Therapeutic", "Antibody"].map((f) => (
                     <button key={f} onClick={() => setFilter(f)} 
-                      className={"px-7 py-3.5 rounded-xl font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all " + (filter===f ? "bg-[#002A54] text-white shadow-lg scale-105" : "text-slate-500 hover:bg-slate-50 hover:text-[#002A54]")}>
+                      className={"px-7 py-3.5 rounded-xl font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all " + (filter===f ? "bg-[#031835] text-white shadow-lg scale-105" : "text-slate-500 hover:bg-slate-50 hover:text-[#031835]")}>
                        {f}
                     </button>
                   ))}
@@ -133,7 +133,7 @@ export default function PipelinePage() {
                                          {p.category==="Diagnostic"?<Microscope className="w-7 h-7"/> : p.category==="Therapeutic"?<Zap className="w-7 h-7"/> : <Beaker className="w-7 h-7"/>}
                                       </div>
                                       <div>
-                                         <h3 className="font-heading font-extrabold text-[#002A54] text-2xl leading-tight group-hover:text-cyan transition-colors italic">{p.name}</h3>
+                                         <h3 className="font-heading font-extrabold text-[#031835] text-2xl leading-tight group-hover:text-cyan transition-colors italic">{p.name}</h3>
                                          <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-[0.2em] mt-2 italic">{p.ind}</p>
                                       </div>
                                    </div>
@@ -153,7 +153,7 @@ export default function PipelinePage() {
                                       {phases.map((_, i) => <div key={i} className="flex-1 border-r border-slate-700 h-full last:border-none" />)}
                                    </div>
                                    <div className="absolute inset-0 flex items-center px-10 pointer-events-none">
-                                      <span className="text-[10px] font-extrabold text-[#002A54] ml-auto opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-[0.3em] italic">{p.phase}</span>
+                                      <span className="text-[10px] font-extrabold text-[#031835] ml-auto opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-[0.3em] italic">{p.phase}</span>
                                    </div>
                                 </div>
                              </div>
@@ -164,13 +164,13 @@ export default function PipelinePage() {
                                      <div className="pt-12 pb-16 px-4 border-t border-slate-50 mt-10 grid lg:grid-cols-3 gap-16">
                                         <div className="lg:col-span-2 space-y-10">
                                            <div>
-                                              <h4 className="text-2xl font-heading font-extrabold text-[#002A54] mb-4 italic">Mechanism & Potential</h4>
+                                              <h4 className="text-2xl font-heading font-extrabold text-[#031835] mb-4 italic">Mechanism & Potential</h4>
                                               <p className="text-slate-600 leading-relaxed text-lg font-light italic">{p.fullContent}</p>
                                            </div>
                                            <div className="bg-[#F8FAFD] p-10 rounded-[3rem] border border-slate-100 space-y-6 shadow-inner">
                                               <div className="flex items-center gap-4 border-b border-slate-200 pb-4">
                                                  <TrendingUp className="w-6 h-6 text-cyan" />
-                                                 <p className="text-xs font-heading font-extrabold text-[#002A54] uppercase tracking-widest italic">Market Outlook</p>
+                                                 <p className="text-xs font-heading font-extrabold text-[#031835] uppercase tracking-widest italic">Market Outlook</p>
                                               </div>
                                               <p className="text-slate-600 italic font-light leading-relaxed">{p.marketPotential}</p>
                                            </div>
@@ -179,7 +179,7 @@ export default function PipelinePage() {
                                               <span className="px-6 py-3 bg-white border border-slate-200 rounded-2xl text-[10px] font-extrabold text-slate-500 uppercase tracking-widest shadow-sm">Lead Isotope: {p.id.includes('pfor')?'Ga-68':'Lu-177/Y-90'}</span>
                                            </div>
                                         </div>
-                                        <div className="bg-[#002A54] text-white rounded-[3.5rem] p-12 shadow-2xl relative overflow-hidden group/card shadow-navy/30">
+                                        <div className="bg-[#031835] text-white rounded-[3.5rem] p-12 shadow-2xl relative overflow-hidden group/card shadow-navy/30">
                                            <div className="absolute top-0 right-0 p-10 opacity-10 group-hover/card:scale-110 transition-transform"><Atom className="w-32 h-32" /></div>
                                            <h4 className="text-sm font-heading font-extrabold uppercase tracking-[0.4em] mb-10 flex items-center gap-3 italic text-cyan"><LayoutGrid className="w-4 h-4"/> Path to Clinic</h4>
                                            <ul className="space-y-6 relative z-10">
@@ -214,17 +214,17 @@ export default function PipelinePage() {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
                <motion.div initial={{opacity:0, x:-20}} whileInView={{opacity:1, x:0}} viewport={{once:true}}>
                   <span className="text-cyan text-xs font-extrabold uppercase tracking-[0.4em] italic mb-6 block">Molecular Strategy</span>
-                  <h2 className="text-4xl md:text-6xl font-heading font-extrabold text-[#002A54] leading-tight mb-8 italic">The <span className="text-teal">Seeing</span> and <span className="text-cyan">Treating</span> Cycle</h2>
+                  <h2 className="text-4xl md:text-6xl font-heading font-extrabold text-[#031835] leading-tight mb-8 italic">The <span className="text-teal">Seeing</span> and <span className="text-cyan">Treating</span> Cycle</h2>
                   <p className="text-slate-600 text-lg leading-relaxed mb-10 font-light italic">
                      Our pipeline is built on the unique ability of our ligands to carry dynamic payloads. By swapping a diagnostic isotope (Gallium-68) for a therapeutic one (Lutetium-177 or Yttrium-90) onto the same targeting platform (PentixaFor/Ther), we ensure precision ablation of tumors identified via PET/CT.
                   </p>
                   <div className="grid grid-cols-2 gap-8">
                      <div className="p-10 bg-[#F8FAFD] rounded-[3rem] border border-slate-100 group hover:shadow-2xl transition-all">
                         <Activity className="w-10 h-10 text-teal mb-6 group-hover:scale-110 transition-transform"/>
-                        <h4 className="font-heading font-extrabold text-[#002A54] text-xl mb-3 tracking-tight italic text-teal">Diagnostic</h4>
+                        <h4 className="font-heading font-extrabold text-[#031835] text-xl mb-3 tracking-tight italic text-teal">Diagnostic</h4>
                         <p className="text-slate-500 text-xs italic font-light">Identifying target expression at the molecular level with near 100% specificity.</p>
                      </div>
-                     <div className="p-10 bg-[#002A54] text-white rounded-[3rem] shadow-2xl group hover:shadow-cyan/20 transition-all">
+                     <div className="p-10 bg-[#031835] text-white rounded-[3rem] shadow-2xl group hover:shadow-cyan/20 transition-all">
                         <Zap className="w-10 h-10 text-cyan mb-6 group-hover:scale-110 transition-transform"/>
                         <h4 className="font-heading font-extrabold text-cyan text-xl mb-3 tracking-tight italic">Therapeutic</h4>
                         <p className="text-slate-400 text-xs italic font-light">Targeted radiopharmaceutical therapy (TRT) delivering precision cell death.</p>
@@ -242,13 +242,13 @@ export default function PipelinePage() {
       {/* ── FINAL CTA: INVESTORS / PARTNERS ──────────────────────────────────── */}
       <section className="py-24">
          <div className="container mx-auto px-6 max-w-4xl text-center">
-            <h3 className="text-3xl font-heading font-extrabold text-[#002A54] mb-8 tracking-tighter italic">Transforming Medicine Together</h3>
+            <h3 className="text-3xl font-heading font-extrabold text-[#031835] mb-8 tracking-tighter italic">Transforming Medicine Together</h3>
             <p className="text-slate-500 text-xl leading-relaxed mb-12 font-light italic px-10">We are open to strategic discussions for regional licensing and co-development of our priority CXCR4 and CD24 assets.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-               <button className="px-12 py-5 bg-[#002A54] text-white font-heading font-extrabold rounded-full hover:bg-cyan hover:text-navy transition-all shadow-2xl flex items-center gap-3">
+               <button className="px-12 py-5 bg-[#031835] text-white font-heading font-extrabold rounded-full hover:bg-cyan hover:text-navy transition-all shadow-2xl flex items-center gap-3">
                  Licensing Portal <Globe2 className="w-5 h-5" />
                </button>
-               <button className="px-12 py-5 bg-white border-2 border-[#002A54] text-[#002A54] font-heading font-extrabold rounded-full hover:bg-slate-50 transition-all shadow-sm flex items-center gap-3">
+               <button className="px-12 py-5 bg-white border-2 border-[#031835] text-[#031835] font-heading font-extrabold rounded-full hover:bg-slate-50 transition-all shadow-sm flex items-center gap-3">
                  Investor Roadmap <BarChart3 className="w-5 h-5" />
                </button>
             </div>

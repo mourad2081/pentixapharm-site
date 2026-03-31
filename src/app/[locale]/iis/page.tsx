@@ -26,7 +26,7 @@ export default function IISPage() {
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 text-cyan font-bold text-xs uppercase tracking-widest bg-cyan/10 px-6 py-2.5 rounded-full border border-cyan/20 mb-10">
               Medical Affairs Support
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#002A54] mb-8 leading-tight">Empowering Clinical <span className="text-teal">Pioneers</span></motion.h1>
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 leading-tight">Empowering Clinical <span className="text-teal">Pioneers</span></motion.h1>
             <motion.p variants={fadeUp} className="text-slate-600 text-xl leading-relaxed font-light">
               We collaborate with researchers worldwide to uncover new therapeutic frontiers through our Investigator-Initiated Studies (IIS) program.
             </motion.p>
@@ -47,7 +47,7 @@ export default function IISPage() {
                 <div className={"w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform " + f.color}>
                   <f.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-heading font-extrabold text-[#002A54] mb-4">{f.label}</h3>
+                <h3 className="text-2xl font-heading font-extrabold text-[#031835] mb-4">{f.label}</h3>
                 <p className="text-slate-500 leading-relaxed">{f.text}</p>
               </motion.div>
             ))}
@@ -59,7 +59,7 @@ export default function IISPage() {
         <div className="container mx-auto px-6 grid lg:grid-cols-5 gap-16">
           <div className="lg:col-span-2">
             <div className="sticky top-32">
-              <h2 className="text-4xl font-heading font-extrabold text-[#002A54] mb-8 leading-tight">How to Apply</h2>
+              <h2 className="text-4xl font-heading font-extrabold text-[#031835] mb-8 leading-tight">How to Apply</h2>
               <div className="space-y-12">
                 {[
                   { step: "01", title: "Study Concept Proposal", desc: "Submit a 2-3 page synopsis outlining the scientific rationale, clinical endpoints, and required supply of PentixaFor/Ther." },
@@ -69,17 +69,17 @@ export default function IISPage() {
                   <div key={i} className="flex gap-6 items-start">
                     <span className="text-5xl font-heading font-extrabold text-slate-200 mt-[-10px]">{s.step}</span>
                     <div>
-                      <h4 className="font-heading font-extrabold text-[#002A54] text-xl mb-2">{s.title}</h4>
+                      <h4 className="font-heading font-extrabold text-[#031835] text-xl mb-2">{s.title}</h4>
                       <p className="text-slate-500 leading-relaxed">{s.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-16 bg-[#002A54] text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
+              <div className="mt-16 bg-[#031835] text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-cyan/20 blur-3xl rounded-full" />
                 <h3 className="text-2xl font-heading font-extrabold mb-4 relative z-10">Start Your Proposal</h3>
                 <p className="text-slate-400 text-sm mb-8 leading-relaxed relative z-10">Contact our Medical Affairs clinical team directly to request application templates.</p>
-                <a href="mailto:iis@pentixapharm.com" className="inline-flex items-center gap-3 px-8 py-4 bg-teal text-[#002A54] font-bold rounded-full hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg relative z-10 font-heading">
+                <a href="mailto:iis@pentixapharm.com" className="inline-flex items-center gap-3 px-8 py-4 bg-teal text-[#031835] font-bold rounded-full hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg relative z-10 font-heading">
                   Submit Inquiry <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
@@ -91,19 +91,19 @@ export default function IISPage() {
               <div className="absolute top-0 right-0 p-8 opacity-10">
                 <img src={`/${MOL_IMG}`} className="w-64 h-64 object-contain" />
               </div>
-              <h2 className="text-4xl font-heading font-extrabold text-[#002A54] mb-8 border-b border-slate-100 pb-8">Ongoing Studies</h2>
+              <h2 className="text-4xl font-heading font-extrabold text-[#031835] mb-8 border-b border-slate-100 pb-8">Ongoing Studies</h2>
               <div className="space-y-6">
                 {STUDIES.map((s) => (
                   <div key={s.id} className="p-8 bg-[#F8FAFD] border border-slate-100 rounded-3xl group hover:border-cyan/30 transition-all">
                     <div className="flex flex-wrap items-center gap-4 mb-4">
-                      <span className="text-[10px] font-bold text-[#002A54] bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">{s.phase}</span>
+                      <span className="text-[10px] font-bold text-[#031835] bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">{s.phase}</span>
                       <span className="text-[10px] font-bold text-white bg-teal px-3 py-1 rounded-full">{s.status}</span>
                       <span className="text-xs text-slate-400 ml-auto font-medium flex items-center gap-1.5"><MapPin className="w-3 h-3" /> {s.center}</span>
                     </div>
-                    <h3 className="text-xl font-heading font-extrabold text-[#002A54] group-hover:text-cyan transition-colors leading-snug mb-4">{s.title}</h3>
+                    <h3 className="text-xl font-heading font-extrabold text-[#031835] group-hover:text-cyan transition-colors leading-snug mb-4">{s.title}</h3>
                     <p className="text-sm text-slate-500 leading-relaxed mb-6">{s.desc}</p>
                     <div className="flex justify-between items-center pt-4 border-t border-slate-200/50">
-                      <p className="text-xs font-bold text-[#002A54] uppercase tracking-widest"><span className="text-slate-400 font-medium lowercase italic">led by </span> {s.inv}</p>
+                      <p className="text-xs font-bold text-[#031835] uppercase tracking-widest"><span className="text-slate-400 font-medium lowercase italic">led by </span> {s.inv}</p>
                     </div>
                   </div>
                 ))}

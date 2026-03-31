@@ -10,7 +10,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#002A54] text-white pt-32 pb-16 relative overflow-hidden">
+    <footer className="bg-[#031835] text-white pt-32 pb-16 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 p-32 opacity-5 pointer-events-none -rotate-12 translate-x-1/4">
          <Building2 className="w-96 h-96" />
@@ -22,8 +22,8 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-12">
             <Link href={`/${locale}`} className="flex items-center gap-4 group">
-               <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-3 shadow-2xl group-hover:rotate-6 transition-transform">
-                  <img src="/pentixapharm_logo.png" className="w-10 h-10 object-contain" alt="Pentixapharm" />
+               <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-2 shadow-2xl group-hover:rotate-6 transition-transform">
+                  <img src="/pentixapharm_logo_new.jpg" className="w-auto h-8 object-contain" alt="Pentixapharm" />
                </div>
                <span className="text-3xl font-heading font-extrabold tracking-tighter italic">PENTIXAPHARM</span>
             </Link>

@@ -33,14 +33,14 @@ export default function ResearchPage() {
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
       <section className="relative pt-44 pb-28 overflow-hidden bg-white border-b border-slate-200">
         <div className="absolute inset-0 z-0 opacity-[0.02]">
-           <div className="absolute inset-0 bg-[#002A54] -translate-y-1/2 rounded-[50%]" />
+           <div className="absolute inset-0 bg-[#031835] -translate-y-1/2 rounded-[50%]" />
         </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-emerald text-xs font-heading font-extrabold uppercase tracking-[0.3em] bg-emerald/10 px-6 py-2.5 rounded-full mb-10 border border-emerald/20 shadow-sm italic">
               Scientific Center & Publications
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#002A54] mb-8 leading-tight italic">Evidence-Based <span className="text-emerald">Precision</span></motion.h1>
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 leading-tight italic">Evidence-Based <span className="text-emerald">Precision</span></motion.h1>
             <motion.p variants={fadeUp} className="text-slate-600 text-xl leading-relaxed max-w-3xl mx-auto font-light italic">
               Our clinical and preclinical data repository for medical professionals, researchers, and strategic partners interested in our CXCR4 and CD24 evidence.
             </motion.p>
@@ -55,7 +55,7 @@ export default function ResearchPage() {
               {CATS.map(c => (
                 <button key={c} onClick={() => setFilter(c)}
                   className={"text-[11px] font-heading font-extrabold px-6 py-3 rounded-full border transition-all uppercase tracking-wider " +
-                    (filter===c ? "bg-[#002A54] text-white border-[#002A54] shadow-lg shadow-navy/20" : "text-slate-400 bg-white border-slate-100 hover:border-emerald/40 hover:text-[#002A54]")}>
+                    (filter===c ? "bg-[#031835] text-white border-[#031835] shadow-lg shadow-navy/20" : "text-slate-400 bg-white border-slate-100 hover:border-emerald/40 hover:text-[#031835]")}>
                   {c}
                 </button>
               ))}
@@ -63,7 +63,7 @@ export default function ResearchPage() {
            <div className="flex items-center gap-3 bg-[#F8FAFD] border border-slate-200 rounded-full px-6 py-3 w-full lg:w-80 group focus-within:border-emerald/50 transition-all">
               <Search className="w-4 h-4 text-slate-400 shrink-0 group-focus-within:text-emerald" />
               <input value={search} onChange={e=>setSearch(e.target.value)}
-                placeholder="Search publications..." className="bg-transparent text-sm text-[#002A54] placeholder-slate-400 outline-none w-full font-medium" />
+                placeholder="Search publications..." className="bg-transparent text-sm text-[#031835] placeholder-slate-400 outline-none w-full font-medium" />
            </div>
         </div>
       </section>
@@ -75,12 +75,12 @@ export default function ResearchPage() {
                {filtered.map((p) => (
                  <motion.div key={p.id} variants={fadeUp} className="bg-white border border-slate-100 rounded-[2.5rem] p-10 hover:shadow-2xl transition-all group flex flex-col hover:border-emerald/30 shadow-sm hover:-translate-y-2">
                     <div className="flex items-center justify-between mb-8">
-                       <span className="text-[10px] font-heading font-extrabold text-white bg-[#002A54] px-4 py-1.5 rounded-full tracking-widest">{p.cat}</span>
+                       <span className="text-[10px] font-heading font-extrabold text-white bg-[#031835] px-4 py-1.5 rounded-full tracking-widest">{p.cat}</span>
                        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
                           <Globe2 className="w-4 h-4 text-emerald"/> {p.date}
                        </div>
                     </div>
-                    <h3 className="text-2xl font-heading font-extrabold text-[#002A54] mb-6 leading-tight group-hover:text-emerald transition-colors italic">{p.title}</h3>
+                    <h3 className="text-2xl font-heading font-extrabold text-[#031835] mb-6 leading-tight group-hover:text-emerald transition-colors italic">{p.title}</h3>
                     <p className="text-slate-500 mb-8 font-light italic flex items-center gap-3"><FileText className="w-4 h-4 shrink-0"/> {p.journal}</p>
                     
                     <div className="flex items-center justify-between mt-auto pt-8 border-t border-slate-50">
@@ -109,7 +109,7 @@ export default function ResearchPage() {
       <section className="py-24 border-t border-slate-100 bg-[#F8FAFD]">
          <div className="container mx-auto px-6 max-w-6xl">
             <div className="mb-20 text-center">
-               <h2 className="text-4xl font-heading font-extrabold text-[#002A54] italic mb-6">Discovery Benchmarks</h2>
+               <h2 className="text-4xl font-heading font-extrabold text-[#031835] italic mb-6">Discovery Benchmarks</h2>
                <p className="text-slate-500 max-w-2xl mx-auto font-light">Key milestones in the development of our targeting platforms.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -136,9 +136,9 @@ export default function ResearchPage() {
             <div className="max-w-4xl mx-auto bg-white rounded-[4rem] p-16 shadow-2xl relative overflow-hidden group border border-slate-100">
                <div className="absolute inset-0 bg-gradient-radial from-emerald/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                <Atom className="w-16 h-16 text-emerald mx-auto mb-8 animate-pulse" />
-               <h3 className="text-4xl font-heading font-extrabold text-[#002A54] mb-6 italic leading-tight">Request Scientific Data Collection</h3>
+               <h3 className="text-4xl font-heading font-extrabold text-[#031835] mb-6 italic leading-tight">Request Scientific Data Collection</h3>
                <p className="text-slate-600 mb-10 text-lg leading-relaxed font-light italic px-10">We provide detailed Investigator Brochures (IB) and preclinical data summaries to qualified healthcare professionals and research partners upon request.</p>
-               <button className="px-12 py-5 bg-[#002A54] text-white font-heading font-extrabold rounded-full hover:bg-emerald hover:text-navy transition-all shadow-2xl relative z-10 flex items-center gap-3 mx-auto">
+               <button className="px-12 py-5 bg-[#031835] text-white font-heading font-extrabold rounded-full hover:bg-emerald hover:text-navy transition-all shadow-2xl relative z-10 flex items-center gap-3 mx-auto">
                  Request Research Access <Database className="w-5 h-5" />
                </button>
             </div>

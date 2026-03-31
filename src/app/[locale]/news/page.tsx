@@ -59,14 +59,14 @@ export default function NewsPage() {
       {/* Header */}
       <section className="relative pt-44 pb-28 overflow-hidden bg-white border-b border-slate-100">
         <div className="absolute inset-0 z-0 opacity-[0.02]">
-           <div className="absolute inset-0 bg-[#002A54] translate-y-1/2 rounded-[50%]" />
+           <div className="absolute inset-0 bg-[#031835] translate-y-1/2 rounded-[50%]" />
         </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <motion.div initial="hidden" animate="show" variants={stagger} className="text-center">
             <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.3em] bg-cyan/10 px-6 py-2.5 rounded-full mb-8 border border-cyan/20 italic shadow-sm">
               Press Office & Communications
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#002A54] mb-8 drop-shadow-sm leading-tight italic">Corporate <span className="text-cyan">Newsroom</span></motion.h1>
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 drop-shadow-sm leading-tight italic">Corporate <span className="text-cyan">Newsroom</span></motion.h1>
             <motion.p variants={fadeUp} className="text-slate-500 text-xl leading-relaxed max-w-3xl mx-auto font-light italic">
               Announcements, clinical data updates, and financial reporting from the heart of Pentixapharm.
             </motion.p>
@@ -82,7 +82,7 @@ export default function NewsPage() {
               {CATS.map(c => (
                 <button key={c} onClick={() => setFilter(c)}
                   className={"text-[11px] font-heading font-extrabold px-6 py-3 rounded-full border transition-all uppercase tracking-wider " +
-                    (filter===c ? "bg-[#002A54] text-white border-[#002A54] shadow-lg shadow-navy/20" : "text-slate-400 bg-white border-slate-100 hover:border-cyan/40 hover:text-[#002A54]")}>
+                    (filter===c ? "bg-[#031835] text-white border-[#031835] shadow-lg shadow-navy/20" : "text-slate-400 bg-white border-slate-100 hover:border-cyan/40 hover:text-[#031835]")}>
                   {c}
                 </button>
               ))}
@@ -90,7 +90,7 @@ export default function NewsPage() {
             <div className="flex items-center gap-3 bg-[#F8FAFD] border border-slate-200 rounded-full px-6 py-3 w-full lg:w-80 group focus-within:border-cyan/50 transition-all">
               <Search className="w-4 h-4 text-slate-400 shrink-0 group-focus-within:text-cyan" />
               <input value={search} onChange={e=>setSearch(e.target.value)}
-                placeholder="Search repository..." className="bg-transparent text-sm text-[#002A54] placeholder-slate-400 outline-none w-full font-medium" />
+                placeholder="Search repository..." className="bg-transparent text-sm text-[#031835] placeholder-slate-400 outline-none w-full font-medium" />
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function NewsPage() {
                     </span>
                   </div>
 
-                  <h2 className={"font-heading font-extrabold text-[#002A54] leading-tight mb-6 group-hover:text-cyan transition-colors " + (expandedId === n.id ? "text-4xl" : "text-xl italic")}>{n.title}</h2>
+                  <h2 className={"font-heading font-extrabold text-[#031835] leading-tight mb-6 group-hover:text-cyan transition-colors " + (expandedId === n.id ? "text-4xl" : "text-xl italic")}>{n.title}</h2>
                   
                   <div className="relative">
                     <p className={"text-slate-500 leading-relaxed font-light " + (expandedId === n.id ? "text-lg mb-10 italic" : "text-sm line-clamp-3 mb-8")}>
@@ -132,11 +132,11 @@ export default function NewsPage() {
                         <div className="flex gap-10">
                            <div>
                               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Source</p>
-                              <p className="font-heading font-extrabold text-[#002A54]">{n.source}</p>
+                              <p className="font-heading font-extrabold text-[#031835]">{n.source}</p>
                            </div>
                            <div>
                               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Type</p>
-                              <p className="font-heading font-extrabold text-[#002A54] italic">{n.cat} Announcement</p>
+                              <p className="font-heading font-extrabold text-[#031835] italic">{n.cat} Announcement</p>
                            </div>
                         </div>
                         <button onClick={() => window.print()} className="flex items-center gap-2 text-xs font-bold text-navy hover:text-cyan transition-all italic border-b border-navy/20 pb-1">
@@ -147,7 +147,7 @@ export default function NewsPage() {
 
                   <div className="flex items-center justify-between mt-auto">
                     <button onClick={() => setExpandedId(expandedId === n.id ? null : n.id)} 
-                       className="flex items-center gap-3 text-[11px] font-heading font-extrabold text-cyan hover:text-[#002A54] transition-all uppercase tracking-[0.2em] italic">
+                       className="flex items-center gap-3 text-[11px] font-heading font-extrabold text-cyan hover:text-[#031835] transition-all uppercase tracking-[0.2em] italic">
                        {expandedId === n.id ? "Collapse Story" : "Read Full Story"} 
                        <motion.span animate={{ x: expandedId === n.id ? -4 : 0 }}>
                           <ChevronRight className={"w-4 h-4 " + (expandedId === n.id ? "rotate-180" : "")} />
@@ -169,14 +169,14 @@ export default function NewsPage() {
 
       {/* ── CTA: RESEARCH & DATA ────────────────────────────────────────────── */}
       <section className="py-24 container mx-auto px-6">
-         <div className="bg-[#002A54] rounded-[4rem] p-16 text-white relative overflow-hidden group">
+         <div className="bg-[#031835] rounded-[4rem] p-16 text-white relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:scale-110 transition-transform rotate-12"><Activity className="w-48 h-48" /></div>
             <div className="max-w-2xl relative z-10">
                <span className="text-[#00B1AB] font-heading font-extrabold text-[10px] uppercase tracking-[0.4em] mb-4 block">Scientific Repository</span>
                <h3 className="text-4xl font-heading font-extrabold mb-8 italic leading-tight">Looking for Clinical Trials <br/> <span className="text-cyan text-transparent bg-clip-text bg-gradient-to-r from-cyan to-teal">& Research Data?</span></h3>
                <p className="text-slate-300 text-lg font-light mb-10 italic">Visit our newly launched Research & Publications center to explore peer-reviewed literature, clinical benchmarks, and white papers on CXCR4 and CD24.</p>
-               <Link href={"/" + locale + "/research"} className="inline-flex items-center gap-3 px-10 py-5 bg-[#00B1AB] text-[#002A54] font-heading font-extrabold rounded-full hover:bg-white transition-all shadow-2xl">
+               <Link href={"/" + locale + "/research"} className="inline-flex items-center gap-3 px-10 py-5 bg-[#00B1AB] text-[#031835] font-heading font-extrabold rounded-full hover:bg-white transition-all shadow-2xl">
                   Explore Research Center <ArrowRight className="w-5 h-5" />
                </Link>
             </div>

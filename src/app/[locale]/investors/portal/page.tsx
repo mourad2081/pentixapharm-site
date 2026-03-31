@@ -13,7 +13,7 @@ export default function InvestorPortalPage() {
   return (
     <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-32">
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 overflow-hidden bg-[#002A54] text-white">
+      <section className="relative pt-44 pb-28 overflow-hidden bg-[#031835] text-white">
         <div className="absolute inset-0 z-0 opacity-10">
            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
         </div>
@@ -41,7 +41,7 @@ export default function InvestorPortalPage() {
                  <motion.div key={i} whileHover={{y:-5}} className="p-10 rounded-[3rem] bg-[#F8FAFD] border border-slate-50 text-center group transition-all">
                     <item.icon className={"w-10 h-10 " + item.color + " mx-auto mb-6"} />
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 italic">{item.label}</p>
-                    <p className="text-2xl font-heading font-extrabold text-[#002A54] italic">{item.val}</p>
+                    <p className="text-2xl font-heading font-extrabold text-[#031835] italic">{item.val}</p>
                  </motion.div>
                ))}
             </div>
@@ -56,7 +56,7 @@ export default function InvestorPortalPage() {
                <div className="flex-1 space-y-10">
                   <div className="mb-10">
                      <span className="text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.3em] mb-4 block italic">Digital Library</span>
-                     <h2 className="text-4xl font-heading font-extrabold text-[#002A54] italic mb-6">Financial <span className="text-teal">Resources</span></h2>
+                     <h2 className="text-4xl font-heading font-extrabold text-[#031835] italic mb-6">Financial <span className="text-teal">Resources</span></h2>
                   </div>
                   
                   <div className="grid sm:grid-cols-2 gap-8">
@@ -68,7 +68,7 @@ export default function InvestorPortalPage() {
                      ].map((doc, i) => (
                        <button key={i} className="flex flex-col items-start p-10 bg-white border border-slate-100 rounded-[3rem] shadow-xl hover:border-cyan/40 transition-all text-left group">
                           <FileText className="w-10 h-10 text-slate-300 mb-8 group-hover:text-teal group-hover:scale-110 transition-all" />
-                          <h4 className="text-xl font-heading font-extrabold text-[#002A54] mb-3 italic">{doc.title}</h4>
+                          <h4 className="text-xl font-heading font-extrabold text-[#031835] mb-3 italic">{doc.title}</h4>
                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{doc.type} • {doc.size}</span>
                        </button>
                      ))}
@@ -77,7 +77,7 @@ export default function InvestorPortalPage() {
 
                {/* Right Side: Key Facts Column */}
                <div className="w-full lg:w-[400px] space-y-10">
-                  <div className="bg-[#002A54] text-white p-12 rounded-[4rem] shadow-2xl relative overflow-hidden group">
+                  <div className="bg-[#031835] text-white p-12 rounded-[4rem] shadow-2xl relative overflow-hidden group">
                      <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:rotate-12 transition-transform"><Activity className="w-48 h-48" /></div>
                      <h3 className="text-sm font-heading font-extrabold uppercase tracking-[0.4em] mb-10 italic text-cyan">Investment Case</h3>
                      <div className="space-y-8 relative z-10">
@@ -101,7 +101,7 @@ export default function InvestorPortalPage() {
 
                   <div className="bg-[#F8FAFD] p-12 rounded-[4rem] border border-slate-100 italic">
                      <h4 className="text-[10px] font-bold text-navy uppercase tracking-[0.4em] mb-6 block italic">IR Contact</h4>
-                     <p className="text-xl font-heading font-extrabold text-[#002A54] mb-2 tracking-tighter">Henner Kollenberg</p>
+                     <p className="text-xl font-heading font-extrabold text-[#031835] mb-2 tracking-tighter">Henner Kollenberg</p>
                      <p className="text-sm text-slate-500 font-light mb-8">Chief Business Officer</p>
                      <a href="mailto:ir@pentixapharm.com" className="text-cyan font-bold border-b-2 border-cyan/20 pb-1 flex items-center gap-3 hover:gap-5 transition-all text-sm">
                         ir@pentixapharm.com <ArrowUpRight className="w-4 h-4" />
@@ -116,7 +116,7 @@ export default function InvestorPortalPage() {
       <section className="py-24 bg-white border-t border-slate-100">
          <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center mb-16">
-               <h3 className="text-3xl font-heading font-extrabold text-[#002A54] italic">Financial <span className="text-teal">Calendar</span></h3>
+               <h3 className="text-3xl font-heading font-extrabold text-[#031835] italic">Financial <span className="text-teal">Calendar</span></h3>
             </div>
             <div className="space-y-6">
                {[
@@ -128,11 +128,11 @@ export default function InvestorPortalPage() {
                  <div key={i} className="flex flex-col md:flex-row md:items-center gap-10 p-10 bg-[#F8FAFD] border border-slate-50 rounded-[3rem] hover:border-cyan/30 transition-all group">
                     <div className="shrink-0 w-32">
                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 italic">Date</p>
-                       <p className="font-heading font-extrabold text-teal group-hover:text-[#002A54] transition-colors">{item.date}</p>
+                       <p className="font-heading font-extrabold text-teal group-hover:text-[#031835] transition-colors">{item.date}</p>
                     </div>
                     <div className="flex-1">
                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 italic">Announcement</p>
-                       <p className="font-heading font-extrabold text-[#002A54] text-xl italic">{item.event}</p>
+                       <p className="font-heading font-extrabold text-[#031835] text-xl italic">{item.event}</p>
                     </div>
                  </div>
                ))}

@@ -42,14 +42,12 @@ export function Navbar() {
   return (
     <nav className={"fixed top-0 w-full z-50 transition-all duration-300 " + (scrolled ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm py-3" : "bg-transparent py-5")}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href={"/" + locale} className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 bg-teal/10 border border-teal/25 rounded-xl flex items-center justify-center group-hover:bg-teal/20 transition-all">
-            <Atom className="w-5 h-5 text-teal group-hover:rotate-90 transition-transform duration-500" />
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-heading font-bold text-navy text-[19px] leading-none tracking-tight">Pentixa<span className="text-teal">pharm</span></span>
-            <span className="text-[9px] text-slate-400 font-medium uppercase tracking-[0.2em] mt-1 group-hover:text-cyan transition-colors">Theranostics</span>
-          </div>
+        <Link href={"/" + locale} className="relative z-10 flex items-center gap-3 group">
+          <img 
+            src="/logo_pentixapharm.png" 
+            alt="Pentixapharm" 
+            className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105" 
+          />
         </Link>
 
         {/* Desktop Links */}

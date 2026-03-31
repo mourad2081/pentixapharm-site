@@ -48,7 +48,7 @@ export default function TechnologyPage() {
               Science of <br /> <span className="text-cyan">Precision.</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-slate-300 text-xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-6 border-x-2 border-cyan/40">
-              Leveraging proprietary biological targets to deliver high-affinity radiochemistry—redefining the standard of care in oncology and endocrinology.
+              Utilizing proprietary biological targets to deliver high-affinity radiochemistry, providing a leading standard of care in oncology and endocrinology.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-12 pt-8">
                <div className="flex items-center gap-3">
@@ -194,7 +194,7 @@ export default function TechnologyPage() {
                                 <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center group-hover:bg-[#031835] group-hover:text-cyan transition-colors shadow-inner"><Layers className="w-6 h-6"/></div>
                                 <div>
                                    <p className="font-heading font-extrabold text-[#031835] text-xl italic uppercase tracking-wider">24H Delivery Chain</p>
-                                   <p className="text-slate-500 text-sm font-light italic">Seamless cold and hot chain logistics management.</p>
+                                   <p className="text-slate-500 text-sm font-light italic">Integrated cold and hot chain logistics management.</p>
                                 </div>
                              </div>
                           </div>
@@ -218,7 +218,7 @@ export default function TechnologyPage() {
                           <span className="text-[#22c55e] font-heading font-extrabold text-[11px] uppercase tracking-[0.5em] mb-6 block italic">R&D Future State</span>
                           <h2 className="text-5xl lg:text-7xl font-heading font-extrabold text-[#031835] mb-10 leading-none italic tracking-tighter">Molecular <span className="text-[#22c55e]">Discovery</span></h2>
                           <p className="text-slate-500 text-xl leading-relaxed mb-12 font-light italic">
-                             Our medicinal chemistry and pharmacology units focus on optimizing ligand affinity and metabolic stability. Using AI-driven screening and in-silico modeling, we identify next-generation isotopes and antibodies for expansion beyond our core CXCR4/CD24 platforms.
+                             Our medicinal chemistry and pharmacology units focus on optimizing ligand affinity and metabolic stability. Using computational screening and in-silico modeling, we identify advanced isotopes and antibodies for expansion beyond our core CXCR4/CD24 platforms.
                           </p>
                           <button className="flex items-center gap-6 px-10 py-5 bg-[#031835] text-white font-heading font-extrabold rounded-full text-xs hover:bg-[#22c55e] hover:text-[#031835] transition-all shadow-[0_20px_40px_-10px_rgba(3,24,53,0.4)] uppercase tracking-[0.3em] italic group border border-white/10">
                              Scientific Publications <Database className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
@@ -226,10 +226,10 @@ export default function TechnologyPage() {
                        </div>
                        <div className="md:w-[55%] grid sm:grid-cols-2 gap-8">
                            {[
-                             { lab:"Target Search", icon:Search, val:"AI-driven docking & screening of molecular variants for novel receptors." },
+                             { lab:"Target Search", icon:Search, val:"Computational docking and screening of molecular variants for novel receptors." },
                              { lab:"Chem-Opt", icon:Atom, val:"Maximizing target retention while systematically minimizing renal clearance." },
                              { lab:"Isotope Match", icon:Activity, val:"Pairing optimal radioactive payload half-lives to tumor binding timelines." },
-                             { lab:"Safety Profile", icon:ShieldAlert, val:"Pre-clinical dosimetry estimations to ensure organ safety criteria." }
+                             { lab:"Clinical Scale", icon:ShieldAlert, val:"We provide more than just a patent, we deliver a vertically integrated clinical ecosystem designed for global commercial scale." }
                            ].map((b,i) => (
                              <div key={i} className="bg-[#F8FAFD] border border-slate-100 p-10 rounded-[3rem] shadow-sm hover:shadow-xl group hover:border-[#22c55e]/30 transition-all hover:-translate-y-2 cursor-default">
                                 <div className="w-14 h-14 bg-[#22c55e]/10 text-[#22c55e] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-125 transition-transform"><b.icon className="w-6 h-6" /></div>

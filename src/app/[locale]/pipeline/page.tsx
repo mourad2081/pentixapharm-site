@@ -72,20 +72,21 @@ export default function PipelinePage() {
   }, [filter]);
 
   const phases = ["Preclinical", "Phase 1", "Phase 2", "Phase 3", "Approval"];
-  const MOL_IMG = "molecular_theranostic_structure_1774915435525.png";
+  const MOL_IMG = "pipeline_clinical_premium_png_1774941240816.png";
 
   return (
     <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-24">
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 overflow-hidden bg-white border-b border-slate-200">
-         <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-            <img src={`/${MOL_IMG}`} className="w-[500px] h-[500px] object-contain rotate-12" />
+      <section className="relative pt-44 pb-28 overflow-hidden bg-[#010816] border-b border-white/5 text-white">
+         <div className="absolute inset-0 z-0 overflow-hidden scale-110 opacity-60 mix-blend-screen">
+            <img src={`/${MOL_IMG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Pipeline Background" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#010816] via-[#010816]/50 to-transparent" />
          </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}>
-            <span className="text-cyan text-xs font-bold uppercase tracking-[0.3em] bg-cyan/10 px-6 py-2.5 rounded-full inline-block mb-6 border border-cyan/20 italic">Clinical Evolution</span>
-            <h1 className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 leading-tight italic">Advanced <span className="text-teal">Pipeline</span></h1>
-            <p className="text-slate-600 text-xl leading-relaxed font-light max-w-3xl italic">
+            <span className="text-cyan text-xs font-bold uppercase tracking-[0.3em] bg-white/5 backdrop-blur-xl px-10 py-3 rounded-full inline-block mb-10 border border-white/10 italic shadow-2xl">Clinical Evolution Platform</span>
+            <h1 className="text-6xl md:text-[7rem] font-heading font-extrabold text-white mb-8 leading-[0.8] italic tracking-tighter drop-shadow-2xl">Advanced <span className="text-teal">Pipeline</span></h1>
+            <p className="text-slate-300 text-2xl leading-relaxed font-light max-w-4xl italic border-l-2 border-cyan/40 pl-8">
               From breakthrough discovery to Phase 3 readiness. We are developing proprietary ligands to transform treatment paradigms for orphan diseases and hard-to-treat cancers.
             </p>
           </motion.div>

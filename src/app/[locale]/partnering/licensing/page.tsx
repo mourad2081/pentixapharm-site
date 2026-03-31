@@ -7,17 +7,17 @@ import AnimatedBg from "@/components/visual/AnimatedBackground";
 const fadeUp = { hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0 } };
 const stagger = { show: { transition: { staggerChildren: 0.15 } } };
 
-const HERO_BG = "partnering_hero_bg_png_1774919873876.png";
+const HERO_BG = "partnering_handshake_premium_png_1774941004895.png";
 
 export default function LicensingPortalPage() {
   return (
     <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-32 overflow-hidden">
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-56 pb-40 overflow-hidden bg-[#031835] text-white">
+      <section className="relative pt-56 pb-40 overflow-hidden bg-[#010816] text-white">
         <div className="absolute inset-0 z-0 overflow-hidden">
-           <img src={`/${HERO_BG}`} className="w-full h-full object-cover opacity-40 scale-110 animate-slow-zoom" alt="Partnering Background" />
-           <div className="absolute inset-0 bg-gradient-to-b from-[#031835] via-transparent to-[#F8FAFD]/20" />
-           <div className="absolute inset-0 bg-[#031835]/40 backdrop-blur-[2px]" />
+           <img src={`/${HERO_BG}`} className="w-full h-full object-cover opacity-60 scale-110 animate-slow-zoom" alt="Partnering Background" />
+           <div className="absolute inset-0 bg-gradient-to-b from-[#010816] via-transparent to-[#F8FAFD]/10" />
+           <div className="absolute inset-0 bg-[#010816]/40 backdrop-blur-[2px]" />
            <AnimatedBg />
         </div>
         
@@ -160,7 +160,7 @@ export default function LicensingPortalPage() {
                   <span className="text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.6em] mb-10 block italic">The Pentixa Advantage</span>
                   <h3 className="text-5xl md:text-7xl font-heading font-extrabold text-[#031835] italic leading-[0.9] tracking-tighter mb-12">Integrity of <br/> <span className="text-teal">Innovation</span></h3>
                   <p className="text-slate-500 text-xl font-light italic leading-relaxed mb-16">
-                     We provide more than just a patent—we deliver a vertically integrated clinical ecosystem designed for global commercial scale.
+                     We provide more than just a patent, we deliver a vertically integrated clinical ecosystem designed for global commercial scale.
                   </p>
                   <div className="space-y-8">
                      {[

@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Activity, Users, BookOpen, TrendingUp, Flask, Target, Zap, BarChart2 } from "lucide-react";
+import { Activity, Users, BookOpen, TrendingUp, FlaskConical, Target, Zap, BarChart2 } from "lucide-react";
 
 const fadeUp = { hidden:{opacity:0,y:24}, show:{opacity:1,y:0} };
 const stagger = { show:{ transition:{ staggerChildren:0.1 } } };
@@ -10,7 +10,7 @@ const METRICS = [
   { icon:Users, label:"Patients Imaged (PentixaFor)", value:"2,600+", sub:"Across multiple indications worldwide", color:"emerald" },
   { icon:BookOpen, label:"Peer-reviewed Publications", value:"150+", sub:"PentixaFor & CXCR4 literature", color:"cyan" },
   { icon:Activity, label:"Active Clinical Trials", value:"5", sub:"PENTILULA, PANDA, PENTHERA + 2 IIS", color:"gold" },
-  { icon:Target, label:"Phase 3-Ready Candidates", value:"1", sub:"PentixaFor — PANDA study", color:"emerald" },
+  { icon:Target, label:"Phase 3-Ready Candidates", value:"1", sub:"PentixaFor, PANDA study", color:"emerald" },
   { icon:Users, label:"PA Patients Diagnosed", value:"474+", sub:"Since PANDA programme launch (2024)", color:"cyan" },
   { icon:BookOpen, label:"Investigator-Initiated Studies", value:"20+", sub:"Independent academic collaborations", color:"gold" },
 ];
@@ -32,7 +32,7 @@ const FINANCIALS = [
 export default function StatsPage() {
   const t = useTranslations("stats");
   return (
-    <div className="bg-navy min-h-screen">
+    <div className="bg-[#010816] min-h-screen text-white">
       {/* Header */}
       <section className="relative pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy2 via-navy to-navy" />
@@ -68,25 +68,25 @@ export default function StatsPage() {
       </section>
 
       {/* Pipeline Progress */}
-      <section className="py-20 bg-navy">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" viewport={{once:true}} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-2xl font-heading font-bold text-white mb-8">Pipeline Progress</motion.h2>
             <div className="space-y-4">
               {PIPELINE_STATUS.map((p,i) => (
-                <motion.div key={i} variants={fadeUp} className="glass border border-white/8 rounded-2xl p-5">
+                <motion.div key={i} variants={fadeUp} className="glass border border-white/10 rounded-2xl p-5">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <div>
-                      <span className={"font-heading font-bold text-sm " + (p.color==="emerald"?"text-emerald":p.color==="cyan"?"text-cyan":"text-gold")}>{p.compound}</span>
+                      <span className={"font-heading font-bold text-sm " + (p.color==="emerald"?"text-emerald-400":p.color==="cyan"?"text-cyan-400":"text-amber-400")}>{p.compound}</span>
                       <span className="text-slate-400 text-sm"> · {p.indication}</span>
                     </div>
                     <span className={"text-xs font-semibold px-3 py-1 rounded-full border " +
-                      (p.color==="emerald"?"bg-emerald/12 text-emerald border-emerald/20":p.color==="cyan"?"bg-cyan/12 text-cyan border-cyan/20":"bg-gold/12 text-gold border-gold/20")}>{p.label}</span>
+                      (p.color==="emerald"?"bg-emerald-500/10 text-emerald-400 border-emerald-500/20":p.color==="cyan"?"bg-cyan-500/10 text-cyan-400 border-cyan-500/20":"bg-amber-500/10 text-amber-400 border-amber-500/20")}>{p.label}</span>
                   </div>
                   <div className="flex gap-1.5">
                     {["Precl.","Ph. 1","Ph. 1/2","Ph. 2","Ph. 3","Appvl."].map((ph,pi) => (
                       <div key={ph} className="flex-1">
-                        <div className={"h-2 rounded-full " + (pi < p.phase ? (p.color==="emerald"?"bg-emerald":p.color==="cyan"?"bg-cyan":"bg-gold") : "bg-white/8")} />
+                        <div className={"h-2 rounded-full " + (pi < p.phase ? (p.color==="emerald"?"bg-emerald-500":p.color==="cyan"?"bg-cyan-500":"bg-amber-500") : "bg-white/10")} />
                         <p className="text-[9px] text-slate-600 mt-1 text-center hidden sm:block">{ph}</p>
                       </div>
                     ))}

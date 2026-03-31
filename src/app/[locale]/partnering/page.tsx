@@ -8,9 +8,9 @@ const stagger = { show:{ transition:{ staggerChildren:0.1 } } };
 
 export default function PartneringPage() {
   return (
-    <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-32">
+    <div className="bg-[#010816] min-h-screen text-white pb-32">
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 overflow-hidden bg-white border-b border-slate-200 shadow-sm">
+      <section className="relative pt-44 pb-28 overflow-hidden bg-[#010816] border-b border-white/5 shadow-2xl">
         <div className="absolute inset-0 z-0 opacity-5">
            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
               <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -24,7 +24,7 @@ export default function PartneringPage() {
             <motion.div variants={fadeUp} className="inline-flex items-center gap-3 text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.3em] bg-cyan/10 px-6 py-2.5 rounded-full mb-10 border border-cyan/20">
               Business Development
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mb-8 leading-tight italic">Global <span className="text-cyan">Alliance</span> Strategy</motion.h1>
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-white mb-8 leading-tight italic tracking-tighter drop-shadow-2xl">Global <span className="text-cyan">Alliance</span> Strategy</motion.h1>
             <motion.p variants={fadeUp} className="text-slate-600 text-xl leading-relaxed font-light italic">
               We seek visionary collaborators to accelerate the clinical adoption of our CXCR4 and CD24 platforms, bringing precision medicine to the global oncology market.
             </motion.p>
@@ -56,8 +56,8 @@ export default function PartneringPage() {
 
                <motion.div initial={{opacity:0, scale:0.98, y:20}} whileInView={{opacity:1, scale:1, y:0}} viewport={{once:true}} transition={{delay:0.1}} className="bg-[#031835] p-12 rounded-[3.5rem] text-white shadow-2xl shadow-navy/20 relative group overflow-hidden ">
                   <div className="absolute top-5 right-5 p-12 opacity-10 group-hover:scale-110 transition-transform"><Target className="w-48 h-48" /></div>
-                  <h3 className="text-3xl font-heading font-extrabold mb-6 flex items-center gap-4 tracking-tighter italic"><Atom className="text-teal w-10 h-10"/> R&D Platform Tech</h3>
-                  <p className="text-slate-400 leading-relaxed mb-10 font-light text-lg">Leverage our proprietary <strong>CXCR4</strong> targeting expertise and radiolabeling CMC infrastructure for your therapeutic assets or early-stage discovery pipelines.</p>
+                  <h3 className="text-3xl font-heading font-extrabold mb-6 flex items-center gap-4 tracking-tighter italic"><Atom className="text-cyan w-10 h-10"/> R&D Platform Tech</h3>
+                  <p className="text-slate-400 leading-relaxed mb-10 font-light text-lg">Utilize our proprietary <strong>CXCR4</strong> targeting expertise and radiolabeling CMC infrastructure for your therapeutic assets or early-stage discovery pipelines.</p>
                   <ul className="space-y-4 mb-10">
                      {[
                         "Custom tracer development (Discovery)",

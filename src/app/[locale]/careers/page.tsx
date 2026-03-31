@@ -44,7 +44,7 @@ export default function CareersPage() {
             </motion.span>
             <motion.h1 variants={fadeUp} className="text-6xl md:text-7xl font-heading font-extrabold text-[#031835] mt-3 mb-8 drop-shadow-sm leading-tight italic">Shape the <span className="text-cyan">Future</span> of Oncology</motion.h1>
             <motion.p variants={fadeUp} className="text-slate-600 text-xl leading-relaxed font-light italic">
-              At Pentixapharm, you're not just filling a role—you're accelerating the delivery of life-changing radiotherapeutics to patients with high unmet medical needs.
+              At Pentixapharm, you're not just filling a role, you're accelerating the delivery of life-changing radiotherapeutics to patients with high unmet medical needs.
             </motion.p>
           </motion.div>
         </div>

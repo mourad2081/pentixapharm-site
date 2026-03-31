@@ -12,10 +12,10 @@ import HelixBackground from "@/components/visual/HelixBackground";
 import AnimatedBackground from "@/components/visual/AnimatedBackground";
 import Link from "next/link";
 
-const fadeUp = { hidden: { opacity: 0, y: 50 }, show: { opacity: 1, y: 0 } };
-const stagger = { show: { transition: { staggerChildren: 0.2 } } };
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } };
+const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
-const HERO_BG = "biotech_hero_animated_bg_1774918228051.png";
+const HERO_BG = "home_hero_dna_animated_png_1774941098595.png";
 
 const SEED_NEWS = [
   { id:1, date:"2026-03-31", cat:"Corporate", title:"Erik Merten Appointed to Executive Board as Chief Technology Officer", excerpt:"Pentixapharm Holding AG strengthens its Executive Board to lead commercialisation readiness as the PANDA Phase 3 programme advances." },
@@ -37,14 +37,23 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen text-[#031835] overflow-hidden">
+    <div className="bg-[#010816] min-h-screen text-white overflow-hidden selection:bg-cyan selection:text-[#010816]">
       
       {/* ── HERO SECTION ────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center pt-20 px-6">
+      <section className="relative min-h-[110vh] flex items-center pt-20 px-6">
         <div className="absolute inset-0 z-0 overflow-hidden">
-           <img src={`/${HERO_BG}`} className="w-full h-full object-cover opacity-50 scale-105 animate-slow-zoom" alt="Hero Background" />
-           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+           <motion.img 
+             initial={{ scale: 1.1, rotate: 0 }}
+             animate={{ scale: 1.25, rotate: 2 }}
+             transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
+             src={`/${HERO_BG}`} 
+             className="w-full h-full object-cover opacity-60" 
+             alt="Hero Background" 
+           />
+           <div className="absolute inset-0 bg-gradient-to-b from-[#010816]/70 via-transparent to-[#010816]" />
+           <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#010816] to-transparent" />
            <HelixBackground />
+           <AnimatedBackground />
         </div>
         
         <div className="container mx-auto relative z-10">
@@ -56,7 +65,7 @@ export default function HomePage() {
               </span>
             </motion.div>
             
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-8xl font-heading font-extrabold leading-[0.8] tracking-tighter mb-12 text-[#031835] drop-shadow-2xl italic">
+            <motion.h1 variants={fadeUp} className="text-6xl md:text-[9rem] font-heading font-extrabold leading-[0.8] tracking-tighter mb-12 text-white drop-shadow-4xl italic">
               See What <br />
               <div className="relative inline-block overflow-hidden">
                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan via-teal to-cyan animate-gradient-x italic">You Treat.</span>
@@ -70,22 +79,22 @@ export default function HomePage() {
 
             <motion.div variants={fadeUp} className="max-w-2xl relative mb-16 group">
                <div className="absolute -left-10 inset-y-0 w-1 bg-gradient-to-b from-cyan via-teal to-transparent" />
-               <p className="text-xl md:text-4xl text-slate-600 leading-relaxed font-light italic pl-10 group-hover:pl-16 transition-all duration-700">
+               <p className="text-xl md:text-4xl text-slate-300 leading-relaxed font-light italic pl-10 group-hover:pl-16 transition-all duration-700">
                   Precision discovery matched with targeted radio-therapeutic payload delivery. High specificity for CXCR4-expressing tumor clusters.
                </p>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-12 items-center">
-              <Link href={`/${locale}/technology`} className="px-16 py-8 bg-[#031835] text-white rounded-full font-heading font-extrabold text-sm tracking-[0.4em] uppercase hover:bg-cyan hover:text-[#031835] transition-all shadow-3xl hover:-translate-y-3 flex items-center gap-8 group italic">
-                 <Network className="w-6 h-6 text-cyan group-hover:text-[#031835]" /> EXPLORE PLATFORM
+              <Link href={`/${locale}/technology`} className="px-16 py-8 bg-cyan text-[#010816] rounded-full font-heading font-extrabold text-sm tracking-[0.4em] uppercase hover:bg-white hover:text-[#010816] transition-all shadow-[0_0_50px_rgba(0,255,255,0.2)] hover:-translate-y-3 flex items-center gap-8 group italic">
+                 <Network className="w-6 h-6 text-[#010816]" /> EXPLORE PLATFORM
               </Link>
               <Link href={`/${locale}/pipeline`} className="flex items-center gap-6 group">
-                 <div className="w-20 h-20 bg-white/50 backdrop-blur-xl border border-slate-200 rounded-3xl flex items-center justify-center group-hover:rotate-12 transition-all shadow-xl group-hover:bg-[#031835] group-hover:text-white">
-                    <Target className="w-8 h-8 text-teal group-hover:text-cyan" />
+                 <div className="w-20 h-20 bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl flex items-center justify-center group-hover:rotate-12 transition-all shadow-2xl group-hover:bg-teal group-hover:text-white">
+                    <Target className="w-8 h-8 text-teal group-hover:text-white" />
                  </div>
                  <div className="flex flex-col">
-                    <span className="text-[12px] font-heading font-extrabold uppercase tracking-[0.4em] text-slate-400 group-hover:text-[#031835] transition-colors italic">Clinical Milestone</span>
-                    <span className="text-xl font-heading font-extrabold text-[#031835] italic tracking-tight flex items-center gap-3">Roadmap 2026 <ChevronRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" /></span>
+                    <span className="text-[12px] font-heading font-extrabold uppercase tracking-[0.4em] text-cyan group-hover:text-white transition-colors italic">Clinical Milestone</span>
+                    <span className="text-xl font-heading font-extrabold text-white italic tracking-tight flex items-center gap-3">Roadmap 2026 <ChevronRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" /></span>
                  </div>
               </Link>
             </motion.div>
@@ -158,8 +167,8 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* ── TECHNOLOGY / ACTION ─────────────────────────────────────────────── */}
-      <section className="py-48 bg-white relative">
+      {/* ── TECHNOLOGY SECTION ─────────────────────────────────────────────── */}
+      <section className="py-48 bg-[#010816] relative">
          <div className="container mx-auto px-6 max-w-7xl relative z-10">
             <div className="grid lg:grid-cols-2 gap-40 items-center">
                <motion.div initial={{opacity:0, scale:0.9}} whileInView={{opacity:1, scale:1}} className="relative group p-10">
@@ -183,24 +192,24 @@ export default function HomePage() {
                   <motion.div variants={fadeUp} className="inline-flex items-center gap-4 text-cyan text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-12 italic border-b border-cyan/20 pb-4">
                      <Microscope className="w-4 h-4"/> MECHANISM OF ACTION
                   </motion.div>
-                  <motion.h2 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-extrabold text-[#031835] leading-[0.8] mb-14 italic tracking-tighter">Diagnostic <br/><span className="text-teal">Precision</span> Hub</motion.h2>
-                  <motion.p variants={fadeUp} className="text-slate-600 text-2xl leading-relaxed mb-16 font-light italic max-w-xl">
-                      We utilize isotope-labeled ligands that lock onto tumor receptors with extreme binding affinity, turning every MRI into a functional therapeutic map. 
+                  <motion.h2 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-extrabold text-white leading-[0.8] mb-14 italic tracking-tighter">Diagnostic <br/><span className="text-teal">Precision</span> Hub</motion.h2>
+                  <motion.p variants={fadeUp} className="text-slate-400 text-2xl leading-relaxed mb-16 font-light italic max-w-xl">
+                      Utilizing isotope-labeled ligands that lock onto tumor receptors with extreme binding affinity, transforming every MRI into a functional therapeutic map. 
                   </motion.p>
                   <div className="grid grid-cols-2 gap-16">
                      <motion.div variants={fadeUp} className="space-y-4 group">
-                        <div className="w-20 h-20 rounded-[2.5rem] bg-[#031835] flex items-center justify-center shadow-2xl group-hover:bg-cyan transition-colors">
-                           <ShieldCheck className="w-10 h-10 text-cyan group-hover:text-[#031835] transition-colors" />
+                        <div className="w-20 h-20 rounded-[2.5rem] bg-white/5 border border-white/10 flex items-center justify-center shadow-2xl group-hover:bg-cyan transition-colors">
+                           <ShieldCheck className="w-10 h-10 text-cyan group-hover:text-[#010816] transition-colors" />
                         </div>
-                        <h4 className="text-2xl font-heading font-extrabold text-[#031835] italic uppercase tracking-tighter pt-4">Visual Validation</h4>
-                        <p className="text-[13px] text-slate-500 font-light italic leading-relaxed">Ga-68 PET imaging to quantify receptor density and select responsive high-risk patients.</p>
+                        <h4 className="text-2xl font-heading font-extrabold text-white italic uppercase tracking-tighter pt-4">Visual Validation</h4>
+                        <p className="text-[13px] text-slate-400 font-light italic leading-relaxed">Ga-68 PET imaging to quantify receptor density and select responsive high-risk patients.</p>
                      </motion.div>
                      <motion.div variants={fadeUp} className="space-y-4 group">
                         <div className="w-20 h-20 rounded-[2.5rem] bg-teal/10 flex items-center justify-center shadow-xl group-hover:bg-teal transition-colors">
                            <Zap className="w-10 h-10 text-teal group-hover:text-white transition-colors animate-pulse" />
                         </div>
                         <h4 className="text-2xl font-heading font-extrabold text-teal italic uppercase tracking-tighter pt-4">Direct Eradication</h4>
-                        <p className="text-[13px] text-slate-500 font-light italic leading-relaxed">Internal Alpha/Beta radiation delivery directly inside the metastatic tumor clusters.</p>
+                        <p className="text-[13px] text-slate-400 font-light italic leading-relaxed">Internal Alpha/Beta radiation delivery directly inside the metastatic tumor clusters.</p>
                      </motion.div>
                   </div>
                </motion.div>

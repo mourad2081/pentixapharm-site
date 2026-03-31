@@ -57,7 +57,7 @@ export default function InvestorPortalPage() {
       {/* ── STOCK PERFORMANCE ──────────────────────────────────────────────── */}
       <section className="py-24 bg-white relative z-20 shadow-2xl">
          <div className="container mx-auto px-6 max-w-7xl">
-            <div className="grid md:grid-cols-4 gap-12">
+            <div className="grid md:grid-cols-4 gap-12 mb-20">
                {[
                  { icon: TrendingUp, label: "Market Segment", val: "Prime Standard", color: "text-[#00B1AB]" },
                  { icon: PieChart, label: "Share Classification", val: "Common Stock", color: "text-cyan" },
@@ -80,6 +80,72 @@ export default function InvestorPortalPage() {
                  </motion.div>
                ))}
             </div>
+
+            {/* NEW Share Price Graph Block */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="p-16 md:p-24 bg-[#031835] rounded-[5rem] shadow-4xl relative overflow-hidden group border border-white/5"
+            >
+               <div className="absolute inset-0 bg-gradient-to-tr from-[#031835] via-transparent to-cyan/10 opacity-40" />
+               <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 mb-16">
+                  <div>
+                     <span className="text-cyan text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-4 block italic">Live Market Dynamics</span>
+                     <h2 className="text-5xl font-heading font-extrabold text-white italic tracking-tighter leading-none">Share Price Performance <span className="text-teal">(30D)</span></h2>
+                  </div>
+                  <div className="flex items-center gap-6">
+                     <div className="px-8 py-4 bg-white/5 border border-white/10 rounded-full flex flex-col items-end">
+                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 italic">Real-Time (XETRA)</span>
+                        <span className="text-2xl font-heading font-extrabold text-cyan italic leading-none">€8.42 <TrendingUp className="inline w-5 h-5 ml-2 text-teal" /></span>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Simulated SVG Graph */}
+               <div className="h-64 relative mb-10">
+                  <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 200">
+                     <defs>
+                        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                           <stop offset="0%" stopColor="#00B1AB" stopOpacity="0.4" />
+                           <stop offset="100%" stopColor="#00B1AB" stopOpacity="0" />
+                        </linearGradient>
+                     </defs>
+                     {/* Area Path */}
+                     <motion.path 
+                       initial={{ d: "M 0 200 L 0 200 L 1000 200 L 1000 200 Z" }}
+                       animate={{ d: "M 0 160 L 50 140 L 100 155 L 150 120 L 200 130 L 250 100 L 300 115 L 350 85 L 400 95 L 450 70 L 500 85 L 550 55 L 600 65 L 650 40 L 700 50 L 750 25 L 800 35 L 850 15 L 900 20 L 950 5 L 1000 10 L 1000 200 L 0 200 Z" }}
+                       transition={{ duration: 2, ease: "easeInOut" }}
+                       fill="url(#chartGradient)" 
+                     />
+                     {/* Line Path */}
+                     <motion.path 
+                       initial={{ pathLength: 0 }}
+                       animate={{ pathLength: 1 }}
+                       transition={{ duration: 2.5, ease: "easeInOut" }}
+                       d="M 0 160 L 50 140 L 100 155 L 150 120 L 200 130 L 250 100 L 300 115 L 350 85 L 400 95 L 450 70 L 500 85 L 550 55 L 600 65 L 650 40 L 700 50 L 750 25 L 800 35 L 850 15 L 900 20 L 950 5 L 1000 10" 
+                       fill="none" 
+                       stroke="#00B1AB" 
+                       strokeWidth="4" 
+                       strokeLinecap="round" 
+                       strokeLinejoin="round"
+                     />
+                     {/* Dots for key points */}
+                     <motion.circle initial={{scale:0}} animate={{scale:1}} transition={{delay:2.5}} cx="1000" cy="10" r="6" fill="#00B1AB" />
+                  </svg>
+                  {/* Grid Lines Overlay */}
+                  <div className="absolute inset-0 border-b border-white/5 flex flex-col justify-between pointer-events-none opacity-20">
+                     <div className="border-b border-white/5 w-full h-0" />
+                     <div className="border-b border-white/5 w-full h-0" />
+                     <div className="border-b border-white/5 w-full h-0" />
+                  </div>
+               </div>
+               
+               <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase tracking-widest italic opacity-60 relative z-10 px-4">
+                  <span>Last 30 Tradings</span>
+                  <span>Pentixapharm Prime Standard Performance</span>
+                  <span>Q2 2026</span>
+               </div>
+            </motion.div>
          </div>
       </section>
 
@@ -137,8 +203,8 @@ export default function InvestorPortalPage() {
                      <div className="space-y-12 relative z-10">
                         {[
                           { icon: ShieldCheck, title: "Clinical Derisked", val: "Lead diagnostic asset entering global Phase 3 enrollment with proven sensitivity across 2,600+ patients." },
-                          { icon: Layers, title: "Platform Pipeline", val: "Highly differentiated portfolio covering both Ga-68 diagnostic imaging and Lu-177 therapeutic radiotherapy." },
-                          { icon: Building2, title: "Financial Integrity", val: "Adhering to Frankfurt Prime Standard requirements—the most stringent transparency rules in Europe." }
+                          { icon: Layers, title: "Platform Portfolio", val: "Highly differentiated portfolio covering both Ga-68 diagnostic imaging and Lu-177 therapeutic radiotherapy." },
+                          { icon: Building2, title: "Financial Integrity", val: "Adhering to Frankfurt Prime Standard requirements, the most stringent transparency rules in Europe." }
                         ].map((v, i) => (
                            <div key={i} className="flex gap-8 items-start group/point">
                              <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover/point:bg-white/10 group-hover/point:scale-110 transition-all shadow-inner">

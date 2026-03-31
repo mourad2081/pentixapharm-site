@@ -7,7 +7,7 @@ import AnimatedBg from "@/components/visual/AnimatedBackground";
 const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
-const LAB_IMG = "biotech_hero_animated_bg_1774918228051.png";
+const LAB_IMG = "about_lab_premium_png_1774940963712.png";
 
 const EXEC_BOARD = [
   { name: "Dr. Dirk Pleimes", role: "Group CEO & CMO", bio: "Physician-scientist with over 20 years of expertise in oncology and clinical drug development. Previously held senior leadership roles at Novartis and Bayer. He is the architect of the PentixaFor/Ther clinical-regulatory global strategy.", init: "DP" },
@@ -37,9 +37,13 @@ export default function AboutPage() {
   return (
     <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-32">
       {/* ── HERO WITH IMAGE BG ─────────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 min-h-[60vh] flex items-center overflow-hidden bg-[#031835] text-white shadow-2xl">
-        <AnimatedBg />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#031835] to-transparent opacity-90 z-0" />
+      <section className="relative pt-44 pb-28 min-h-[60vh] flex items-center overflow-hidden bg-[#010816] text-white shadow-2xl">
+        <div className="absolute inset-0 z-0 overflow-hidden scale-110 blur-[2px] opacity-60">
+           <img src={`/${LAB_IMG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Lab Background" />
+           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#010816] via-[#010816]/50 to-transparent" />
+           <div className="absolute inset-0 bg-[#010816]/40 backdrop-blur-sm" />
+           <AnimatedBg />
+        </div>
         <div className="absolute top-0 right-0 p-32 opacity-10 pointer-events-none -rotate-12 translate-x-1/4">
            <Building2 className="w-96 h-96 text-white" />
         </div>
@@ -48,7 +52,7 @@ export default function AboutPage() {
             <motion.span variants={fadeUp} className="text-cyan text-[10px] font-heading font-extrabold uppercase tracking-[0.4em] bg-white/10 backdrop-blur-md px-8 py-3 rounded-full inline-block mb-10 border border-white/20 italic">Global Precision Oncology</motion.span>
             <motion.h1 variants={fadeUp} className="text-6xl md:text-8xl font-heading font-extrabold mt-3 mb-10 leading-tight italic drop-shadow-2xl">Advancing <span className="text-cyan">Theranostics</span></motion.h1>
             <motion.p variants={fadeUp} className="text-slate-300 text-xl md:text-2xl leading-relaxed font-light italic max-w-4xl mx-auto mb-14 drop-shadow-md">
-              We engineer ligands that target CXCR4 and CD24 with unmatched specificity. Our mission is to transform oncology and endocrinology through the cycle of molecular discovery and treatment.
+              We engineer ligands that target CXCR4 and CD24 with extreme specificity. Our mission is to transform oncology and endocrinology through molecular discovery and targeted treatment.
             </motion.p>
           </motion.div>
         </div>

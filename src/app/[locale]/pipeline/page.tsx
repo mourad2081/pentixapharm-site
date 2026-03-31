@@ -68,17 +68,18 @@ export default function PipelinePage() {
   }, [filter]);
 
   const phases = ["Preclinical", "Phase 1", "Phase 2", "Phase 3", "Approval"];
+  const MOL_IMG = "molecular_theranostic_structure_1774915435525.png";
 
   return (
     <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-24">
       <section className="relative pt-44 pb-28 overflow-hidden bg-white border-b border-slate-200">
          <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-            <img src="/${MOL_IMG}" className="w-[500px] h-[500px] object-contain rotate-12" />
+            <img src={`/${MOL_IMG}`} className="w-[500px] h-[500px] object-contain rotate-12" />
          </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}>
             <span className="text-cyan text-xs font-bold uppercase tracking-[0.2em] bg-cyan/10 px-6 py-2.5 rounded-full inline-block mb-6 border border-cyan/20">The Theranostic Engine</span>
-            <h1 className="text-6xl md:text-7xl font-heading font-extrabold text-[#002A54] mb-8 leading-tight">Advanced <span className="text-[#00B1AB]">Pipeline</span></h1>
+            <h1 className="text-6xl md:text-7xl font-heading font-extrabold text-[#002A54] mb-8 leading-tight">Advanced <span className="text-teal">Pipeline</span></h1>
             <p className="text-slate-600 text-xl leading-relaxed font-light max-w-3xl">
               From breakthrough discovery to Phase 3 readiness. We are developing proprietary ligands to transform treatment paradigms for orphan diseases and hard-to-treat cancers.
             </p>
@@ -122,11 +123,11 @@ export default function PipelinePage() {
                              <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-0 cursor-pointer mb-2" onClick={() => setExpandedId(expandedId === p.id ? null : p.id)}>
                                 <div className="md:w-[30%] pr-8">
                                    <div className="flex items-center gap-4">
-                                      <div className={"w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg " + (p.color==="teal"?"bg-[#00B1AB]/10 text-[#00B1AB]":p.color==="cyan"?"bg-[#00A3E0]/10 text-[#00A3E0]":"bg-[#A7303E]/10 text-[#A7303E]")}>
+                                      <div className={"w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg " + (p.color==="teal"?"bg-teal/10 text-teal":p.color==="cyan"?"bg-cyan/10 text-cyan":"bg-helixRed/10 text-helixRed")}>
                                          {p.category==="Diagnostic"?<Microscope className="w-6 h-6"/> : p.category==="Therapeutic"?<Zap className="w-6 h-6"/> : <Beaker className="w-6 h-6"/>}
                                       </div>
                                       <div>
-                                         <h3 className="font-heading font-extrabold text-[#002A54] text-xl leading-tight group-hover:text-[#00A3E0] transition-colors">{p.name}</h3>
+                                         <h3 className="font-heading font-extrabold text-[#002A54] text-xl leading-tight group-hover:text-cyan transition-colors">{p.name}</h3>
                                          <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-1">{p.ind}</p>
                                       </div>
                                    </div>
@@ -136,7 +137,7 @@ export default function PipelinePage() {
                                    <motion.div 
                                       initial={{width: 0}}
                                       animate={{width: (p.phaseIndex / 4) * 100 + "%"}}
-                                      className={"absolute inset-y-0 left-0 transition-all " + (p.color==="teal"?"bg-gradient-to-r from-[#00B1AB]/30 to-[#00B1AB]":p.color==="cyan"?"bg-gradient-to-r from-[#00A3E0]/30 to-[#00A3E0]":"bg-gradient-to-r from-[#A7303E]/30 to-[#A7303E]")}
+                                      className={"absolute inset-y-0 left-0 transition-all " + (p.color==="teal"?"bg-gradient-to-r from-teal/30 to-teal":p.color==="cyan"?"bg-gradient-to-r from-cyan/30 to-cyan":"bg-gradient-to-r from-helixRed/30 to-helixRed")}
                                    >
                                       <div className="absolute inset-y-0 right-0 w-8 flex items-center justify-center">
                                          <div className="w-2 h-2 rounded-full bg-white animate-pulse shadow-glow" />
@@ -146,7 +147,7 @@ export default function PipelinePage() {
                                       {phases.map((_, i) => <div key={i} className="flex-1 border-r border-slate-400 h-full last:border-none" />)}
                                    </div>
                                    <div className="absolute inset-0 flex items-center px-8 pointer-events-none">
-                                      <span className="text-[10px] font-bold text-[#002A54] ml-auto opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">{p.phase}</span>
+                                      <span className="text-[10px] font-bold text-navy ml-auto opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">{p.phase}</span>
                                    </div>
                                 </div>
                              </div>
@@ -156,7 +157,7 @@ export default function PipelinePage() {
                                   <motion.div initial={{opacity:0, height:0}} animate={{opacity:1, height:"auto"}} exit={{opacity:0, height:0}} className="overflow-hidden">
                                      <div className="pt-8 pb-12 px-2 border-t border-slate-50 mt-6 grid lg:grid-cols-3 gap-12">
                                         <div className="lg:col-span-2">
-                                           <h4 className="text-xl font-heading font-extrabold text-[#002A54] mb-4">Mechanism & Potential</h4>
+                                           <h4 className="text-xl font-heading font-extrabold text-navy mb-4">Mechanism & Potential</h4>
                                            <p className="text-slate-600 leading-relaxed mb-6 font-light">{p.fullContent}</p>
                                            <div className="flex flex-wrap gap-3">
                                               <span className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-500 uppercase tracking-widest">Molecule: {p.molecule}</span>
@@ -164,11 +165,11 @@ export default function PipelinePage() {
                                            </div>
                                         </div>
                                         <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-inner">
-                                           <h4 className="text-sm font-bold text-[#002A54] uppercase tracking-[0.2em] mb-6 flex items-center gap-2"><LayoutGrid className="w-4 h-4 text-cyan"/> Latest Milestones</h4>
+                                           <h4 className="text-sm font-bold text-navy uppercase tracking-[0.2em] mb-6 flex items-center gap-2"><LayoutGrid className="w-4 h-4 text-cyan"/> Latest Milestones</h4>
                                            <ul className="space-y-4">
                                               {p.milestones.map((ms, idx) => (
                                                 <li key={idx} className="flex gap-4 items-start">
-                                                   <div className="w-5 h-5 rounded-full bg-white border border-[#00B1AB] flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-3 h-3 text-[#00B1AB]"/></div>
+                                                   <div className="w-5 h-5 rounded-full bg-white border border-teal flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-3 h-3 text-teal"/></div>
                                                    <span className="text-sm text-slate-600 font-medium">{ms}</span>
                                                 </li>
                                               ))}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Navbar } from "@/components/layout/Navbar";

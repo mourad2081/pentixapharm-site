@@ -2,109 +2,174 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
-import { BarChart3, TrendingUp, Download, PieChart, FileText, Globe2, Layers, Building2, ArrowUpRight, ShieldCheck, Activity } from "lucide-react";
+import { BarChart3, TrendingUp, Download, PieChart, FileText, Globe2, Layers, Building2, ArrowUpRight, ShieldCheck, Activity, Calendar, ExternalLink, Briefcase, ChevronRight } from "lucide-react";
+import AnimatedBg from "@/components/visual/AnimatedBackground";
+import Link from "next/link";
 
-const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0 } };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
+
+const HERO_BG = "investor_portal_bg_png_1774919885757.png";
 
 export default function InvestorPortalPage() {
   const locale = useLocale();
 
   return (
-    <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-32">
+    <div className="bg-[#F8FAFD] min-h-screen text-slate-800 pb-32 overflow-hidden">
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 overflow-hidden bg-[#031835] text-white">
-        <div className="absolute inset-0 z-0 opacity-10">
-           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+      <section className="relative pt-56 pb-40 overflow-hidden bg-[#031835] text-white">
+        <div className="absolute inset-0 z-0 overflow-hidden scale-110 blur-[2px] opacity-60">
+           <img src={`/${HERO_BG}`} className="w-full h-full object-cover animate-slow-zoom" alt="Investor Background" />
+           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#031835] via-[#031835]/50 to-transparent" />
+           <div className="absolute inset-0 bg-[#031835]/40 backdrop-blur-sm" />
+           <AnimatedBg />
         </div>
-        <div className="container mx-auto px-6 relative z-10 max-w-5xl text-center">
-          <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-cyan text-[10px] font-heading font-extrabold uppercase tracking-[0.4em] bg-white/10 px-8 py-3 rounded-full inline-block mb-10 border border-white/20 italic">For Institutional & Retail Investors</motion.span>
-            <motion.h1 variants={fadeUp} className="text-6xl md:text-8xl font-heading font-extrabold mb-8 italic drop-shadow-2xl">Investor <span className="text-cyan">Fact-Sheet</span></motion.h1>
-            <motion.p variants={fadeUp} className="text-slate-300 text-xl leading-relaxed font-light italic max-w-3xl mx-auto mb-10">
-              Real-time capital market monitoring, financial reporting, and the strategic roadmap of Pentixapharm Holding AG (PTP.DE).
+        
+        <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+          <motion.div initial="hidden" animate="show" variants={stagger} className="text-center">
+            <motion.span variants={fadeUp} className="text-cyan text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] bg-white/5 backdrop-blur-2xl px-12 py-4 rounded-full inline-block mb-12 border border-white/10 shadow-2xl italic">
+               Institutional Investor Relations
+            </motion.span>
+            <motion.h1 variants={fadeUp} className="text-7xl md:text-[8rem] font-heading font-extrabold mb-10 italic leading-[0.85] tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-cyan/30 drop-shadow-2xl">
+              Investment <br /> <span className="text-cyan">Fact-Sheet</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-300 text-xl md:text-3xl leading-relaxed font-light italic max-w-4xl mx-auto mb-16 px-10 border-r-2 border-cyan/40">
+              Corporate transparency, financial performance monitoring, and clinical milestone updates for Pentixapharm Holding AG.
             </motion.p>
+            <div className="flex flex-wrap items-center justify-center gap-12 pt-8 border-t border-white/10">
+               <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-cyan animate-pulse shadow-[0_0_10px_rgba(0,177,171,1)]" />
+                  <p className="text-[10px] font-heading font-extrabold text-[#00B1AB] uppercase tracking-widest italic">Listed: Frankfurt (XETRA)</p>
+               </div>
+               <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-white opacity-40" />
+                  <p className="text-[10px] font-heading font-extrabold text-white/60 uppercase tracking-widest italic">Ticker: PTP.DE</p>
+               </div>
+               <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-[#00B1AB] opacity-40 shadow-[0_0_10px_rgba(0,177,171,1)]" />
+                  <p className="text-[10px] font-heading font-extrabold text-cyan/70 uppercase tracking-widest italic">ISIN: DE000A40AEG0</p>
+               </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── STOCK STATISTICS ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-b border-slate-100">
-         <div className="container mx-auto px-6 max-w-6xl">
-            <div className="grid md:grid-cols-4 gap-10">
+      {/* ── STOCK PERFORMANCE ──────────────────────────────────────────────── */}
+      <section className="py-24 bg-white relative z-20 shadow-2xl">
+         <div className="container mx-auto px-6 max-w-7xl">
+            <div className="grid md:grid-cols-4 gap-12">
                {[
-                 { icon: TrendingUp, label: "Ticker Symbol", val: "PTP.DE", color: "text-[#00B1AB]" },
-                 { icon: PieChart, label: "Market Segment", val: "Prime Standard", color: "text-cyan" },
-                 { icon: BarChart3, label: "IPO Valuation", val: "€105M (Post)", color: "text-navy" },
-                 { icon: Globe2, label: "Primary Exchange", val: "Frankfurt (XETRA)", color: "text-emerald" }
+                 { icon: TrendingUp, label: "Market Segment", val: "Prime Standard", color: "text-[#00B1AB]" },
+                 { icon: PieChart, label: "Share Classification", val: "Common Stock", color: "text-cyan" },
+                 { icon: BarChart3, label: "Post-IPO Capital", val: "€105M (Approx)", color: "text-[#031835]" },
+                 { icon: Globe2, label: "Primary Listing", val: "Deutsch Börse", color: "text-emerald-500" }
                ].map((item, i) => (
-                 <motion.div key={i} whileHover={{y:-5}} className="p-10 rounded-[3rem] bg-[#F8FAFD] border border-slate-50 text-center group transition-all">
-                    <item.icon className={"w-10 h-10 " + item.color + " mx-auto mb-6"} />
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 italic">{item.label}</p>
-                    <p className="text-2xl font-heading font-extrabold text-[#031835] italic">{item.val}</p>
+                 <motion.div 
+                  key={i} 
+                  initial={{opacity:0, y:20}}
+                  whileHover={{y:-10}}
+                  whileInView={{opacity:1, y:0}}
+                  transition={{delay: i*0.1}} 
+                  className="p-12 rounded-[4rem] bg-[#F8FAFD] border border-slate-50 text-center group transition-all duration-500 hover:bg-white hover:shadow-3xl"
+                 >
+                    <div className="w-16 h-16 rounded-3xl bg-white shadow-xl flex items-center justify-center mx-auto mb-10 group-hover:rotate-12 group-hover:scale-110 transition-transform">
+                       <item.icon className={`w-8 h-8 ${item.color}`} />
+                    </div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 italic opacity-60">{item.label}</p>
+                    <p className="text-2xl font-heading font-extrabold text-[#031835] italic tracking-tight">{item.val}</p>
                  </motion.div>
                ))}
             </div>
          </div>
       </section>
 
-      {/* ── FINANCIAL REPOSITORY ──────────────────────────────────────────── */}
-      <section className="py-32">
-         <div className="container mx-auto px-6 max-w-6xl">
-            <div className="flex flex-col lg:flex-row gap-20 items-start">
-               {/* Left Side: Download Cards */}
-               <div className="flex-1 space-y-10">
-                  <div className="mb-10">
-                     <span className="text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.3em] mb-4 block italic">Digital Library</span>
-                     <h2 className="text-4xl font-heading font-extrabold text-[#031835] italic mb-6">Financial <span className="text-teal">Resources</span></h2>
+      {/* ── REPOSITORY ──────────────────────────────────────────────────────── */}
+      <section className="py-40 bg-[#F8FAFD] relative overflow-hidden">
+         <div className="container mx-auto px-6 max-w-7xl">
+            <div className="flex flex-col lg:flex-row gap-24 items-start items-center">
+               
+               {/* Financial Resources List */}
+               <div className="flex-1 space-y-16">
+                  <div className="mb-14">
+                     <span className="text-cyan text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-6 block italic">Corporate Reporting</span>
+                     <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-[#031835] italic tracking-tighter leading-tight">Digital <br/><span className="text-teal">Resources</span> Repository</h2>
+                     <p className="text-slate-500 text-lg font-light italic leading-loose max-w-xl mt-8">
+                        Centralized repository for all statutory reporting, financial results, and strategic company dossiers.
+                     </p>
                   </div>
                   
-                  <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="grid sm:grid-cols-2 gap-10">
                      {[
-                       { title: "Annual Report 2024", size: "3.4 MB", type: "PDF" },
-                       { title: "Quarterly Release Q3 2025", size: "1.2 MB", type: "PDF" },
-                       { title: "IPO Prospectus 2024", size: "8.9 MB", type: "PDF" },
-                       { title: "Investor Presentation 2026", size: "5.7 MB", type: "PPTX" }
+                       { title: "Annual Report 2024", size: "3.4 MB", type: "PDF", link: "#" },
+                       { title: "Quarterly Release Q3 2025", size: "1.2 MB", type: "PDF", link: "#" },
+                       { title: "IPO Prospectus 2024", size: "8.9 MB", type: "PDF", link: "#" },
+                       { title: "Investor Presentation", size: "5.7 MB", type: "PPTX", link: "#" }
                      ].map((doc, i) => (
-                       <button key={i} className="flex flex-col items-start p-10 bg-white border border-slate-100 rounded-[3rem] shadow-xl hover:border-cyan/40 transition-all text-left group">
-                          <FileText className="w-10 h-10 text-slate-300 mb-8 group-hover:text-teal group-hover:scale-110 transition-all" />
-                          <h4 className="text-xl font-heading font-extrabold text-[#031835] mb-3 italic">{doc.title}</h4>
-                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{doc.type} • {doc.size}</span>
-                       </button>
+                       <motion.button 
+                        key={i} 
+                        whileHover={{scale: 1.05}}
+                        className="flex flex-col items-start p-12 bg-white border border-slate-100 rounded-[4rem] shadow-2xl hover:border-cyan/40 transition-all text-left group overflow-hidden relative"
+                       >
+                          <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-150 transition-transform"><FileText className="w-24 h-24" /></div>
+                          <div className="w-12 h-12 bg-[#F8FAFD] rounded-full flex items-center justify-center mb-10 group-hover:bg-[#031835] group-hover:text-white transition-all transform group-hover:rotate-12 shadow-inner">
+                            <Download className="w-5 h-5 text-slate-400 group-hover:text-cyan" />
+                          </div>
+                          <h4 className="text-2xl font-heading font-extrabold text-[#031835] mb-4 italic tracking-tight leading-snug">{doc.title}</h4>
+                          <div className="flex items-center gap-3">
+                             <span className="text-[10px] font-bold text-white bg-teal px-3 py-1 rounded-full">{doc.type}</span>
+                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{doc.size}</span>
+                          </div>
+                       </motion.button>
                      ))}
                   </div>
+                  
+                  <Link href={`/${locale}/news`} className="inline-flex items-center gap-6 px-12 py-5 border-2 border-[#031835] rounded-full text-[11px] font-heading font-extrabold uppercase tracking-widest hover:bg-[#031835] hover:text-white transition-all italic scale-110 ml-8 shadow-xl">
+                     Read Global Press Releases <ChevronRight className="w-5 h-5" />
+                  </Link>
                </div>
 
-               {/* Right Side: Key Facts Column */}
-               <div className="w-full lg:w-[400px] space-y-10">
-                  <div className="bg-[#031835] text-white p-12 rounded-[4rem] shadow-2xl relative overflow-hidden group">
-                     <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:rotate-12 transition-transform"><Activity className="w-48 h-48" /></div>
-                     <h3 className="text-sm font-heading font-extrabold uppercase tracking-[0.4em] mb-10 italic text-cyan">Investment Case</h3>
-                     <div className="space-y-8 relative z-10">
-                        <div className="flex gap-6 items-start">
-                           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-cyan" /></div>
-                           <p className="text-xs font-light tracking-wide italic text-slate-300 leading-relaxed"><span className="text-white font-bold">Phase 3 Ready:</span> Lead asset Pfor moving into pivotal trial stage for PA.</p>
-                        </div>
-                        <div className="flex gap-6 items-start">
-                           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-cyan" /></div>
-                           <p className="text-xs font-light tracking-wide italic text-slate-300 leading-relaxed"><span className="text-white font-bold">First in-class:</span> Highly differentiated CXCR4/CD24 ligand platform portfolio.</p>
-                        </div>
-                        <div className="flex gap-6 items-start">
-                           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"><Building2 className="w-5 h-5 text-cyan" /></div>
-                           <p className="text-xs font-light tracking-wide italic text-slate-300 leading-relaxed"><span className="text-white font-bold">Prime Standard:</span> Highest transparency requirements in the EU equity markets.</p>
-                        </div>
+               {/* Right Side: Fact-sheet Insight */}
+               <div className="w-full lg:w-[460px] space-y-12">
+                  <div className="bg-[#031835] text-white p-16 rounded-[5rem] shadow-[0_80px_160px_-40px_rgba(3,24,53,0.5)] relative overflow-hidden group border border-white/5">
+                     <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:rotate-12 transition-transform"><Activity className="w-64 h-64" /></div>
+                     <span className="text-cyan text-[10px] font-heading font-extrabold uppercase tracking-[0.5em] mb-12 block italic">Core Investment Values</span>
+                     
+                     <div className="space-y-12 relative z-10">
+                        {[
+                          { icon: ShieldCheck, title: "Clinical Derisked", val: "Lead diagnostic asset entering global Phase 3 enrollment with proven sensitivity across 2,600+ patients." },
+                          { icon: Layers, title: "Platform Pipeline", val: "Highly differentiated portfolio covering both Ga-68 diagnostic imaging and Lu-177 therapeutic radiotherapy." },
+                          { icon: Building2, title: "Financial Integrity", val: "Adhering to Frankfurt Prime Standard requirements—the most stringent transparency rules in Europe." }
+                        ].map((v, i) => (
+                           <div key={i} className="flex gap-8 items-start group/point">
+                             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover/point:bg-white/10 group-hover/point:scale-110 transition-all shadow-inner">
+                               <v.icon className="w-6 h-6 text-cyan" />
+                             </div>
+                             <div className="space-y-2">
+                               <h5 className="font-heading font-extrabold text-white text-lg italic tracking-tight">{v.title}</h5>
+                               <p className="text-sm font-light italic text-slate-400 leading-relaxed">{v.val}</p>
+                             </div>
+                           </div>
+                        ))}
                      </div>
-                     <button className="w-full mt-12 py-5 bg-white text-navy font-heading font-extrabold rounded-full flex items-center justify-center gap-3 hover:bg-cyan hover:text-navy transition-all shadow-2xl text-xs uppercase tracking-widest">
-                        Company Presentation <Download className="w-4 h-4" />
+                     
+                      <button className="w-full mt-16 py-7 px-10 bg-cyan text-[#031835] font-heading font-extrabold rounded-full flex items-center justify-center gap-6 hover:bg-white transition-all shadow-3xl text-sm uppercase tracking-[0.3em] italic group/btn">
+                        FULL CORPORATE DOSSIER <ArrowUpRight className="w-6 h-6 group-hover/btn:translate-x-3 group-hover/btn:-translate-y-3 transition-transform" />
                      </button>
                   </div>
 
-                  <div className="bg-[#F8FAFD] p-12 rounded-[4rem] border border-slate-100 italic">
-                     <h4 className="text-[10px] font-bold text-navy uppercase tracking-[0.4em] mb-6 block italic">IR Contact</h4>
-                     <p className="text-xl font-heading font-extrabold text-[#031835] mb-2 tracking-tighter">Henner Kollenberg</p>
-                     <p className="text-sm text-slate-500 font-light mb-8">Chief Business Officer</p>
-                     <a href="mailto:ir@pentixapharm.com" className="text-cyan font-bold border-b-2 border-cyan/20 pb-1 flex items-center gap-3 hover:gap-5 transition-all text-sm">
-                        ir@pentixapharm.com <ArrowUpRight className="w-4 h-4" />
+                  {/* IR Official */}
+                  <div className="bg-white p-14 rounded-[5rem] border border-slate-100 shadow-[0_20px_60px_-20px_rgba(3,24,53,0.08)] relative overflow-hidden">
+                     <div className="absolute bottom-[-2rem] right-[-2rem] p-10 opacity-[0.02] transform -rotate-12"><Briefcase className="w-48 h-48" /></div>
+                     <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.5em] mb-8 block italic">Official Relations Lead</h4>
+                     <div className="flex items-center gap-6 mb-10">
+                        <div className="w-20 h-20 bg-[#031835] rounded-3xl flex items-center justify-center text-cyan font-heading font-extrabold text-2xl italic shadow-2xl">HK</div>
+                        <div>
+                           <p className="text-2xl font-heading font-extrabold text-[#031835] mb-1 italic tracking-tighter">Henner Kollenberg</p>
+                           <p className="text-[10px] text-teal font-extrabold uppercase tracking-widest italic opacity-80">Chief Business Officer</p>
+                        </div>
+                     </div>
+                     <a href="mailto:ir@pentixapharm.com" className="w-full py-5 bg-[#F8FAFD] border-2 border-[#031835]/5 rounded-full flex items-center justify-center gap-5 hover:bg-[#031835] hover:text-white transition-all text-sm font-bold shadow-sm">
+                        ir@pentixapharm.com <ExternalLink className="w-4 h-4" />
                      </a>
                   </div>
                </div>
@@ -113,28 +178,39 @@ export default function InvestorPortalPage() {
       </section>
 
       {/* ── FINANCIAL CALENDAR ───────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-t border-slate-100">
-         <div className="container mx-auto px-6 max-w-4xl">
-            <div className="text-center mb-16">
-               <h3 className="text-3xl font-heading font-extrabold text-[#031835] italic">Financial <span className="text-teal">Calendar</span></h3>
+      <section className="py-40 bg-white border-t border-slate-100 relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
+         <div className="container mx-auto px-6 max-w-5xl relative z-10">
+            <div className="text-center mb-24 max-w-3xl mx-auto">
+               <span className="text-teal text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-6 block italic">Corporate Roadshow</span>
+               <h3 className="text-5xl md:text-[5rem] font-heading font-extrabold text-[#031835] italic leading-none tracking-tighter">Financial <span className="text-cyan">Timeline</span> 2026</h3>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8">
                {[
-                 { date: "May 20, 2026", event: "Q1 2026 Financial Release & Corporate Update" },
-                 { date: "June 15, 2026", event: "Annual General Meeting (Frankfurt)" },
-                 { date: "Aug 28, 2026", event: "Half-Year Report 2026 Publication" },
-                 { date: "Nov 14, 2026", event: "Q3 2026 Nine-Month Report" }
+                 { date: "May 20, 2026", month: "MAY", day: "20", event: "Q1 2026 Financial Release & Corporate Update", type: "Conference Call" },
+                 { date: "June 15, 2026", month: "JUN", day: "15", event: "Annual General Meeting (Frankfurt)", type: "Presence Meeting" },
+                 { date: "Aug 28, 2026", month: "AUG", day: "28", event: "Half-Year Report 2026 Publication", type: "Full Disclosure" },
+                 { date: "Nov 14, 2026", month: "NOV", day: "14", event: "Q3 2026 Nine-Month Report", type: "Quarterly Brief" }
                ].map((item, i) => (
-                 <div key={i} className="flex flex-col md:flex-row md:items-center gap-10 p-10 bg-[#F8FAFD] border border-slate-50 rounded-[3rem] hover:border-cyan/30 transition-all group">
-                    <div className="shrink-0 w-32">
-                       <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 italic">Date</p>
-                       <p className="font-heading font-extrabold text-teal group-hover:text-[#031835] transition-colors">{item.date}</p>
+                 <motion.div 
+                  key={i} 
+                  whileHover={{x: 20}}
+                  className="flex flex-col md:flex-row md:items-center gap-10 p-12 bg-[#F8FAFD] border border-slate-100 rounded-[3.5rem] hover:bg-[#031835] group transition-all duration-500 shadow-xl"
+                 >
+                    <div className="shrink-0 flex items-center gap-8 border-r border-[#031835]/10 group-hover:border-white/10 pr-10">
+                       <div className="flex flex-col items-center justify-center w-20 h-24 bg-white shadow-2xl rounded-3xl group-hover:bg-cyan transition-all transform group-hover:-rotate-3">
+                          <span className="text-[10px] font-heading font-extrabold text-[#031835] italic opacity-40">{item.month}</span>
+                          <span className="text-4xl font-heading font-extrabold text-[#031835] italic leading-none my-1 group-hover:scale-110 transition-transform">{item.day}</span>
+                       </div>
                     </div>
                     <div className="flex-1">
-                       <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 italic">Announcement</p>
-                       <p className="font-heading font-extrabold text-[#031835] text-xl italic">{item.event}</p>
+                       <p className="text-[10px] font-bold text-slate-400 group-hover:text-cyan uppercase tracking-[0.4em] mb-4 italic transition-colors flex items-center gap-4"><Calendar className="w-3 h-3" /> {item.type}</p>
+                       <p className="font-heading font-extrabold text-[#031835] group-hover:text-white text-3xl italic transition-colors leading-tight tracking-tight">{item.event}</p>
                     </div>
-                 </div>
+                    <Link href={`/${locale}/contact`} className="px-10 py-5 bg-white border border-[#031835]/10 rounded-full text-[10px] font-heading font-extrabold text-[#031835] uppercase tracking-widest hover:bg-cyan hover:border-cyan transition-all italic shadow-inner ml-auto group-hover:translate-x-[-10px] hidden lg:flex">
+                       Register Interest
+                    </Link>
+                 </motion.div>
                ))}
             </div>
          </div>

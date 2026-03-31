@@ -25,8 +25,10 @@ export function Navbar() {
     { label: t("about"), href: "/" + locale + "/about" },
     { label: t("news"), href: "/" + locale + "/news" },
     { label: t("investors"), href: "/" + locale + "/investors" },
+    { label: "Partnering", href: "/" + locale + "/partnering" },
+    { label: "Research", href: "/" + locale + "/research" },
     { label: "Technology", href: "/" + locale + "/technology" },
-    { label: "IIS", href: "/" + locale + "/iis" },
+    { label: "IIS Program", href: "/" + locale + "/iis" },
     { label: t("careers"), href: "/" + locale + "/careers" },
   ];
 

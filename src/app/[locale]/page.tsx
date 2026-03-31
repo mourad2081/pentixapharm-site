@@ -56,7 +56,7 @@ export default function HomePage() {
               </span>
             </motion.div>
             
-            <motion.h1 variants={fadeUp} className="text-[6rem] md:text-[11rem] font-heading font-extrabold leading-[0.8] tracking-tighter mb-12 text-[#031835] drop-shadow-2xl italic">
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-8xl font-heading font-extrabold leading-[0.8] tracking-tighter mb-12 text-[#031835] drop-shadow-2xl italic">
               See What <br />
               <div className="relative inline-block overflow-hidden">
                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan via-teal to-cyan animate-gradient-x italic">You Treat.</span>
@@ -183,7 +183,7 @@ export default function HomePage() {
                   <motion.div variants={fadeUp} className="inline-flex items-center gap-4 text-cyan text-[11px] font-heading font-extrabold uppercase tracking-[0.6em] mb-12 italic border-b border-cyan/20 pb-4">
                      <Microscope className="w-4 h-4"/> MECHANISM OF ACTION
                   </motion.div>
-                  <motion.h2 variants={fadeUp} className="text-7xl md:text-[8rem] font-heading font-extrabold text-[#031835] leading-[0.8] mb-14 italic tracking-tighter">Diagnostic <br/><span className="text-teal">Precision</span> Hub</motion.h2>
+                  <motion.h2 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-extrabold text-[#031835] leading-[0.8] mb-14 italic tracking-tighter">Diagnostic <br/><span className="text-teal">Precision</span> Hub</motion.h2>
                   <motion.p variants={fadeUp} className="text-slate-600 text-2xl leading-relaxed mb-16 font-light italic max-w-xl">
                       We utilize isotope-labeled ligands that lock onto tumor receptors with extreme binding affinity, turning every MRI into a functional therapeutic map. 
                   </motion.p>
@@ -236,7 +236,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row items-end justify-between mb-32 gap-12">
              <div className="max-w-3xl">
                <span className="text-cyan font-heading font-extrabold text-xs tracking-[0.6em] uppercase mb-8 block italic">Corporate Intelligence</span>
-               <h2 className="text-6xl md:text-9xl font-heading font-extrabold text-[#031835] italic tracking-tighter leading-[0.8] mb-12">Latest <br/> <span className="text-teal underline decoration-cyan/20 decoration-8 underline-offset-10">Releases</span></h2>
+               <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-[#031835] italic tracking-tighter leading-[0.8] mb-12">Latest <br/> <span className="text-teal underline decoration-cyan/20 decoration-8 underline-offset-10">Releases</span></h2>
                <p className="text-slate-500 text-2xl font-light italic leading-relaxed max-w-xl">Updates on clinical enrollment, regulatory filings, and board-level strategy shifts.</p>
              </div>
              <Link href={`/${locale}/news`} className="px-14 py-6 border-2 border-[#031835] rounded-full text-[11px] font-heading font-extrabold uppercase tracking-widest hover:bg-[#031835] hover:text-white transition-all italic scale-110 shadow-xl group">
@@ -288,7 +288,7 @@ export default function HomePage() {
             <span className="inline-flex items-center gap-4 text-cyan text-xs font-heading font-extrabold uppercase tracking-[0.8em] mb-12 italic bg-white/5 px-10 py-4 rounded-full border border-white/10 shadow-3xl transform">
                <Globe2 className="w-4 h-4 animate-spin-slow" /> Global Clinical Headquarters
             </span>
-            <h2 className="text-6xl md:text-[7rem] font-heading font-extrabold leading-[0.9] italic mb-16 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/40">
+            <h2 className="text-5xl md:text-7xl font-heading font-extrabold leading-[0.9] italic mb-16 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/40">
                Engineering the <br/> <span className="text-cyan">Theranostic</span> Era.
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-12 pt-8">
